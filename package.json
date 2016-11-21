@@ -1,0 +1,26 @@
+{
+  "name": "louis-andre.net",
+  "version": "5.0.0",
+  "description": "Louis-André Labadie's main website",
+  "main": "./pages/index.js",
+  "dependencies": {
+    "next": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L-A/louis-andre.net.git"
+  },
+  "scripts": {
+    "dev": "next"
+  },
+  "author": "Louis-André Labadie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/L-A/louis-andre.net/issues"
+  },
+  "homepage": "https://github.com/L-A/louis-andre.net#readme"
+}
