@@ -4,18 +4,19 @@
   "description": "Louis-André Labadie's main website",
   "main": "./pages/index.js",
   "dependencies": {
-    "next": "^1.1.2"
+    "markdown-to-react-components": "^0.2.1",
+    "next": "^1.2.3",
+    "react-inlinesvg": "^0.5.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-root-import": "^4.1.5"
+  },
   "scripts": {
-    "test": "test"
+    "dev": "next"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/L-A/louis-andre.net.git"
-  },
-  "scripts": {
-    "dev": "next"
   },
   "author": "Louis-André Labadie",
   "license": "ISC",
