@@ -1,13 +1,21 @@
 import React from 'react'
 import css from 'next/css'
+import Link from 'next/link'
 import Page from '~/layouts/page'
 import Project from '~/components/project'
 import ColorRange from '~/helpers/colorRange'
 
 export default () => (
   <Page>
-	<MovingFill />
-	<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/projects/octobot">
+		<MovingFill />
+		<div {...headerStyle} className="f3 f2-l lh-title ph3 pv5 ph5-m ph6-l tc b">
+			<p>Hi! I'm Louis-André, freelance designer.<br/>I make brands and interfaces.</p>
+			<p>Let's <Link href="#"><a className="no-underline">work together!</a></Link></p>
+		</div>
+		<h4 className="f6 pv3 tc ttu">Bite-sized work</h4>
+			
+		<h4 className="f6 pv3 tc ttu">Projects &amp; case studies</h4>
+		<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/projects/octobot">
 			<p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
 		</Project>
@@ -43,8 +51,9 @@ class MovingFill extends React.Component {
 		if ( !process.browser ) { return 0 } // A reasonable assumption, I hope
 		let bod = document.body
 		let doc = document.documentElement
-		let st = bod.scrollTop, sh = bod.scrollHeight, dt  = doc.scrollTop, dh = doc.scrollHeight
-		return (dt || st) / ((dh || sh) - doc.clientHeight)
+		let st = bod.scrollTop || doc.scrollTop,
+				sh = bod.scrollHeight || doc.scrollTop
+		return (st / (sh - doc.clientHeight))
 	}
 
 	fillPosition = () => {
@@ -72,3 +81,9 @@ const fillStyle = (fillPosition, ratio) => {
 		transition: 'background-color 80ms ease-out, bottom 80ms ease-out'
 	})
 }
+
+const headerStyle = css({
+	color: '#4e5667',
+	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
+	
+})

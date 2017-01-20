@@ -1,11 +1,10 @@
 import React from 'react'
 import css from 'next/css'
 import BlogPost from '~/layouts/blogpost'
-import Project from '~/components/project'
 
 export default () => (
 	<BlogPost title="Fitsteady: Fantastic tools for formidable trainers" titleColor="#459283" postMarkdown={postContent}>
-	<small>2013 - Designed and built at Hookt Studios</small>
+	<small className="db lh-copy code gray f6">2013 - Designed and built at Hookt Studios</small>
 	</BlogPost>
 )
 
@@ -36,5 +35,5 @@ I made the visual treatment complement this, leading up to a personality that's,
 
 ![Fitsteady's survey layout](/static/images/fitsteady-post/survey.png)
 
-Fitsteady have since become a major provider of health & wellness for organizations in Austin, TX.
+At the time of writing (three years later already!) Fitsteady have steadily established as a major provider of health & wellness for organizations in Austin, TX.
 `

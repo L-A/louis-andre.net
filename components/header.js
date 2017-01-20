@@ -22,8 +22,8 @@ export default class extends React.Component {
 			{	
 				factor: this.state.factor + 0.1,
 				logoPosition: {
-					c: {x: this.randPos(5), y: this.randPos(2)},
-					m: {x: this.randPos(4), y: this.randPos(2)},
+					c: {x: this.randPos(2), y: this.randPos(3)},
+					m: {x: this.randPos(2), y: this.randPos(3)},
 					y: {x: this.randPos(2), y: this.randPos(3)}
 				}
 			}
@@ -53,6 +53,11 @@ export default class extends React.Component {
 		</h1>
 		<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
 			<li className="dib pr3 br bw1 b--light-gray">
+				<Link href="/projects">
+					<a className="link dark-gray hover-green">projects</a>
+				</Link>
+			</li>
+			<li className="dib ph3 br bw1 b--light-gray">
 				<Link href="/journal">
 					<a className="link dark-gray hover-green">journal</a>
 				</Link>

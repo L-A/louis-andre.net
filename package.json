@@ -12,7 +12,9 @@
     "babel-root-import": "^4.1.5"
   },
   "scripts": {
-    "dev": "next"
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
   },
   "repository": {
     "type": "git",
