@@ -41,35 +41,30 @@ export default class extends React.Component {
 
 	render () {
 		return (
-		<nav className="dt w-100 pv4">
-		<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
-			<Link href="/">
-				<a className="dib" {...homeLinkStyle}>
-					<Logo fill="#FF0" style={logoStyle(this.state.logoPosition.c)}/>
-					<Logo fill="#0FF" style={logoStyle(this.state.logoPosition.m)}/>
-          <Logo fill="#F0F" style={logoStyle(this.state.logoPosition.y)}/>
-				</a>
-			</Link>
-		</h1>
-		<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
-			<li className="dib pr3 br bw1 b--light-gray">
-				<Link href="/projects">
-					<a className="link dark-gray hover-green">projects</a>
+			<nav className="dt w-100 pv4">
+			<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
+				<Link href="/">
+					<a className="dib" {...homeLinkStyle}>
+						<Logo fill="#FF0" style={logoStyle(this.state.logoPosition.c)}/>
+						<Logo fill="#0FF" style={logoStyle(this.state.logoPosition.m)}/>
+						<Logo fill="#F0F" style={logoStyle(this.state.logoPosition.y)}/>
+					</a>
 				</Link>
-			</li>
-			<li className="dib ph3 br bw1 b--light-gray">
-				<Link href="/journal">
-					<a className="link dark-gray hover-green">journal</a>
-				</Link>
-			</li>
-			<li className="dib pl3">
-				<Link href="/about">
-					<a className="link dark-gray hover-green">about</a>
-				</Link>
-			</li>
-		</ul>
-	</nav>
-	)
+			</h1>
+			<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
+				<li className="dib pr3 br bw1 b--light-gray">
+					<Link href="/projects">
+						<a className="link dark-gray hover-green">projects</a>
+					</Link>
+				</li>
+				<li className="dib pl3">
+					<Link href="/about">
+						<a className="link dark-gray hover-green">about</a>
+					</Link>
+				</li>
+			</ul>
+		</nav>
+		)
 	}
 }
 
