@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Page from '~/layouts/page'
 import Project from '~/components/project'
 import ColorRange from '~/helpers/colorRange'
+import Shot from '~/components/dribbble-shot.js'
 
 export default () => (
   <Page>
@@ -12,9 +13,14 @@ export default () => (
 			<p>Hi! I'm Louis-André, freelance designer.<br/>I make brands and interfaces.</p>
 			<p>Let's <Link href="#"><a className="no-underline">work together!</a></Link></p>
 		</div>
-		<h4 className="f6 pv3 tc ttu">Bite-sized work</h4>
-			
-		<h4 className="f6 pv3 tc ttu">Projects &amp; case studies</h4>
+		<h4 className="f6 pv3 tc ttu dribbble-shots">Bite-sized images</h4>
+		<div className="cf ph3 pv5 ph5-m ph6-l">
+			<Shot shotImageURL="https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3159749/shot_2x_1x.png"></Shot>
+			<Shot shotImageURL="https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3062699/doodle-2_1x.jpg"></Shot>
+			<Shot shotImageURL="https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/1580576/metrio-brand_1x.png"></Shot>
+			<a href="https://dribbble.com/l-a" className="db ph3 silver tc">more of these</a>
+		</div>			
+		<h4 className="f6 pv3 tc ttu case-studies">Projects &amp; case studies</h4>
 		<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/projects/octobot">
 			<p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
