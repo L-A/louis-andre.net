@@ -55,15 +55,31 @@ class MovingFill extends React.Component {
 
 	reportScrollRatio = () => {
 		if ( !process.browser ) { return 0 } // A reasonable assumption, I hope
-		let bod = document.body
-		let doc = document.documentElement
-		let st = bod.scrollTop || doc.scrollTop,
-				sh = bod.scrollHeight || doc.scrollTop
-		return (st / (sh - doc.clientHeight))
+		let bod = document.body,
+				doc = document.documentElement,
+				viewportHeight = window.innerHeight,
+				st = bod.scrollTop || doc.scrollTop,
+				sh = bod.scrollHeight || doc.scrollHeight,
+				scrollStart = document.querySelector(".case-studies").offsetTop - (viewportHeight),
+				scrollDistance = sh - scrollStart - viewportHeight
+
+
+		let ratio = 0;
+
+		if (st > scrollStart) {
+			ratio = (st - scrollStart) / scrollDistance 
+		}
+
+		ratio = ratio <= 0 ? 0 : ratio
+		ratio = ratio >= 1 ? 1 : ratio
+
+		console.log(ratio)
+		
+		return ratio
 	}
 
 	fillPosition = () => {
-		return 40 + (this.state.scrollRatio * 10)
+		return 100 - (this.state.scrollRatio * 80)
 	}
 
 	handleScroll = () => {
