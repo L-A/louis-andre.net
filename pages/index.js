@@ -9,9 +9,9 @@ import Shot from '~/components/dribbble-shot.js'
 export default () => (
   <Page>
 		<MovingFill />
-		<div {...headerStyle} className="f3 f2-l lh-title ph3 pv5 ph5-m ph6-l tc b">
+		<div {...headerStyle} className="f2 lh-title ph3 pv5 ph5-m ph6-l tc b">
 			<p>Hi! I'm Louis-André, freelance designer.<br/>I make brands and interfaces.</p>
-			<p>Let's <Link href="#"><a className="no-underline">work together!</a></Link></p>
+			<p>Let's <Link href="#"><a className="no-underline">work together</a></Link>!</p>
 		</div>
 		<h4 className="f6 pv3 tc ttu dribbble-shots">Bite-sized images</h4>
 		<div className="cf ph3 pv5 ph5-m ph6-l">
