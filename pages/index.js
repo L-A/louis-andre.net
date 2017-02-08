@@ -2,6 +2,7 @@ import React from 'react'
 import css from 'next/css'
 import Link from 'next/link'
 import Page from '~/layouts/page'
+import Icon from '~/components/icon.js'
 import Project from '~/components/project'
 import ColorRange from '~/helpers/colorRange'
 import Shot from '~/components/dribbble-shot.js'
@@ -9,36 +10,76 @@ import Shot from '~/components/dribbble-shot.js'
 export default () => (
   <Page>
 		<MovingFill />
-		<div {...headerStyle} className="f2 lh-title ph3 pv5 ph5-m ph6-l tc b">
-			<p>Hi! I'm Louis-André, freelance designer.<br/>I make brands and interfaces.</p>
-			<p>Let's <Link href="#"><a {...contactLinkStyle} className="no-underline pointer">work together</a></Link>!</p>
-		</div>
-		<h4 className="f6 pv2 tc ttu dribbble-shots">Bite-sized images</h4>
+		<div {...headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b">
+			<p>Hi! I'm Louis-André, freelance designer.<br/>I make apps and web sites.</p>
+    </div>
+    <div className="tc pb5">
+      <Link href="#"><a {...contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc">Available for hire</a></Link>
+    </div>
+		<h4 className="f6 pv2 tc ttu dribbble-shots">Bite-sized work <Icon iconName="dribbble" /></h4>
 		<div className="cf ph3 pt1 ph5-m ph6-l">
-			<Shot shotImageURL="https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3159749/shot_2x_1x.png"></Shot>
-			<Shot shotImageURL="https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3062699/doodle-2_1x.jpg"></Shot>
-			<Shot shotImageURL="https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/1580576/metrio-brand_1x.png"></Shot>
-			<a href="https://dribbble.com/l-a" className="db ph3 silver tc">more of these</a>
-		</div>			
-		<h4 className="f6 pt6 pb1 tc ttu case-studies">Projects &amp; case studies</h4>
+			<Shot shotImageURL={shots[0].image} linkTo={shots[0].url}></Shot>
+			<Shot shotImageURL={shots[1].image} linkTo={shots[1].url}></Shot>
+			<Shot shotImageURL={shots[2].image} linkTo={shots[2].url}></Shot>
+		</div>
+    <a href="https://dribbble.com/l-a" className="db mt3 ph3 silver tc">more of these</a>
+		<h4 className="f6 pt6 pb1 tc ttu case-studies">Projects &amp; case studies <Icon iconName="cases" /></h4>
 		<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/projects/octobot">
 			<p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
 		</Project>
-		<Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png">
+		<Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText="On hold">
 			<p className="lh-copy">If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, Node.js &amp; Electron development.</p>
-		</Project>	
+		</Project>
 		<Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/projects/fitsteady">
 			<p className="lh-copy">Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.</p>
 			<p className="lh-copy code gray f6">Interface design, assets production.</p>
-		</Project>	
+		</Project>
 	</Page>
 )
 
+const shots = [
+	{
+		image: "https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3159749/shot_2x_1x.png",
+		url: "https://dribbble.com/shots/3159749-Housing"
+	},
+	{
+		image: "https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3062699/doodle-2_1x.jpg",
+		url: "https://dribbble.com/shots/3062699-Star-CGI-detail"
+	},
+	{
+		image: "https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/1580576/metrio-brand_1x.png",
+		url: "https://dribbble.com/shots/1580576-Metrio-Brand"
+	}
+]
+
+const fillStyle = (fillPosition, ratio) => {
+	return css({
+		position: 'fixed',
+		backgroundColor: '#' + ColorRange('e9f6fc', 'fff9f0', ratio),
+		width: '100%',
+		height: '100vh',
+		bottom: -fillPosition + 'vh',
+		transform: 'skewY(-8deg)',
+		zIndex: '-1',
+		transition: 'background-color 80ms ease-out, bottom 80ms ease-out'
+	})
+}
+
+const headerStyle = css({
+	color: '#4e5667',
+  fontSize: '34px',
+	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
+})
+
+const contactLinkStyle = css ({
+  backgroundColor: '#4eb648'
+})
+
 // Moving color fill element
 
-class MovingFill extends React.Component {	
+class MovingFill extends React.Component {
 	constructor (props) {
 		super(props)
 		this.state = { scrollRatio: 0 }
@@ -66,15 +107,13 @@ class MovingFill extends React.Component {
 
 		let ratio = 0;
 
-		if (st > scrollStart) {
-			ratio = (st - scrollStart) / scrollDistance 
+		if (st > scrollStart && st <= (scrollStart + scrollDistance)) {
+			ratio = (st - scrollStart) / scrollDistance
 		}
 
 		ratio = ratio <= 0 ? 0 : ratio
 		ratio = ratio >= 1 ? 1 : ratio
 
-		console.log(ratio)
-		
 		return ratio
 	}
 
@@ -90,29 +129,3 @@ class MovingFill extends React.Component {
 		return <div {...fillStyle(this.fillPosition(), this.state.scrollRatio)}/>
 	}
 }
-
-const fillStyle = (fillPosition, ratio) => {
-	return css({
-		position: 'fixed',
-		backgroundColor: '#' + ColorRange('e9f6fc', 'f9f9f5', ratio),
-		width: '100%',
-		height: '100vh',
-		bottom: -fillPosition + 'vh',
-		transform: 'skewY(-8deg)',
-		zIndex: '-1',
-		transition: 'background-color 80ms ease-out, bottom 80ms ease-out'
-	})
-}
-
-const headerStyle = css({
-	color: '#4e5667',
-	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
-})
-
-const contactLinkStyle = css ({
-	color: '#566fef',
-	display: 'inline-block',
-	":hover": {
-		color: '#1eb6ea'
-	}
-})

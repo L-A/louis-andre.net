@@ -3,7 +3,7 @@ import css from 'next/css'
 import Link from 'next/link'
 import Logo from '~/components/logo'
 
-export default class extends React.Component { 
+export default class extends React.Component {
 	constructor (props) {
 		super(props)
 		this.state = {
@@ -19,7 +19,7 @@ export default class extends React.Component {
 	changeLayers = () => {
 	if (process.browser) {
 		this.setState(
-			{	
+			{
 				factor: this.state.factor + 0.1,
 				logoPosition: {
 					c: {x: this.randPos(2), y: this.randPos(3)},
@@ -34,36 +34,36 @@ export default class extends React.Component {
 	componentDidMount () {
 		this.changeLayers()
 	}
-	
+
 	randPos = (range) => {
 		return this.state.factor * (Math.random() * range - (range / 2))
 	}
 
 	render () {
 		return (
-			<nav className="dt w-100 pv4">
-			<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
-				<Link href="/">
-					<a className="dib" {...homeLinkStyle}>
-						<Logo fill="#FF0" style={logoStyle(this.state.logoPosition.c)}/>
-						<Logo fill="#0FF" style={logoStyle(this.state.logoPosition.m)}/>
-						<Logo fill="#F0F" style={logoStyle(this.state.logoPosition.y)}/>
-					</a>
-				</Link>
-			</h1>
-			<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
-				<li className="dib pr3 br bw1 b--light-gray">
-					<Link href="/projects">
-						<a className="link dark-gray hover-green">projects</a>
+			<nav className="dt w-100 pb4 pt5">
+				<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
+					<Link href="/">
+						<a className="dib" {...homeLinkStyle}>
+							<Logo fill="#FF0" style={logoStyle(this.state.logoPosition.c)}/>
+							<Logo fill="#0FF" style={logoStyle(this.state.logoPosition.m)}/>
+							<Logo fill="#F0F" style={logoStyle(this.state.logoPosition.y)}/>
+						</a>
 					</Link>
-				</li>
-				<li className="dib pl3">
-					<Link href="/about">
-						<a className="link dark-gray hover-green">about</a>
-					</Link>
-				</li>
-			</ul>
-		</nav>
+				</h1>
+				<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
+					<li className="dib pr3 br bw1 b--light-gray">
+						<Link href="/projects">
+							<a className="link dark-gray hover-green">projects</a>
+						</Link>
+					</li>
+					<li className="dib pl3">
+						<Link href="/about">
+							<a className="link dark-gray hover-green">about</a>
+						</Link>
+					</li>
+				</ul>
+			</nav>
 		)
 	}
 }
