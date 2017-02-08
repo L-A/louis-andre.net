@@ -1,6 +1,6 @@
 import React from 'react'
-import css from 'next/css'
 import Link from 'next/link'
+import InLink from 'next/prefetch'
 import Page from '~/layouts/page'
 import Icon from '~/components/icon.js'
 import Project from '~/components/project'
@@ -10,11 +10,11 @@ import Shot from '~/components/dribbble-shot.js'
 export default () => (
   <Page>
 		<MovingFill />
-		<div {...headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b">
+		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b">
 			<p>Hi! I'm Louis-André, freelance designer.<br/>I make apps and web sites.</p>
     </div>
     <div className="tc pb5">
-      <Link href="#"><a {...contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc">Available for hire</a></Link>
+      <Link href="#"><a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc">Available for hire</a></Link>
     </div>
 		<h4 className="f6 pv2 tc ttu dribbble-shots">Bite-sized work <Icon iconName="dribbble" /></h4>
 		<div className="cf ph3 pt1 ph5-m ph6-l">
@@ -55,7 +55,7 @@ const shots = [
 ]
 
 const fillStyle = (fillPosition, ratio) => {
-	return css({
+	return {
 		position: 'fixed',
 		backgroundColor: '#' + ColorRange('e9f6fc', 'fff9f0', ratio),
 		width: '100%',
@@ -64,18 +64,18 @@ const fillStyle = (fillPosition, ratio) => {
 		transform: 'skewY(-8deg)',
 		zIndex: '-1',
 		transition: 'background-color 80ms ease-out, bottom 80ms ease-out'
-	})
+	}
 }
 
-const headerStyle = css({
+const headerStyle = {
 	color: '#4e5667',
   fontSize: '34px',
 	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
-})
+}
 
-const contactLinkStyle = css ({
+const contactLinkStyle = {
   backgroundColor: '#4eb648'
-})
+}
 
 // Moving color fill element
 
@@ -126,6 +126,6 @@ class MovingFill extends React.Component {
 	}
 
 	render = () => {
-		return <div {...fillStyle(this.fillPosition(), this.state.scrollRatio)}/>
+		return <div style={fillStyle(this.fillPosition(), this.state.scrollRatio)}/>
 	}
 }

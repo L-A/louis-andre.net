@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'next/css'
 import Page from '~/layouts/page'
 import PostList from '~/components/postlist.js'
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'next/css'
 import Blogpost from '~/layouts/blogpost'
 
 export default () => {
@@ -48,7 +47,3 @@ Then as part of a small round of marketing effort, I refined it for larger-scale
 
 ![Wallpaper](/static/images/octobot-post/more-details.jpg)
 `
-
-const style = css({
-
-})

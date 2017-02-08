@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'next/css'
 import BlogPost from '~/layouts/blogpost'
 
 export default () => (

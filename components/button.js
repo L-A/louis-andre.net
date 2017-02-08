@@ -1,24 +1,28 @@
 import React from 'react'
-import css from 'next/css'
 import Link from 'next/link'
 
 export default (props) => {
-	let noLink = props.linksTo == null;
+	let disabled = props.linksTo == null;
+	let styleOverrides = (props, disabled) => (
+		{
+			backgroundColor: props.bgColor || 'transparent',
+			border: disabled ? "1px solid #bababa" : null,
+			color: disabled ? "#929292" : "#FFF"
+		}
+	)
 	return (
 		<Link href={props.linksTo}>
-			<a {...style({bgColor: props.bgColor, disabled: noLink})} className="link dib f6 lh-copy tracked b ttu white dim br2 pv2 ph3 mt1">{props.btnText}</a>
+			<a style={styleOverrides(props, disabled)} className="link dib f6 lh-copy tracked b ttu white br2 pv2 ph3 mt1">
+				{props.btnText}
+				<style jsx>{`
+					a {
+						opacity: 0.8;
+					}
+					a:hover {
+						opacity: 1;
+					}
+				`}</style>
+			</a>
 		</Link>
 	)
-	}
-
-const style = (props) => {
-	let borderStyle = props.disabled ? "1px solid #bababa" : null
-	let textColor = props.disabled ? "#929292" : "#FFF"
-	return css({
-		backgroundColor: (props.bgColor || "transparent"),
-		color: textColor,
-		border: borderStyle,
-		opacity: 0.8,
-		':hover' : {opacity: "1"}
-	})
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'next/css'
 import Link from 'next/link'
 import Logo from '~/components/logo'
 
@@ -9,25 +8,23 @@ export default class extends React.Component {
 		this.state = {
 			factor: 1,
 			logoPosition: {
-				c: {x: 0, y: 0},
-				m: {x: 0, y: 0},
-				y: {x: 0, y: 0}
+				c: {left: 0, top: 0},
+				m: {left: 0, top: 0},
+				y: {left: 0, top: 0}
 			}
 		}
 	}
 
 	changeLayers = () => {
 	if (process.browser) {
-		this.setState(
-			{
+		this.setState({
 				factor: this.state.factor + 0.1,
 				logoPosition: {
-					c: {x: this.randPos(2), y: this.randPos(3)},
-					m: {x: this.randPos(2), y: this.randPos(3)},
-					y: {x: this.randPos(2), y: this.randPos(3)}
+					c: {left: this.randPos(2), top: this.randPos(3)},
+					m: {left: this.randPos(2), top: this.randPos(3)},
+					y: {left: this.randPos(2), top: this.randPos(3)}
 				}
-			}
-		)
+			})
 		}
 	}
 
@@ -40,14 +37,23 @@ export default class extends React.Component {
 	}
 
 	render () {
+		let yLogo = this.state.logoPosition.y;
+		let cLogo = this.state.logoPosition.c;
+		let mLogo = this.state.logoPosition.m;
 		return (
 			<nav className="dt w-100 pb4 pt5">
 				<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
 					<Link href="/">
-						<a className="dib" {...homeLinkStyle}>
-							<Logo fill="#FF0" style={logoStyle(this.state.logoPosition.c)}/>
-							<Logo fill="#0FF" style={logoStyle(this.state.logoPosition.m)}/>
-							<Logo fill="#F0F" style={logoStyle(this.state.logoPosition.y)}/>
+						<a className="dib home-link">
+							<div className="logo-layer" style={yLogo}>
+								<Logo fill="#FF0"/>
+							</div>
+							<div className="logo-layer" style={cLogo}>
+								<Logo fill="#0FF"/>
+							</div>
+							<div className="logo-layer" style={mLogo}>
+								<Logo fill="#F0F"/>
+							</div>
 						</a>
 					</Link>
 				</h1>
@@ -63,32 +69,30 @@ export default class extends React.Component {
 						</Link>
 					</li>
 				</ul>
+				<style jsx>{`
+					.home-link {
+						height: 42px;
+						position: relative;
+						transition: transform 0.1s ease-out;
+						width: 42px;
+					}
+					.home-link:hover {
+						transform: scale(1.1);
+					},
+					.home-link:active svg {
+						transform: scale(0.9);
+					}
+					.home-link .logo-layer {
+						height: 100%;
+						left:0;
+						top:0;
+						width: 100%;
+						mix-blend-mode: multiply;
+						position: absolute;
+						transition: left .1s ease-out, top .1s ease-out, transform .1s ease-out;
+					}
+				`}</style>
 			</nav>
 		)
 	}
 }
-
-const	logoStyle = (posGroup = {x: 0, y: 0}) => {
-	return {
-		height: "100%",
-		width: "100%",
-		mixBlendMode: "multiply",
-		position: "absolute",
-		left: posGroup.x,
-		top: posGroup.y,
-		transition: "left .1s ease-out, top .1s ease-out, transform .1s ease-out",
-	}
-}
-
-const homeLinkStyle = css({
-	width: "42px",
-	height: "42px",
-	position: "relative",
-	transition: "transform 0.1s ease-out",
-	":hover": {
-		transform: "scale(1.1)",
-	},
-	":active svg": {
-		transform: "scale(0.9)"
-	}
-})

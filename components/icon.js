@@ -1,9 +1,8 @@
 import React from 'react'
-import css from 'next/css'
 
 export default (props) => {
 	return (
-		<span {...style(props.iconName)} ></span>
+		<span style={style(props.iconName)} ></span>
 	)
 }
 
@@ -26,12 +25,12 @@ const style = (iconName) => {
 		}
 	})
 
-	return css ({
+	return {
 		display: "inline-block",
 		height: "1.1em",
 		marginLeft: "0.4em",
 		width: "1.6em",
 		background: "url(" + iconUrl + ") bottom left no-repeat",
 		backgroundSize: "contain"
-	})
+	}
 }
