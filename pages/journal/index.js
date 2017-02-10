@@ -4,13 +4,22 @@ import PostList from '~/components/postlist.js'
 
 var posts = [
 	{
-		name: "Octobot: Services status squid",
+		name: "Octobot",
 		summary: "Case study: A notification-centric mobile app",
-		url: "projects/octobot"
+		url: "/journal/octobot",
+		date: "Published in february 2016"
 	},
 	{
-		name: "baz",
-		summary: "f"
+		name: "Fitsteady",
+		summary: "Attendance and effectiveness tools for corporate trainers",
+		url: "/journal/fitsteady",
+		date: "Published in february 2016"
+	},
+	{
+		name: "Little Jekyll",
+		summary: "A desktop application that allows using Jekyll without the command-line",
+		url: "/journal/little-jekyll",
+		date: "Published in december 2015"
 	},
 ]
 

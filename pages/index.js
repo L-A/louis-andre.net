@@ -18,14 +18,14 @@ export default () => (
       </Link>
     </div>
 		<h4 className="f6 pv2 tc ttu dribbble-shots">Bite-sized work <Icon iconName="dribbble" /></h4>
-		<div className="cf ph3 pt1 ph5-m ph6-l">
+		<div className="cf ph3 pt1 ph5-m ph6-l tc">
 			<Shot shotImageURL={shots[0].image} linkTo={shots[0].url}></Shot>
 			<Shot shotImageURL={shots[1].image} linkTo={shots[1].url}></Shot>
 			<Shot shotImageURL={shots[2].image} linkTo={shots[2].url}></Shot>
 		</div>
     <a href="https://dribbble.com/l-a" className="db mt3 ph3 silver tc">more of these</a>
 		<h4 className="f6 pt6 pb1 tc ttu case-studies">Projects &amp; case studies <Icon iconName="cases" /></h4>
-		<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/projects/octobot">
+		<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/journal/octobot">
 			<p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
 		</Project>
@@ -33,7 +33,7 @@ export default () => (
 			<p className="lh-copy">If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, Node.js &amp; Electron development.</p>
 		</Project>
-		<Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/projects/fitsteady">
+		<Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/journal/fitsteady">
 			<p className="lh-copy">Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.</p>
 			<p className="lh-copy code gray f6">Interface design, assets production.</p>
 		</Project>
@@ -75,7 +75,8 @@ const headerStyle = {
 }
 
 const contactLinkStyle = {
-  backgroundColor: '#4eb648'
+  backgroundColor: '#4eb648',
+  textShadow: "0 1px 0 #31992b"
 }
 
 // Moving color fill element

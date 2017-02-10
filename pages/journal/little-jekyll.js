@@ -51,7 +51,3 @@ The app also watches the site(s) that are being served, and reloads browser wind
 
 Little Jekyll is available [for Linux and Mac OS X](https://github.com/l-a/little-jekyll/releases).
 `
-
-const style = css({
-
-})
