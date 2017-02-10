@@ -40,5 +40,10 @@ parsemd.configure({
 		render() {
 			return <h3 className="f3 fw3 measure"> {this.props.children} </h3>
 		}
+	}),
+	a: React.createClass({
+		render() {
+			return <a className="link dim blue" href={this.props.href}> {this.props.children} </a>
+		}
 	})
 })
