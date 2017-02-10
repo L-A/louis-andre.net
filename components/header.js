@@ -20,9 +20,9 @@ export default class extends React.Component {
 		this.setState({
 				factor: this.state.factor + 0.1,
 				logoPosition: {
-					c: {left: this.randPos(2), top: this.randPos(3)},
-					m: {left: this.randPos(2), top: this.randPos(3)},
-					y: {left: this.randPos(2), top: this.randPos(3)}
+					c: {left: this.randPos(2) + 2, top: 0},
+					m: {left: 0, top: this.randPos(2)},
+					y: {left: this.randPos(2) - 2, top: 0}
 				}
 			})
 		}
