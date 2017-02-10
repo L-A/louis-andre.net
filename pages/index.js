@@ -9,8 +9,8 @@ import Shot from '~/components/dribbble-shot'
 export default () => (
   <Page>
 		<MovingFill />
-		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b">
-			<p>Hi! I'm Louis-André, freelance designer.<br/>I make apps and web sites.</p>
+		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b f3 f2-ns">
+			<p>Hi! I'm&nbsp;Louis-André, freelance&nbsp;designer.<br/>I make apps and web&nbsp;sites.</p>
     </div>
     <div className="tc pb5">
       <Link href="/about">
@@ -28,12 +28,12 @@ export default () => (
 		<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/journal/octobot">
 			<p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
-		</Project>
-		<Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText="On hold">
+    </Project>
+    <Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText="On hold">
 			<p className="lh-copy">If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.</p>
 			<p className="lh-copy code gray f6">Interface design, branding, Node.js &amp; Electron development.</p>
-		</Project>
-		<Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/journal/fitsteady">
+    </Project>
+    <Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/journal/fitsteady">
 			<p className="lh-copy">Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.</p>
 			<p className="lh-copy code gray f6">Interface design, assets production.</p>
 		</Project>
@@ -70,7 +70,6 @@ const fillStyle = (fillPosition, ratio) => {
 
 const headerStyle = {
 	color: '#4e5667',
-  fontSize: '34px',
 	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
 }
 
