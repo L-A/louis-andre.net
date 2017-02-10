@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import Link from 'next/prefetch'
 import Logo from '~/components/logo'
 
 export default class extends React.Component {
@@ -59,8 +59,8 @@ export default class extends React.Component {
 				</h1>
 				<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
 					<li className="dib pr3 br bw1 b--light-gray">
-						<Link href="/projects">
-							<a className="link dark-gray hover-green">projects</a>
+						<Link href="/journal">
+							<a className="link dark-gray hover-green">journal</a>
 						</Link>
 					</li>
 					<li className="dib pl3">

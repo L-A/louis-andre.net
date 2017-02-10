@@ -1,11 +1,10 @@
 import React from 'react'
-import Link from 'next/link'
-import InLink from 'next/prefetch'
+import Link from 'next/prefetch'
 import Page from '~/layouts/page'
 import Icon from '~/components/icon.js'
 import Project from '~/components/project'
 import ColorRange from '~/helpers/colorRange'
-import Shot from '~/components/dribbble-shot.js'
+import Shot from '~/components/dribbble-shot'
 
 export default () => (
   <Page>
@@ -14,7 +13,9 @@ export default () => (
 			<p>Hi! I'm Louis-André, freelance designer.<br/>I make apps and web sites.</p>
     </div>
     <div className="tc pb5">
-      <Link href="#"><a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc">Available for hire</a></Link>
+      <Link href="/about">
+        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc"> Available for hire</a>
+      </Link>
     </div>
 		<h4 className="f6 pv2 tc ttu dribbble-shots">Bite-sized work <Icon iconName="dribbble" /></h4>
 		<div className="cf ph3 pt1 ph5-m ph6-l">
