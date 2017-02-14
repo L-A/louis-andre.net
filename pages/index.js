@@ -14,7 +14,7 @@ export default () => (
     </div>
     <div className="tc pb5">
       <Link href="/about">
-        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc"> Available for hire</a>
+        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc"> Available!</a>
       </Link>
     </div>
 		<h4 className="f6 pv2 tc ttu dribbble-shots">Bite-sized work <Icon iconName="dribbble" /></h4>
@@ -24,19 +24,21 @@ export default () => (
 			<Shot shotImageURL={shots[2].image} linkTo={shots[2].url}></Shot>
 		</div>
     <a href="https://dribbble.com/l-a" className="db mt3 ph3 silver tc">more of these</a>
-		<h4 className="f6 pt6 pb1 tc ttu case-studies">Projects &amp; case studies <Icon iconName="cases" /></h4>
-		<Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/journal/octobot">
-			<p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
-			<p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
-    </Project>
-    <Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText="On hold">
-			<p className="lh-copy">If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.</p>
-			<p className="lh-copy code gray f6">Interface design, branding, Node.js &amp; Electron development.</p>
-    </Project>
-    <Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/journal/fitsteady">
-			<p className="lh-copy">Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.</p>
-			<p className="lh-copy code gray f6">Interface design, assets production.</p>
-		</Project>
+    <div className="case-studies">
+      <h4 className="f6 pt6 pb1 tc ttu">Projects &amp; case studies <Icon iconName="cases" /></h4>
+      <Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/journal/octobot">
+        <p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
+        <p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
+      </Project>
+      <Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText="On hold">
+        <p className="lh-copy">If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.</p>
+        <p className="lh-copy code gray f6">Interface design, branding, Node.js &amp; Electron development.</p>
+      </Project>
+      <Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/journal/fitsteady">
+        <p className="lh-copy">Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.</p>
+        <p className="lh-copy code gray f6">Interface design, assets production.</p>
+      </Project>
+    </div>
 	</Page>
 )
 
@@ -99,18 +101,14 @@ class MovingFill extends React.Component {
 		if ( !process.browser ) { return 0 } // A reasonable assumption, I hope
 		let bod = document.body,
 				doc = document.documentElement,
+        elem = document.querySelector(".case-studies"),
 				viewportHeight = window.innerHeight,
 				st = bod.scrollTop || doc.scrollTop,
 				sh = bod.scrollHeight || doc.scrollHeight,
-				scrollStart = document.querySelector(".case-studies").offsetTop - (viewportHeight),
-				scrollDistance = sh - scrollStart - viewportHeight
+				scrollStart = elem.offsetTop - (viewportHeight),
+				scrollDistance = elem.offsetHeight
 
-
-		let ratio = 0;
-
-		if (st > scrollStart && st <= (scrollStart + scrollDistance)) {
-			ratio = (st - scrollStart) / scrollDistance
-		}
+		let ratio = (st - scrollStart) / scrollDistance
 
 		ratio = ratio <= 0 ? 0 : ratio
 		ratio = ratio >= 1 ? 1 : ratio
@@ -119,7 +117,7 @@ class MovingFill extends React.Component {
 	}
 
 	fillPosition = () => {
-		return 110 - (this.state.scrollRatio * 80)
+		return 110 - (this.state.scrollRatio * 100)
 	}
 
 	handleScroll = () => {
