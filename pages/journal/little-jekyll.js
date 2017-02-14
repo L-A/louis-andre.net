@@ -3,8 +3,8 @@ import Blogpost from '~/layouts/blogpost'
 
 export default () => {
 	return (
-		<Blogpost title="Octobot: Services status squid" titleColor="#cc6633" postMarkdown={postContent}>
-			<small className="db lh-copy code gray f6">2015 - Open-source project</small>
+		<Blogpost title="Little Jekyll" titleColor="#3355cc" postMarkdown={postContent}>
+			<small className="db lh-copy code gray f6">2015 - Open-source project – Now on hold</small>
 		</Blogpost>
 )}
 
@@ -15,9 +15,11 @@ const postContent = `
 
 ### <3
 
-[Jekyll](http://jekyllrb.com) is a pretty awesome website generator. It makes you manage your content with standard formats, that don't lock you into Jekyll.
+---
 
-### Learning and the command-line barrier
+### [Jekyll](http://jekyllrb.com) is a pretty awesome website generator. It makes you manage your content with standard formats, that don't lock you into Jekyll.
+
+## Learning and the command-line barrier
 
 You need minimal knowledge to make use of Jekyll: As soon as you know a bit of Markdown (which really, is just text with some extra punctuation), you can create articles and manage the structure of your site.
 
@@ -35,7 +37,7 @@ In comparison, the command-line is a relatively opaque learning process. The ter
 
 So what can I do about that?
 
-### Spreading out learning opportunities
+## Spreading out learning opportunities
 
 It's why I built Little Jekyll. Simply, it's a graphical interface over Jekyll. By using Little Jekyll, you can abstract the command-line interface for now. This lets you get acquainted with Jekyll's basic functions _real_ fast. I mean it.
 
@@ -43,7 +45,7 @@ It's why I built Little Jekyll. Simply, it's a graphical interface over Jekyll. 
 
 It makes it easier to try the _pipeline_ (what you give it, and what it renders in return). At some point, if you like and keep using Jekyll, you'll probably get interested in its more complicated commands anyway. At that point, you'll have outgrown Little Jekyll.
 
-### Useful day-to-day
+## Useful day-to-day
 
 So for that purpose, I tried to also help with managing multiple sites, and resuming your work in progress. It keeps a list of its managed sites, and restarts servers that were running when it was last closed.
 
