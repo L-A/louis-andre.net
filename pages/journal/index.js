@@ -21,6 +21,12 @@ var posts = [
 		url: "/journal/little-jekyll",
 		date: "Published in december 2015"
 	},
+	{
+		name: "A Retina workflow for Photoshop",
+		summary: "2x in 2014",
+		url: "/journal/retina-photoshop",
+		date: "Published in may 2014"
+	},
 ]
 
 export default () => {
