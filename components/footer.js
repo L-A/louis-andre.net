@@ -18,13 +18,18 @@ export default () =>
 			</Link>
 		</li>
 		<li className="dib ph3 with-side-divider">
+			<Link href="/about">
+				<a className="link">about</a>
+			</Link>
+		</li>
+		<li className="dib ph3 with-side-divider">
 			<Link href="/journal">
 				<a className="link">journal</a>
 			</Link>
 		</li>
 		<li className="dib pl3">
-			<Link href="/about">
-				<a className="link">about</a>
+			<Link href="/contact">
+				<a className="link">contact</a>
 			</Link>
 		</li>
 	</ul>

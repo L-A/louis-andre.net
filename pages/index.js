@@ -13,7 +13,7 @@ export default () => (
 			<p>Hi! I'm&nbsp;Louis-André, freelance&nbsp;designer.<br/>I make apps and web&nbsp;sites.</p>
     </div>
     <div className="tc pb5">
-      <Link href="/about">
+      <Link href="/contact">
         <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc"> Available!</a>
       </Link>
     </div>

@@ -58,14 +58,19 @@ export default class extends React.Component {
 					</Link>
 				</h1>
 				<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
-					<li className="dib pr3 br bw1 b--light-gray">
+					<li className="dib ph3 br bw1 b--light-gray">
+						<Link href="/about">
+							<a className="link dark-gray hover-green">about</a>
+						</Link>
+					</li>
+					<li className="dib ph3 br bw1 b--light-gray">
 						<Link href="/journal">
 							<a className="link dark-gray hover-green">journal</a>
 						</Link>
 					</li>
 					<li className="dib pl3">
-						<Link href="/about">
-							<a className="link dark-gray hover-green">about</a>
+						<Link href="/contact">
+							<a className="link dark-gray hover-green">contact</a>
 						</Link>
 					</li>
 				</ul>
