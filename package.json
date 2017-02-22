@@ -1,29 +1,29 @@
 {
-	"name": "louis-andre.net",
-	"version": "5.0.0",
-	"description": "Louis-André Labadie's main website",
-	"main": "./pages/index.js",
-	"dependencies": {
-		"markdown-to-react-components": "^0.2.1",
-		"next": "^2.0.0-beta",
-		"react-inlinesvg": "^0.5.4"
-	},
-	"devDependencies": {
-		"babel-root-import": "^4.1.5"
-	},
-	"scripts": {
-		"dev": "next",
-		"build": "next build",
-		"start": "next start"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/L-A/louis-andre.net.git"
-	},
-	"author": "Louis-André Labadie",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/L-A/louis-andre.net/issues"
-	},
-	"homepage": "https://github.com/L-A/louis-andre.net#readme"
+  "name": "louis-andre.net",
+  "version": "5.0.0",
+  "description": "Louis-André Labadie's main website",
+  "main": "./pages/index.js",
+  "dependencies": {
+    "markdown-to-react-components": "^0.2.1",
+    "next": "^2.0.0-beta",
+    "react-inlinesvg": "^0.5.4"
+  },
+  "devDependencies": {
+    "babel-root-import": "^4.1.5"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L-A/louis-andre.net.git"
+  },
+  "author": "Louis-André Labadie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/L-A/louis-andre.net/issues"
+  },
+  "homepage": "https://github.com/L-A/louis-andre.net#readme"
 }
