@@ -1,7 +1,7 @@
 import React from 'react'
 
 let playerAPI
-let currentSongIndex
+let currentSongIndex = 0
 let songIndexes
 
 const EMBED_PREFIX = "https://w.soundcloud.com/player/?url="
@@ -54,6 +54,8 @@ export default class Soundcloud extends React.Component {
     playerAPI.bind(SC.Widget.Events.READY, () => {
 
       // Shuffling by hand, this prepares the songIndexes array
+      // .getSounds() is async and will cause a race condition
+      // if .play() is called outside of it
 
       playerAPI.getSounds((sounds) => {
         let indexes = []
@@ -62,7 +64,7 @@ export default class Soundcloud extends React.Component {
         songIndexes = Shuffle(indexes)
 
         if (this.props.shouldPlay) {
-          playerAPI.skip(songIndexes[0])
+          playerAPI.skip(songIndexes[currentSongIndex]) // 0 when initialized
           playerAPI.play()
         }
       })
@@ -77,10 +79,13 @@ export default class Soundcloud extends React.Component {
 
   nextSong = () => {
     currentSongIndex++
+
     if (currentSongIndex >= songIndexes.length) {currentSongIndex = 0}
     let playerTrackIndex = songIndexes[currentSongIndex]
 
-    // playerAPI.skip(playerTrackIndex)
+    console.log(currentSongIndex)
+
+    playerAPI.skip(playerTrackIndex)
   }
 
   componentDidUpdate = (prevProps) => {

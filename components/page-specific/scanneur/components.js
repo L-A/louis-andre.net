@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '~/components/icon.js'
-import YoutubePlayer from '~/helpers/page-specific/scanneur/youtube'
-import SoundcloudPlayer from '~/helpers/page-specific/scanneur/soundcloud'
+import YoutubePlayer from '~/components/page-specific/scanneur/youtube'
+import SoundcloudPlayer from '~/components/page-specific/scanneur/soundcloud'
 
 const PLAYING_COLOR = "#85b697";
 const OFF_COLOR = "#cbd1cd";

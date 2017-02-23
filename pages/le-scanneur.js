@@ -5,8 +5,8 @@ import Logo from '~/components/logo'
 import Icon from '~/components/icon.js'
 import Link from 'next/prefetch'
 
-import { MediaSource, Selector } from '~/helpers/page-specific/scanneur/components'
-import { CreateStore } from '~/helpers/page-specific/scanneur/store'
+import { MediaSource, Selector } from '~/components/page-specific/scanneur/components'
+import { CreateStore } from '~/components/page-specific/scanneur/store'
 
 let appSources = {
   radio: [
