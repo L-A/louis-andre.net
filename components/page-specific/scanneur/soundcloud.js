@@ -24,8 +24,8 @@ export default class Soundcloud extends React.Component {
         <iframe id="sc-player"
           frameBorder="no"
           scrolling="no"
-          width="400"
           src={EMBED_PREFIX + this.props.url}
+          width="300"
         />
       </div>
     )

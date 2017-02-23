@@ -49,7 +49,7 @@ class MediaSource extends React.Component {
 }
 
 let IFramePlayer = (props) => (
-  <iframe width="400" height="240" src={props.url + "?autoplay=1"} frameBorder="0">
+  <iframe width="300" height="240" src={props.url + "?autoplay=1"} frameBorder="0">
   </iframe>
 )
 
@@ -58,7 +58,7 @@ class AudioPlayer extends React.Component {
     <audio controls autoPlay={this.props.shouldPlay} id={this.props.name}>
       <source src={this.props.url}></source>
       <style jsx>{`
-        audio { width: 400px }
+        audio { width: 300px }
       `}</style>
     </audio>
   )
@@ -113,8 +113,9 @@ class Selector extends React.Component {
             background: url(/static/images/icons/icon_chevron.svg) right 6px no-repeat;
             background-size: 20px;
             height: 1.8em;
+            padding-right: 26px;
+            width: 220px;
             vertical-align: bottom;
-            width: 200px;
           }
         `}</style>
       </div>
@@ -137,8 +138,18 @@ const StatusLight = (props) => (
   </span>
 )
 
-const PlayerAntenna = (props) => {
+// This is purely aesthetic
 
+const PlayerAntenna = (props) => {
+  <div class="antenna">
+
+    <style jsx>{`
+      .antenna {
+        background-color: #333;
+        width: 60px;
+      }
+    `}</style>
+  </div>
 }
 
 export { MediaSource, Selector, PlayerAntenna }

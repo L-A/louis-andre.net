@@ -131,7 +131,7 @@ export default class extends React.Component {
     appSources.music.forEach(s => { if (s.value == this.state.musicPlayer.picked) { pickedMusic = s } })
 
     return (
-      <div className="avenir min-vh-100 pv2 pa4">
+      <div className="avenir min-vh-100 pa2">
         <div className="center mw2 pv4 pv5-ns">
           <Link href="/">
             <a>
@@ -142,6 +142,7 @@ export default class extends React.Component {
         <Head title="Le Scanneur" />
         <Player radioPlayer={this.state.radioPlayer} musicPlayer={this.state.musicPlayer} actions={this.actions}/>
         <div className="media-sources tc">
+        <div className="media-sources tc pv4">
           <MediaSource source={pickedRadio} shouldPlay={this.state.radioPlayer.playing} />
           <MediaSource source={pickedMusic} shouldPlay={this.state.musicPlayer.playing} />
         </div>
@@ -162,7 +163,7 @@ class Player extends React.Component {
     let shouldOfferStop = this.props.radioPlayer.playing || this.props.musicPlayer.playing
     let toggleDirection = shouldOfferStop ? this.props.actions.stop : this.props.actions.play
     return (
-      <div className="player-body center pa4 mb6">
+      <div className="player-body center pa2 pv4-ns">
         <Selector name="radio" sources={appSources.radio} playing={this.props.radioPlayer.playing} onChange={this.props.actions.changeRadio} picked={this.props.radioPlayer.picked}/>
         <Selector name="music" sources={appSources.music} playing={this.props.musicPlayer.playing} onChange={this.props.actions.changeMusic} picked={this.props.musicPlayer.picked}/>
         <PlayButton  togglePlay={toggleDirection} shouldOfferStop={shouldOfferStop} />
@@ -172,13 +173,12 @@ class Player extends React.Component {
             border-radius: 20px;
             box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px #767d8a;
             max-width: 370px;
-            min-height: 170px;
             position: relative;
           }
         `}</style>
       </div>
     )
-}
+  }
 }
 
 let PlayButton = (props) => (
@@ -194,7 +194,7 @@ let PlayButton = (props) => (
         color: #85b697;
         height: 44px;
         width: 44px;
-        padding: 14px 0 0 2px;
+        padding: 14.5px 0 0 1.5px;
 
         position: absolute;
         left: 50%;

@@ -34,7 +34,7 @@ export default class YoutubePlayer extends React.Component {
     window.YTS = this
     let opts = {
       height: '200',
-      width: '400',
+      width: '300',
       videoId: videoId,
       events: {
         'onReady': YTS.onPlayerReady,
