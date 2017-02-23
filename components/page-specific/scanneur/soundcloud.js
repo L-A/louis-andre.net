@@ -5,6 +5,14 @@ let currentSongIndex = 0
 let songIndexes
 
 const EMBED_PREFIX = "https://w.soundcloud.com/player/?url="
+const EMBED_SUFFIX = "&buying=false&liking=false&download=false&visual=false&show_artwork=false"
+const completeURL = (nakedUrl) => (EMBED_PREFIX + nakedUrl + EMBED_SUFFIX)
+const playerOpts = {
+  color: "222222",
+  show_comments: false,
+  show_artwork: false,
+  visual: false
+}
 
 const Shuffle = (array) => {
     for (var i = array.length - 1; i > 0; i--) {
@@ -24,8 +32,8 @@ export default class Soundcloud extends React.Component {
         <iframe id="sc-player"
           frameBorder="no"
           scrolling="no"
-          src={EMBED_PREFIX + this.props.url}
           width="300"
+          src={completeURL(this.props.url)}
         />
       </div>
     )
@@ -50,7 +58,7 @@ export default class Soundcloud extends React.Component {
   }
 
   setupPlayer = (url) => {
-    playerAPI.load(url)
+    playerAPI.load(url, playerOpts)
     playerAPI.bind(SC.Widget.Events.READY, () => {
 
       // Shuffling by hand, this prepares the songIndexes array
@@ -82,18 +90,19 @@ export default class Soundcloud extends React.Component {
 
     if (currentSongIndex >= songIndexes.length) {currentSongIndex = 0}
     let playerTrackIndex = songIndexes[currentSongIndex]
-
-    console.log(currentSongIndex)
-
     playerAPI.skip(playerTrackIndex)
   }
 
   componentDidUpdate = (prevProps) => {
-    if (this.props.shouldPlay == false) {
+    if (this.props.url != prevProps.url) {
+      this.setupPlayer(this.props.url)
+    }
+
+    else if (this.props.shouldPlay == false) {
       playerAPI.pause()
     }
 
-    if (this.props.shouldPlay == true) {
+    else if (this.props.shouldPlay == true) {
       playerAPI.play()
     }
   }
