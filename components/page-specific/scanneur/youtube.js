@@ -15,14 +15,9 @@ export default class YoutubePlayer extends React.Component {
 
   onPlayerReady = (event) => {
     playerAPI = event.target
-    console.log(this.props.shouldPlay)
     if (this.props.shouldPlay) {
       playerAPI.playVideo()
     }
-  }
-
-  onPlayerStateChange = (event) => {
-    console.log(event.data)
   }
 
   // https://developers.google.com/youtube/iframe_api_reference

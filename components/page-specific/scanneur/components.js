@@ -138,18 +138,4 @@ const StatusLight = (props) => (
   </span>
 )
 
-// This is purely aesthetic
-
-const PlayerAntenna = (props) => {
-  <div class="antenna">
-
-    <style jsx>{`
-      .antenna {
-        background-color: #333;
-        width: 60px;
-      }
-    `}</style>
-  </div>
-}
-
-export { MediaSource, Selector, PlayerAntenna }
+export { MediaSource, Selector }

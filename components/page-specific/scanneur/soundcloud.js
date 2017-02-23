@@ -107,5 +107,3 @@ export default class Soundcloud extends React.Component {
     }
   }
 }
-
-console.log(currentSongIndex)
