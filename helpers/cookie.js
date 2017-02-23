@@ -19,6 +19,7 @@ const readCookie = (name, req = false) => {
     while (cookie.charAt(0) == " ") cookie = cookie.substring (1)
     if ( cookie.indexOf(namePrefix) == 0 ) return cookie.substring (namePrefix.length)
 	}
+  return null
 }
 
 export { writeCookie, readCookie }

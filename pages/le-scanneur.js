@@ -133,6 +133,8 @@ export default class extends React.Component {
 
   static async getInitialProps ({ req }) {
     let cookie = readCookie('scanneur_state', req)
+    if (cookie == null) { return { startingState: initialState } }
+
     return {
       startingState: JSON.parse(cookie)
     }
