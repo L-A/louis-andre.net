@@ -6,8 +6,6 @@ const CreateStore = (reducer, initialState = {}) => {
 
   const dispatch = (action) => {
     state = reducer(state, action)
-    console.log("State is now:")
-    console.log(state)
     listeners.forEach(listener => listener(state))
   }
 
