@@ -12,6 +12,8 @@ const readCookie = (name, req = false) => {
     cookieString = document.cookie
   }
 
+  if (cookieString == undefined) { return null } 
+
   let cookieArray = cookieString.split(';')
 
   for (var i = 0; i < cookieArray.length; i++) {
