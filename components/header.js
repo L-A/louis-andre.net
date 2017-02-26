@@ -1,6 +1,24 @@
 import React from 'react'
 import Link from 'next/prefetch'
 import Logo from '~/components/logo'
+import { Translate, Language, SetLanguage } from '~/helpers/lang'
+
+const T = Translate({
+  en: {
+    nav: {
+			about: "about",
+			journal: "journal",
+			contact: "contact"
+		}
+  },
+	fr: {
+    nav: {
+			about: "à propos",
+			journal: "journal",
+			contact: "contact"
+		}
+  }
+})
 
 export default class extends React.Component {
 	constructor (props) {
@@ -28,6 +46,12 @@ export default class extends React.Component {
 		}
 	}
 
+	changeLang = () => {
+		let otherLang = Language() == "fr" ? "en" : "fr"
+		SetLanguage(otherLang)
+		location.reload()
+	}
+
 	componentDidMount () {
 		this.changeLayers()
 	}
@@ -40,8 +64,9 @@ export default class extends React.Component {
 		let yLogo = this.state.logoPosition.y;
 		let cLogo = this.state.logoPosition.c;
 		let mLogo = this.state.logoPosition.m;
+		let otherLang = Language() == "fr" ? "en" : "fr"
 		return (
-			<nav className="dt w-100 pb4 pt5">
+			<nav className="dt w-100 pb4 pt3 pt4-m pt5-l">
 				<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
 					<Link href="/">
 						<a className="dib home-link">
@@ -57,21 +82,32 @@ export default class extends React.Component {
 						</a>
 					</Link>
 				</h1>
-				<ul className="dtc v-mid list code w-75 tr ph3 ph5-m ph6-l">
-					<li className="dib ph3 br bw1 b--light-gray">
+				<ul className="f6 f5-ns dtc v-mid list code w-75 tr pa0 pb2 pr3 pr5-m pr6-l">
+					<li className="dib ph2 ph3-ns br bw1 b--light-gray">
 						<Link href="/about">
-							<a className="link dark-gray hover-green">about</a>
+							<a className="link dark-gray hover-green">
+								{T.Key("nav.about")}
+							</a>
 						</Link>
 					</li>
-					<li className="dib ph3 br bw1 b--light-gray">
+					<li className="dib ph2 ph3-ns br bw1 b--light-gray">
 						<Link href="/journal">
-							<a className="link dark-gray hover-green">journal</a>
+							<a className="link dark-gray hover-green">
+								{T.Key("nav.journal")}
+							</a>
 						</Link>
 					</li>
-					<li className="dib pl3">
+					<li className="dib ph2 ph3-ns br bw1 b--light-gray">
 						<Link href="/contact">
-							<a className="link dark-gray hover-green">contact</a>
+							<a className="link dark-gray hover-green">
+								{T.Key("nav.contact")}
+							</a>
 						</Link>
+					</li>
+					<li className="dib pl2 pl3-ns pointer ttu">
+						<a onClick={this.changeLang} className="link f6 b silver hover-green">
+							{otherLang}
+						</a>
 					</li>
 				</ul>
 				<style jsx>{`

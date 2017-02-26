@@ -5,19 +5,33 @@ import Icon from '~/components/icon.js'
 import Project from '~/components/project'
 import ColorRange from '~/helpers/colorRange'
 import Shot from '~/components/dribbble-shot'
+import { Translate, Language, SetLanguage } from '~/helpers/lang'
 
-export default () => (
+const T = Translate({
+  en: {
+    tagline: "Hi! I'm&nbsp;Louis-André, freelance&nbsp;designer.<br/>I make apps and web&nbsp;sites.",
+    headers: {
+      dribbble: "Bite-sized work"
+    }
+  },
+	fr: {
+    tagline: "Bonjour! Je suis &nbsp;Louis-André, designer.<br/>Je fais des sites et apps web.",
+    headers: {
+      dribbble: "Petits extraits"
+    }
+  }
+})
+
+export default (props) => (
   <Page>
 		<MovingFill />
-		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b f3 f2-ns">
-			<p>Hi! I'm&nbsp;Louis-André, freelance&nbsp;designer.<br/>I make apps and web&nbsp;sites.</p>
-    </div>
+		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b f3 f2-ns" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
     <div className="tc pb5">
       <Link href="/contact">
         <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc"> Available!</a>
       </Link>
     </div>
-		<h4 className="f6 pv2 tc ttu dribbble-shots">Bite-sized work <Icon iconName="dribbble" /></h4>
+		<h4 className="f6 pv2 tc ttu dribbble-shots">{T.Key("headers.dribbble")} <Icon iconName="dribbble" /></h4>
 		<div className="cf ph3 pt1 ph5-m ph6-l tc">
 			<Shot shotImageURL={shots[0].image} linkTo={shots[0].url}></Shot>
 			<Shot shotImageURL={shots[1].image} linkTo={shots[1].url}></Shot>
@@ -62,7 +76,7 @@ const fillStyle = (fillPosition, ratio) => {
 		position: 'fixed',
 		backgroundColor: '#' + ColorRange('e9f6fc', 'fff9f0', ratio),
 		width: '100%',
-		height: '100vh',
+		height: '120vh',
 		bottom: -fillPosition + 'vh',
 		transform: 'skewY(-8deg)',
 		zIndex: '-1',

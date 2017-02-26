@@ -1,10 +1,20 @@
 import React from 'react'
 import Page from '../layouts/page'
+import { Translate } from '~/helpers/lang'
+
+const T = Translate({
+  en: {
+    tagline: "I design and build web sites and apps."
+  },
+  fr: {
+    tagline: "Je conçois des sites et applications web."
+  }
+})
 
 export default () => (
   <Page title="About">
 		<div className="ph3 ph5-m ph6-l relative-l">
-			<h1 className="mv4 f2 fw3 navy no-underline">I design and build web sites and apps.</h1>
+			<h1 className="mv4 f2 fw3 navy no-underline">{T.Key("tagline")}</h1>
 			<img className="fr mw4 mw5-ns pb3 pl3" style={imgStyle} src="static/images/about-page/portrait.png"/>
 			<p className="measure lh-copy">My work involves turning broad ideas into nicely defined concepts, and then making them come to life.</p>
 			<p className="measure lh-copy"><em>Some</em> years ago, I walked out of University with a formal education in graphic design. I quickly lost touch with my favorite printers and Pantone charts as I moved more and more into design for screens.</p>
