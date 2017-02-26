@@ -117,7 +117,7 @@ class MovingFill extends React.Component {
 	}
 
 	fillPosition = () => {
-		return 110 - (this.state.scrollRatio * 100)
+		return 130 - (this.state.scrollRatio * 100)
 	}
 
 	handleScroll = () => {
