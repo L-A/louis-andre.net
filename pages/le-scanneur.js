@@ -244,4 +244,4 @@ let PlayButton = (props) => (
   </div>
 )
 
-export default Page(Scanneur, true)
+export default Page(Scanneur, {naked: true, title: "Le Scanneur"})

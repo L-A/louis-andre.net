@@ -1,15 +1,29 @@
 import React from 'react'
 import Page from '~/layouts/page'
+import { Translate } from '~/helpers/lang'
+
+const T = Translate({
+	en: {
+		title: "Contact & availability",
+		i_answer: "I answer quickly at",
+		elsewhere: "Elsewhere"
+	},
+	fr: {
+		title: "Contact & disponibilité",
+		i_answer: "Je réponds rapidement à",
+		elsewhere: "Ailleurs"
+	}
+})
 
 export default Page( () => {
 	return (
 			<div className="ph3 mw6-l ph5-m ph0-l center">
-				<h2 className="f2 fw3 navy no-underline dim pa0">Contact &amp; availability</h2>
+				<h2 className="f2 fw3 navy no-underline dim pa0">{T.Key("title")}</h2>
 				<p className="availability br2 pv2 ph3 ph4-ns green dib">
-					New contracts can start in <strong>February</strong>&nbsp;(limited) and <strong>April</strong>&nbsp;(full&nbsp;time).
-				</p><br />
+					New contracts can start in <strong>March</strong>
+				</p>
 				<p className="email">
-					I answer quickly at <a className="link pointer" href="mailto:monsieur@louis-andre.net">monsieur&#64;louis-andre.net</a>
+					{T.Key("i_answer")} <a className="link pointer" href="mailto:monsieur@louis-andre.net">monsieur&#64;louis-andre.net</a>
 				</p>
 				<h3 className="silver bold f6 ttu mt4">Elsewhere</h3>
 				<a className="db link dribbble mb2" href="https://dribbble.com/messages/new?recipient_id=l-a">
@@ -18,7 +32,7 @@ export default Page( () => {
 				<a className="db link linkedin mb2" href="https://dribbble.com/messages/new?recipient_id=l-a">
 					<strong>Linkedin</strong> message
 				</a>
-				<a className="db link twitter mb2" href="https://dribbble.com/messages/new?recipient_id=l-a">
+				<a className="db link twitter mb2" href="https://twitter.com/Lalabadie">
 					<strong>Twitter</strong>
 				</a>
 
@@ -51,4 +65,4 @@ export default Page( () => {
 				</style>
 			</div>
 			)}
-)
+, {title: T.Key("title")})

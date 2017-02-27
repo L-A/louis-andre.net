@@ -9,15 +9,51 @@ import { Translate, Language, SetLanguage } from '~/helpers/lang'
 
 const T = Translate({
   en: {
-    tagline: "Hi! I'm&nbsp;Louis-André, freelance&nbsp;designer.<br/>I make apps and web&nbsp;sites.",
+    tagline: "Hi! I'm&nbsp;Louis&#8209;André, freelance&nbsp;designer.<br/>I make apps and web&nbsp;sites.",
+    more: "more of these",
+    on_hold: "On hold",
     headers: {
-      dribbble: "Bite-sized work"
+      dribbble: "Bite-sized work",
+      case_studies: "Projects & case-studies"
+    },
+    availability: {
+      available: "Available!"
+    },
+    octobot: {
+      description: "A friendly app that instantly notifies you when Github services go offline.",
+      details: "Interface design, branding, assets production (iOS & Android), web development."
+    },
+    littleJekyll: {
+      description: "If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.",
+      details: "Interface design, branding, Node.js &amp; Electron development."
+    },
+    fitsteady: {
+      description: "Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.",
+      details: "Interface design, assets production."
     }
   },
 	fr: {
-    tagline: "Bonjour! Je suis &nbsp;Louis-André, designer.<br/>Je fais des sites et apps web.",
+    tagline: "Bonjour! Je suis Louis-André, designer&nbsp;pigiste.<br/>Je&nbsp;fais des sites et applications&nbsp;web.",
+    more: "voir d'autres",
+    on_hold: "Arrêté",
     headers: {
-      dribbble: "Petits extraits"
+      dribbble: "Petits extraits",
+      case_studies: "Projets intéressants"
+    },
+    availability: {
+      available: "Disponible!"
+    },
+    octobot: {
+      description: "Une sympathique application qui notifie instantanément lors d'interruptions de service Github.",
+      details: "Design d'interface, design de marque, production des ressources (iOS et Android), développement web."
+    },
+    littleJekyll: {
+      description: "Cette application permet à tous de créer et de bâtir un site avec Jekyll, même sans connaître le Terminal.",
+      details: "Design d'interface, design de marque, développement Node.js et Electron."
+    },
+    fitsteady: {
+      description: "Passés maîtres dans l'art du bien-être en milieu de travail, Fitsteady ont équippé leurs entraîneurs avec une application de prise de présence et de mesure de satisfaction",
+      details: "Design d'interface, production des ressources."
     }
   }
 })
@@ -28,7 +64,7 @@ export default Page( () => (
 		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b f3 f2-ns" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
     <div className="tc pb5">
       <Link href="/contact">
-        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc"> Available!</a>
+        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc">{T.Key('availability.available')}</a>
       </Link>
     </div>
 		<h4 className="f6 pv2 tc ttu dribbble-shots">{T.Key("headers.dribbble")} <Icon iconName="dribbble" /></h4>
@@ -37,20 +73,20 @@ export default Page( () => (
 			<Shot shotImageURL={shots[1].image} linkTo={shots[1].url}></Shot>
 			<Shot shotImageURL={shots[2].image} linkTo={shots[2].url}></Shot>
 		</div>
-    <a href="https://dribbble.com/l-a" className="db mt3 ph3 silver tc">more of these</a>
+    <a href="https://dribbble.com/l-a" className="db mt3 ph3 silver tc">{T.Key("more")}</a>
     <div className="case-studies">
-      <h4 className="f6 pt6 pb1 tc ttu">Projects &amp; case studies <Icon iconName="cases" /></h4>
+      <h4 className="f6 pt6 pb1 tc ttu">{T.Key("headers.case_studies")} <Icon iconName="cases" /></h4>
       <Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/journal/octobot">
-        <p className="lh-copy">A friendly app that instantly notifies you when Github services go offline.</p>
-        <p className="lh-copy code gray f6">Interface design, branding, assets production (iOS&nbsp;&amp;&nbsp;Android), web development.</p>
+        <p className="lh-copy">{T.Key("octobot.description")}</p>
+        <p className="lh-copy code gray f6">{T.Key("octobot.details")}</p>
       </Project>
-      <Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText="On hold">
-        <p className="lh-copy">If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.</p>
-        <p className="lh-copy code gray f6">Interface design, branding, Node.js &amp; Electron development.</p>
+      <Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText={T.Key("on_hold")}>
+        <p className="lh-copy">{T.Key("littleJekyll.description")}</p>
+        <p className="lh-copy code gray f6">{T.Key("littleJekyll.details")}</p>
       </Project>
       <Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/journal/fitsteady">
-        <p className="lh-copy">Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.</p>
-        <p className="lh-copy code gray f6">Interface design, assets production.</p>
+        <p className="lh-copy">{T.Key("fitsteady.description")}</p>
+        <p className="lh-copy code gray f6">{T.Key("fitsteady.details")}</p>
       </Project>
     </div>
 	</div>

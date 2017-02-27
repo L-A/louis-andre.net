@@ -47,9 +47,9 @@ export default class extends React.Component {
 	}
 
 	changeLang = () => {
-		let otherLang = Language() == "fr" ? "en" : "fr"
+		let otherLang = this.props.lang == "fr" ? "en" : "fr"
 		SetLanguage(otherLang)
-		location.reload()
+    location.reload()
 	}
 
 	componentDidMount () {

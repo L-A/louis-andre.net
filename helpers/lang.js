@@ -15,7 +15,7 @@ const Translate = (locales) => {
 const Language = () => {
   let langCookie = readCookie("lang")
 
-  if (langCookie != null) {
+  if (langCookie == "en" || langCookie == "fr") {
     return langCookie
   } else {
     return "en"

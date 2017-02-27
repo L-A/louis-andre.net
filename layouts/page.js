@@ -4,9 +4,16 @@ import Header from '~/components/header'
 import Footer from '~/components/footer'
 import { writeCookie, readCookie } from '~/helpers/cookie'
 
-export default (WrappedComponent, naked = false) => {
+const defaultOpts = {
+  naked: false,
+  title: false
+}
+
+export default (WrappedComponent, opts) => {
+  opts = {...defaultOpts, ...opts}
+
   return class extends React.Component {
-    
+
     static async getInitialProps (ctx) {
       let lang = readCookie("lang", ctx.req)
       let pageProps = {}
@@ -14,17 +21,17 @@ export default (WrappedComponent, naked = false) => {
       if (WrappedComponent.getInitialProps) {
         pageProps = await WrappedComponent.getInitialProps(ctx);
       }
-      return {...WrappedComponent.props, ...pageProps}
+      return {...WrappedComponent.props, ...pageProps, lang: lang}
     }
 
     render (props) {
-      if (naked) {
+      if (opts.naked) {
         return <WrappedComponent {...this.props}/>
       } else {
         return (
           <div className="avenir min-vh-100">
-            <Head title={this.props.title} />
-            <Header />
+            <Head title={opts.title} />
+            <Header lang={this.props.lang} />
             <WrappedComponent {...this.props}/>
             <Footer />
           </div>

@@ -4,9 +4,11 @@ import { Translate } from '~/helpers/lang'
 
 const T = Translate({
   en: {
+    title: "About",
     tagline: "I design and build web sites and apps."
   },
   fr: {
+    title: "À propos",
     tagline: "Je conçois des sites et applications web."
   }
 })
@@ -20,7 +22,7 @@ export default Page( () => (
 			<p className="measure lh-copy">I have worked and learned at <a className="link dim blue" href="http://ock.am">Ockam</a>, <a className="link dim blue" href="http://mirego.com">Mirego</a>, and <a className="link dim blue" href="http://hooktstudios.com">Hookt Studios</a>. Working with some of the finest in the industry there, I made a lot of great apps for all kinds of people and devices.</p>
 			<p className="measure lh-copy">I use tools like Photoshop, Illustrator, Sketch, Vim, a terminal, Javascript, SASS, various frameworks, libraries and other development thingamajigs as needs arise.</p>
 		</div>
-))
+), {title: T.Key("title")})
 
 const imgStyle = {
 	width: "50%"
