@@ -118,8 +118,7 @@ const playerReducer = (state = {}, action) => {
   }
 }
 
-export default class extends React.Component {
-
+class Scanneur extends React.Component {
   actions = {
     play: () => {PlayerStore.dispatch({type: "PLAY_ALL"})},
     stop: () => {PlayerStore.dispatch({type: "STOP_ALL"})},
@@ -244,3 +243,5 @@ let PlayButton = (props) => (
     `}</style>
   </div>
 )
+
+export default Page(Scanneur, true)

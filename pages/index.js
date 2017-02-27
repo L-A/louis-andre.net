@@ -22,8 +22,8 @@ const T = Translate({
   }
 })
 
-export default (props) => (
-  <Page>
+export default Page( () => (
+  <div>
 		<MovingFill />
 		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b f3 f2-ns" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
     <div className="tc pb5">
@@ -53,8 +53,9 @@ export default (props) => (
         <p className="lh-copy code gray f6">Interface design, assets production.</p>
       </Project>
     </div>
-	</Page>
-)
+	</div>
+))
+
 
 const shots = [
 	{

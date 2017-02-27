@@ -2,19 +2,20 @@ import React from 'react'
 import Page from '../layouts/page'
 import parsemd from 'markdown-to-react-components'
 
-export default (props) => {
+export default Page( (props) => {
 	let postContent = props.postMarkdown
 		? [props.children, parsemd(props.postMarkdown).tree]
 		: props.children
 
 	return (
-		<Page title={props.title}>
+		<div>
 			<h1 className="ph3 ph5-m ph6-l f1 measure-narrow" style={{ color: props.titleColor }}>{props.title}</h1>
 			<div className="ph3 ph5-m ph6-l lh-copy">
 				{ postContent  }
 			</div>
-		</Page>
-)}
+		</div>
+	)
+})
 
 const titleStyle = (titleColor) => {
 	color: titleColor

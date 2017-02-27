@@ -1,9 +1,8 @@
 import React from 'react'
 import Page from '~/layouts/page'
 
-export default () => {
+export default Page( () => {
 	return (
-		<Page title="Contact">
 			<div className="ph3 mw6-l ph5-m ph0-l center">
 				<h2 className="f2 fw3 navy no-underline dim pa0">Contact &amp; availability</h2>
 				<p className="availability br2 pv2 ph3 ph4-ns green dib">
@@ -51,5 +50,5 @@ export default () => {
 					`}
 				</style>
 			</div>
-		</Page>
-	)}
+			)}
+)

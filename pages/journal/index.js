@@ -29,11 +29,9 @@ var posts = [
 	},
 ]
 
-export default () => {
-	return (
-		<Page title="Journal">
-			<div className="ph3 ph5-m ph6-l">
-				<PostList list={posts} />
-			</div>
-		</Page>
-	)}
+export default Page( () => (
+		<div className="ph3 ph5-m ph6-l">
+			<PostList list={posts} />
+		</div>
+	)
+)
