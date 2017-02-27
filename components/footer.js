@@ -33,29 +33,29 @@ export default () =>
 			<a className="f3 db b link">A Retina workflow for Photoshop</a>
 		</Link>
 	</div>
-	<ul className="dib list f5 code mv4 pa0 pr3 pr5-m pr6-l">
-		<li className="dib pr3 with-side-divider">
+	<ul className="dib list f6 f5-ns code mv4 pa0 pr3 pr5-m pr6-l">
+		<li className="dib pr2 pr3-ns mv1 with-side-divider">
 			<Link href="/">
 				<a className="link">
 					{T.Key("nav.home")}
 				</a>
 			</Link>
 		</li>
-		<li className="dib ph3 with-side-divider">
+		<li className="dib ph2 ph3-ns mv1 with-side-divider">
 			<Link href="/about">
 				<a className="link">
 					{T.Key("nav.about")}
 				</a>
 			</Link>
 		</li>
-		<li className="dib ph3 with-side-divider">
+		<li className="dib ph2 ph3-ns mv1 with-side-divider">
 			<Link href="/journal">
 				<a className="link">
 					{T.Key("nav.journal")}
 				</a>
 			</Link>
 		</li>
-		<li className="dib pl3">
+		<li className="dib pl2 pl3-ns mv1">
 			<Link href="/contact">
 				<a className="link">
 					{T.Key("nav.contact")}
