@@ -25,7 +25,7 @@ const T = Translate({
     },
     littleJekyll: {
       description: "If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.",
-      details: "Interface design, branding, Node.js &amp; Electron development."
+      details: "Interface design, branding, Node.js & Electron development."
     },
     fitsteady: {
       description: "Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.",
