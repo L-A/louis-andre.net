@@ -10,7 +10,8 @@ const T = Translate({
 			journal: "journal",
 			contact: "contact"
 		},
-		copy_thanks: "Louis-André Labadie. Thanks for passing by!"
+		copy_thanks: "Louis-André Labadie. Thanks for passing by!",
+    wallpapers: "Wallpapers"
   },
 	fr: {
     nav: {
@@ -19,18 +20,19 @@ const T = Translate({
 			journal: "journal",
 			contact: "contact"
 		},
-		copy_thanks: "Louis-André Labadie. Merci de visiter!"
+		copy_thanks: "Louis-André Labadie. Merci de visiter!",
+    wallpapers: "Fonds d'écran"
   }
 })
 
 export default () =>
 <footer className="ph3 pv4 ph5-m ph6-l mt6 washed-blue">
-	<div className="pt4 with-divider">
+  <div className="pt4 with-divider">
+		<Link href="/wallpapers">
+			<a className="f3 db pb2 b link">{T.Key("wallpapers")}</a>
+		</Link>
 		<Link href="/le-scanneur">
 			<a className="f3 db pb2 b link">Le Scanneur</a>
-		</Link>
-		<Link href="/journal/retina-photoshop">
-			<a className="f3 db b link">A Retina workflow for Photoshop</a>
 		</Link>
 	</div>
 	<ul className="dib list f6 f5-ns code mv4 pa0 pr3 pr5-m pr6-l">
@@ -63,7 +65,7 @@ export default () =>
 			</Link>
 		</li>
 	</ul>
-	<small className="db light-silver">© {new Date().getFullYear()} {T.Key("copy_thanks")}</small>
+	<small className="db light-silver">© {new Date().getFullYear()} {T.Key("copy_thanks")} ✌🏼</small>
 	<style jsx>
 		{`
 				a {

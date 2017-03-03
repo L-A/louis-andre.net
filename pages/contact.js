@@ -48,7 +48,7 @@ export default Page( (props) => {
 				<h3 className="silver bold f6 ttu mt4">{T.Key("elsewhere")}</h3>
 				<a className="db link dribbble mb2" href="https://dribbble.com/l-a"
 					dangerouslySetInnerHTML={{__html: T.Key("contacts.dribbble")}} />
-				<a className="db link linkedin mb2" href="https://dribbble.com/messages/new?recipient_id=l-a"
+				<a className="db link linkedin mb2" href="https://www.linkedin.com/in/lalabadie/"
 					dangerouslySetInnerHTML={{__html: T.Key("contacts.linkedin")}} />
 				<a className="db link twitter mb2" href="https://twitter.com/Lalabadie"
 					dangerouslySetInnerHTML={{__html: T.Key("contacts.twitter")}} />
