@@ -28,6 +28,12 @@ class ErrorPage extends React.Component {
         res.end()
       }
 
+      if (pathname.indexOf("/journal/wallpapers") != -1) {
+        destination = "/wallpapers"
+        res.writeHead(302, {Location: destination})
+        res.end()
+      }
+
       return {foo: destination}
     } else {
       return {}
