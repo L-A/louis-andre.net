@@ -45,13 +45,6 @@ let appSources = {
       url: "https://soundcloud.com/lalabadie/sets/instrumental-beats"
     },
     {
-      name: "Chillhop Cafe Live",
-      value: "chillhop",
-      type: "youtube",
-      videoID: "ljQsRLN2dXA",
-      "url": "https://www.youtube.com/embed/ljQsRLN2dXA"
-    },
-    {
       name: "Instrumentals (trap)",
       value: "sc-traps",
       type: "soundcloud",
@@ -62,7 +55,7 @@ let appSources = {
 
 const initialState = {
   radioPlayer: {
-    picked: "emt-qc",
+    picked: "emt-detroit",
     playing: true
   },
   musicPlayer: {
