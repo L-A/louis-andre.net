@@ -8,7 +8,7 @@ const T = Translate({
     read: "Read about it"
   },
   fr: {
-    read: "Lire l'étude de cas"
+    read: "L'étude de cas"
   }
 })
 
