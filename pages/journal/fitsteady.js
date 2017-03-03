@@ -34,5 +34,5 @@ I made the visual treatment complement this, leading up to a personality that's,
 
 ![Fitsteady's survey layout](/static/images/fitsteady-post/survey.png)
 
-At the time of writing (three years later already!) Fitsteady have steadily established as a major provider of health & wellness for organizations in Austin, TX.
+At the time of writing (three years later already!) Fitsteady have steadily established their position as a major provider of health & wellness for organizations in Austin, TX.
 `

@@ -3,11 +3,15 @@ import BlogPost from '~/layouts/blogpost'
 
 export default () => (
 	<BlogPost title="A Retina workflow for Photoshop" titleColor="#4582c0" postMarkdown={postContent}>
-		<small className="db lh-copy code gray f6">Published in may 2014</small>
+		<p className="b f4 measure mb6">
+			Note: This article dates back from mid-2014. The advice is still sound, but do keep in mind that designing at 1x and <a className="link blue dim" href="https://bjango.com/articles/designingforretina/">producing your assets for several resolutions</a> is a great method too. It's how I do it now :)
+		</p>
+		<small className="db lh-copy code gray f6">Published in May 2014</small>
 	</BlogPost>
 )
 
 const postContent = `
+
 ### Getting started with high-density (HiDPI) screens, like Apple's Retina display?
 
 Several design apps support half/dual resolution out of the box, but a lot of us still use Photoshop, either out of personal preference or to play well with other team members. One way or another, I assume you're pretty damn efficient with Photoshop already. When I'm not using Sketch, here's how I handle Retina mockups with grace.
