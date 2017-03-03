@@ -4,6 +4,7 @@ import Header from '~/components/header'
 import Footer from '~/components/footer'
 import 'isomorphic-fetch'
 import { writeCookie, readCookie } from '~/helpers/cookie'
+import Piwik from '~/helpers/piwik'
 
 const cushionURL = 'https://my.cushionapp.com/api/v1/users/745f2179-6958-4664-8549-dce939fb32e6/availability'
 let availableDate = false
@@ -45,7 +46,11 @@ export default (WrappedComponent, opts) => {
 
     render (props) {
       if (opts.naked) {
-        return <WrappedComponent {...this.props}/>
+        return (
+          <div>
+            <WrappedComponent {...this.props}/>
+          </div>
+        )
       } else {
         return (
           <div className="avenir min-vh-100">
@@ -53,6 +58,7 @@ export default (WrappedComponent, opts) => {
             <Header lang={this.props.lang} />
             <WrappedComponent {...this.props}/>
             <Footer />
+            <Piwik />
           </div>
         )
       }
