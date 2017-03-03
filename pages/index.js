@@ -5,7 +5,7 @@ import Icon from '~/components/icon.js'
 import Project from '~/components/project'
 import ColorRange from '~/helpers/colorRange'
 import Shot from '~/components/dribbble-shot'
-import { Translate, Language, SetLanguage } from '~/helpers/lang'
+import { Translate } from '~/helpers/lang'
 
 const T = Translate({
   en: {
@@ -33,9 +33,9 @@ const T = Translate({
     }
   },
 	fr: {
-    tagline: "Bonjour! Je suis Louis-André, designer&nbsp;pigiste.<br/>Je&nbsp;fais des sites et applications&nbsp;web.",
+    tagline: "Bonjour! Je suis Louis-André, designer.<br/>Je&nbsp;fais des sites et applications&nbsp;web.",
     more: "voir d'autres",
-    on_hold: "Arrêté",
+    on_hold: "Interrompu",
     headers: {
       dribbble: "Petits extraits",
       case_studies: "Projets intéressants"
@@ -52,7 +52,7 @@ const T = Translate({
       details: "Design d'interface, design de marque, développement Node.js et Electron."
     },
     fitsteady: {
-      description: "Passés maîtres dans l'art du bien-être en milieu de travail, Fitsteady ont équippé leurs entraîneurs avec une application de prise de présence et de mesure de satisfaction",
+      description: "Passés maîtres dans l'art du bien-être en milieu de travail, Fitsteady ont équippé leurs entraîneurs avec une application de prise de présence et de mesure de satisfaction.",
       details: "Design d'interface, production des ressources."
     }
   }
