@@ -40,6 +40,12 @@ class ErrorPage extends React.Component {
         res.end()
       }
 
+      if (pathname.slice(-1) == "/") {
+        destination = pathname.slice(0, -1)
+        res.writeHead(302, {Location: destination})
+        res.end()
+      }
+
       return {foo: destination}
     } else {
       return {}
