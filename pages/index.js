@@ -123,7 +123,7 @@ const fillStyle = (fillPosition, ratio) => {
 
 const headerStyle = {
 	color: '#4e5667',
-  maxWidth: '1256px',
+  maxWidth: '1040px',
 	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
 }
 
