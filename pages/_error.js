@@ -34,6 +34,12 @@ class ErrorPage extends React.Component {
         res.end()
       }
 
+      if (pathname.indexOf("/little-jekyll") != -1) {
+        destination = "/journal/little-jekyll"
+        res.writeHead(302, {Location: destination})
+        res.end()
+      }
+
       return {foo: destination}
     } else {
       return {}
