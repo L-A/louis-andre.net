@@ -61,21 +61,21 @@ const T = Translate({
 export default Page( () => (
   <div>
 		<MovingFill />
-		<div style={headerStyle} className="lh-title ph3 pt5 pb4 ph5-m ph6-l tc b f3 f2-ns" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
-    <div className="tc pb5">
+		<div style={headerStyle} className="lh-title mb4 mb5-ns mt3 mt5-ns ph3 ph5-m ph6-l tc b f3 f2-ns center" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
+    <div className="tc mb4 mb5-ns">
       <Link href="/contact">
         <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc">{T.Key('availability.available')}</a>
       </Link>
     </div>
-		<h4 className="f6 pv2 tc ttu dribbble-shots">{T.Key("headers.dribbble")} <Icon iconName="dribbble" /></h4>
-		<div className="cf ph3 pt1 ph5-m ph6-l tc">
+		<h4 className="f6 ph3 mb3 mt6 mt5-ns tc ttu dribbble-shots">{T.Key("headers.dribbble")} <Icon iconName="dribbble" /></h4>
+		<div className="cf ph3 pt1-ns ph5-m ph6-l tc">
 			<Shot shotImageURL={shots[0].image} linkTo={shots[0].url}></Shot>
 			<Shot shotImageURL={shots[1].image} linkTo={shots[1].url}></Shot>
 			<Shot shotImageURL={shots[2].image} linkTo={shots[2].url}></Shot>
 		</div>
-    <a href="https://dribbble.com/l-a" className="db mt3 ph3 silver tc">{T.Key("more")}</a>
+    <a href="https://dribbble.com/l-a" className="f6 f5-ns db mt3 ph3 silver tc">{T.Key("more")}</a>
     <div className="case-studies">
-      <h4 className="f6 pt6 pb1 tc ttu">{T.Key("headers.case_studies")} <Icon iconName="cases" /></h4>
+      <h4 className="f6 ph3 mt6 mt5-ns mb3 tc ttu">{T.Key("headers.case_studies")} <Icon iconName="cases" /></h4>
       <Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/journal/octobot">
         <p className="lh-copy">{T.Key("octobot.description")}</p>
         <p className="lh-copy code gray f6">{T.Key("octobot.details")}</p>
@@ -123,6 +123,7 @@ const fillStyle = (fillPosition, ratio) => {
 
 const headerStyle = {
 	color: '#4e5667',
+  maxWidth: '1256px',
 	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
 }
 

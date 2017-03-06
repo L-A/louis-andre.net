@@ -3,8 +3,8 @@ import React from 'react'
 export default (props) => {
 	if (props.shotImageURL) {
 		return (
-			<a className="pa3 dib w-100 w-third-ns border-box dribbble-link" href={props.linkTo}>
-				<img src={props.shotImageURL} width="400"/>
+			<a className="ph3 pv2-ns dib w-100 w-third-ns border-box dribbble-link" href={props.linkTo}>
+				<img src={props.shotImageURL} width="300"/>
 				<style jsx>{`
 					a img {
 						box-shadow: 0 1px 4px rgba(43,48,59,0.2);

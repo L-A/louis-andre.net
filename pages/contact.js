@@ -39,7 +39,7 @@ const T = Translate({
 
 export default Page( (props) => {
 	return (
-			<div className="ph3 mw6-l ph5-m ph0-l center">
+			<div className="mw6-l ph3 ph5-m ph0-l mb5 center">
 				<h2 className="f2 fw3 navy no-underline pa0">{T.Key("title")}</h2>
 				<CushionScript availableMonth={props.availableMonth}/>
 				<p className="email">

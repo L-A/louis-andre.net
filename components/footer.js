@@ -26,7 +26,7 @@ const T = Translate({
 })
 
 export default () =>
-<footer className="ph3 pv4 ph5-m ph6-l mt6 washed-blue">
+<footer className="ph3 pv4 ph5-m ph6-l mt3 washed-blue">
   <div className="pt4 with-divider">
 		<Link href="/wallpapers">
 			<a className="f3 db pb2 b link">{T.Key("wallpapers")}</a>
@@ -36,28 +36,28 @@ export default () =>
 		</Link>
 	</div>
 	<ul className="dib list f6 f5-ns code mv4 pa0 pr3 pr5-m pr6-l">
-		<li className="dib pr2 pr3-ns mv1 with-side-divider">
+		<li className="dib pr2 pr3-l mv1 with-side-divider">
 			<Link href="/">
 				<a className="link">
 					{T.Key("nav.home")}
 				</a>
 			</Link>
 		</li>
-		<li className="dib ph2 ph3-ns mv1 with-side-divider">
+		<li className="dib ph2 ph3-l mv1 with-side-divider">
 			<Link href="/about">
 				<a className="link">
 					{T.Key("nav.about")}
 				</a>
 			</Link>
 		</li>
-		<li className="dib ph2 ph3-ns mv1 with-side-divider">
+		<li className="dib ph2 ph3-l mv1 with-side-divider">
 			<Link href="/journal">
 				<a className="link">
 					{T.Key("nav.journal")}
 				</a>
 			</Link>
 		</li>
-		<li className="dib pl2 pl3-ns mv1">
+		<li className="dib pl2 pl3-l mv1">
 			<Link href="/contact">
 				<a className="link">
 					{T.Key("nav.contact")}

@@ -83,28 +83,28 @@ export default class extends React.Component {
 					</Link>
 				</h1>
 				<ul className="f6 f5-ns dtc v-mid list code w-75 tr pa0 pb2 pr3 pr5-m pr6-l">
-					<li className="dib ph2 ph3-ns br bw1 b--light-gray">
+					<li className="dib ph2 ph3-l br bw1 b--light-gray">
 						<Link href="/about">
 							<a className="link dark-gray hover-green">
 								{T.Key("nav.about")}
 							</a>
 						</Link>
 					</li>
-					<li className="dib ph2 ph3-ns br bw1 b--light-gray">
+					<li className="dib ph2 ph3-l br bw1 b--light-gray">
 						<Link href="/journal">
 							<a className="link dark-gray hover-green">
 								{T.Key("nav.journal")}
 							</a>
 						</Link>
 					</li>
-					<li className="dib ph2 ph3-ns br bw1 b--light-gray">
+					<li className="dib ph2 ph3-l br bw1 b--light-gray">
 						<Link href="/contact">
 							<a className="link dark-gray hover-green">
 								{T.Key("nav.contact")}
 							</a>
 						</Link>
 					</li>
-					<li className="dib pl2 pl3-ns pointer ttu">
+					<li className="dib pl2 pl3-l pointer ttu">
 						<a onClick={this.changeLang} className="link f6 b silver hover-green">
 							{otherLang}
 						</a>
@@ -132,6 +132,11 @@ export default class extends React.Component {
 						position: absolute;
 						transition: left .1s ease-out, top .1s ease-out, transform .1s ease-out;
 					}
+          @media (max-width: 480px) {
+            .home-link {
+              width: 32px;
+            }
+          }
 				`}</style>
 			</nav>
 		)
