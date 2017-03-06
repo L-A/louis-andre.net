@@ -13,7 +13,7 @@ const T = Translate({
   },
 	fr: {
     nav: {
-			about: "à propos",
+			about: "info",
 			journal: "journal",
 			contact: "contact"
 		}
