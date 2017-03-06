@@ -22,18 +22,11 @@ const T = Translate({
 })
 
 export default Page( () => (
-		<div className="ph3 ph5-m ph6-l relative-l">
+		<div className="ph3 ph5-m ph6-l">
 			<h1 className="mv4 f2 fw3 navy no-underline">{T.Key("tagline")}</h1>
-			<img className="fr mw4 mw5-ns pb3 pl3" style={imgStyle} src="static/images/about-page/portrait.png"/>
 			<p className="measure lh-copy">{T.Key("p_intro")}</p>
 			<p className="measure lh-copy" dangerouslySetInnerHTML={{__html: T.Key("p_education")}} />
       <p className="measure lh-copy" dangerouslySetInnerHTML={{__html: T.Key("p_work")}} />
       <p className="measure lh-copy" dangerouslySetInnerHTML={{__html: T.Key("p_tools")}} />
 		</div>
 ), {title: T.Key("title")})
-
-
-
-const imgStyle = {
-	width: "50%"
-}
