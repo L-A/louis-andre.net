@@ -33,7 +33,7 @@ const T = Translate({
     }
   },
 	fr: {
-    tagline: "Bonjour! Je suis Louis-André, designer.<br/>Je&nbsp;fais des sites et applications&nbsp;web.",
+    tagline: "Bonjour! Je suis Louis&#8209;André, designer. Je&nbsp;fais des sites et applications web.",
     more: "voir d'autres",
     on_hold: "Interrompu",
     headers: {
