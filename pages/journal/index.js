@@ -13,7 +13,7 @@ var posts = [
 		name: "Octobot",
 		summary: "Case study: A notification-centric mobile app",
 		url: "/journal/octobot",
-		date: "Published in February 2016"
+		date: "Released in 2014"
 	},
 	{
 		name: "Fitsteady",
@@ -25,7 +25,7 @@ var posts = [
 		name: "Little Jekyll",
 		summary: "A desktop application that allows using Jekyll without the command-line",
 		url: "/journal/little-jekyll",
-		date: "Published in December 2015"
+		date: "Released in December 2015"
 	},
 	{
 		name: "The hands of others",
