@@ -10,8 +10,8 @@ const T = Translate({
 			journal: "journal",
 			contact: "contact"
 		},
-		copy_thanks: "Louis-André Labadie. Thanks for passing by!",
-    wallpapers: "Wallpapers"
+    wallpapers: "Wallpapers",
+		copy_thanks: "Louis-André Labadie. Thanks for passing by!"
   },
 	fr: {
     nav: {
@@ -20,8 +20,8 @@ const T = Translate({
 			journal: "journal",
 			contact: "contact"
 		},
-		copy_thanks: "Louis-André Labadie. Merci de visiter!",
-    wallpapers: "Fonds d'écran"
+    wallpapers: "Fonds d'écran",
+		copy_thanks: "Louis-André Labadie. Merci de passer!"
   }
 })
 
