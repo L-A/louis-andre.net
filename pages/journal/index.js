@@ -69,5 +69,5 @@ export default Page( () => (
 		<div className="ph3 ph5-m ph6-l">
 			<PostList list={posts} />
 		</div>
-	)
+	), { title: "Journal" }
 )
