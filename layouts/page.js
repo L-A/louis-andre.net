@@ -4,14 +4,23 @@ import Header from '~/components/header'
 import Footer from '~/components/footer'
 import 'isomorphic-fetch'
 import { writeCookie, readCookie } from '~/helpers/cookie'
-import Piwik from '~/helpers/piwik'
+import PiwikReactRouter from 'piwik-react-router'
+
+let piwik = PiwikReactRouter(
+  {
+    url: "https://eagleeye.nfshost.com/stats",
+    siteId: 1,
+    trackErrors: true
+  }
+)
 
 const cushionURL = 'https://my.cushionapp.com/api/v1/users/745f2179-6958-4664-8549-dce939fb32e6/availability'
 let availableDate = false
 
 const defaultOpts = {
   naked: false,
-  title: false
+  title: false,
+  trackErrors: true
 }
 
 export default (WrappedComponent, opts) => {
@@ -44,6 +53,16 @@ export default (WrappedComponent, opts) => {
       return {...WrappedComponent.props, ...pageProps, lang: lang, availableMonth: availableMonth}
     }
 
+    componentDidMount() {
+      // React-piwik won't accept a "new" visit as the same path
+      window.appVisitTimeout = null
+      window.appVisitTimeout = setTimeout( () => {
+        piwik.track({
+          path: window.location.href
+        })
+      }, 2000)
+    }
+
     render (props) {
       if (opts.naked) {
         return (
@@ -58,7 +77,6 @@ export default (WrappedComponent, opts) => {
             <Header lang={this.props.lang} />
             <WrappedComponent {...this.props}/>
             <Footer />
-            <Piwik />
           </div>
         )
       }
