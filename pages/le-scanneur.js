@@ -50,6 +50,12 @@ let appSources = {
       type: "soundcloud",
       url: "https://soundcloud.com/samuriiibe47/sets/instrumental"
     },
+    {
+      name: "Foreverbeats – schiefewelt",
+      value: "sc-foreverbeats",
+      type: "8tracks",
+      url: "https://8tracks.com/mixes/6120657/player_v3_universal"
+    }
   ]
 }
 

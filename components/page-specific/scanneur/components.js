@@ -34,6 +34,14 @@ class MediaSource extends React.Component {
           name: source.value
         }
         break
+      case "8tracks":
+        AudioSource = IFramePlayer
+        propsData = {
+          yankOnStop: true,
+          url: source.url,
+          name: source.value
+        }
+        break
       default:
         AudioSource = IFramePlayer
         propsData = {
@@ -49,7 +57,7 @@ class MediaSource extends React.Component {
 }
 
 let IFramePlayer = (props) => (
-  <iframe width="300" height="240" src={props.url + "?autoplay=1"} frameBorder="0">
+  <iframe width="300" height="240" src={(!props.shouldPlay && props.yankOnStop) ? "" : props.url + "/autoplay+shuffle"} frameBorder="0" width="300" height="200">
   </iframe>
 )
 
