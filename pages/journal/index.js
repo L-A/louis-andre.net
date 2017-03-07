@@ -6,7 +6,7 @@ var posts = [
 	{
 		name: "VESA mounting a 13 inch Cintiq",
 		summary: "Small build log for making the graphic tablet VESA compatible",
-		url: "/journal/VESA-mount",
+		url: "/journal/cintiq-vesa-mount",
 		date: "Published in December 2016"
 	},
 	{
