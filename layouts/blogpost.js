@@ -1,6 +1,7 @@
 import React from 'react'
 import Page from '../layouts/page'
 import parsemd from 'markdown-to-react-components'
+import Head from 'next/head'
 
 export default Page( (props) => {
 	let postContent = props.postMarkdown
@@ -13,6 +14,9 @@ export default Page( (props) => {
 			<div className="ph3 ph5-m ph6-l lh-copy">
 				{ postContent  }
 			</div>
+			<Head>
+				<title>{props.title} - Louis-André Labadie</title>
+			</Head>
 		</div>
 	)
 })
