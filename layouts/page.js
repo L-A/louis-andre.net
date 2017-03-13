@@ -42,10 +42,10 @@ export default (WrappedComponent, opts) => {
       if (availableDate == false) {
         let cushionAvailability = await fetch(cushionURL)
         let availabilityData = await cushionAvailability.json()
-        availableDate = await new Date(availabilityData.availability.available_on)
+        availableDate = await new Date(availabilityData.availability.start_on)
 
          // Cushion answers that I'm available for February when we're on March 1st, so I pad it:
-        availableDate.setDate(availableDate.getDate() + 2)
+        availableDate.setDate(availableDate.getDate())
       }
 
       let availableMonth = availableDate.getMonth()
