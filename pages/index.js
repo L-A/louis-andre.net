@@ -17,7 +17,8 @@ const T = Translate({
       case_studies: "Projects & case-studies"
     },
     availability: {
-      available: "Available!"
+      available: "Available!",
+      booked: "All booked"
     },
     octobot: {
       description: "A friendly app that instantly notifies you when Github services go offline.",
@@ -41,7 +42,8 @@ const T = Translate({
       case_studies: "Projets intéressants"
     },
     availability: {
-      available: "Disponible!"
+      available: "Disponible!",
+      booked: "Indisponible"
     },
     octobot: {
       description: "Une sympathique application qui notifie instantanément lors d'interruptions de service Github.",
@@ -63,9 +65,9 @@ export default Page( () => (
 		<MovingFill />
 		<div style={headerStyle} className="lh-title mb4 mb5-ns mt3 mt5-ns ph3 ph5-m ph6-l tc b f3 f2-ns center" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
     <div className="tc mb4 mb5-ns">
-      <Link href="/contact">
-        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 white br2 tc">{T.Key('availability.available')}</a>
-      </Link>
+      {/* <Link href="/contact">
+        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 green br2 tc">{T.Key('availability.booked')}</a>
+      </Link> */}
     </div>
 		<h4 className="f6 ph3 mb3 mt6 mt5-ns tc ttu dribbble-shots">{T.Key("headers.dribbble")} <Icon iconName="dribbble" /></h4>
 		<div className="cf ph3 pt1-ns ph5-m ph6-l tc">
@@ -128,8 +130,7 @@ const headerStyle = {
 }
 
 const contactLinkStyle = {
-  backgroundColor: '#4eb648',
-  textShadow: "0 1px 0 #31992b"
+  backgroundColor: '#eee'
 }
 
 // Moving color fill element

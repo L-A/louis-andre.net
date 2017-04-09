@@ -6,6 +6,7 @@ const T = Translate({
 	en: {
 		title: "Contact & availability",
 		contracts_start: "New contracts can start in",
+		no_contracts: "Currently unavailable for new contracts",
 		i_answer: "I answer quickly at",
 		elsewhere: "Elsewhere",
 		contacts: {
@@ -22,6 +23,7 @@ const T = Translate({
 	fr: {
 		title: "Contact & disponibilité",
 		contracts_start: "Disponible à partir de",
+		no_contracts: "Je ne prends pas de nouveaux contrats présentement",
 		i_answer: "Je réponds rapidement à",
 		elsewhere: "Ailleurs",
 		contacts: {
@@ -41,7 +43,7 @@ export default Page( (props) => {
 	return (
 			<div className="mw6-l ph3 ph5-m ph0-l mb5 center">
 				<h2 className="f2 fw3 navy no-underline pa0">{T.Key("title")}</h2>
-				<CushionScript availableMonth={props.availableMonth}/>
+				<CushionScript availableMonth={props.availableMonth} unavailable={true}/>
 				<p className="email">
 					{T.Key("i_answer")} <a className="link pointer" href="mailto:monsieur@louis-andre.net">monsieur&#64;louis-andre.net</a>
 				</p>
@@ -84,10 +86,10 @@ export default Page( (props) => {
 , {title: T.Key("title")})
 
 const CushionScript = (props) => (
-	<p className="availability br2 pv2 ph3 ph4-ns green dib">
-		{T.Key("contracts_start") + " "}
+	<p className={"availability br2 pv2 ph3 ph4-ns green dib" + (props.unavailable ? " unavailable" : "")}>
+		{props.unavailable ? T.Key("no_contracts") : T.Key("contracts_start") + " "}
 		<strong>
-			{T.Key("month." + (props.availableMonth))}
+			{props.unavailable ? "" : T.Key("month." + (props.availableMonth))}
 		</strong>
 
 		<style jsx>
@@ -95,6 +97,12 @@ const CushionScript = (props) => (
 				.availability {
 					background-color: #ddf5db;
 					color: #08a200;
+					font-size: 14px;
+					line-height: 1.4;
+				}
+				.availability.unavailable {
+					background-color: #efffef;
+					color: #87a184;
 					font-size: 14px;
 					line-height: 1.4;
 				}
