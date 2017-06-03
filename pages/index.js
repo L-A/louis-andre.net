@@ -9,7 +9,7 @@ import { Translate } from '~/helpers/lang'
 
 const T = Translate({
   en: {
-    tagline: "Hi! I'm&nbsp;Louis&#8209;André, freelance&nbsp;designer.<br/>I make apps and web&nbsp;sites.",
+    tagline: "Hi! I'm Louis&#8209;André, designer.<br/>I make apps and web&nbsp;sites.",
     more: "more of these",
     on_hold: "On hold",
     headers: {
