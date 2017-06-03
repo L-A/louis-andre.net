@@ -50,6 +50,12 @@ let appSources = {
       type: "soundcloud",
       url: "https://soundcloud.com/samuriiibe47/sets/instrumental"
     },
+    // {
+    //   name: "Chillhop cafe live",
+    //   value: "yt-chillhop",
+    //   type: "youtube",
+    //   videoID: "c/Chillhopdotcom/live"
+    // },
     {
       name: "Foreverbeats – schiefewelt",
       value: "sc-foreverbeats",
