@@ -14,9 +14,6 @@ let piwik = PiwikReactRouter(
   }
 )
 
-const cushionURL = 'https://my.cushionapp.com/api/v1/users/745f2179-6958-4664-8549-dce939fb32e6/availability'
-let availableDate = false
-
 const defaultOpts = {
   naked: false,
   title: false,
@@ -38,19 +35,7 @@ export default (WrappedComponent, opts) => {
         pageProps = await WrappedComponent.getInitialProps(ctx);
       }
 
-      // Cushion Availability (the answer is saved as the month, 0-11)
-      if (availableDate == false) {
-        let cushionAvailability = await fetch(cushionURL)
-        let availabilityData = await cushionAvailability.json()
-        availableDate = await new Date(availabilityData.availability.start_on)
-
-         // Cushion answers that I'm available for February when we're on March 1st, so I pad it:
-        availableDate.setDate(availableDate.getDate())
-      }
-
-      let availableMonth = availableDate.getMonth()
-
-      return {...WrappedComponent.props, ...pageProps, lang: lang, availableMonth: availableMonth}
+      return {...WrappedComponent.props, ...pageProps, lang: lang}
     }
 
     componentDidMount() {
