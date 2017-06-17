@@ -3,21 +3,23 @@ import Blogpost from '~/layouts/blogpost'
 
 export default () => {
 	return (
-		<Blogpost title="The basics of a great web app color palette" titleColor="#263150" postMarkdown={postContent}>
-			<small className="db lh-copy code gray f6">Posted in May 2014</small>
+		<Blogpost title="Kickstart your web app's color palette" titleColor="#263150" postMarkdown={postContent}>
+			<small className="db lh-copy code gray f6">Posted in May 2014, revised in 2017</small>
 		</Blogpost>
 )}
 
 const postContent = `
-When intuition seemingly won't help, what can you do – reliably – to come up with a good color palette?
+### Color is a big deal in UI design. It's an unavoidable part of the brand you're designing for, and it's a very powerful tool to control hierarchy – to make key elements look important and others, insignificant.
 
-On top of orienting style, your first design decisions usually establish a system that remains long after the task currently at hand. As if it wasn't enough, color is one of the most identifiable elements of an interface.
+So let's say you're early in the design process, and stuck figuring out good colors (like it happens to me, all the time).
+
+Here's the little foolproof process I use to get back my momentum.
 
 ## Variants and contrast
 
-First off, it's essential to clear any concern about the actual legibility of your palette. Your choice has to be a foundation for good contrast within the interface.
+First off, you _have_ to have legibility. Your color choices are the foundation for pleasant contrast within the whole interface.
 
-The best way to analyze it is by considering each color through three characteristics it has:
+So how do you get a bit brainy about contrast, and actually think through your choice? The best way to analyze it is by considering each color through three characteristics it has:
 
 - Its **hue**. Is it red, green, purple? The color, basically.
 - Its **saturation**. Is the hue vivid, or subtle, or nonexistent (gray)?

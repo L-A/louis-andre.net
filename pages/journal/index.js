@@ -39,7 +39,7 @@ var posts = [
 		date: "Published in May 2014"
 	},
 	{
-		name: "The basics of a great web app color palette",
+		name: "Kickstart your web app's color palette",
 		summary: "Useful theory and steps for getting unstuck",
 		url: "/journal/web-app-palette",
 		date: "Published in May 2014"
