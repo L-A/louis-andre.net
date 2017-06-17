@@ -55,5 +55,10 @@ parsemd.configure({
 		render() {
 			return <a className="link dim blue" href={this.props.href}> {this.props.children} </a>
 		}
+	}),
+	li: React.createClass({
+		render() {
+			return <li className="f4 measure mv2 dark-gray"> {this.props.children} </li>
+		}
 	})
 })
