@@ -4,15 +4,6 @@ import Header from '~/components/header'
 import Footer from '~/components/footer'
 import 'isomorphic-fetch'
 import { writeCookie, readCookie } from '~/helpers/cookie'
-import PiwikReactRouter from 'piwik-react-router'
-
-let piwik = PiwikReactRouter(
-  {
-    url: "https://eagleeye.nfshost.com/stats",
-    siteId: 1,
-    trackErrors: true
-  }
-)
 
 const defaultOpts = {
   naked: false,
@@ -36,16 +27,6 @@ export default (WrappedComponent, opts) => {
       }
 
       return {...WrappedComponent.props, ...pageProps, lang: lang}
-    }
-
-    componentDidMount() {
-      // React-piwik won't accept a "new" visit as the same path
-      window.appVisitTimeout = null
-      window.appVisitTimeout = setTimeout( () => {
-        piwik.track({
-          path: window.location.href
-        })
-      }, 2000)
     }
 
     render (props) {
