@@ -12,29 +12,29 @@ import { readCookie, writeCookie } from '~/helpers/cookie'
 let PlayerStore
 let appSources = {
   radio: [
-    {
-      name: "Québec: Urgences",
-      value: "emt-qc",
-      type: "audio-player",
-      url: "http://audio7.broadcastify.com/tf7nydb81psj.mp3"
-    },
+    // {
+    //   name: "Québec: Urgences",
+    //   value: "emt-qc",
+    //   type: "audio-player",
+    //   url: "http://audio7.broadcastify.com/tf7nydb81psj.mp3"
+    // },
     {
       name: "Montréal: Urgences",
       value: "emt-mtl",
       type: "audio-player",
-      url: "http://audio10.broadcastify.com/610588345.mp3"
+      url: "http://listen.broadcastify.com:80?t=92DE2A9B9336A95C6450D995754F9B91DF25F9B71B95FF7BDB342023587DCB1A91D9F7AC0611898456B9BD1960C42938BAD47ACC0C80C9574736CDFECC28B612"
     },
     {
       name: "Detroit: Police",
       value: "emt-detroit",
       type: "audio-player",
-      url: "http://audio5.broadcastify.com/516072174.mp3"
+      url: "http://listen.broadcastify.com:80?t=644BE915EF5DE55CC63312EFFB927CB874276F8EF9D8F4F6D66C8C1C19AFE9789C0C2FFFC719E1F92FE868CAF82D59F129A68342FEA6A331B1A8FDD6216A8222"
     },
     {
-      name: "Staten Island: Urgences (FDNY)",
+      name: "New York: Sécurité publique",
       value: "emt-ny",
       type: "audio-player",
-      url: "http://audio2.broadcastify.com/838989288.mp3"
+      url: "http://listen.broadcastify.com:80?t=9C19CD15D0A1D75CDEFB2ADC79D7DBC7C73AEF6244AFE8490803C5A2681D4768B1A0396EA7A1A79217ED2ACB9FD93C89"
     }
   ],
   music: [
