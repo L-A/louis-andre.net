@@ -97,15 +97,15 @@ export default Page( () => (
 
 const shots = [
 	{
-		image: "https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3159749/shot_2x_1x.png",
+		image: "https://cdn.dribbble.com/users/8100/screenshots/3159749/shot_2x_1x.png",
 		url: "https://dribbble.com/shots/3159749-Housing"
 	},
 	{
-		image: "https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/3062699/doodle-2_1x.jpg",
-		url: "https://dribbble.com/shots/3062699-Star-CGI-detail"
+		image: "https://cdn.dribbble.com/users/8100/screenshots/3067514/g-dribbble_1x.jpg",
+		url: "https://dribbble.com/shots/3067514-The-yellower-the-colder"
 	},
 	{
-		image: "https://d13yacurqjgara.cloudfront.net/users/8100/screenshots/1580576/metrio-brand_1x.png",
+		image: "https://cdn.dribbble.com/users/8100/screenshots/1580576/metrio-brand_1x.png",
 		url: "https://dribbble.com/shots/1580576-Metrio-Brand"
 	}
 ]
