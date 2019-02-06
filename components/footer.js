@@ -65,7 +65,7 @@ export default () =>
 			</Link>
 		</li>
 	</ul>
-	<small className="db light-silver">© {new Date().getFullYear()} {T.Key("copy_thanks")} ✌🏼</small>
+	<small className="db light-silver">© {new Date().getFullYear()} {T.Key("copy_thanks")} </small>
 	<style jsx>
 		{`
 				a {
