@@ -5,7 +5,7 @@ import { Translate } from '~/helpers/lang'
 const T = Translate({
 	en: {
 		title: "Contact & availability",
-		contracts_start: "New contracts can start in",
+		contracts_start: "New contracts can start around",
 		no_contracts: "Currently unavailable for new contracts",
 		i_answer: "I answer quickly at",
 		elsewhere: "Elsewhere",
@@ -43,7 +43,7 @@ export default Page( (props) => {
 	return (
 			<div className="mw6-l ph3 ph5-m ph0-l mb5 center">
 				<h2 className="f2 fw3 navy no-underline pa0">{T.Key("title")}</h2>
-				<CushionScript unavailable={true}/>
+				<CushionScript availableMonth={props.availableMonth} />
 				<p className="email">
 					{T.Key("i_answer")} <a className="link pointer" href="mailto:monsieur@louis-andre.net">monsieur&#64;louis-andre.net</a>
 				</p>
@@ -87,7 +87,10 @@ export default Page( (props) => {
 
 const CushionScript = (props) => (
 	<p className={"availability br2 pv2 ph3 ph4-ns green dib" + (props.unavailable ? " unavailable" : "")}>
-		{T.Key("no_contracts")}
+		{props.unavailable ? T.Key("no_contracts") : T.Key("contracts_start") + " "}
+		<strong>
+			{props.unavailable ? "" : T.Key("month." + (props.availableMonth))}
+		</strong>
 
 		<style jsx>
 			{`
