@@ -20,12 +20,6 @@
     "build": "next build",
     "start": "next start"
   },
-  "now": {
-    "alias": [
-      "louis-andre.net",
-      "www.louis-andre.net"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/L-A/louis-andre.net.git"
