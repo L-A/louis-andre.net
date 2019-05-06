@@ -1,20 +1,7 @@
 {
   "name": "louis-andre.net",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Louis-André Labadie's main website",
-  "main": "./pages/index.js",
-  "dependencies": {
-    "history": "^3.2.1",
-    "markdown-to-react-components": "^0.2.1",
-    "next": "^2.0.0-beta",
-    "piwik-react-router": "^0.6.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-inlinesvg": "^0.5.4"
-  },
-  "devDependencies": {
-    "babel-root-import": "^4.1.5"
-  },
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -29,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/L-A/louis-andre.net/issues"
   },
-  "homepage": "https://github.com/L-A/louis-andre.net#readme"
+  "homepage": "https://github.com/L-A/louis-andre.net#readme",
+  "dependencies": {
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
 }
