@@ -74,6 +74,7 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
           margin: 0 64px 64px;
           font-size: 46px;
           line-height: 1.1;
+          max-width: 15em;
         }
 
         h2 {
@@ -81,6 +82,7 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
           font-size: 16px;
           font-weight: 500;
           margin: 0 64px;
+          max-width: 18em;
         }
 
         h2 a {
