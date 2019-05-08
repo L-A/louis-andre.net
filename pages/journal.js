@@ -46,6 +46,11 @@ export default () => {
         slug="the-hands-of-others"
       />
       <Post
+        title="Kickstart your web app's color palette"
+        excerpt="A bit of theory, and a process for getting unstuck"
+        slug="web-app-palette"
+      />
+      <Post
         title="A Retina workflow for Photoshop"
         excerpt="How I designed for 2x screens (in 2014)"
         slug="retina-photoshop"
