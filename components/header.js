@@ -16,7 +16,7 @@ const HeroText = (
   </h1>
 )
 
-export default ({ title, overTitle, withHeroText }) => {
+export default ({ title, overTitle, overTitleLink, withHeroText }) => {
   return (
     <header>
       <nav>
@@ -31,7 +31,11 @@ export default ({ title, overTitle, withHeroText }) => {
         </Link>
       </nav>
       {withHeroText ? HeroText : ""}
-      <h2>{overTitle}</h2>
+      <h2>
+        <Link href={overTitleLink}>
+          <a>{overTitle}</a>
+        </Link>
+      </h2>
       <h1>{title}</h1>
       <style jsx>{`
         header {
@@ -77,6 +81,14 @@ export default ({ title, overTitle, withHeroText }) => {
           font-size: 16px;
           font-weight: 500;
           margin: 0 64px;
+        }
+
+        h2 a {
+          text-decoration: none;
+        }
+
+        h2 a:hover {
+          text-decoration: underline;
         }
 
         @media (max-width: 726px) {

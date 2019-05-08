@@ -2,7 +2,7 @@ import Head from "next/head"
 import Header from "../components/header"
 import Footer from "../components/footer"
 
-export default ({ isHome, title, overTitle, children }) => {
+export default ({ isHome, title, overTitle, overTitleLink, children }) => {
   const pageTitle = (overTitle ? overTitle + " - " : "") + title
   return (
     <div>
@@ -60,6 +60,7 @@ export default ({ isHome, title, overTitle, children }) => {
       <Header
         withHeroText={isHome}
         overTitle={overTitle}
+        overTitleLink={overTitleLink}
         title={!isHome ? title : ""}
       />
       <div className="container">{children}</div>

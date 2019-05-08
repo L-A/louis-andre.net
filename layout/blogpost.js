@@ -2,7 +2,7 @@ import MainLayout from "./main"
 
 export default ({ title, children }) => {
   return (
-    <MainLayout overTitle="Journal" title={title}>
+    <MainLayout overTitle="Journal" overTitleLink="/journal" title={title}>
       <div className="blog-post">{children}</div>
       <style jsx global>{`
         .blog-post {
