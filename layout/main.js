@@ -1,12 +1,15 @@
 import Head from "next/head"
-import Header from "../components/home-header"
+import Header from "../components/header"
 import Footer from "../components/footer"
 
-export default ({ children }) => {
+export default ({ isHome, title, overTitle, children }) => {
+  const pageTitle = (overTitle ? overTitle + " - " : "") + title
   return (
     <div>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{pageTitle}</title>
+        <link rel="icon" href="/static/images/favicon.ico" />
       </Head>
       <style jsx global>{`
         * {
@@ -22,9 +25,11 @@ export default ({ children }) => {
           margin: 0;
           padding: 0;
         }
-
         a {
           color: inherit;
+        }
+        img {
+          color: transparent;
         }
 
         /* Fonts */
@@ -36,8 +41,8 @@ export default ({ children }) => {
         @font-face {
           font-family: "Work Sans";
           font-style: italic;
-          src: url("/static/fonts/WorkSans-Bold.woff2") format("woff2"),
-            url("/static/fonts/WorkSans-Bold.woff") format("woff");
+          src: url("/static/fonts/WorkSans-Italic.woff2") format("woff2"),
+            url("/static/fonts/WorkSans-Italic.woff") format("woff");
         }
         @font-face {
           font-family: "Work Sans";
@@ -52,8 +57,19 @@ export default ({ children }) => {
             url("/static/fonts/WorkSans-Bold.woff") format("woff");
         }
       `}</style>
-      <Header />
-      {children}
+      <Header
+        withHeroText={isHome}
+        overTitle={overTitle}
+        title={!isHome ? title : ""}
+      />
+      <div className="container">{children}</div>
+      <style jsx>{`
+        .container {
+          margin: 0 auto 128px;
+          max-width: 694px;
+          padding: 32px;
+        }
+      `}</style>
       <Footer />
     </div>
   )

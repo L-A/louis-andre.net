@@ -3,63 +3,55 @@ import Title from "../components/section-title"
 
 export default () => {
   return (
-    <Page>
-      <div className="container">
-        <h1 className="intro">
-          Je suis Louis-André Labadie, designer indépendant, spécialisé dans les
-          produits et les applications numériques.
-        </h1>
-        <Title>Services</Title>
-        <h3>
-          <strong>Je suis un designer qui code.</strong> J'aime me concentrer
-          sur des produits et des marques avec une vocation claire.
-        </h3>
-        <h3>
-          Le plus possible, je m'implique du tout début d'un projet jusqu'à sa
-          mise en ligne.
-        </h3>
-        <ul className="services-list">
-          <li className="ui">
-            <h4>Design d'interface</h4>
-            <p>
-              Je crée des produits utiles et faciles d'utilisation, qui
-              renforcent la marque propre à chaque client. La rigueur et la
-              clarté orientent mes décisions visuelles.
-            </p>
-          </li>
-          <li className="ux">
-            <h4>Design d'expérience</h4>
-            <p>
-              L'expérience va de pair avec la création du produit. Je me
-              spécialise à rendre les produits complexes faciles d'approche.
-            </p>
-          </li>
-          <li className="dev">
-            <h4>Développement front-end</h4>
-            <p>
-              Je poursuis mon travail au-delà de la livraison de maquettes, en
-              prenant en charge le développement des interfaces que je livre.
-            </p>
-          </li>
-        </ul>
-        <Title>Contact & disponibilités</Title>
-        <h3 className="availability">
-          Prochaines disponibilités: <strong>mai</strong>
-        </h3>
-        <h3 className="email">
-          Je réponds rapidement à: <br />
-          <a href="mailto:monsieur@louis-andre.net">
-            <strong>monsieur@louis-andre.net</strong>
-          </a>
-        </h3>
-      </div>
+    <Page isHome title="Louis-André Labadie">
+      <h1 className="intro">
+        Je suis Louis-André Labadie, designer indépendant, spécialisé dans les
+        produits et les applications numériques.
+      </h1>
+      <Title>Services</Title>
+      <h3>
+        <strong>Je suis un designer qui code.</strong> J'aime me concentrer sur
+        des produits et des marques avec une vocation claire.
+      </h3>
+      <h3>
+        Le plus possible, je m'implique du tout début d'un projet jusqu'à sa
+        mise en ligne.
+      </h3>
+      <ul className="services-list">
+        <li className="ui">
+          <h4>Design d'interface</h4>
+          <p>
+            Je crée des produits utiles et faciles d'utilisation, qui renforcent
+            la marque propre à chaque client. La rigueur et la clarté orientent
+            mes décisions visuelles.
+          </p>
+        </li>
+        <li className="ux">
+          <h4>Design d'expérience</h4>
+          <p>
+            L'expérience va de pair avec la création du produit. Je me
+            spécialise à rendre les produits complexes faciles d'approche.
+          </p>
+        </li>
+        <li className="dev">
+          <h4>Développement front-end</h4>
+          <p>
+            Je poursuis mon travail au-delà de la livraison de maquettes, en
+            prenant en charge le développement des interfaces que je livre.
+          </p>
+        </li>
+      </ul>
+      <Title>Contact & disponibilités</Title>
+      <h3 className="availability">
+        Prochaines disponibilités: <strong>mai</strong>
+      </h3>
+      <h3 className="email">
+        Je réponds rapidement à: <br />
+        <a href="mailto:monsieur@louis-andre.net">
+          <strong>monsieur@louis-andre.net</strong>
+        </a>
+      </h3>
       <style jsx>{`
-        .container {
-          margin: 0 auto 128px;
-          max-width: 694px;
-          padding: 32px;
-        }
-
         .intro {
           color: #1e2949;
           font-size: 30px;

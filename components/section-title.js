@@ -1,4 +1,4 @@
-export default ({ children }) => (
+export default ({ children, compact }) => (
   <h2>
     {children}
     <style jsx>{`
@@ -6,7 +6,7 @@ export default ({ children }) => (
         color: #f95d0c;
         font-size: 14px;
         font-weight: 700;
-        margin: 128px 0 64px;
+        margin: ${compact ? "64px 0 32px" : "128px 0 64px"};
         position: relative;
       }
 
