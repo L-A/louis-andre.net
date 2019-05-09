@@ -20,7 +20,7 @@ export default ({ title, children }) => {
 
         .blog-post p {
           margin: 16px 0;
-          max-width: 32em;
+          max-width: 30em;
         }
 
         .blog-post img {
@@ -30,6 +30,18 @@ export default ({ title, children }) => {
 
         .blog-post a {
           color: #0067a1;
+        }
+
+        .blog-post a:hover {
+          color: #2200a1;
+        }
+
+        .blog-post blockquote {
+          border-left: solid 4px #f2f5f8;
+          color: #6a6d76;
+          font-style: italic;
+          margin: 32px 0;
+          padding-left: 16px;
         }
       `}</style>
     </MainLayout>
