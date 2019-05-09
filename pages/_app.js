@@ -1,0 +1,44 @@
+import App, { Container } from "next/app"
+import { readCookie } from "../helpers/cookies"
+import { Translated, SetLanguage } from "../helpers/translate"
+
+// This is just used to localize right now
+
+class Localized extends App {
+  state = { language: this.props.language }
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {}
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    const language = readCookie("language", ctx.req)
+    return { ...pageProps, language: language }
+  }
+
+  switchLanguage = () => {
+    const newLanguage = this.state.language == "en" ? "fr" : "en"
+    this.setState({ language: newLanguage })
+    SetLanguage(newLanguage)
+  }
+
+  render() {
+    const { Component, pageProps } = this.props
+    const { language, switchLanguage } = this.state
+
+    return (
+      <Container>
+        <Translated.Provider
+          value={{
+            language: this.state.language,
+            switchLanguage: this.switchLanguage
+          }}
+        >
+          <Component {...pageProps} />
+        </Translated.Provider>
+      </Container>
+    )
+  }
+}
+
+export default Localized

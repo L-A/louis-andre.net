@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Translated } from "../helpers/translate"
 
 const HeroText = (
   <h1 className="hero-text">
@@ -29,6 +30,9 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
         <Link href="/journal">
           <a>Journal</a>
         </Link>
+        <Translated.Consumer>
+          {({ switchLanguage }) => <a onClick={switchLanguage}>EN</a>}
+        </Translated.Consumer>
       </nav>
       {withHeroText ? HeroText : ""}
       <h2>

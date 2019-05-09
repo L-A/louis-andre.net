@@ -1,13 +1,23 @@
 import Page from "../layout/main"
 import Title from "../components/section-title"
 
+import { Translate } from "../helpers/translate"
+
+const T = Translate({
+  fr: {
+    intro: `Je suis Louis-André Labadie, designer indépendant,
+    spécialisé dans les produits et les applications numériques.`
+  },
+  en: {
+    intro: `I'm Louis-André Labadie, independent designer,
+    focused on building applications and digital products.`
+  }
+})
+
 export default () => {
   return (
     <Page isHome title="Louis-André Labadie">
-      <h1 className="intro">
-        Je suis Louis-André Labadie, designer indépendant, spécialisé dans les
-        produits et les applications numériques.
-      </h1>
+      <h1 className="intro">{T("intro")}</h1>
       <Title>Services</Title>
       <h3>
         <strong>Je suis un designer qui code.</strong> J'aime me concentrer sur
