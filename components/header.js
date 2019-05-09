@@ -1,10 +1,6 @@
 import Link from "next/link"
-import { Translated, Translate } from "../helpers/translate"
 
-const T = Translate({
-  fr: { otherLanguage: "English" },
-  en: { otherLanguage: "Français" }
-})
+import Nav from "../components/nav"
 
 const HeroText = (
   <h1 className="hero-text">
@@ -31,7 +27,6 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
           a {
             text-decoration: none;
           }
-
           a:hover {
             text-decoration: underline;
           }
@@ -44,23 +39,7 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
 
   return (
     <header>
-      <nav>
-        <Link href="/">
-          <a className="logo">
-            <img src="/static/images/img-logo.svg" alt="Louis-André Labadie" />
-          </a>
-        </Link>
-        <Link href="/journal">
-          <a>Journal</a>
-        </Link>
-        <Translated.Consumer>
-          {({ switchLanguage }) => (
-            <a className="language-switch" onClick={switchLanguage}>
-              {T("otherLanguage")}
-            </a>
-          )}
-        </Translated.Consumer>
-      </nav>
+      <Nav />
       {withHeroText ? HeroText : ""}
       <h2>{overTitle}</h2>
       <h1>{title}</h1>
@@ -71,37 +50,6 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
           background-size: cover;
           color: #fff;
           overflow: hidden;
-        }
-
-        nav {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          padding: 0 64px;
-          margin: 64px auto;
-        }
-
-        nav a {
-          color: #f95d0c;
-          font-weight: 700;
-          margin-left: 32px;
-          text-decoration: none;
-        }
-
-        nav a:hover {
-          text-decoration: underline;
-        }
-
-        nav a.logo {
-          margin: 0 auto 0 0;
-          color: transparent;
-        }
-
-        nav a.language-switch {
-          color: #f2f5f8;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 500;
         }
 
         h1 {
@@ -120,11 +68,6 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
         }
 
         @media (max-width: 726px) {
-          nav {
-            padding: 0 32px;
-            margin: 32px auto;
-          }
-
           h1 {
             font-size: 36px;
             margin: 0 32px 32px;
@@ -134,17 +77,6 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
             margin: 0 32px;
           }
         }
-        @media (max-width: 370px) {
-          nav {
-            padding: 0 16px;
-            margin: 16px auto;
-          }
-          nav a {
-            margin-left: 16px;
-          }
-          nav a.logo img{
-            max-width: 32px;
-          }
       `}</style>
     </header>
   )
