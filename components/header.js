@@ -23,6 +23,25 @@ const HeroText = (
 )
 
 export default ({ title, overTitle, overTitleLink, withHeroText }) => {
+  overTitle = overTitleLink ? (
+    <Link href={overTitleLink}>
+      <a>
+        {overTitle}
+        <style jsx>{`
+          a {
+            text-decoration: none;
+          }
+
+          a:hover {
+            text-decoration: underline;
+          }
+        `}</style>
+      </a>
+    </Link>
+  ) : (
+    overTitle
+  )
+
   return (
     <header>
       <nav>
@@ -31,7 +50,6 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
             <img src="/static/images/img-logo.svg" alt="Louis-André Labadie" />
           </a>
         </Link>
-        <a href="#">Contact</a>
         <Link href="/journal">
           <a>Journal</a>
         </Link>
@@ -44,11 +62,7 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
         </Translated.Consumer>
       </nav>
       {withHeroText ? HeroText : ""}
-      <h2>
-        <Link href={overTitleLink}>
-          <a>{overTitle}</a>
-        </Link>
-      </h2>
+      <h2>{overTitle}</h2>
       <h1>{title}</h1>
       <style jsx>{`
         header {
@@ -103,14 +117,6 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
           font-weight: 500;
           margin: 0 64px;
           max-width: 18em;
-        }
-
-        h2 a {
-          text-decoration: none;
-        }
-
-        h2 a:hover {
-          text-decoration: underline;
         }
 
         @media (max-width: 726px) {

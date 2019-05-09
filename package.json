@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/L-A/louis-andre.net#readme",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

@@ -1,6 +1,19 @@
+import { Translate } from "../helpers/translate"
+
 import Link from "next/link"
 import Page from "../layout/main"
 import Title from "../components/section-title"
+
+const T = Translate({
+  fr: {
+    intro:
+      "J'écris pour m'aider à synthétiser ce que j'apprends. Voici les articles que j'ai mis en ligne (en anglais)."
+  },
+  en: {
+    intro:
+      "I write so I can summarize what I learn or reflect on. Here are a few pieces I've put online."
+  }
+})
 
 const Year = ({ children }) => <Title compact>{children}</Title>
 
@@ -35,10 +48,7 @@ const Post = ({ title, excerpt, slug }) => (
 export default () => {
   return (
     <Page title="Journal">
-      <h1 className="intro">
-        J'écris pour m'aider à synthétiser ce que j'apprends. Voici les articles
-        que j'ai mis en ligne.
-      </h1>
+      <h1 className="intro">{T("intro")}</h1>
       <Year>2014</Year>
       <Post
         title="The hands of others"

@@ -6,6 +6,7 @@ import { Translated, SetLanguage } from "../helpers/translate"
 
 class Localized extends App {
   state = { language: this.props.language }
+
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
     if (Component.getInitialProps) {
@@ -13,7 +14,7 @@ class Localized extends App {
     }
 
     const language = readCookie("language", ctx.req)
-    return { ...pageProps, language: language }
+    return { pageProps: pageProps, language: language }
   }
 
   switchLanguage = () => {
@@ -24,7 +25,6 @@ class Localized extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    const { language, switchLanguage } = this.state
 
     return (
       <Container>

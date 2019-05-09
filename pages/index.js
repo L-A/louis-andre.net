@@ -1,62 +1,122 @@
-import Page from "../layout/main"
-import Title from "../components/section-title"
+import "isomorphic-fetch"
 
 import { Translate } from "../helpers/translate"
+
+import Page from "../layout/main"
+import Title from "../components/section-title"
 
 const T = Translate({
   fr: {
     intro: `Je suis Louis-André Labadie, designer indépendant,
-    spécialisé dans les produits et les applications numériques.`
+    spécialisé dans les produits et les applications numériques.`,
+    services: {
+      title: "Services",
+      introEmphasis: "Je suis un designer qui code.",
+      introParagraph:
+        "J'aime me concentrer sur des produits et des marques avec une vocation claire.",
+      introParagraph2:
+        "Le plus possible, je m'implique du tout début d'un projet jusqu'à sa mise en ligne.",
+      uiTitle: "Design d'interface",
+      uiParagraph: `Je crée des produits utiles et faciles d'utilisation, qui renforcent
+      la marque propre à chaque client. La rigueur et la clarté orientent
+      mes décisions visuelles.`,
+      uxTitle: "Design d'expérience",
+      uxParagraph: `L'expérience va de pair avec la création du produit.
+      Je me spécialise à rendre les produits complexes faciles d'approche.`,
+      frontEndTitle: "Développement front-end",
+      frontEndParagraph: `Je poursuis mon travail au-delà de la livraison de maquettes,
+      en prenant en charge le développement des interfaces que je livre.`
+    },
+    contact: {
+      title: "Contact & disponibilités",
+      next: "Prochaines disponibilités",
+      emailPrefix: "Rejoignez-moi à",
+      month: [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre"
+      ]
+    }
   },
   en: {
     intro: `I'm Louis-André Labadie, independent designer,
-    focused on building applications and digital products.`
+    focused on building applications and digital products.`,
+    services: {
+      title: "Services",
+      introEmphasis: "I'm a designer who codes.",
+      introParagraph:
+        "I enjoy working on products and brands defined by their clear purpose.",
+      introParagraph2:
+        "I try to be involved in projects from inception to launch.",
+      uiTitle: "Interface design",
+      uiParagraph: `I create useful and approachable products that play on their brands' strengths. Clarity and rigor guide my decisions.`,
+      uxTitle: "Experience design",
+      uxParagraph: `Experience can't be separated from product design. I specialize in making complex products easy to pick up and understand.`,
+      frontEndTitle: "Front-end development",
+      frontEndParagraph: `I follow-up on the design work by delivering developed interfaces that are ready to use.`
+    },
+    contact: {
+      title: "Contact & availabilities",
+      next: "Available starting in",
+      emailPrefix: "Reach me at",
+      month: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    }
   }
 })
 
-export default () => {
+const Index = ({ availableMonth }) => {
   return (
     <Page isHome title="Louis-André Labadie">
       <h1 className="intro">{T("intro")}</h1>
-      <Title>Services</Title>
+      <Title>{T("services.title")}</Title>
       <h3>
-        <strong>Je suis un designer qui code.</strong> J'aime me concentrer sur
-        des produits et des marques avec une vocation claire.
+        <strong>{T("services.introEmphasis")}</strong>{" "}
+        {T("services.introParagraph")}
       </h3>
-      <h3>
-        Le plus possible, je m'implique du tout début d'un projet jusqu'à sa
-        mise en ligne.
-      </h3>
+      <h3>{T("services.introParagraph2")}</h3>
       <ul className="services-list">
         <li className="ui">
-          <h4>Design d'interface</h4>
-          <p>
-            Je crée des produits utiles et faciles d'utilisation, qui renforcent
-            la marque propre à chaque client. La rigueur et la clarté orientent
-            mes décisions visuelles.
-          </p>
+          <h4>{T("services.uiTitle")}</h4>
+          <p>{T("services.uiParagraph")}</p>
         </li>
         <li className="ux">
-          <h4>Design d'expérience</h4>
-          <p>
-            L'expérience va de pair avec la création du produit. Je me
-            spécialise à rendre les produits complexes faciles d'approche.
-          </p>
+          <h4>{T("services.uxTitle")}</h4>
+          <p>{T("services.uxParagraph")}</p>
         </li>
         <li className="dev">
-          <h4>Développement front-end</h4>
-          <p>
-            Je poursuis mon travail au-delà de la livraison de maquettes, en
-            prenant en charge le développement des interfaces que je livre.
-          </p>
+          <h4>{T("services.frontEndTitle")}</h4>
+          <p>{T("services.frontEndParagraph")}</p>
         </li>
       </ul>
-      <Title>Contact & disponibilités</Title>
+      <Title>{T("contact.title")}</Title>
       <h3 className="availability">
-        Prochaines disponibilités: <strong>mai</strong>
+        {T("contact.next")}{" "}
+        <strong>{T("contact.month." + availableMonth)}</strong>
       </h3>
       <h3 className="email">
-        Je réponds rapidement à: <br />
+        {T("contact.emailPrefix")} <br />
         <a href="mailto:monsieur@louis-andre.net">
           <strong>monsieur@louis-andre.net</strong>
         </a>
@@ -156,3 +216,19 @@ export default () => {
     </Page>
   )
 }
+
+let availableDate = false
+const cushionAPIURL =
+  "https://my.cushionapp.com/api/v1/users/745f2179-6958-4664-8549-dce939fb32e6/availability"
+
+Index.getInitialProps = async () => {
+  if (!availableDate) {
+    const Availability = await fetch(cushionAPIURL)
+    let availabilityData = await Availability.json()
+    availableDate = new Date(availabilityData.availability.start_on)
+    availableDate.setDate(availableDate.getDate() + 7)
+  }
+  return { availableMonth: availableDate.getMonth() }
+}
+
+export default Index
