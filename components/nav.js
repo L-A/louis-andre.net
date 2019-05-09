@@ -2,8 +2,16 @@ import Link from "next/link"
 import { Translated, Translate } from "../helpers/translate"
 
 const T = Translate({
-  fr: { otherLanguage: "English" },
-  en: { otherLanguage: "Français" }
+  fr: {
+    about: "À propos",
+    journal: "Journal",
+    otherLanguage: "English"
+  },
+  en: {
+    about: "About",
+    journal: "Journal",
+    otherLanguage: "Français"
+  }
 })
 
 export default ({ isFooter }) => {
@@ -14,8 +22,11 @@ export default ({ isFooter }) => {
           <img src="/static/images/img-logo.svg" alt="Louis-André Labadie" />
         </a>
       </Link>
+      <Link href="/">
+        <a>{T("about")}</a>
+      </Link>
       <Link href="/journal">
-        <a>Journal</a>
+        <a>{T("journal")}</a>
       </Link>
       <Translated.Consumer>
         {({ switchLanguage }) => (
