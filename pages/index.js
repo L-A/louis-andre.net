@@ -7,8 +7,8 @@ import Title from "../components/section-title"
 
 const T = Translate({
   fr: {
-    intro: `Je suis Louis-André Labadie, designer indépendant,
-    spécialisé dans les produits et les applications numériques.`,
+    intro: `Je suis Louis-André Labadie, designer indépendant.
+    Je bâtis des produits et applications numériques remarquables.`,
     services: {
       title: "Services",
       introEmphasis: "Je suis un designer qui code.",
@@ -29,7 +29,7 @@ const T = Translate({
     },
     contact: {
       title: "Contact & disponibilités",
-      next: "Prochaines disponibilités",
+      next: "Prochaines disponibilités:",
       emailPrefix: "Rejoignez-moi à",
       month: [
         "janvier",
@@ -48,8 +48,8 @@ const T = Translate({
     }
   },
   en: {
-    intro: `I'm Louis-André Labadie, independent designer,
-    focused on building applications and digital products.`,
+    intro: `I'm Louis-André Labadie, an independent designer
+    focused on building great applications and digital products.`,
     services: {
       title: "Services",
       introEmphasis: "I'm a designer who codes.",
@@ -66,7 +66,7 @@ const T = Translate({
     },
     contact: {
       title: "Contact & availabilities",
-      next: "Available starting in",
+      next: "Available starting around",
       emailPrefix: "Reach me at",
       month: [
         "January",

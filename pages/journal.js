@@ -7,7 +7,7 @@ import Title from "../components/section-title"
 const T = Translate({
   fr: {
     intro:
-      "J'écris pour m'aider à synthétiser ce que j'apprends. Voici les articles que j'ai mis en ligne (en anglais)."
+      "J'écris pour m'aider à synthétiser ce que j'apprends. Voici les articles (en anglais) que j'ai mis en ligne."
   },
   en: {
     intro:
