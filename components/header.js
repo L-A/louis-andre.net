@@ -1,5 +1,10 @@
 import Link from "next/link"
-import { Translated } from "../helpers/translate"
+import { Translated, Translate } from "../helpers/translate"
+
+const T = Translate({
+  fr: { otherLanguage: "English" },
+  en: { otherLanguage: "Français" }
+})
 
 const HeroText = (
   <h1 className="hero-text">
@@ -31,7 +36,11 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
           <a>Journal</a>
         </Link>
         <Translated.Consumer>
-          {({ switchLanguage }) => <a onClick={switchLanguage}>EN</a>}
+          {({ switchLanguage }) => (
+            <a className="language-switch" onClick={switchLanguage}>
+              {T("otherLanguage")}
+            </a>
+          )}
         </Translated.Consumer>
       </nav>
       {withHeroText ? HeroText : ""}
@@ -69,9 +78,16 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
           text-decoration: underline;
         }
 
-        nav .logo {
+        nav a.logo {
           margin: 0 auto 0 0;
           color: transparent;
+        }
+
+        nav a.language-switch {
+          color: #f2f5f8;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
         }
 
         h1 {
@@ -112,6 +128,17 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
             margin: 0 32px;
           }
         }
+        @media (max-width: 370px) {
+          nav {
+            padding: 0 16px;
+            margin: 16px auto;
+          }
+          nav a {
+            margin-left: 16px;
+          }
+          nav a.logo img{
+            max-width: 32px;
+          }
       `}</style>
     </header>
   )
