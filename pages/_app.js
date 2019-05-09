@@ -13,7 +13,7 @@ class Localized extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    const language = readCookie("language", ctx.req)
+    const language = readCookie("language", ctx.req) || "en"
     return { pageProps: pageProps, language: language }
   }
 

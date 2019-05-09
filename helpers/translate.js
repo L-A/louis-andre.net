@@ -1,14 +1,5 @@
 import React from "react"
-import { readCookie, writeCookie } from "./cookies"
-
-const Language = () => {
-  let languageCookie = readCookie("language")
-  if (languageCookie == "en" || languageCookie == "fr") {
-    return languageCookie
-  } else {
-    return "en"
-  }
-}
+import { writeCookie } from "./cookies"
 
 const SetLanguage = language => {
   writeCookie("language", language)
