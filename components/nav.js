@@ -23,7 +23,7 @@ export default ({ isFooter }) => {
         </a>
       </Link>
       <Link href="/">
-        <a>{T("about")}</a>
+        <a className="redundant-link">{T("about")}</a>
       </Link>
       <Link href="/journal">
         <a>{T("journal")}</a>
@@ -74,10 +74,12 @@ export default ({ isFooter }) => {
             margin: 32px auto;
           }
         }
-        @media (max-width: 370px) {
-          nav {
-            margin: 16px auto;
+        @media (max-width: 440px) {
+          nav a.redundant-link {
+            visibility: hidden;
           }
+        }
+        @media (max-width: 370px) {
           nav a {
             margin-left: 16px;
           }
