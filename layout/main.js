@@ -11,6 +11,31 @@ export default ({ isHome, title, overTitle, overTitleLink, children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{pageTitle}</title>
         <link rel="icon" href="/static/images/favicon.ico" />
+        <style type="text/css">{`
+          @font-face {
+            font-family: "Work Sans";
+            src: url("/static/fonts/WorkSans-Regular.woff2") format("woff2"),
+              url("/static/fonts/WorkSans-Regular.woff") format("woff");
+          }
+          @font-face {
+            font-family: "Work Sans";
+            font-style: italic;
+            src: url("/static/fonts/WorkSans-Italic.woff2") format("woff2"),
+              url("/static/fonts/WorkSans-Italic.woff") format("woff");
+          }
+          @font-face {
+            font-family: "Work Sans";
+            font-weight: 200;
+            src: url("/static/fonts/WorkSans-Light.woff2") format("woff2"),
+              url("/static/fonts/WorkSans-Light.woff") format("woff");
+          }
+          @font-face {
+            font-family: "Work Sans";
+            font-weight: 700;
+            src: url("/static/fonts/WorkSans-Bold.woff2") format("woff2"),
+              url("/static/fonts/WorkSans-Bold.woff") format("woff");
+          }
+          `}</style>
       </Head>
       <style jsx global>{`
         * {
@@ -34,29 +59,6 @@ export default ({ isHome, title, overTitle, overTitleLink, children }) => {
         }
 
         /* Fonts */
-        @font-face {
-          font-family: "Work Sans";
-          src: url("/static/fonts/WorkSans-Regular.woff2") format("woff2"),
-            url("/static/fonts/WorkSans-Regular.woff") format("woff");
-        }
-        @font-face {
-          font-family: "Work Sans";
-          font-style: italic;
-          src: url("/static/fonts/WorkSans-Italic.woff2") format("woff2"),
-            url("/static/fonts/WorkSans-Italic.woff") format("woff");
-        }
-        @font-face {
-          font-family: "Work Sans";
-          font-weight: 200;
-          src: url("/static/fonts/WorkSans-Light.woff2") format("woff2"),
-            url("/static/fonts/WorkSans-Light.woff") format("woff");
-        }
-        @font-face {
-          font-family: "Work Sans";
-          font-weight: 700;
-          src: url("/static/fonts/WorkSans-Bold.woff2") format("woff2"),
-            url("/static/fonts/WorkSans-Bold.woff") format("woff");
-        }
       `}</style>
       <Header
         withHeroText={isHome}
