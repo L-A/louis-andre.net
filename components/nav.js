@@ -76,7 +76,7 @@ export default ({ isFooter }) => {
         }
         @media (max-width: 440px) {
           nav a.redundant-link {
-            visibility: hidden;
+            display: none;
           }
         }
         @media (max-width: 370px) {
