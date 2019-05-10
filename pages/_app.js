@@ -39,7 +39,7 @@ class Localized extends App {
           }}
         >
           <PageTransition
-            timeout={450}
+            timeout={350}
             classNames="page-transition"
             skipInitialTransition
             monkeyPatchScrolling
@@ -47,6 +47,7 @@ class Localized extends App {
             <Component {...pageProps} key={this.props.router.route} />
           </PageTransition>
         </Translated.Provider>
+
         <style jsx global>{`
           .page-transition-enter::after,
           .page-transition-enter-active::after,
@@ -61,18 +62,19 @@ class Localized extends App {
             right: 0;
             bottom: -20vh;
           }
-
           .page-transition-exit::after {
-            transform: translateY(120vh) skew(0, 0deg);
+            transform: translateY(120vh) skew(0, 0deg) scaleX(1.1);
           }
           .page-transition-enter::after,
           .page-transition-exit-active::after {
-            transform: translateY(0) skew(0, 20deg);
-            transition: transform 425ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+            transform: translateY(0) skew(0, 8deg) scaleX(1.1);
+            transition: transform 350ms cubic-bezier(0.24, 0, 0.35, 1);
           }
           .page-transition-enter-active::after {
-            transform: translateY(-120vh) skew(0, 4deg);
-            transition: transform 425ms cubic-bezier(0.165, 0.84, 0.44, 1);
+            transform: translateY(-120vh) skew(0, 4deg) scaleX(1.1);
+            transition: transform 350ms cubic-bezier(0.24, 0, 0.35, 1),
+              background 350ms;
+            background: #1e367b;
           }
         `}</style>
       </Container>
