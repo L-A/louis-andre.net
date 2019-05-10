@@ -18,7 +18,7 @@ const T = Translate({
 const Year = ({ children }) => <Title compact>{children}</Title>
 
 const Post = ({ title, excerpt, slug }) => (
-  <Link href={"/journal/" + slug}>
+  <Link href={"/journal/" + slug} prefetch>
     <a>
       <h2>{title}</h2>
       <p>{excerpt}</p>

@@ -17,15 +17,15 @@ const T = Translate({
 export default ({ isFooter }) => {
   return (
     <nav>
-      <Link href="/">
+      <Link href="/" prefetch>
         <a className="logo">
           <img src="/static/images/img-logo.svg" alt="Louis-André Labadie" />
         </a>
       </Link>
-      <Link href="/">
+      <Link href="/" prefetch>
         <a className="redundant-link">{T("about")}</a>
       </Link>
-      <Link href="/journal">
+      <Link href="/journal" prefetch>
         <a>{T("journal")}</a>
       </Link>
       <Translated.Consumer>
