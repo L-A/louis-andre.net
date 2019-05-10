@@ -7,6 +7,9 @@ import Title from "../components/section-title"
 
 const T = Translate({
   fr: {
+    meta: {
+      description: `Designer indépendant, spécialisé en web et applications`
+    },
     intro: `Je suis Louis-André Labadie, designer indépendant.
     Je bâtis des produits et applications numériques remarquables.`,
     services: {
@@ -48,6 +51,9 @@ const T = Translate({
     }
   },
   en: {
+    meta: {
+      description: `Independent designer, specialized in web and applications`
+    },
     intro: `I'm Louis-André Labadie, an independent designer
     focused on building great applications and digital products.`,
     services: {
@@ -88,7 +94,11 @@ const T = Translate({
 
 const Index = ({ availableMonth }) => {
   return (
-    <Page isHome title="Louis-André Labadie">
+    <Page
+      isHome
+      title="Louis-André Labadie"
+      description="Independent designer. Hire me to ship great apps and websites!"
+    >
       <h1 className="intro">{T("intro")}</h1>
       <Title>{T("services.title")}</Title>
       <h3>
