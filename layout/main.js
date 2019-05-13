@@ -22,8 +22,16 @@ export default ({
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
-            <meta name="description" content={description} />
+
             <title>{pageTitle}</title>
+            <meta name="description" content={description} />
+            <meta itemProp="name" content={pageTitle} />
+            <meta itemProp="image" content="/static/share-og-image-v1.jpg" />
+            <meta name="og:title" content={pageTitle} />
+            <meta name="og:title" content={description} />
+            <meta name="og:type" content="website" />
+            <meta name="og:image" content="/static/share-og-image-v1.jpg" />
+
             <link rel="icon" href="/static/images/favicon.ico" />
             <style type="text/css">{`
           @font-face {
