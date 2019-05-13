@@ -23,7 +23,7 @@ export default ({ isFooter }) => {
         </a>
       </Link>
       <Link href="/" prefetch>
-        <a className="redundant-link">{T("about")}</a>
+        <a>{T("about")}</a>
       </Link>
       <Link href="/journal" prefetch>
         <a>{T("journal")}</a>
@@ -41,13 +41,13 @@ export default ({ isFooter }) => {
           justify-content: ${isFooter ? "flex-start" : "flex-end"};
           align-items: center;
           padding: 0 64px;
-          margin: 64px auto;
+          margin: ${isFooter ? "32px auto 8px" : "64px auto"};
         }
 
         nav a {
           color: #f95d0c;
           font-weight: 700;
-          margin-left: 32px;
+          ${isFooter ? "margin-right: 32px;" : "margin-left: 32px;"}
           text-decoration: none;
         }
 
@@ -66,22 +66,22 @@ export default ({ isFooter }) => {
           cursor: pointer;
           font-size: 14px;
           font-weight: 500;
+          margin-left: ${isFooter ? "auto" : "32px"};
+          margin-right: 0;
         }
 
         @media (max-width: 726px) {
           nav {
             padding: 0 32px;
-            margin: 32px auto;
+            margin: ${isFooter ? "32px auto 8px" : "32px auto"};
           }
         }
-        @media (max-width: 440px) {
-          nav a.redundant-link {
-            display: none;
+        @media (max-width: 390px) {
+          nav a, nav a.language-switch {
+            ${isFooter ? "margin-right: 16px;" : "margin-left: 16px;"};
           }
-        }
-        @media (max-width: 370px) {
-          nav a {
-            margin-left: 16px;
+          nav a.language-switch {
+            margin-right: 0;
           }
           nav a.logo img{
             max-width: 32px;
