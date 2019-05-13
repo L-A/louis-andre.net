@@ -45,7 +45,7 @@ export default ({ isFooter }) => {
         }
 
         nav a {
-          color: #f95d0c;
+          color: #D73F00;
           font-weight: 700;
           ${isFooter ? "margin-right: 32px;" : "margin-left: 32px;"}
           text-decoration: none;

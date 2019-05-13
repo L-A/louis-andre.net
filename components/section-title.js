@@ -3,7 +3,7 @@ export default ({ children, compact }) => (
     {children}
     <style jsx>{`
       h2 {
-        color: #f95d0c;
+        color: #d73f00;
         font-size: 14px;
         font-weight: 700;
         margin: ${compact ? "64px 0 32px" : "128px 0 64px"};

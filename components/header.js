@@ -60,7 +60,7 @@ export default ({ title, overTitle, overTitleLink, withHeroText }) => {
         }
 
         h2 {
-          color: #f95d0c;
+          color: #d73f00;
           font-size: 16px;
           font-weight: 500;
           margin: 0 64px;
