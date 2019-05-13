@@ -31,7 +31,7 @@ class Localized extends App {
     const { Component, pageProps } = this.props
 
     return (
-      <Container>
+      <Container lang={this.state.language}>
         <Translated.Provider
           value={{
             language: this.state.language,
