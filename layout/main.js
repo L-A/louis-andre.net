@@ -27,10 +27,10 @@ export default ({
             <meta name="description" content={description} />
             <meta itemProp="name" content={pageTitle} />
             <meta itemProp="image" content="/static/share-og-image-v1.jpg" />
-            <meta name="og:title" content={pageTitle} />
-            <meta name="og:title" content={description} />
-            <meta name="og:type" content="website" />
-            <meta name="og:image" content="/static/share-og-image-v1.jpg" />
+            <meta property="og:title" content={pageTitle} />
+            <meta property="og:description" content={description} />
+            <meta property="og:type" content="website" />
+            <meta property="og:image" content="/static/share-og-image-v1.jpg" />
 
             <link rel="icon" href="/static/images/favicon.ico" />
             <style type="text/css">{`
