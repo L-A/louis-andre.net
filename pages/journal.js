@@ -47,7 +47,7 @@ const Post = ({ title, excerpt, slug }) => (
 
 export default () => {
   return (
-    <Page title="Journal">
+    <Page title="Journal" description="Writings from Louis-André Labadie">
       <h1 className="intro">{T("intro")}</h1>
       <Year>2014</Year>
       <Post
