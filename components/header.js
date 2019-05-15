@@ -1,144 +1,83 @@
-import React from 'react'
-import Link from 'next/prefetch'
-import Logo from '~/components/logo'
-import { Translate, Language, SetLanguage } from '~/helpers/lang'
+import Link from "next/link"
 
-const T = Translate({
-  en: {
-    nav: {
-			about: "about",
-			journal: "journal",
-			contact: "contact"
-		}
-  },
-	fr: {
-    nav: {
-			about: "info",
-			journal: "journal",
-			contact: "contact"
-		}
-  }
-})
+import Nav from "../components/nav"
 
-export default class extends React.Component {
-	constructor (props) {
-		super(props)
-		this.state = {
-			factor: 1,
-			logoPosition: {
-				c: {left: 0, top: 0},
-				m: {left: 0, top: 0},
-				y: {left: 0, top: 0}
-			}
-		}
-	}
+const HeroText = (
+  <h1 className="hero-text">
+    <img alt="Design & Code" src="/static/images/img-design-code.svg" />
+    <style jsx>{`
+      .hero-text {
+        text-align: center;
+        margin: 128px auto 128px;
+      }
 
-	changeLayers = () => {
-	if (process.browser) {
-		this.setState({
-				factor: this.state.factor + 0.1,
-				logoPosition: {
-					c: {left: this.randPos(2) + 2, top: 0},
-					m: {left: 0, top: this.randPos(2)},
-					y: {left: this.randPos(2) - 2, top: 0}
-				}
-			})
-		}
-	}
+      .hero-text img {
+        max-width: 60vw;
+      }
+    `}</style>
+  </h1>
+)
 
-	changeLang = () => {
-		let otherLang = this.props.lang == "fr" ? "en" : "fr"
-		SetLanguage(otherLang)
-    location.reload()
-	}
-
-	componentDidMount () {
-		this.changeLayers()
-	}
-
-	randPos = (range) => {
-		return this.state.factor * (Math.random() * range - (range / 2))
-	}
-
-	render () {
-		let yLogo = this.state.logoPosition.y;
-		let cLogo = this.state.logoPosition.c;
-		let mLogo = this.state.logoPosition.m;
-		let otherLang = Language() == "fr" ? "en" : "fr"
-		return (
-			<nav className="dt w-100 pb4 pt3 pt4-m pt5-l">
-				<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
-					<Link href="/">
-						<a className="dib home-link">
-							<div className="logo-layer" style={yLogo}>
-								<Logo fill="#FF0"/>
-							</div>
-							<div className="logo-layer" style={cLogo}>
-								<Logo fill="#0FF"/>
-							</div>
-							<div className="logo-layer" style={mLogo}>
-								<Logo fill="#F0F"/>
-							</div>
-						</a>
-					</Link>
-				</h1>
-				<ul className="f6 f5-ns dtc v-mid list code w-75 tr pa0 pb2 pr3 pr5-m pr6-l">
-					<li className="dib ph2 ph3-l br bw1 b--light-gray">
-						<Link href="/about">
-							<a className="link dark-gray hover-green">
-								{T.Key("nav.about")}
-							</a>
-						</Link>
-					</li>
-					<li className="dib ph2 ph3-l br bw1 b--light-gray">
-						<Link href="/journal">
-							<a className="link dark-gray hover-green">
-								{T.Key("nav.journal")}
-							</a>
-						</Link>
-					</li>
-					<li className="dib ph2 ph3-l br bw1 b--light-gray">
-						<Link href="/contact">
-							<a className="link dark-gray hover-green">
-								{T.Key("nav.contact")}
-							</a>
-						</Link>
-					</li>
-					<li className="dib pl2 pl3-l pointer ttu">
-						<a onClick={this.changeLang} className="link f6 b silver hover-green">
-							{otherLang}
-						</a>
-					</li>
-				</ul>
-				<style jsx>{`
-					.home-link {
-						height: 42px;
-						position: relative;
-						transition: transform 0.1s ease-out;
-						width: 42px;
-					}
-					.home-link:hover {
-						transform: scale(1.1);
-					},
-					.home-link:active svg {
-						transform: scale(0.9);
-					}
-					.home-link .logo-layer {
-						height: 100%;
-						left:0;
-						top:0;
-						width: 100%;
-						mix-blend-mode: multiply;
-						position: absolute;
-						transition: left .1s ease-out, top .1s ease-out, transform .1s ease-out;
-					}
-          @media (max-width: 480px) {
-            .home-link {
-              width: 32px;
-            }
+export default ({ title, overTitle, overTitleLink, withHeroText }) => {
+  overTitle = overTitleLink ? (
+    <Link href={overTitleLink}>
+      <a>
+        {overTitle}
+        <style jsx>{`
+          a {
+            text-decoration: none;
           }
-				`}</style>
-			</nav>
-		)
-	}
+          a:hover {
+            text-decoration: underline;
+          }
+        `}</style>
+      </a>
+    </Link>
+  ) : (
+    overTitle
+  )
+
+  return (
+    <header>
+      <Nav />
+      {withHeroText ? HeroText : ""}
+      <h2>{overTitle}</h2>
+      <h1>{title}</h1>
+      <style jsx>{`
+        header {
+          background-color: #420b45;
+          background-image: url("/static/images/header-bg.jpg");
+          background-size: cover;
+          color: #fff;
+          overflow: hidden;
+        }
+
+        h1 {
+          margin: 0 64px 64px;
+          font-size: 46px;
+          line-height: 1.1;
+          max-width: 15em;
+        }
+
+        h2 {
+          color: #d73f00;
+          font-size: 16px;
+          font-weight: 500;
+          margin: 0 64px;
+          max-width: 18em;
+        }
+
+        @media (max-width: 726px) {
+          h1 {
+            font-size: 36px;
+            margin: 0 32px 32px;
+          }
+
+          h2 {
+            margin: 0 32px;
+          }
+        }
+      `}</style>
+    </header>
+  )
 }

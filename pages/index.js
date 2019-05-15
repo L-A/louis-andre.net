@@ -1,183 +1,244 @@
-import React from 'react'
-import Link from 'next/prefetch'
-import Page from '~/layouts/page'
-import Icon from '~/components/icon.js'
-import Project from '~/components/project'
-import ColorRange from '~/helpers/colorRange'
-import Shot from '~/components/dribbble-shot'
-import { Translate } from '~/helpers/lang'
+import "isomorphic-fetch"
+
+import { Translate } from "../helpers/translate"
+
+import Page from "../layout/main"
+import Title from "../components/section-title"
 
 const T = Translate({
-  en: {
-    tagline: "Hi! I'm Louis&#8209;André, designer.<br/>I make apps and web&nbsp;sites.",
-    more: "more of these",
-    on_hold: "On hold",
-    headers: {
-      dribbble: "Bite-sized work",
-      case_studies: "Projects & case-studies"
+  fr: {
+    meta: {
+      description: `Designer indépendant, spécialisé en web et applications`
     },
-    availability: {
-      available: "Available!",
-      booked: "All booked"
+    intro: `Je suis Louis-André Labadie, designer indépendant.
+    Je bâtis des produits et applications numériques remarquables.`,
+    services: {
+      title: "Services",
+      introEmphasis: "Je suis un designer qui code.",
+      introParagraph:
+        "J'aime me concentrer sur des produits et des marques avec une vocation claire.",
+      introParagraph2:
+        "Le plus possible, je m'implique du tout début d'un projet jusqu'à sa mise en ligne.",
+      uiTitle: "Design d'interface",
+      uiParagraph: `Je crée des produits utiles et faciles d'utilisation, qui renforcent
+      la marque propre à chaque client. La rigueur et la clarté orientent
+      mes décisions visuelles.`,
+      uxTitle: "Design d'expérience",
+      uxParagraph: `L'expérience va de pair avec la création du produit.
+      Je me spécialise à rendre les produits complexes faciles d'approche.`,
+      frontEndTitle: "Développement front-end",
+      frontEndParagraph: `Je poursuis mon travail au-delà de la livraison de maquettes,
+      en prenant en charge le développement des interfaces que je livre.`
     },
-    octobot: {
-      description: "A friendly app that instantly notifies you when Github services go offline.",
-      details: "Interface design, branding, assets production (iOS & Android), web development."
-    },
-    littleJekyll: {
-      description: "If the command-line is still unknown territory, this desktop app allows anyone to write, serve and build a Jekyll website.",
-      details: "Interface design, branding, Node.js & Electron development."
-    },
-    fitsteady: {
-      description: "Masters of making a workspace healthy, Fitsteady added an attendance and satisfaction app to their trainers’ toolbelt.",
-      details: "Interface design, assets production."
+    contact: {
+      title: "Contact & disponibilités",
+      next: "Prochaines disponibilités:",
+      emailPrefix: "Rejoignez-moi à",
+      month: [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre"
+      ]
     }
   },
-	fr: {
-    tagline: "Bonjour! Je suis Louis&#8209;André, designer. Je&nbsp;fais des sites et applications web.",
-    more: "voir d'autres",
-    on_hold: "Interrompu",
-    headers: {
-      dribbble: "Petits extraits",
-      case_studies: "Projets intéressants"
+  en: {
+    meta: {
+      description: `Independent designer, specialized in web and applications`
     },
-    availability: {
-      available: "Disponible!",
-      booked: "Indisponible"
+    intro: `I'm Louis-André Labadie, an independent designer
+    focused on building great applications and digital products.`,
+    services: {
+      title: "Services",
+      introEmphasis: "I'm a designer who codes.",
+      introParagraph:
+        "I enjoy working on products and brands defined by their clear purpose.",
+      introParagraph2:
+        "I try to be involved in projects from inception to launch.",
+      uiTitle: "Interface design",
+      uiParagraph: `I create useful and approachable products that play on their brands' strengths. Clarity and rigor guide my decisions.`,
+      uxTitle: "Experience design",
+      uxParagraph: `Experience can't be separated from product design. I specialize in making complex products easy to pick up and understand.`,
+      frontEndTitle: "Front-end development",
+      frontEndParagraph: `I follow-up on the design work by delivering developed interfaces that are ready to use.`
     },
-    octobot: {
-      description: "Une sympathique application qui notifie instantanément lors d'interruptions de service Github.",
-      details: "Design d'interface, design de marque, production des ressources (iOS et Android), développement web."
-    },
-    littleJekyll: {
-      description: "Cette application permet à tous de créer et de bâtir un site avec Jekyll, même sans connaître le Terminal.",
-      details: "Design d'interface, design de marque, développement Node.js et Electron."
-    },
-    fitsteady: {
-      description: "Passés maîtres dans l'art du bien-être en milieu de travail, Fitsteady ont équippé leurs entraîneurs avec une application de prise de présence et de mesure de satisfaction.",
-      details: "Design d'interface, production des ressources."
+    contact: {
+      title: "Contact & availabilities",
+      next: "Available starting around",
+      emailPrefix: "Reach me at",
+      month: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
     }
   }
 })
 
-export default Page( () => (
-  <div>
-		<MovingFill />
-		<div style={headerStyle} className="lh-title mb4 mb5-ns mt3 mt5-ns ph3 ph5-m ph6-l tc b f3 f2-ns center" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
-    <div className="tc mb4 mb5-ns">
-      {/* <Link href="/contact">
-        <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 green br2 tc">{T.Key('availability.booked')}</a>
-      </Link> */}
-    </div>
-		<h4 className="f6 ph3 mb3 mt6 mt5-ns tc ttu dribbble-shots">{T.Key("headers.dribbble")} <Icon iconName="dribbble" /></h4>
-		<div className="cf ph3 pt1-ns ph5-m ph6-l tc">
-			<Shot shotImageURL={shots[0].image} linkTo={shots[0].url}></Shot>
-			<Shot shotImageURL={shots[1].image} linkTo={shots[1].url}></Shot>
-			<Shot shotImageURL={shots[2].image} linkTo={shots[2].url}></Shot>
-		</div>
-    <a href="https://dribbble.com/l-a" className="f6 f5-ns db mt3 ph3 silver tc">{T.Key("more")}</a>
-    <div className="case-studies">
-      <h4 className="f6 ph3 mt6 mt5-ns mb3 tc ttu">{T.Key("headers.case_studies")} <Icon iconName="cases" /></h4>
-      <Project name="Octobot" titleColor="#bfa28b" buttonColor="#cc6633" image="octobot@2x.png" btnURL="/journal/octobot">
-        <p className="lh-copy">{T.Key("octobot.description")}</p>
-        <p className="lh-copy code gray f6">{T.Key("octobot.details")}</p>
-      </Project>
-      <Project name="Little Jekyll" titleColor="#5560ac" image="little-jekyll@2x.png" btnText={T.Key("on_hold")}>
-        <p className="lh-copy">{T.Key("littleJekyll.description")}</p>
-        <p className="lh-copy code gray f6">{T.Key("littleJekyll.details")}</p>
-      </Project>
-      <Project name="Fitsteady" titleColor="#459283" buttonColor="#00a087" image="fitsteady@2x.png" btnURL="/journal/fitsteady">
-        <p className="lh-copy">{T.Key("fitsteady.description")}</p>
-        <p className="lh-copy code gray f6">{T.Key("fitsteady.details")}</p>
-      </Project>
-    </div>
-	</div>
-))
+const Index = ({ availableMonth }) => {
+  return (
+    <Page
+      isHome
+      title="Louis-André Labadie"
+      description="Independent designer. Hire me to ship great apps and websites!"
+    >
+      <h1 className="intro">{T("intro")}</h1>
+      <Title>{T("services.title")}</Title>
+      <h3>
+        <strong>{T("services.introEmphasis")}</strong>{" "}
+        {T("services.introParagraph")}
+      </h3>
+      <h3>{T("services.introParagraph2")}</h3>
+      <ul className="services-list">
+        <li className="ui">
+          <h4>{T("services.uiTitle")}</h4>
+          <p>{T("services.uiParagraph")}</p>
+        </li>
+        <li className="ux">
+          <h4>{T("services.uxTitle")}</h4>
+          <p>{T("services.uxParagraph")}</p>
+        </li>
+        <li className="dev">
+          <h4>{T("services.frontEndTitle")}</h4>
+          <p>{T("services.frontEndParagraph")}</p>
+        </li>
+      </ul>
+      <Title>{T("contact.title")}</Title>
+      <h3 className="availability">
+        {T("contact.next")}{" "}
+        <strong>{T("contact.month." + availableMonth)}</strong>
+      </h3>
+      <h3 className="email">
+        {T("contact.emailPrefix")} <br />
+        <a href="mailto:monsieur@louis-andre.net">
+          <strong>monsieur@louis-andre.net</strong>
+        </a>
+      </h3>
+      <style jsx>{`
+        .intro {
+          color: #1e2949;
+          font-size: 30px;
+          font-weight: 300;
+          margin-top: 128px;
+          max-width: 20em;
+        }
 
+        h3 {
+          font-size: 22px;
+          font-weight: normal;
+          max-width: 28em;
+        }
 
-const shots = [
-	{
-		image: "https://cdn.dribbble.com/users/8100/screenshots/3159749/shot_2x_1x.png",
-		url: "https://dribbble.com/shots/3159749-Housing"
-	},
-	{
-		image: "https://cdn.dribbble.com/users/8100/screenshots/3067514/g-dribbble_1x.jpg",
-		url: "https://dribbble.com/shots/3067514-The-yellower-the-colder"
-	},
-	{
-		image: "https://cdn.dribbble.com/users/8100/screenshots/1580576/metrio-brand_1x.png",
-		url: "https://dribbble.com/shots/1580576-Metrio-Brand"
-	}
-]
+        .services-list {
+          padding: 32px 0 0;
+        }
 
-const fillStyle = (fillPosition, ratio) => {
-	return {
-		position: 'fixed',
-		backgroundColor: '#' + ColorRange('e9f6fc', 'fff9f0', ratio),
-		width: '100%',
-		height: '120vh',
-		bottom: -fillPosition + 'vh',
-		transform: 'skewY(-8deg)',
-		zIndex: '-1',
-		transition: 'background-color 80ms ease-out, bottom 80ms ease-out'
-	}
+        .services-list li {
+          background: no-repeat center left;
+          list-style: none;
+          margin: 64px 0;
+          padding-left: 162px;
+        }
+
+        .services-list li.ui {
+          background-image: url("/static/images/icn-ui.svg");
+        }
+
+        .services-list li.ux {
+          background-image: url("/static/images/icn-ux.svg");
+        }
+
+        .services-list li.dev {
+          background-image: url("/static/images/icn-dev.svg");
+        }
+
+        .services-list h4 {
+          color: #2200a1;
+          font-weight: 300;
+          font-size: 28px;
+          margin: 0 0 8px;
+        }
+
+        .services-list p {
+          color: #1e2949;
+          font-size: 16px;
+          margin-top: 8px;
+          max-width: 28em;
+        }
+
+        .availability {
+          border: 2px solid #2200a1;
+          border-radius: 4px;
+          color: #2200a1;
+          font-size: 16px;
+          padding: 8px 16px;
+          display: inline-block;
+        }
+
+        .email a {
+          color: #2200a1;
+          text-decoration: none;
+        }
+
+        .email a:hover {
+          text-decoration: underline;
+        }
+
+        @media (max-width: 512px) {
+          /* Smaller fonts */
+          .intro {
+            font-size: 24px;
+            margin-top: 64px;
+          }
+
+          h3 {
+            font-size: 20px;
+          }
+
+          .services-list li {
+            background: no-repeat center top;
+            margin-top: 32px;
+            padding: 128px 0 0;
+          }
+
+          .services-list li h4 {
+            font-size: 22px;
+          }
+        }
+      `}</style>
+    </Page>
+  )
 }
 
-const headerStyle = {
-	color: '#4e5667',
-  maxWidth: '1040px',
-	textShadow: '1px 1px #fff, 2px 3px 0 #dff6fb'
+let availableDate = false
+const cushionAPIURL =
+  "https://my.cushionapp.com/api/v1/users/745f2179-6958-4664-8549-dce939fb32e6/availability"
+
+Index.getInitialProps = async () => {
+  if (!availableDate) {
+    const Availability = await fetch(cushionAPIURL)
+    let availabilityData = await Availability.json()
+    availableDate = new Date(availabilityData.availability.start_on)
+    availableDate.setDate(availableDate.getDate() + 7)
+  }
+  return { availableMonth: availableDate.getMonth() }
 }
 
-const contactLinkStyle = {
-  backgroundColor: '#eee'
-}
-
-// Moving color fill element
-
-class MovingFill extends React.Component {
-	constructor (props) {
-		super(props)
-		this.state = { scrollRatio: 0 }
-	}
-
-	componentDidMount = () => {
-		if (!process.browser) { return false }
-		window.addEventListener('scroll', this.handleScroll)
-	}
-
-	componentWillUnmount = () => {
-		window.removeEventListener('scroll', this.handleScroll)
-	}
-
-	reportScrollRatio = () => {
-		if ( !process.browser ) { return 0 } // A reasonable assumption, I hope
-		let bod = document.body,
-				doc = document.documentElement,
-        elem = document.querySelector(".case-studies"),
-				viewportHeight = window.innerHeight,
-				st = bod.scrollTop || doc.scrollTop,
-				sh = bod.scrollHeight || doc.scrollHeight,
-				scrollStart = elem.offsetTop - (viewportHeight),
-				scrollDistance = elem.offsetHeight
-
-		let ratio = (st - scrollStart) / scrollDistance
-
-		ratio = ratio <= 0 ? 0 : ratio
-		ratio = ratio >= 1 ? 1 : ratio
-
-		return ratio
-	}
-
-	fillPosition = () => {
-		return 130 - (this.state.scrollRatio * 100)
-	}
-
-	handleScroll = () => {
-		this.setState({ scrollRatio: this.reportScrollRatio() })
-	}
-
-	render = () => {
-		return <div style={fillStyle(this.fillPosition(), this.state.scrollRatio)}/>
-	}
-}
+export default Index

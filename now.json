@@ -1,7 +1,6 @@
 {
-  "version": 1,
-  "alias": [
-    "louis-andre.net",
-    "www.louis-andre.net"
-  ]
+  "version": 2,
+  "name": "net",
+  "alias": ["louis-andre.net", "www.louis-andre.net"],
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
 }
