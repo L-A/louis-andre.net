@@ -3,10 +3,12 @@ import { PageTransition } from "next-page-transitions"
 
 import { readCookie } from "../helpers/cookies"
 import { Translated, SetLanguage } from "../helpers/translate"
+import { AbsoluteUrl } from "../helpers/absoluteUrl"
 
-// Since this is less readable, two things are happening here:
+// Since this is less readable, three things are happening here:
 // - One, the app is translated through a React context
 // - Two, visual page transitions are all managed here
+// - Three, we're providing an absolute URL (for working OpenGraph tags)
 
 class Localized extends App {
   state = { language: this.props.language }
@@ -18,7 +20,19 @@ class Localized extends App {
     }
 
     const language = readCookie("language", ctx.req) || "en"
-    return { pageProps: pageProps, language: language }
+    const hostName =
+      typeof ctx.req !== "undefined"
+        ? "https://" + ctx.req.headers.host
+        : window.location.origin
+
+    return {
+      pageProps: {
+        ...pageProps
+      },
+      hostName: hostName,
+      path: ctx.pathname,
+      language: language
+    }
   }
 
   switchLanguage = () => {
@@ -28,8 +42,7 @@ class Localized extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props
-
+    const { Component, pageProps, protocol, hostName, path } = this.props
     return (
       <Container lang={this.state.language}>
         <Translated.Provider
@@ -38,14 +51,22 @@ class Localized extends App {
             switchLanguage: this.switchLanguage
           }}
         >
-          <PageTransition
-            timeout={350}
-            classNames="page-transition"
-            skipInitialTransition
-            monkeyPatchScrolling
+          <AbsoluteUrl.Provider
+            value={{
+              protocol: protocol,
+              hostName: hostName,
+              path: path
+            }}
           >
-            <Component {...pageProps} key={this.props.router.route} />
-          </PageTransition>
+            <PageTransition
+              timeout={350}
+              classNames="page-transition"
+              skipInitialTransition
+              monkeyPatchScrolling
+            >
+              <Component {...pageProps} key={this.props.router.route} />
+            </PageTransition>
+          </AbsoluteUrl.Provider>
         </Translated.Provider>
 
         <style jsx global>{`
