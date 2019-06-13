@@ -49,6 +49,12 @@ export default () => {
   return (
     <Page title="Journal" description="Writings from Louis-André Labadie">
       <h1 className="intro">{T("intro")}</h1>
+      <Year>2016</Year>
+      <Post
+        title="VESA mounting a 13 inch Cintiq"
+        excerpt="How to make the 13-inch Cintiq compatible with VESA mounts"
+        slug="cintiq-vesa-mount"
+      />
       <Year>2014</Year>
       <Post
         title="The hands of others"
