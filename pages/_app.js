@@ -20,15 +20,18 @@ class Localized extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    require("https")
-      .request({
+    require("https").get(
+      {
         host: "kind-store.glitch.me",
         path: `/hit?url=${ctx.pathname}&date=${
           new Date().toISOString().split("T")[0]
         }`,
         timeout: 200
-      })
-      .end()
+      },
+      x => null
+    )
+
+    console.log("Hi am I read on the server?")
 
     const language = readCookie("language", ctx.req) || "en"
     const hostName =
