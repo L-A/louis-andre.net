@@ -26,7 +26,7 @@ class Localized extends App {
         path: `/hit?url=${ctx.pathname}&date=${
           new Date().toISOString().split("T")[0]
         }`,
-        timeout: 10
+        timeout: 200
       })
       .end()
 
