@@ -1,6 +1,5 @@
 import App, { Container } from "next/app"
 import { PageTransition } from "next-page-transitions"
-import "isomorphic-fetch"
 
 import { readCookie } from "../helpers/cookies"
 import { Translated, SetLanguage } from "../helpers/translate"
@@ -20,13 +19,6 @@ class Localized extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
-
-    fetch(
-      "https://kind-store.glitch.me/hit?url=" +
-        ctx.pathname +
-        "&date=" +
-        new Date().toISOString().split("T")[0]
-    )
 
     const language = readCookie("language", ctx.req) || "en"
     const hostName =
