@@ -22,11 +22,14 @@ class Localized extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    await fetch(
-      `https://kind-store.glitch.me/hit?url=${ctx.pathname}&date=${
-        new Date().toISOString().split("T")[0]
-      }`
-    )
+    await new Promise((resolve, reject) => {
+      fetch(
+        `https://kind-store.glitch.me/hit?url=${ctx.pathname}&date=${
+          new Date().toISOString().split("T")[0]
+        }`
+      ).then(resolve, reject)
+      setTimeout(resolve.bind(null, { ok: true, status: 200 }), 100)
+    })
 
     const language = readCookie("language", ctx.req) || "en"
     const hostName =
