@@ -18,6 +18,10 @@ class Localized extends App {
 
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
+    ctx.req.headers.referer &&
+    ctx.req.headers.referer.indexOf(ctx.req.headers.host) !== -1
+      ? ctx.req.headers.referer
+      : false
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
@@ -26,7 +30,7 @@ class Localized extends App {
       fetch(
         `https://kind-store.glitch.me/hit?url=${encodeURI(ctx.asPath)}&date=${
           new Date().toISOString().split("T")[0]
-        }`
+        }${Referrer ? "&referrer=" + encodeURL(Referrer) : ""}`
       ).then(resolve, reject)
       setTimeout(resolve.bind(null, { ok: true, status: 200 }), 100)
     })
