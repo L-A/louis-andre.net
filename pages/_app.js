@@ -18,10 +18,11 @@ class Localized extends App {
 
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
-    ctx.req.headers.referer &&
-    ctx.req.headers.referer.indexOf(ctx.req.headers.host) !== -1
-      ? ctx.req.headers.referer
-      : false
+    const Referrer =
+      ctx.req.headers.referer &&
+      ctx.req.headers.referer.indexOf(ctx.req.headers.host) !== -1
+        ? ctx.req.headers.referer
+        : false
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
