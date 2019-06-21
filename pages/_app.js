@@ -21,18 +21,20 @@ class Localized extends App {
     const Referrer =
       ctx.req &&
       ctx.req.headers.referer &&
-      ctx.req.headers.referer.indexOf(ctx.req.headers.host) !== -1
+      ctx.req.headers.referer.indexOf(ctx.req.headers.host) == -1
         ? ctx.req.headers.referer
         : false
+
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
 
     await new Promise((resolve, reject) => {
       fetch(
-        `https://kind-store.glitch.me/hit?url=${encodeURI(ctx.asPath)}&date=${
-          new Date().toISOString().split("T")[0]
-        }${Referrer ? "&referrer=" + encodeURL(Referrer) : ""}`
+        `https://kind-store.glitch.me/hit?url=${encodeURI(
+          ctx.asPath
+        )}&date=${new Date().toISOString().split("T")[0] +
+          (Referrer ? "&referrer=" + encodeURI(Referrer) : "")}`
       ).then(resolve, reject)
       setTimeout(resolve.bind(null, { ok: true, status: 200 }), 100)
     })
