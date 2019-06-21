@@ -24,7 +24,7 @@ class Localized extends App {
 
     await new Promise((resolve, reject) => {
       fetch(
-        `https://kind-store.glitch.me/hit?url=${ctx.pathname}&date=${
+        `https://kind-store.glitch.me/hit?url=${encodeURI(ctx.asPath)}&date=${
           new Date().toISOString().split("T")[0]
         }`
       ).then(resolve, reject)
