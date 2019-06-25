@@ -42,7 +42,7 @@ export default ({
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="1200" />
                 <meta property="og:url" content={hostName + path} />
-                <link rel="icon" href="/static/images/favicon.ico" />
+                <link rel="icon" href="/static/favicon.ico" />
                 <style type="text/css">{`
                   @font-face {
                     font-family: "Work Sans";
