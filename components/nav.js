@@ -2,40 +2,40 @@ import Link from "next/link"
 import { Translated, Translate } from "../helpers/translate"
 
 const T = Translate({
-  fr: {
-    about: "À propos",
-    journal: "Journal",
-    otherLanguage: "English"
-  },
-  en: {
-    about: "About",
-    journal: "Journal",
-    otherLanguage: "Français"
-  }
+	fr: {
+		about: "À propos",
+		journal: "Journal",
+		otherLanguage: "English"
+	},
+	en: {
+		about: "About",
+		journal: "Journal",
+		otherLanguage: "Français"
+	}
 })
 
 export default ({ isFooter }) => {
-  return (
-    <nav>
-      <Link href="/" prefetch>
-        <a className="logo">
-          <img src="/static/images/img-logo.svg" alt="Louis-André Labadie" />
-        </a>
-      </Link>
-      <Link href="/" prefetch>
-        <a>{T("about")}</a>
-      </Link>
-      <Link href="/journal" prefetch>
-        <a>{T("journal")}</a>
-      </Link>
-      <Translated.Consumer>
-        {({ switchLanguage }) => (
-          <a className="language-switch" onClick={switchLanguage}>
-            {T("otherLanguage")}
-          </a>
-        )}
-      </Translated.Consumer>
-      <style jsx>{`
+	return (
+		<nav>
+			<Link href="/" prefetch>
+				<a className="logo">
+					<img src="/static/images/img-logo.svg" alt="Louis-André Labadie" />
+				</a>
+			</Link>
+			<Link href="/" prefetch>
+				<a>{T("about")}</a>
+			</Link>
+			<Link href="/journal" prefetch>
+				<a>{T("journal")}</a>
+			</Link>
+			<Translated.Consumer>
+				{({ switchLanguage }) => (
+					<a className="language-switch" onClick={switchLanguage}>
+						{T("otherLanguage")}
+					</a>
+				)}
+			</Translated.Consumer>
+			<style jsx>{`
         nav {
           display: flex;
           justify-content: ${isFooter ? "flex-start" : "flex-end"};
@@ -87,6 +87,6 @@ export default ({ isFooter }) => {
             max-width: 32px;
           }
       `}</style>
-    </nav>
-  )
+		</nav>
+	)
 }

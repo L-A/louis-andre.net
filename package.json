@@ -1,31 +1,31 @@
 {
-  "name": "louis-andre.net",
-  "version": "6.0.0",
-  "description": "Louis-André Labadie's main website",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/L-A/louis-andre.net.git"
-  },
-  "author": "Louis-André Labadie",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/L-A/louis-andre.net/issues"
-  },
-  "homepage": "https://github.com/L-A/louis-andre.net#readme",
-  "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
-    "next": "^8.1.0",
-    "next-page-transitions": "^1.0.0-beta.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
-  "devDependencies": {
-    "@mdx-js/loader": "^1.0.18",
-    "@next/mdx": "^8.1.0"
-  }
+	"name": "louis-andre.net",
+	"version": "6.0.0",
+	"description": "Louis-André Labadie's main website",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/L-A/louis-andre.net.git"
+	},
+	"author": "Louis-André Labadie",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/L-A/louis-andre.net/issues"
+	},
+	"homepage": "https://github.com/L-A/louis-andre.net#readme",
+	"dependencies": {
+		"isomorphic-fetch": "^2.2.1",
+		"next": "^8.1.0",
+		"next-page-transitions": "^1.0.0-beta.2",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6"
+	},
+	"devDependencies": {
+		"@mdx-js/loader": "^1.0.18",
+		"@next/mdx": "^8.1.0"
+	}
 }

@@ -1,17 +1,17 @@
 {
-  "version": 2,
-  "name": "net",
-  "alias": ["louis-andre.net", "www.louis-andre.net"],
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-  "routes": [
-    {
-      "src": "/_next/static/(?:[^/]+/pages)/.+",
-      "headers": { "cache-control": "immutable" }
-    },
-    {
-      "src": "^/(favicon.ico|manifest.json|humans.txt|robots.txt)$",
-      "dest": "/static/$1",
-      "headers": { "cache-control": "max-age=300 must-revalidate" }
-    }
-  ]
+	"version": 2,
+	"name": "net",
+	"alias": ["louis-andre.net", "www.louis-andre.net"],
+	"builds": [{ "src": "next.config.js", "use": "@now/next" }],
+	"routes": [
+		{
+			"src": "/_next/static/(?:[^/]+/pages)/.+",
+			"headers": { "cache-control": "immutable" }
+		},
+		{
+			"src": "^/(favicon.ico|manifest.json|humans.txt|robots.txt)$",
+			"dest": "/static/$1",
+			"headers": { "cache-control": "max-age=300 must-revalidate" }
+		}
+	]
 }
