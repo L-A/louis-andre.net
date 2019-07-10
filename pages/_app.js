@@ -13,6 +13,10 @@ import { AbsoluteUrl } from "../helpers/absoluteUrl"
 // - Three, we're providing an absolute URL (for working OpenGraph tags)
 // Also, the page says hello to an anonymous analytics project of mine
 
+let availableDate = false
+const cushionAPIURL =
+	"https://my.cushionapp.com/api/v1/users/745f2179-6958-4664-8549-dce939fb32e6/availability"
+
 class Localized extends App {
 	state = { language: this.props.language }
 
@@ -45,9 +49,17 @@ class Localized extends App {
 				? "https://" + ctx.req.headers.host
 				: window.location.origin
 
+		if (!availableDate) {
+			const Availability = await fetch(cushionAPIURL)
+			let availabilityData = await Availability.json()
+			availableDate = new Date(availabilityData.availability.start_on)
+			availableDate.setDate(availableDate.getDate() + 7)
+		}
+
 		return {
 			pageProps: {
-				...pageProps
+				...pageProps,
+				availableMonth: availableDate.getMonth()
 			},
 			hostName: hostName,
 			path: ctx.pathname,

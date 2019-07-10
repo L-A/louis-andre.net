@@ -4,6 +4,7 @@ import { Translate } from "../helpers/translate"
 
 import Page from "../layout/main"
 import Title from "../components/section-title"
+import Contact from "../components/contact"
 
 const T = Translate({
 	fr: {
@@ -28,26 +29,7 @@ const T = Translate({
       Je me spécialise à rendre les produits complexes faciles d'approche.`,
 			frontEndTitle: "Développement front-end",
 			frontEndParagraph: `Je poursuis mon travail au-delà de la livraison de maquettes,
-      en prenant en charge le développement des interfaces que je livre.`
-		},
-		contact: {
-			title: "Contact & disponibilités",
-			next: "Prochaines disponibilités:",
-			emailPrefix: "Rejoignez-moi à",
-			month: [
-				"janvier",
-				"février",
-				"mars",
-				"avril",
-				"mai",
-				"juin",
-				"juillet",
-				"août",
-				"septembre",
-				"octobre",
-				"novembre",
-				"décembre"
-			]
+			en prenant en charge le développement des interfaces que je livre.`
 		}
 	},
 	en: {
@@ -69,25 +51,6 @@ const T = Translate({
 			uxParagraph: `Experience can't be separated from product design. I specialize in making complex products easy to pick up and understand.`,
 			frontEndTitle: "Front-end development",
 			frontEndParagraph: `I follow-up on the design work by delivering developed interfaces that are ready to use.`
-		},
-		contact: {
-			title: "Contact & availabilities",
-			next: "Available starting around",
-			emailPrefix: "Reach me at",
-			month: [
-				"January",
-				"February",
-				"March",
-				"April",
-				"May",
-				"June",
-				"July",
-				"August",
-				"September",
-				"October",
-				"November",
-				"December"
-			]
 		}
 	}
 })
@@ -120,17 +83,7 @@ const Index = ({ availableMonth }) => {
 					<p>{T("services.frontEndParagraph")}</p>
 				</li>
 			</ul>
-			<Title>{T("contact.title")}</Title>
-			<h3 className="availability">
-				{T("contact.next")}{" "}
-				<strong>{T("contact.month." + availableMonth)}</strong>
-			</h3>
-			<h3 className="email">
-				{T("contact.emailPrefix")} <br />
-				<a href="mailto:monsieur@louis-andre.net">
-					<strong>monsieur@louis-andre.net</strong>
-				</a>
-			</h3>
+			<Contact availableMonth={availableMonth} />
 			<style jsx>{`
 				.intro {
 					color: #1e2949;
@@ -183,24 +136,6 @@ const Index = ({ availableMonth }) => {
 					max-width: 28em;
 				}
 
-				.availability {
-					border: 2px solid #2200a1;
-					border-radius: 4px;
-					color: #2200a1;
-					font-size: 16px;
-					padding: 8px 16px;
-					display: inline-block;
-				}
-
-				.email a {
-					color: #2200a1;
-					text-decoration: none;
-				}
-
-				.email a:hover {
-					text-decoration: underline;
-				}
-
 				@media (max-width: 512px) {
 					/* Smaller fonts */
 					.intro {
@@ -225,20 +160,6 @@ const Index = ({ availableMonth }) => {
 			`}</style>
 		</Page>
 	)
-}
-
-let availableDate = false
-const cushionAPIURL =
-	"https://my.cushionapp.com/api/v1/users/745f2179-6958-4664-8549-dce939fb32e6/availability"
-
-Index.getInitialProps = async () => {
-	if (!availableDate) {
-		const Availability = await fetch(cushionAPIURL)
-		let availabilityData = await Availability.json()
-		availableDate = new Date(availabilityData.availability.start_on)
-		availableDate.setDate(availableDate.getDate() + 7)
-	}
-	return { availableMonth: availableDate.getMonth() }
 }
 
 export default Index

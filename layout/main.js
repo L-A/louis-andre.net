@@ -7,6 +7,7 @@ import Footer from "../components/footer"
 
 export default ({
 	isHome,
+	fullWidth,
 	title,
 	overTitle,
 	overTitleLink,
@@ -104,7 +105,7 @@ export default ({
 							<style jsx>{`
 								.container {
 									margin: 0 auto 128px;
-									max-width: 694px;
+									${fullWidth ? "" : "max-width: 694px;"}
 									padding: 32px;
 								}
 							`}</style>
