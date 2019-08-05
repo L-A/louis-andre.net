@@ -4,17 +4,19 @@ import { Translated, Translate } from "../helpers/translate"
 const T = Translate({
 	fr: {
 		work: "Réalisations",
+		about: "À propos",
 		journal: "Journal",
 		otherLanguage: "English"
 	},
 	en: {
 		work: "Work",
+		about: "About",
 		journal: "Journal",
 		otherLanguage: "Français"
 	}
 })
 
-export default ({ isFooter }) => {
+export default ({ isFooter, onBlue }) => {
 	return (
 		<nav>
 			<Link href="/" prefetch>
@@ -24,6 +26,9 @@ export default ({ isFooter }) => {
 			</Link>
 			<Link href="/work" prefetch>
 				<a>{T("work")}</a>
+			</Link>
+			<Link href="/about" prefetch>
+				<a>{T("about")}</a>
 			</Link>
 			<Link href="/journal" prefetch>
 				<a>{T("journal")}</a>
@@ -42,13 +47,15 @@ export default ({ isFooter }) => {
 					align-items: center;
 					padding: 0 64px;
 					margin: ${isFooter ? "32px auto 8px" : "64px auto"};
+					position: relative;
 				}
 
 				nav a {
-					color: #D73F00;
+					color: ${onBlue ? "#1E2949" : "#D73F00"};
 					font-weight: 700;
 					${isFooter ? "margin-right: 32px;" : "margin-left: 32px;"}
 					text-decoration: none;
+					white-space: nowrap;
 				}
 
 				nav a:hover {
@@ -62,11 +69,13 @@ export default ({ isFooter }) => {
 				}
 
 				nav a.language-switch {
-					color: #f2f5f8;
+					color: ${onBlue ? "#1E2949" : "#f2f5f8"};
 					cursor: pointer;
+					display: inline-block;
 					font-size: 14px;
 					font-weight: 500;
-					margin-left: ${isFooter ? "auto" : "32px"};
+					padding-left: 16px;
+					margin-left: ${isFooter ? "auto" : "16px"};
 					margin-right: 0;
 				}
 
@@ -76,11 +85,31 @@ export default ({ isFooter }) => {
 						margin: ${isFooter ? "32px auto 8px" : "32px auto"};
 					}
 				}
+
+				@media (max-width: 500px) {
+					nav {
+						flex-wrap: wrap;
+						justify-content: flex-start;
+					}
+
+					nav a {
+						margin-left: ${isFooter ? "0" : "16px"};
+					}
+
+					nav a.language-switch {
+						text-align: ${isFooter ? "left" : "right"};
+						margin-left: auto;
+					}
+				}
+
 				@media (max-width: 390px) {
 					nav a, nav a.language-switch {
-						${isFooter ? "margin-right: 16px;" : "margin-left: 16px;"};
+						font-size: 13px;
+						${isFooter ? "margin-right: 16px;" : ""};
 					}
 					nav a.language-switch {
+						font-size: 11px;
+						line-height: 1;
 						margin-right: 0;
 					}
 					nav a.logo img{

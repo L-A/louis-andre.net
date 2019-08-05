@@ -3,18 +3,22 @@ import Head from "next/head"
 import { Translated } from "../helpers/translate"
 import { WithAbsoluteUrl } from "../helpers/absoluteUrl"
 import Header from "../components/header"
+import AboutHeader from "../components/about-header"
 import Footer from "../components/footer"
 
 export default ({
 	isHome,
+	isAbout,
 	fullWidth,
 	title,
 	overTitle,
 	overTitleLink,
+	intro,
 	description,
 	children
 }) => {
 	const pageTitle = (overTitle ? overTitle + " - " : "") + title
+	const CurrentHeader = isAbout ? AboutHeader : Header
 	return (
 		<Translated.Consumer>
 			{({ language }) => (
@@ -95,11 +99,13 @@ export default ({
 									color: transparent;
 								}
 							`}</style>
-							<Header
+							<CurrentHeader
 								withHeroText={isHome}
 								overTitle={overTitle}
 								overTitleLink={overTitleLink}
+								isAbout={isAbout}
 								title={!isHome ? title : ""}
+								intro={intro}
 							/>
 							<div className="container">{children}</div>
 							<style jsx>{`
