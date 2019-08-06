@@ -8,7 +8,7 @@ const Locales = {
 	fr: {
 		title: "À propos",
 		intro:
-			"Bonjour! J'aide les organisations à construire des sites web et applications qui sont pratiques, élégantes et efficaces.",
+			"Bonjour! J'aide les organisations à construire des applications et sites web qui sont pratiques, élégants et efficaces.",
 		projects: {
 			title: "Quelques clients et projets",
 			list: [
