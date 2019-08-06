@@ -1,5 +1,4 @@
 import App, { Container } from "next/app"
-import { PageTransition } from "next-page-transitions"
 
 import "isomorphic-fetch"
 
@@ -90,46 +89,9 @@ class Localized extends App {
 							path: path
 						}}
 					>
-						<PageTransition
-							timeout={350}
-							classNames="page-transition"
-							skipInitialTransition
-							monkeyPatchScrolling
-						>
-							<Component {...pageProps} key={this.props.router.route} />
-						</PageTransition>
+						<Component {...pageProps} key={this.props.router.route} />
 					</AbsoluteUrl.Provider>
 				</Translated.Provider>
-
-				<style jsx global>{`
-					.page-transition-enter::after,
-					.page-transition-enter-active::after,
-					.page-transition-exit::after,
-					.page-transition-exit-active::after {
-						ponter-events: none;
-						content: "";
-						background: #1e2949;
-						position: fixed;
-						top: -20vh;
-						left: 0;
-						right: 0;
-						bottom: -20vh;
-					}
-					.page-transition-exit::after {
-						transform: translateY(120vh) skew(0, 0deg) scaleX(1.1);
-					}
-					.page-transition-enter::after,
-					.page-transition-exit-active::after {
-						transform: translateY(0) skew(0, 8deg) scaleX(1.1);
-						transition: transform 350ms cubic-bezier(0.24, 0, 0.35, 1);
-					}
-					.page-transition-enter-active::after {
-						transform: translateY(-120vh) skew(0, 4deg) scaleX(1.1);
-						transition: transform 350ms cubic-bezier(0.24, 0, 0.35, 1),
-							background 350ms;
-						background: #1e367b;
-					}
-				`}</style>
 			</Container>
 		)
 	}

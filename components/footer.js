@@ -3,17 +3,33 @@ import Nav from "../components/nav"
 import { Translate } from "../helpers/translate"
 
 const T = Translate({
-	fr: { credit: "Photo originale par Paweł Czerwiński" },
-	en: { credit: "Original photograph: Paweł Czerwiński" }
+	fr: {
+		credit: "Photo originale par Paweł Czerwiński",
+		portraitCredit: "Portrait par Jean-Bernard Filion"
+	},
+	en: {
+		credit: "Original photograph: Paweł Czerwiński",
+		portraitCredit: "Portrait by Jean-Bernard Filion"
+	}
 })
 
-export default () => {
+export default ({ isAbout }) => {
 	return (
 		<footer>
 			<Nav isFooter />
 			<div className="wrap">
 				<p>© Louis-André Labadie</p>
-				<p>{T("credit")}</p>
+				<p>
+					{T("credit")}
+					{isAbout ? (
+						<>
+							<br />
+							{T("portraitCredit")}
+						</>
+					) : (
+						false
+					)}
+				</p>
 			</div>
 			<style jsx>{`
 				footer {

@@ -24,11 +24,11 @@ export default ({ isFooter, onBlue }) => {
 					<img src="/static/images/img-logo.svg" alt="Louis-André Labadie" />
 				</a>
 			</Link>
-			<Link href="/work" prefetch>
-				<a>{T("work")}</a>
-			</Link>
 			<Link href="/about" prefetch>
 				<a>{T("about")}</a>
+			</Link>
+			<Link href="/work" prefetch>
+				<a>{T("work")}</a>
 			</Link>
 			<Link href="/journal" prefetch>
 				<a>{T("journal")}</a>

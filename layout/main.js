@@ -115,7 +115,7 @@ export default ({
 									padding: 32px;
 								}
 							`}</style>
-							<Footer />
+							<Footer isAbout={isAbout} />
 						</div>
 					)}
 				</WithAbsoluteUrl>
