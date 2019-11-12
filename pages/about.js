@@ -225,7 +225,7 @@ export default ({ availableMonth }) => {
 							<Title>{T("projects.title")}</Title>
 							<ul>
 								{Locales[language].projects.list.map(project => (
-									<Project {...project} />
+									<Project {...project} key={project.name} />
 								))}
 							</ul>
 						</div>
@@ -233,7 +233,7 @@ export default ({ availableMonth }) => {
 							<h2>{T("curriculum.title")}</h2>
 							<ul>
 								{Locales[language].curriculum.list.map(place => (
-									<PlaceOfWork {...place} />
+									<PlaceOfWork {...place} key={place.name} />
 								))}
 							</ul>
 						</div>
