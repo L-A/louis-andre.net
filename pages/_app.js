@@ -32,16 +32,6 @@ class Localized extends App {
 			pageProps = await Component.getInitialProps(ctx)
 		}
 
-		await new Promise((resolve, reject) => {
-			fetch(
-				`https://kind-store.glitch.me/hit?url=${encodeURI(
-					ctx.asPath
-				)}&date=${new Date().toISOString().split("T")[0] +
-					(Referrer ? "&referrer=" + encodeURI(Referrer) : "")}`
-			).then(resolve, reject)
-			setTimeout(resolve.bind(null, { ok: true, status: 200 }), 100)
-		})
-
 		const language = readCookie("language", ctx.req) || "en"
 		const hostName =
 			typeof ctx.req !== "undefined"
