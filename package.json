@@ -1,6 +1,6 @@
 {
 	"name": "louis-andre.net",
-	"version": "6.0.0",
+	"version": "7.0.0",
 	"description": "Louis-André Labadie's main website",
 	"scripts": {
 		"dev": "next",
@@ -19,8 +19,7 @@
 	"homepage": "https://github.com/L-A/louis-andre.net#readme",
 	"dependencies": {
 		"isomorphic-fetch": "^2.2.1",
-		"next": "^8.1.0",
-		"next-page-transitions": "^1.0.0-beta.2",
+		"next": "^9.1.6",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6"
 	},
