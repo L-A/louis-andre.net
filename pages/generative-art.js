@@ -17,9 +17,23 @@ export default () => (
 			is where it’s at! Here’s some of mine.
 		</p>
 
+		<p className="notice">
+			If you want to stay up to date on the pieces I make, I post them{" "}
+			<Link href="https://www.instagram.com/lalabadie/">here on Instagram</Link>
+			.
+		</p>
+
 		<style jsx>{`
 			h1 {
 				color: ${Palette.art};
+			}
+
+			.notice {
+				background-color: ${Palette.instagramBackground};
+				border-radius: 3px;
+				padding: 16px 32px;
+				margin-top: 32px;
+				max-width: 50em;
 			}
 		`}</style>
 	</Layout>

@@ -1,8 +1,9 @@
+import { Palette } from "../config"
 import Link from "next/link"
 
 const transition = "cubic-bezier(0.415, 1.400, 0.380, 0.975)"
 
-export default ({ children, color, href }) => (
+export default ({ children, color = Palette.link, href }) => (
 	<Link href={href}>
 		<a>
 			{children}
@@ -25,7 +26,10 @@ export default ({ children, color, href }) => (
 					right: -2px;
 					top: calc(100% - 3px);
 					bottom: 2px;
-					z-index: -1;
+
+					pointer-events: none;
+					mix-blend-mode: multiply;
+					z-index: 1;
 
 					transition: bottom 0.2s ease-out, top 0.2s ease-out,
 						opacity 0.2s ease-out;
