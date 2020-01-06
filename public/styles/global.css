@@ -1,0 +1,24 @@
+* {
+	box-sizing: border-box;
+	color: #000d3a;
+	font-family: "Work Sans", Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+}
+
+body {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+main > h1 {
+	margin-top: 0;
+	font-weight: 800;
+	font-size: 64px;
+}
+
+p {
+	max-width: 39em;
+}
