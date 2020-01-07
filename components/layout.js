@@ -29,24 +29,22 @@ export default ({ pageTitle, children }) => (
 					</Link>
 				</li>
 				<li className="work-button">
-					<Link href="http://tinyrevolt.com/en">
-						<a>Hire me</a>
-					</Link>
+					<a href="http://tinyrevolt.com/en">Hire me</a>
 				</li>
 			</ul>
 		</nav>
 		<main>{children}</main>
 
 		<Head>
-			<meta charset="utf-8" />
-			<link preload rel="stylesheet" href="/styles/import-fonts.css" />
+			<meta charSet="utf-8" />
+			<link preload="true" rel="stylesheet" href="/styles/import-fonts.css" />
 			<link rel="stylesheet" href="/styles/global.css" />
 			<title>{pageTitle ? pageTitle + " -" : ""} Louis-André Labadie</title>
 		</Head>
 
 		<style jsx>{`
 			.layout {
-				max-width: 860px;
+				max-width: 960px;
 				margin: 64px auto;
 				display: flex;
 				flex-direction: row;

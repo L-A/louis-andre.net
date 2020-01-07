@@ -3,9 +3,9 @@ import Link from "next/link"
 
 const transition = "cubic-bezier(0.415, 1.400, 0.380, 0.975)"
 
-export default ({ children, color = Palette.link, href }) => (
-	<Link href={href}>
-		<a>
+export default ({ children, color = Palette.link, href, internal = false }) => {
+	const naturalElement = (
+		<a href={href}>
 			{children}
 			<span className="underline" aria-hidden="true" />
 			<style jsx>{`
@@ -48,5 +48,8 @@ export default ({ children, color = Palette.link, href }) => (
 				}
 			`}</style>
 		</a>
-	</Link>
-)
+	)
+
+	if (internal) return <Link href={href}>{naturalElement}</Link>
+	return naturalElement
+}
