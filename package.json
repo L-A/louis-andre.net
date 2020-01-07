@@ -20,6 +20,8 @@
 	"dependencies": {
 		"color": "^3.1.2",
 		"isomorphic-fetch": "^2.2.1",
+		"isomorphic-unfetch": "^3.0.0",
+		"jsdom": "^15.2.1",
 		"next": "^9.1.6",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6"
