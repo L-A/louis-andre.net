@@ -29,5 +29,8 @@
 	"devDependencies": {
 		"@mdx-js/loader": "^1.0.18",
 		"@next/mdx": "^8.1.0"
+	},
+	"engines": {
+		"node": "12.x"
 	}
 }
