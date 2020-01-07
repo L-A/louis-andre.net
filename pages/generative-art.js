@@ -76,14 +76,14 @@ const GenerativeArt = ({ posts }) => (
 				display: block;
 				max-width: 320px;
 				transition: transform 0.2s ease-out;
+				transform-origin: center bottom;
 			}
 
 			.instagram-preview:hover {
-				transform: scale(1.01) translateY(-1px);
+				transform: scale(1.01) translateY(-3px);
 			}
 
 			.instagram-preview img {
-				border: 8px solid #fff;
 				display: block;
 				max-width: 100%;
 
