@@ -22,5 +22,7 @@ node_modules
 .sass-cache
 _site
 .next
+.env
+.env.build
 
 *.swp

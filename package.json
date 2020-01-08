@@ -3,7 +3,7 @@
 	"version": "7.0.0",
 	"description": "Louis-André Labadie's main website",
 	"scripts": {
-		"dev": "next",
+		"dev": "next --port $PORT",
 		"build": "next build",
 		"start": "next start"
 	},

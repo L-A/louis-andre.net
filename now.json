@@ -13,5 +13,9 @@
 			"dest": "/static/$1",
 			"headers": { "cache-control": "max-age=300 must-revalidate" }
 		}
-	]
+	],
+	"env": {
+		"PINBOARD_USER": "@pinboard-user",
+		"PINBOARD_KEY": "@pinboard-key"
+	}
 }
