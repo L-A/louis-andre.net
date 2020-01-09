@@ -184,7 +184,6 @@ ReadingList.getInitialProps = async ({ req }) => {
 	try {
 		const linksRequest = await fetch(hostURL + "/api/pinboard-links")
 		const linksData = await linksRequest.json()
-		console.log(linksData)
 		return { links: linksData.links, dateGenerated: Date.now() }
 	} catch (e) {
 		console.log(e)

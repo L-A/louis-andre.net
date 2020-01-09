@@ -15,6 +15,7 @@ const PostLink = ({ title, slug, description, published }) => (
 		<style jsx>{`
 			.post {
 				margin: 32px 0;
+				transition: opacity 0.25s ease-out;
 			}
 			.post h2 {
 				font-size: 22px;
@@ -29,6 +30,11 @@ const PostLink = ({ title, slug, description, published }) => (
 				color: ${Palette.journal};
 				font-size: 13px;
 			}
+
+			.post:hover {
+				opacity: 0.7;
+				transition: opacity 0.1s ease-out;
+			}
 		`}</style>
 	</li>
 )
@@ -36,7 +42,10 @@ const PostLink = ({ title, slug, description, published }) => (
 export default () => (
 	<Layout pageTitle="Journal">
 		<h1>Journal</h1>
-		<p>Too infrequently, I share what I write. Here’s the outcome!</p>
+		<p>
+			I haven't been very consistent in writing what I learn in the past years.
+			Here are some prior articles, as I get my writing habit back on track.
+		</p>
 
 		<ul className="posts">
 			{posts.map(post => (
