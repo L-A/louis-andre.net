@@ -5,11 +5,10 @@ import Art from "../components/art-canvas"
 
 export default () => (
 	<Layout>
-		<h1>Hello!</h1>
 		<Art />
 		<p>
-			<strong>I’m Louis-André Labadie.</strong> There's a good chance we're
-			Internet strangers. It’s a thin connection, but a warm one to me
+			<strong>I’m Louis-André Labadie.</strong> There's a good chance you and I
+			are Internet strangers. It’s a thin connection, but a warm one to me
 			nonetheless.
 		</p>
 		<p>
