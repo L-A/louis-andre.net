@@ -16,11 +16,11 @@ const GenerativeArt = ({ posts }) => (
 			>
 				Generative art
 			</Link>{" "}
-			is where it’s at! Here are some of mine.
+			is where it’s at! Here are some of my pieces.
 		</p>
 
 		<p className="notice">
-			If you want to stay up to date on the pieces I make, I post{" "}
+			If you want to stay up to date on my art, I post{" "}
 			<Link href="https://www.instagram.com/lalabadie/">here on Instagram</Link>
 			.
 		</p>
