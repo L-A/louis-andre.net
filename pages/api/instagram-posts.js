@@ -19,7 +19,8 @@ export default async (req, res) => {
 	)
 
 	res.setHeader("Content-Type", "application/json")
-	res.setHeader("Cache-Control", `max-age=${60 * 30}, public`) // 60 minutes caching
+	// half-hour caching, serve stale if needed to remain fast
+	res.setHeader("Cache-Control", `s-maxage=${30 * 60}, stale-while-revalidate`)
 	res.statusCode = 200
 	res.end(JSON.stringify(posts))
 }

@@ -15,7 +15,8 @@ const PinboardRequest = async (method, args = []) => {
 
 export default async (_req, res) => {
 	res.setHeader("Content-Type", "application/json")
-	res.setHeader("Cache-Control", `max-age=${180 * 60}, public`) // 3 hours caching
+	// half-hour caching, serve stale if needed to remain fast
+	res.setHeader("Cache-Control", `s-maxage=${30 * 60}, stale-while-revalidate`)
 	res.statusCode = 200
 
 	const pinboardInfo = await PinboardRequest("posts/all", postsOptions)
