@@ -4,7 +4,7 @@ import { Palette } from "../config"
 import Layout from "../components/layout"
 
 const PostLink = ({ title, slug, description, published }) => (
-	<li key={slug} className="post">
+	<li className="post">
 		<Link href={`/journal/${slug}`}>
 			<a>
 				<h2>{title}</h2>
@@ -49,7 +49,7 @@ export default () => (
 
 		<ul className="posts">
 			{posts.map(post => (
-				<PostLink {...post} />
+				<PostLink {...post} key={post.slug} />
 			))}
 		</ul>
 

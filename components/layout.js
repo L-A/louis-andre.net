@@ -37,7 +37,7 @@ export default ({ pageTitle, children }) => (
 
 		<Head>
 			<meta charSet="utf-8" />
-			<link preload="true" rel="stylesheet" href="/styles/import-fonts.css" />
+			<link preload="true" rel="stylesheet" href="/styles/work-sans.css" />
 			<link rel="stylesheet" href="/styles/global.css" />
 			<title>{pageTitle ? pageTitle + " -" : ""} Louis-André Labadie</title>
 		</Head>
@@ -53,9 +53,9 @@ export default ({ pageTitle, children }) => (
 
 			nav {
 				color: ${Palette.text};
-				font-weight: 700;
+				font-weight: 500;
 				flex: 0 0 140px;
-				margin: 0 64px 0 32px;
+				margin: 0 auto 0 32px;
 			}
 
 			.pages {
@@ -85,7 +85,7 @@ export default ({ pageTitle, children }) => (
 			}
 
 			.pages .home {
-				margin-top: 32px;
+				margin-top: 20px;
 			}
 
 			.pages .art {
@@ -119,8 +119,64 @@ export default ({ pageTitle, children }) => (
 			}
 
 			main {
-				flex-basis: 680px;
+				flex: 1 1 680px;
 				margin: 0 32px 0;
+			}
+
+			@media (max-width: 800px) {
+				.layout {
+					flex-direction: column;
+					margin: 16px 0;
+				}
+
+				main {
+					margin-left: 92px;
+				}
+
+				nav {
+					flex-basis: auto;
+					margin-bottom: 32px;
+				}
+
+				.pages {
+					flex-direction: row;
+					align-items: center;
+					flex-wrap: wrap;
+				}
+
+				.pages li {
+					margin-right: 32px;
+					transform-origin: center;
+				}
+
+				.pages .home {
+					margin-top: 10px;
+				}
+			}
+
+			@media (max-width: 700px) {
+				nav {
+					margin: 0 32px 16px;
+				}
+
+				main {
+					margin: 0 32px;
+				}
+			}
+
+			@media (max-width: 500px) {
+				nav {
+					font-size: 14px;
+					margin: 0 16px 16px;
+				}
+
+				.pages li {
+					margin-right: 16px;
+				}
+
+				main {
+					margin: 0 16px;
+				}
 			}
 		`}</style>
 	</div>

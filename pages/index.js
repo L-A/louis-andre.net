@@ -32,7 +32,13 @@ export default () => (
 			</Link>
 			.
 		</p>
-		<p>Browse around, and reach out if you’d like!</p>
+		<p>
+			Browse around, and{" "}
+			<Link color={Palette.text} href="mailto:monsieur@louis-andre.net">
+				reach out
+			</Link>{" "}
+			if you’d like !
+		</p>
 
 		<style jsx>{`
 			.art-canvas {

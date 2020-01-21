@@ -23,3 +23,9 @@ main > h1 {
 p {
 	max-width: 39em;
 }
+
+@media (max-width: 800px) {
+	main > h1 {
+		font-size: 42px;
+	}
+}
