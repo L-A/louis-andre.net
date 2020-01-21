@@ -25,7 +25,9 @@ const Palette = {
 	readingTagBackground: lightBlue,
 	readingMetaData: fadedPurple,
 	softButtonText: purple,
-	softButtonBackground: lightPurple
+	softButtonBackground: lightPurple,
+	quoteBorder: lightBlue,
+	quoteText: tintedGray
 }
 
 export { Palette }

@@ -10,5 +10,12 @@ export default [
 		slug: "the-hands-of-others",
 		description: "A bit of a love letter to wonkiness and the human touch",
 		published: "2014"
+	},
+	{
+		title: "A Retina workflow for Photoshop",
+		slug: "retina-photoshop",
+		description:
+			"Notes on how to work with Photoshop when designing for Retina screens. A bit obsolete now.",
+		published: "2014"
 	}
 ]

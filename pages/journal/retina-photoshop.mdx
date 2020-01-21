@@ -1,6 +1,14 @@
+import PostLayout from "../../components/post-layout"
+export default PostLayout({
+	title: "A Retina Workflow for Photoshop",
+	date: "2014"
+})
+
 ### Getting started with high-density (HiDPI) screens, like Apple's Retina display?
 
 Several design apps support half/dual resolution out of the box, but a lot of us still use Photoshop, either out of personal preference or to play well with other team members. One way or another, I assume you're pretty damn efficient with Photoshop already. When I'm not using Sketch, here's how I handle Retina mockups with grace.
+
+<h2 style={{color: "#711BDE"}}>~ Please note, this guide is a bit outdated ~</h2>
 
 ## Open your preferences!
 
@@ -17,13 +25,13 @@ Set both rulers and type to _points_.
 A standard screen is considered to have 72 DPI. A Retina screen is at 144 (double). You can set the screen resolution to 144 as a default if you so desire (I prefer this).
 Here's how it looks. You can disregard columns, I personally have no use for global column settings:
 
-![Make sure type is in points, and screen resolution is either 72 or 144 dpi](/static/journal/retina-photoshop/Unit-settings-1.png)
+![Make sure type is in points, and screen resolution is either 72 or 144 dpi](/journal/retina-photoshop/Unit-settings-1.png)
 
 ## New documents
 
 Now we can start working with points as our coordinate system. That makes things pretty easy. Say you want to design for Android screens, from [sizes medium and up](http://developer.android.com/guide/practices/screens_support.html) in portrait mode. That means 320 x 470:
 
-![Don't forget to set your dimensions in points instead of pixels](/static/journal/retina-photoshop/New-document-resolution.png)
+![Don't forget to set your dimensions in points instead of pixels](/journal/retina-photoshop/New-document-resolution.png)
 
 If you're familiar with the developer side of these things, you're probably aware that dimensions and positioning in these environments don't work in pixels. They use _points_.
 
@@ -39,7 +47,7 @@ I'm assuming you're designing mostly with text layers, smart objects and vectors
 - **Ctrl + alt + i** on Windows
   Then, change your dimensions' units (they're probably on _pixels_) into points too. Make sure resampling is activated. Then (and only then!) bump the PSD's resolution to 144 pixels/inch.
 
-![Wham! Be sure to do it in the right order](/static/journal/retina-photoshop/Convert-settings.png)
+![Wham! Be sure to do it in the right order](/journal/retina-photoshop/Convert-settings.png)
 
 Once this is done, hit "OK". Review your document. You should be all set!
 
@@ -55,7 +63,7 @@ So what are the main differences?
 
 If you've ever worked in print design, this change will make a lot of sense to you. For screen design, what it means is that you can use "real" sizes for your text, instead of Retina requiring double the actual size. 14pt text in your PSD will _look_ like 14pt.
 
-![](/static/journal/retina-photoshop/Actual-text-size-1.png)
+![](/journal/retina-photoshop/Actual-text-size-1.png)
 
 **Rulers are in points**.
 
@@ -63,7 +71,7 @@ In the picture above, you can also see the rulers don't match document pixels on
 The coordinates on the rulers are what will be used in development, and they reflect their "real life" perception.
 **You can use points in your info palette, too!** If you don't use this palette, take this occasion to try it out. Set up your preferred units in the palette's option dialog.
 
-![](/static/journal/retina-photoshop/Info-palette.png)
+![](/journal/retina-photoshop/Info-palette.png)
 
 It'll give you color readouts, the dimensions of what you have selected, and the coordinates (in points, if you want!) of your cursor.
 

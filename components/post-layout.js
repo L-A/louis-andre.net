@@ -3,12 +3,7 @@ import { MDXProvider } from "@mdx-js/react"
 import Link from "./styled-link"
 import { Palette } from "../config"
 
-const Components = {
-	p: props => (
-		<p {...props} style={{ fontSize: "18px", marginBottom: "32px" }} />
-	),
-	img: props => <img {...props} style={{ maxWidth: "100%" }} />
-}
+const Components = {}
 
 // We provide posts a component constructor that accepts
 // metadata straight from the mdx file
@@ -22,8 +17,14 @@ export default ({ title, date }) => ({ children }) => (
 			/ {date}
 		</h2>
 		<h1>{title}</h1>
-		<MDXProvider components={Components}>{children}</MDXProvider>
+		<article className="article-root">
+			<MDXProvider components={Components}>{children}</MDXProvider>
+		</article>
 		<style jsx>{`
+			article {
+				font-size: 18px;
+			}
+
 			h1 {
 				color: ${Palette.text};
 			}
@@ -34,5 +35,23 @@ export default ({ title, date }) => ({ children }) => (
 				font-weight: normal;
 			}
 		`}</style>
+		<style jsx global>
+			{`
+				.article-root p {
+					margin-bottom: 32px;
+				}
+
+				.article-root img {
+					max-width: 100%;
+				}
+
+				.article-root blockquote {
+					border-left: solid 4px ${Palette.quoteBorder};
+					font-size: 16px;
+					margin-left: 0;
+					padding-left: 32px;
+				}
+			`}
+		</style>
 	</Layout>
 )
