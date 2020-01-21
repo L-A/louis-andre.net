@@ -8,8 +8,9 @@ export default () => (
 		<h1>Hello!</h1>
 		<Art />
 		<p>
-			<strong>I’m Louis-André Labadie.</strong> We’re probably Internet
-			strangers. It’s a thin connection, but a warm one to me nonetheless.
+			<strong>I’m Louis-André Labadie.</strong> There's a good chance we're
+			Internet strangers. It’s a thin connection, but a warm one to me
+			nonetheless.
 		</p>
 		<p>
 			I do a bit of{" "}
@@ -38,7 +39,7 @@ export default () => (
 			<Link color={Palette.text} href="mailto:monsieur@louis-andre.net">
 				reach out
 			</Link>{" "}
-			if you’d like !
+			if you’d like!
 		</p>
 
 		<style jsx>{`
