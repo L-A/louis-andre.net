@@ -1,11 +1,12 @@
 import { Palette } from "../config"
 import Layout from "../components/layout"
 import Link from "../components/styled-link"
+import Art from "../components/art-canvas"
 
 export default () => (
 	<Layout>
 		<h1>Hello!</h1>
-		<img className="art-canvas" src="images/placeholder-canvas.png" />
+		<Art />
 		<p>
 			<strong>I’m Louis-André Labadie.</strong> We’re probably Internet
 			strangers. It’s a thin connection, but a warm one to me nonetheless.
@@ -41,12 +42,6 @@ export default () => (
 		</p>
 
 		<style jsx>{`
-			.art-canvas {
-				margin-left: -5%;
-				margin-right: -5%;
-				max-width: 110%;
-			}
-
 			a.art {
 				color: ${Palette.art};
 			}
