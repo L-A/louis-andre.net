@@ -1,8 +1,15 @@
 import PostLayout from "../../components/post-layout"
-export default PostLayout({
-	title: "A Retina Workflow for Photoshop",
-	date: "2014"
-})
+
+export const meta = {
+	title: "A Retina workflow for Photoshop",
+		description:
+			"Notes on how to work with Photoshop when designing for Retina screens. A bit obsolete now.",
+		published: true,
+		publishedDate: "2014"
+}
+	
+export default PostLayout(meta)
+
 
 ### Getting started with high-density (HiDPI) screens, like Apple's Retina display?
 

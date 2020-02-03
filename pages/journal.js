@@ -1,5 +1,5 @@
 import Link from "next/link"
-import posts from "../journal-posts"
+import posts from "../helpers/journal-meta"
 import { Palette } from "../config"
 import Layout from "../components/layout"
 
@@ -48,9 +48,9 @@ export default () => (
 		</p>
 
 		<ul className="posts">
-			{posts.map(post => (
-				<PostLink {...post} key={post.slug} />
-			))}
+			{posts.map(post =>
+				post && post.published ? <PostLink {...post} key={post.slug} /> : false
+			)}
 		</ul>
 
 		<style jsx>{`

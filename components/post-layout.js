@@ -8,13 +8,13 @@ const Components = {}
 // We provide posts a component constructor that accepts
 // metadata straight from the mdx file
 
-export default ({ title, date }) => ({ children }) => (
+export default ({ title, publishedDate }) => ({ children }) => (
 	<Layout pageTitle={title}>
 		<h2>
 			<Link href="/journal" internal>
 				Journal
 			</Link>{" "}
-			/ {date}
+			/ {publishedDate}
 		</h2>
 		<h1>{title}</h1>
 		<article className="article-root">
