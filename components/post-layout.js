@@ -3,7 +3,9 @@ import { MDXProvider } from "@mdx-js/react"
 import Link from "./styled-link"
 import { Palette } from "../config"
 
-const Components = {}
+const Components = {
+	a: props => <Link {...props} />
+}
 
 // We provide posts a component constructor that accepts
 // metadata straight from the mdx file
@@ -47,9 +49,19 @@ export default ({ title, publishedDate }) => ({ children }) => (
 
 				.article-root blockquote {
 					border-left: solid 4px ${Palette.quoteBorder};
-					font-size: 16px;
-					margin-left: 0;
+					font-size: 20px;
+					margin: 32px 0;
 					padding-left: 32px;
+				}
+
+				.article-root hr {
+					margin: 64px 0;
+				}
+
+				.article-root code {
+					font-family: monospace;
+					font-size: 0.9em;
+					color: ${Palette.inlineCode};
 				}
 			`}
 		</style>
