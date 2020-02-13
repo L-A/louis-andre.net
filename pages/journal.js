@@ -3,12 +3,15 @@ import posts from "../helpers/journal-meta"
 import { Palette } from "../config"
 import Layout from "../components/layout"
 
-const PostLink = ({ title, slug, description, published }) => (
+const PostLink = ({ title, slug, description, published, inFrench }) => (
 	<li className="post">
 		<Link href={`/journal/${slug}`}>
 			<a>
 				<h2>{title}</h2>
-				<p>{description}</p>
+				<p>
+					{inFrench ? <span className="language">In French</span> : false}
+					{description}
+				</p>
 				<p className="date">{published}</p>
 			</a>
 		</Link>
@@ -35,6 +38,16 @@ const PostLink = ({ title, slug, description, published }) => (
 				opacity: 0.7;
 				transition: opacity 0.1s ease-out;
 			}
+
+			.language {
+				border-radius: 3px;
+				background-color: ${Palette.readingTagBackground};
+				color: ${Palette.readingTag};
+				font-size: 14px;
+				font-weight: normal;
+				margin-right: 8px;
+				padding: 2px 4px;
+			}
 		`}</style>
 	</li>
 )
@@ -48,9 +61,15 @@ export default () => (
 		</p>
 
 		<ul className="posts">
-			{posts.map(post =>
-				post && post.published ? <PostLink {...post} key={post.slug} /> : false
-			)}
+			{posts
+				.sort((a, b) => b.publishedDate - a.publishedDate)
+				.map(post =>
+					post && post.published ? (
+						<PostLink {...post} key={post.slug} />
+					) : (
+						false
+					)
+				)}
 		</ul>
 
 		<style jsx>{`
