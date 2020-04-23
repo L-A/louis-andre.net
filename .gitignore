@@ -26,3 +26,5 @@ _site
 .env.build
 
 *.swp
+
+.now
