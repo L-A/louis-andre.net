@@ -1,10 +1,35 @@
-import fetch from "isomorphic-unfetch"
-
 import { Palette } from "../config"
 import Layout from "../components/layout"
 import Link from "../components/styled-link"
 
-const GenerativeArt = ({ posts }) => (
+const posts = [
+	{
+		uniqueUrl: "https://www.instagram.com/p/CBlDd8JHo8p/",
+		thumbnailName: "crawlies",
+	},
+	{
+		uniqueUrl: "https://www.instagram.com/p/CAQJ7V8sfWi/",
+		thumbnailName: "exploring-paths",
+	},
+	{
+		uniqueUrl: "https://www.instagram.com/p/B9t72K3g_01/",
+		thumbnailName: "convergence-7",
+	},
+	{
+		uniqueUrl: "https://www.instagram.com/p/B8RPV4YDiHu/",
+		thumbnailName: "glitch-circles",
+	},
+	{
+		uniqueUrl: "https://www.instagram.com/p/B55PhUkn9d8/",
+		thumbnailName: "vapor",
+	},
+	{
+		uniqueUrl: "https://www.instagram.com/p/B4Khuh_Hiyr/",
+		thumbnailName: "scratched-circle",
+	},
+]
+
+const GenerativeArt = () => (
 	<Layout pageTitle="Generative Art">
 		<h1>Generative Art</h1>
 		<p>
@@ -27,18 +52,15 @@ const GenerativeArt = ({ posts }) => (
 
 		<div className="posts">
 			{posts ? (
-				posts
-					.sort((a, b) => b.likes - a.likes)
-					.slice(0, 6)
-					.map(post => (
-						<a
-							className="instagram-preview"
-							key={post.uniqueUrl}
-							href={post.uniqueUrl}
-						>
-							<img src={post.thumbnailUrl} alt="" />
-						</a>
-					))
+				posts.map((post) => (
+					<a
+						className="instagram-preview"
+						key={post.uniqueUrl}
+						href={post.uniqueUrl}
+					>
+						<img src={`/images/insta/${post.thumbnailName}.jpg`} alt="" />
+					</a>
+				))
 			) : (
 				<p className="error">
 					It seems like I coded a goof, and can't retrieve Instagram images
@@ -105,18 +127,5 @@ const GenerativeArt = ({ posts }) => (
 		`}</style>
 	</Layout>
 )
-
-GenerativeArt.getInitialProps = async ({ req }) => {
-	const hostURL = req ? "http://" + req.headers.host : window.location.origin
-
-	try {
-		const postsRequest = await fetch(hostURL + "/api/instagram-posts")
-		const postsData = await postsRequest.json()
-		return { posts: postsData }
-	} catch (e) {
-		console.log(e)
-		return { posts: false }
-	}
-}
 
 export default GenerativeArt
