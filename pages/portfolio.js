@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { Palette } from "../config"
 import Layout from "../components/layout"
 import { useEffect, useState } from "react"
@@ -62,7 +61,7 @@ export default () => {
 
 	const secretTagContent = secretTagItems[tagPosition]
 	return (
-		<Layout pageTitle="Journal">
+		<Layout pageTitle="Portfolio">
 			<h1>
 				<span className="secret">{secretTagContent}</span>Portfolio
 			</h1>
