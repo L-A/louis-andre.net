@@ -5,7 +5,7 @@ export const meta = {
 	description: "My five-minute explainer for beginning with a password manager",
 	published: true,
 	inFrench: true,
-	publishedDate: "2020"
+	publishedDate: "2020",
 }
 
 export default PostLayout(meta)
@@ -13,66 +13,96 @@ export default PostLayout(meta)
 As-tu déjà pensé ça:
 
 > <q>
-> 	Impossible d'avoir un mot de passe différent pour chaque service, c'est sûr
-> 	que je m'en souviendrais pas!
+> 	Impossible d'avoir un mot de passe différent pour chaque service. Je sais
+> 	que je suis sensé le faire, mais c'est sûr que je m'en souviendrais pas!
 > </q>
 
-C'est vrai que c'est impossible! La solution par contre, ce n'est pas de réutiliser un mot de passe à plusieurs endroits. Je répète en plus gros pour être dramatique et parce que je t'aime:
+C'est vrai: on a bien trop de comptes pour se rappeler d'un mot de passe différent à chaque fois!
 
-# Ne réutilise jamais de mot de passe entre tes comptes.
+La solution par contre, ce n'est pas de réutiliser le même mot de passe à plusieurs endroits. Je répète en plus gros pour être dramatique et parce que je t'aime:
 
-###### _Si ça t'intéresse, j'explique pourquoi c'est dangereux à la fin ↓_
+<p>
+	<strong style={{ fontSize: "20px" }}>
+		Ne réutilise jamais de mot de passe entre tes comptes.
+	</strong>{" "}
+</p>
 
----
+Si ça t'intéresse, j'explique pourquoi c'est dangereux à la fin de cet article ↓
 
 # Okay le smatt, comment je me protège sans que ça soit fatiguant?
 
-**Avec un gestionnaire de mots de passe!** Grosso modo, c'est un outil qui mémorise tes informations de connexion pour _tous_ les services que tu utilises. Son stockage est protégé par un mot de passe principal, dont tu dois te rappeler. Ça devient le _seul_ mot de passe que tu dois mémoriser, alors c'est une bonne idée d'en avoir un long.
+**Avec un gestionnaire de mots de passe!** Grosso modo, c'est un outil qui mémorise tes informations de connexion pour _tous_ les services que tu utilises.
 
-C'est pas compliqué en plus: Tu te choisis un gestionnaire de mots de passe, tu crées ton compte et tu l'installes ensuite sur tes appareils (je suggère d'installer au moins le _plugin_ officiel dans ton navigateur préféré, ainsi que l'application sur ton téléphone). Tu auras l'occasion de créer ton "coffre-fort" et lui donner ton mot de passe très sécuritaire.
+On choisit un gestionnaire de mots de passe parce que son stockage, lui, est _très_ sécurisé. Pas mal plus qu'un _post-it_ sur ton écran ou un fichier texte sur ton ordi dans le dossier `Bureau/Dissertations/Aristophane, la bibliographie complète`.
 
-> ### À propos des mots de passe "sécuritaires"
->
-> Pas besoin qu'il soit compliqué d'une façon qui le rend dur à mémoriser. Le mot de passe `Un bourdon marche seul au plafond` est beaucoup plus sécuritaire que `Y&gT81zl~ke#s@`, en vertu de sa longueur tout simplement. En plus, tu t'en souviens déjà.
+L'ensemble de tes mots de passe va être contenu dans le stockage du gestionnaire, qui est encrypté par un mot de passe principal (_master password_).
 
-Les gestionnaires de mots de passe contiennent toujours aussi un générateur de mot de passe. C'est bon pour les comptes que tu ajoutes dans le futur, mais aussi pour en mettre à jour. Ça permet d'avoir des mots de passe uniques partout sans vraiment faire d'effort supplémentaire.
+**Tu te connectes à ton compte de banque?** Clique sur ton gestionnaire, entre ton mot de passe principal, et le gestionnaire fait le reste.
 
-Souvent, ils vont aussi t'aviser si un service que tu utilises a été victime d'une fuite de données.
+**Tu te connectes à un service du gouvernement?** Clique sur ton gestionnaire, entre ton mot de passe principal, badaboum.
 
-Est-ce que je t'ai dit que ces outils-là remplissent automatiquement les champs de connexion sur les sites web, et dans les apps de ton téléphone? C'est comme le _auto-complete_ de Chrome, mais sécuritaire, et que tu ne perds pas en changeant d'ordi.
+**Tu te connectes à Skype sur ta nouvelle tablette?** Gestionnaire, mot de passe principal, voilà.
 
-## Donc je choisis quoi?
+**Ton compte pour faire une commande d'épicerie?** Gestionnaire, bim bam.
 
-Voici trois bons choix, dont deux qui offrent un plan gratuit:
+Tu comprends le principe.
+
+Bref, le mot de passe maître, ça devient le _seul_ mot de passe que tu dois mémoriser. Plutôt sympathique.
+
+## Oh, et à propos de ce qui fait un mot de passe sécuritaire
+
+Pas besoin que ton mot de passe principal soit difficile à mémoriser. Le mot de passe `Un bourdon marche seul au plafond` est beaucoup plus sécuritaire que `Y&gT81zl~ke#s@`, en vertu de sa longueur tout simplement. En plus, tu t'en souviens déjà.
+
+## Donc je prends quoi?
+
+Voici trois bons choix de gestionnaires de mots de passe. Les deux premier sont disponibles gratuitement pour les particuliers. Il n'y a pas de choix moins sécuritaire dans cette liste:
 
 - **BitWarden** ([bitwarden.com](https://bitwarden.com))
 - **Lastpass** ([lastpass.com](https://www.lastpass.com/fr/how-lastpass-works))
-- **1Password** ([1password.com](https://1password.com) - 36\$/année)
+- **1Password** ([1password.com](https://1password.com) - 36 $/année)
 
 Personnellement, j'utilise 1Password depuis des années et c'est un excellent outil.
+
+## Je devrais installer des trucs?
+
+Je te recommande d'installer **une extension sur ton navigateur**. Les gestionnaires de mots de passe viennent pas mal tous avec des extensions pour tous les navigateurs populaires.
+
+Je te recommande aussi de **l'installer sur ton téléphone**. La plupart des gestionnaires de mots de passe vont rester synchronisés entre les appareils d'un même compte.
+
+### Des bonus
+
+Les gestionnaires de mots de passe comprennent toujours aussi un **générateur de mot de passe**. Donc, quand on dit d'avoir un mot de passe unique pour chaque compte, tu n'as pas à l'inventer dans ta tête à chaque fois. Tu cliques simplement sur "générer". C'est bon pour les comptes que tu ajoutes dans le futur, mais aussi pour mettre à jour les mots de passe que tu as présentement. Tranquillement, tu vas pouvoir avoir des mots de passe uniques partout, sans faire d'effort supplémentaire.
+
+Souvent, un gestionnaire de mots de passe va aussi **te signaler si un service que tu utilises a été victime d'une fuite de données**. C'est gentil.
 
 ## En résumé:
 
 - Tu choisis un gestionnaire de mots de passe (c'est gratuit!)
-- Tu te choisis un mot de passe "master" long et facile à retenir
+- Tu te choisis un mot de passe principal, qui est long mais facile à retenir
 - Tu installes le gestionnaire sur tes appareils préférés
-- Tu t'assure d'avoir tout de suite des mots de passe uniques là où ça compte le plus (banque, courriel, Paypal, Skype, etc.)
+- Tu t'assure d'avoir tout de suite des mots de passe uniques là où ça compte le plus (banque, courriel, Paypal, Skype, gouvernement, employeur, etc.)
 - Tu dors bien
+
+# Et si mon gestionnaire de mots de passe a une fuite, lui? Ou si je me fais voler mon ordinateur?
+
+Ça va se passer comme quand une compagnie bien sécurisée se fait voler des données encryptées:
+
+Les hackers prennent possession de ton coffre-fort, mais il est encrypté et illisible, parce que tu n'es pas là pour fournir le mot de passe qui peut le déchiffrer.
+
+Sans le mot de passe, les hackers ont en main un grand fichier rempli de charabia inutile. Et toi, tu demeure en sécurité. ✨
 
 ---
 
 # Pour les curieux: Pourquoi c'est pas sécuritaire de réutiliser un mot de passe?
 
-En gros, c'est parce que ça prend _un seul service vulnérable_ pour que tous tes comptes deviennent vulnérables. Quand un service en ligne se fait voler une base de données mal protégée, leur liste de comptes se retrouve dans les mains de hackers.
+En gros, c'est parce que ça prend _un seul compte vulnérable_ pour que tous tes comptes le deviennent.
 
-Ces hackers **ne visent pas que les gens importants**, ils attaquent toute la liste en même temps. Ils essaient les combinaisons courriel/mot de passe volées un peu partout. Ils ont des outils qui vont automatiquement entrer tes informations sur les services Adobe, sur Netflix, Gmail, Paypal, etc. pour voir où ils sont capables de se connecter.
+Pourquoi ton compte Facebook serait-il à risque quand la fuite a eu lieu ailleurs? C'est que quand un service en ligne se fait voler une base de données mal protégée, **la liste des informations de connexion de tout le monde se retrouve dans les mains de hackers**.
 
-**Fais le test:** Entre ton courriel sur l'outil [Have I Been Pwned](https://haveibeenpwned.com/) et regardes dans combien de fuites publiques il a été retrouvé à date. De mon côté, je suis prudent, mais mon email personnel a malgré tout fini dans 23 fuites majeures (Adobe, bit.ly, Last.fm, Trillian, MySpace, etc.).
+Ces hackers **ne visent pas que les gens importants**, ils attaquent toute la liste en même temps. Ils essaient les combinaisons de courriel et mot de passe volées un peu partout.
 
-Quand tu as des mots de passes uniques pour chaque service, lorsqu'un service est victime d'une fuite pour une raison ou une autre, tes comptes ailleurs sont à l'abri des attaques. La clé, c'est de ne pas réutiliser la même combinaison d'email et mot de passe.
+Ils ont des outils qui vont automatiquement entrer tes informations volées sur les services Adobe, sur Netflix, Gmail, Paypal, Facebook, etc. pour voir où ils seront capables de se connecter. Ça s'appelle une attaque de bourrage ([_credential stuffing_](https://owasp.org/www-community/attacks/Credential_stuffing) en anglais).
 
-## Et si mon gestionnaire de mots de passe a une fuite, lui?
+**Fais le test:** Entre ton courriel sur l'outil [Have I Been Pwned](https://haveibeenpwned.com/) et regardes dans combien de fuites publiques il a été retrouvé à date. De mon côté, je suis prudent, mais mon email personnel a malgré tout fini dans 23 fuites majeures (Adobe, bit.ly, Last.fm, Trillian, MySpace, etc.) à ce jour.
 
-Ça va se passer comme avec les services qui ne sont _pas_ à risque de fuite grave:
-
-Les hackers vont prendre possession de ton coffre-fort, mais il va être encrypté, parce que tu n'es pas là pour fournir son mot de passe (celui super sécuritaire dont on a parlé plus tôt). Sans ton mot de passe, les hackers ont en main un grand fichier entièrement illisible – pas moyen de s'en servir. L'histoire finit là.
+Quand tu as des mots de passes uniques pour chaque service, lorsqu'un service est victime d'une fuite pour une raison ou une autre, tes comptes ailleurs sont à l'abri des attaques. **La clé, c'est de ne pas réutiliser la même combinaison d'email et mot de passe.**

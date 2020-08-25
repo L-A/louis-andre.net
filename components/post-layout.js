@@ -4,7 +4,7 @@ import Link from "./styled-link"
 import { Palette } from "../config"
 
 const Components = {
-	a: props => <Link {...props} />
+	a: (props) => <Link {...props} />,
 }
 
 // We provide posts a component constructor that accepts
@@ -39,8 +39,14 @@ export default ({ title, publishedDate }) => ({ children }) => (
 		`}</style>
 		<style jsx global>
 			{`
-				.article-root p {
+				.article-root h1,
+				.article-root h2 {
+					margin-top: 96px;
 					margin-bottom: 32px;
+				}
+
+				.article-root p {
+					margin-bottom: 16px;
 				}
 
 				.article-root img {
@@ -55,7 +61,7 @@ export default ({ title, publishedDate }) => ({ children }) => (
 				}
 
 				.article-root hr {
-					margin: 64px 0;
+					margin: 96px 0 64px;
 				}
 
 				.article-root code {
