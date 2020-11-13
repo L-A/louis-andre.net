@@ -7,6 +7,7 @@ const Layout = ({ pageTitle, children }) => {
 	// I'd like to have even more polite/limited analytics,
 	// but this'll do for now.
 	const triggerMatomo = () => {
+		if (navigator && navigator.doNotTrack) return
 		var _paq = (window._paq = window._paq || [])
 		_paq.push(["trackPageView"])
 		_paq.push(["enableLinkTracking"])
