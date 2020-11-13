@@ -4,23 +4,26 @@ import { useEffect } from "react"
 import { Palette } from "../config"
 
 const Layout = ({ pageTitle, children }) => {
-	// Trigger anonymous analytics here:
-	const triggerGoSquared = () => {
-		!(function (g, s, q, r, d) {
-			r = g[r] =
-				g[r] ||
-				function () {
-					;(r.q = r.q || []).push(arguments)
-				}
-			d = s.createElement(q)
-			q = s.getElementsByTagName(q)[0]
-			d.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js"
-			q.parentNode.insertBefore(d, q)
-		})(window, document, "script", "_gs")
-		_gs("GSN-103088-W")
-		_gs("set", "anonymizeIP", true)
+	// I'd like to have even more polite/limited analytics,
+	// but this'll do for now.
+	const triggerMatomo = () => {
+		var _paq = (window._paq = window._paq || [])
+		_paq.push(["trackPageView"])
+		_paq.push(["enableLinkTracking"])
+		;(function () {
+			var u = "//lal-ping.nfshost.com/"
+			_paq.push(["setTrackerUrl", u + "matomo.php"])
+			_paq.push(["setSiteId", "1"])
+			var d = document,
+				g = d.createElement("script"),
+				s = d.getElementsByTagName("script")[0]
+			g.type = "text/javascript"
+			g.async = true
+			g.src = u + "matomo.js"
+			s.parentNode.insertBefore(g, s)
+		})()
 	}
-	useEffect(triggerGoSquared, [])
+	useEffect(triggerMatomo, [])
 
 	// Layout
 	return (
