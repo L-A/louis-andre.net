@@ -28,7 +28,7 @@ const Palette = {
 	softButtonBackground: lightPurple,
 	quoteBorder: lightBlue,
 	quoteText: tintedGray,
-	inlineCode: purple
+	inlineCode: purple,
 }
 
 export { Palette }

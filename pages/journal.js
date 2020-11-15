@@ -1,9 +1,10 @@
 import Link from "next/link"
-import posts from "../helpers/journal-meta"
 import { Palette } from "../config"
 import Layout from "../components/layout"
 
-const PostLink = ({ title, slug, description, published, inFrench }) => (
+import GetPosts from "../helpers/getJournalPosts"
+
+const PostLink = ({ title, slug, description, publicationDate, inFrench }) => (
 	<li className="post">
 		<Link href={`/journal/${slug}`}>
 			<a>
@@ -12,7 +13,12 @@ const PostLink = ({ title, slug, description, published, inFrench }) => (
 					{inFrench ? <span className="language">In French</span> : false}
 					{description}
 				</p>
-				<p className="date">{published}</p>
+				<p className="date">
+					{new Date(publicationDate).toLocaleDateString("en-CA", {
+						year: "numeric",
+						month: "long",
+					})}
+				</p>
 			</a>
 		</Link>
 		<style jsx>{`
@@ -52,36 +58,42 @@ const PostLink = ({ title, slug, description, published, inFrench }) => (
 	</li>
 )
 
-export default () => (
-	<Layout pageTitle="Journal">
-		<h1>Journal</h1>
-		<p>
-			I haven't been very consistent in writing what I learn in the past years.
-			Here are some prior articles, as I get my writing habit back on track.
-		</p>
+const Journal = ({ posts }) => {
+	return (
+		<Layout pageTitle="Journal">
+			<h1>Journal</h1>
+			<p>
+				I haven't been very consistent in writing what I learn in the past
+				years. Here are some prior articles, as I get my writing habit back on
+				track.
+			</p>
 
-		<ul className="posts">
-			{posts
-				.sort((a, b) => b.publishedDate - a.publishedDate)
-				.map(post =>
-					post && post.published ? (
+			<ul className="posts">
+				{posts
+					.sort((a, b) => b.publicationDate - a.publicationDate)
+					.map((post) => (
 						<PostLink {...post} key={post.slug} />
-					) : (
-						false
-					)
-				)}
-		</ul>
+					))}
+			</ul>
 
-		<style jsx>{`
-			h1 {
-				color: ${Palette.journal};
-			}
+			<style jsx>{`
+				h1 {
+					color: ${Palette.journal};
+				}
 
-			.posts {
-				list-style: none;
-				padding: 0;
-				margin-top: 64px;
-			}
-		`}</style>
-	</Layout>
-)
+				.posts {
+					list-style: none;
+					padding: 0;
+					margin-top: 64px;
+				}
+			`}</style>
+		</Layout>
+	)
+}
+
+export const getStaticProps = async ({ context }) => {
+	const posts = await GetPosts()
+	return { props: { posts }, revalidate: 900 } // Revalidate every 15 minutes
+}
+
+export default Journal

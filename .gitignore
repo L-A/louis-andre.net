@@ -24,6 +24,7 @@ _site
 .next
 .env
 .env.build
+.env.local
 
 *.swp
 
