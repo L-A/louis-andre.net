@@ -21,7 +21,6 @@ const CustomComponents = {
 }
 
 const BlogPost = ({ title, publicationDate, body }) => {
-	console.log(body)
 	return (
 		<PostLayout title={title} publishedDate={publicationDate}>
 			{documentToReactComponents(body, CustomComponents)}
@@ -31,7 +30,6 @@ const BlogPost = ({ title, publicationDate, body }) => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
 	const post = await GetPost(slug)
-	console.log(post)
 	return { props: { ...post }, revalidate: 900 }
 }
 
