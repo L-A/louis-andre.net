@@ -6,16 +6,22 @@ import StyledLink from "../../components/styled-link"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 // Contentful-specific config
-import { INLINES } from "@contentful/rich-text-types"
+import { INLINES, BLOCKS } from "@contentful/rich-text-types"
 const CustomComponents = {
 	renderNode: {
 		[INLINES.HYPERLINK]: ({ data: { uri } }, children) => {
 			return <StyledLink href={uri}>{children}</StyledLink>
 		},
+		[BLOCKS.EMBEDDED_ASSET]: (node) => {
+			const { title, file } = node.data.target.fields
+			if (!file.contentType.includes("image")) return <></>
+			return <img title={title} src={file.url} />
+		},
 	},
 }
 
 const BlogPost = ({ title, publicationDate, body }) => {
+	console.log(body)
 	return (
 		<PostLayout title={title} publishedDate={publicationDate}>
 			{documentToReactComponents(body, CustomComponents)}
