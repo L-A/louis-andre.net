@@ -1,9 +1,9 @@
 {
 	"name": "louis-andre.net",
-	"version": "7.0.0",
+	"version": "7.1.0",
 	"description": "Louis-André Labadie's main website",
 	"scripts": {
-		"dev": "next --port $PORT",
+		"dev": "next dev",
 		"build": "next build",
 		"start": "next start"
 	},
@@ -18,18 +18,16 @@
 	},
 	"homepage": "https://github.com/L-A/louis-andre.net#readme",
 	"dependencies": {
+		"@contentful/rich-text-react-renderer": "^14.1.2",
 		"babel-plugin-preval": "^4.0.0",
 		"canvas-sketch-util": "^1.10.0",
 		"color": "^3.1.2",
+		"contentful": "^7.14.12",
 		"isomorphic-fetch": "^2.2.1",
 		"isomorphic-unfetch": "^3.0.0",
 		"jsdom": "^15.2.1",
-		"next": "^9.3.2",
+		"next": "^10.0.1",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6"
-	},
-	"devDependencies": {
-		"@mdx-js/loader": "^1.0.18",
-		"@next/mdx": "^8.1.0"
 	}
 }

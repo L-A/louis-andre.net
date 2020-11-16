@@ -1,16 +1,8 @@
 import Layout from "./layout"
-import { MDXProvider } from "@mdx-js/react"
 import Link from "./styled-link"
 import { Palette } from "../config"
 
-const Components = {
-	a: (props) => <Link {...props} />,
-}
-
-// We provide posts a component constructor that accepts
-// metadata straight from the mdx file
-
-export default ({ title, publishedDate }) => ({ children }) => (
+const Post = ({ title, publishedDate, children }) => (
 	<Layout pageTitle={title}>
 		<h2>
 			<Link href="/journal" internal>
@@ -19,9 +11,7 @@ export default ({ title, publishedDate }) => ({ children }) => (
 			/ {publishedDate}
 		</h2>
 		<h1>{title}</h1>
-		<article className="article-root">
-			<MDXProvider components={Components}>{children}</MDXProvider>
-		</article>
+		<article className="article-root">{children}</article>
 		<style jsx>{`
 			article {
 				font-size: 18px;
@@ -73,3 +63,5 @@ export default ({ title, publishedDate }) => ({ children }) => (
 		</style>
 	</Layout>
 )
+
+export default Post

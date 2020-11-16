@@ -2,7 +2,7 @@ import fetch from "isomorphic-unfetch"
 
 const postsOptions = [{ arg: "results", value: 200 }]
 
-const PinboardRequest = async (method, args = []) => {
+const PinboardRequest = async (method, args = postsOptions) => {
 	const argsString = args.reduce((currentString, { arg, value }) => {
 		return `${currentString}&${arg}=${value}`
 	}, "")
@@ -13,16 +13,7 @@ const PinboardRequest = async (method, args = []) => {
 	return responseData
 }
 
-export default async (_req, res) => {
-	res.setHeader("Content-Type", "application/json")
-	// half-hour caching, serve stale if needed to remain fast
-	res.setHeader("Cache-Control", `s-maxage=${30 * 60}, stale-while-revalidate`)
-	res.statusCode = 200
-
-	const pinboardInfo = await PinboardRequest("posts/all", postsOptions)
-	const answer = {
-		links: pinboardInfo
-	}
-
-	res.end(JSON.stringify(answer))
+export default async () => {
+	const pinboardInfo = await PinboardRequest("posts/all")
+	return pinboardInfo
 }
