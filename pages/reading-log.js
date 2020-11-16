@@ -1,9 +1,9 @@
-import fetch from "isomorphic-unfetch"
 import { useState } from "react"
 
 import { Palette } from "../config"
 import Layout from "../components/layout"
 import Link from "../components/styled-link"
+import getPinboardLinks from "../helpers/getPinboardLinks"
 
 const visibleIncrements = 18
 
@@ -43,7 +43,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 			<ul className="links-list">
 				{!links
 					? ""
-					: links.slice(0, visibleLinks).map(link => (
+					: links.slice(0, visibleLinks).map((link) => (
 							<li key={link.meta} className="link-item">
 								<a href={link.href}>
 									<h2>{link.description}</h2>
@@ -59,7 +59,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 											)}
 											{dateDifference(dateGenerated, link.time)}
 										</li>
-										{link.tags.split(" ").map(tag => (
+										{link.tags.split(" ").map((tag) => (
 											<li className="tag" key={tag}>
 												{tag}
 											</li>
@@ -178,17 +178,9 @@ const ReadingList = ({ links, dateGenerated }) => {
 	)
 }
 
-ReadingList.getInitialProps = async ({ req }) => {
-	const hostURL = req ? "http://" + req.headers.host : window.location.origin
-
-	try {
-		const linksRequest = await fetch(hostURL + "/api/pinboard-links")
-		const linksData = await linksRequest.json()
-		return { links: linksData.links, dateGenerated: Date.now() }
-	} catch (e) {
-		console.log(e)
-		return { links: false }
-	}
+export const getStaticProps = async () => {
+	const links = await getPinboardLinks()
+	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 } // Revalidate once per hour
 }
 
 export default ReadingList

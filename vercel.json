@@ -1,0 +1,9 @@
+{
+	"version": 2,
+	"redirects": [
+		{
+			"source": "/retina-photoshop",
+			"destination": "/journal/retina-photoshop"
+		}
+	]
+}
