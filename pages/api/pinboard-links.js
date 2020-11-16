@@ -21,7 +21,7 @@ export default async (_req, res) => {
 
 	const pinboardInfo = await PinboardRequest("posts/all", postsOptions)
 	const answer = {
-		links: pinboardInfo
+		links: pinboardInfo,
 	}
 
 	res.end(JSON.stringify(answer))
