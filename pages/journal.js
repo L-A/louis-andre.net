@@ -69,11 +69,9 @@ const Journal = ({ posts }) => {
 			</p>
 
 			<ul className="posts">
-				{posts
-					.sort((a, b) => b.publicationDate - a.publicationDate)
-					.map((post) => (
-						<PostLink {...post} key={post.slug} />
-					))}
+				{posts.map((post) => (
+					<PostLink {...post} key={post.slug} />
+				))}
 			</ul>
 
 			<style jsx>{`
@@ -91,9 +89,13 @@ const Journal = ({ posts }) => {
 	)
 }
 
-export const getStaticProps = async ({ context }) => {
+export const getStaticProps = async () => {
 	const posts = await GetPosts()
-	return { props: { posts }, revalidate: 900 } // Revalidate every 15 minutes
+	// That's reverse chronological order (new to old)
+	const orderedPosts = posts.sort(
+		(a, b) => new Date(b.publicationDate) - new Date(a.publicationDate)
+	)
+	return { props: { posts: orderedPosts }, revalidate: 900 } // Revalidate every 15 minutes
 }
 
 export default Journal
