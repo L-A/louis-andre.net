@@ -4,27 +4,15 @@ import { useEffect } from "react"
 import { Palette } from "../config"
 
 const Layout = ({ pageTitle, children }) => {
-	// I'd like to have even more polite/limited analytics,
-	// but this'll do for now.
-	const triggerMatomo = () => {
-		if (navigator && navigator.doNotTrack) return
-		var _paq = (window._paq = window._paq || [])
-		_paq.push(["trackPageView"])
-		_paq.push(["enableLinkTracking"])
-		;(function () {
-			var u = "//lal-ping.nfshost.com/"
-			_paq.push(["setTrackerUrl", u + "matomo.php"])
-			_paq.push(["setSiteId", "1"])
-			var d = document,
-				g = d.createElement("script"),
-				s = d.getElementsByTagName("script")[0]
-			g.type = "text/javascript"
-			g.async = true
-			g.src = u + "matomo.js"
-			s.parentNode.insertBefore(g, s)
-		})()
+	// Polite & limited analytics - goatcounter.com
+	const countVisit = () => {
+		if (window.goatcounter && window.goatcounter.count) {
+			window.goatcounter.count({
+				path: location.pathname + location.search + location.hash,
+			})
+		}
 	}
-	useEffect(triggerMatomo, [])
+	useEffect(countVisit, [])
 
 	// Layout
 	return (
@@ -64,6 +52,11 @@ const Layout = ({ pageTitle, children }) => {
 				<meta charSet="utf-8" />
 				<link preload="true" rel="stylesheet" href="/styles/work-sans.css" />
 				<link rel="stylesheet" href="/styles/global.css" />
+				<script
+					data-goatcounter="https://lal.goatcounter.com/count"
+					async
+					src="//gc.zgo.at/count.js"
+				></script>
 				<title>{pageTitle ? pageTitle + " -" : ""} Louis-André Labadie</title>
 			</Head>
 
