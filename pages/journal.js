@@ -62,11 +62,19 @@ const Journal = ({ posts }) => {
 	return (
 		<Layout pageTitle="Journal">
 			<h1>Journal</h1>
-			<p>
-				I haven't been very consistent in writing what I learn in the past
-				years. Here are some prior articles, as I get my writing habit back on
-				track.
-			</p>
+
+			<div className="kind-callout">
+				<img src="/images/logo-kind.svg" alt="The Kind Dispatch" />
+				<p>
+					I've been writing a short newsletter called{" "}
+					<strong>the Kind Dispatch</strong>. It's mostly about art
+					and&nbsp;tech.
+				</p>
+				<p>You're more than welcome to join&nbsp;in!</p>
+				<a href="https://kind.substack.com">Show me!</a>
+			</div>
+
+			<p>Here are a few articles I’ve written at different times:</p>
 
 			<ul className="posts">
 				{posts.map((post) => (
@@ -83,6 +91,34 @@ const Journal = ({ posts }) => {
 					list-style: none;
 					padding: 0;
 					margin-top: 64px;
+				}
+
+				.kind-callout {
+					background-color: #e8f6fc;
+					border-radius: 12px;
+					padding: 32px;
+					max-width: 392px;
+					margin-bottom: 64px;
+				}
+
+				.kind-callout img {
+					display: block;
+					margin: 0 auto 32px;
+				}
+
+				.kind-callout a {
+					background-color: ${Palette.journal};
+					border-radius: 4px;
+					color: #fff;
+					padding: 6px 12px;
+					text-align: center;
+					display: block;
+					transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+				}
+
+				.kind-callout a:hover {
+					opacity: 0.7;
+					transform: scale(1.01);
 				}
 			`}</style>
 		</Layout>
