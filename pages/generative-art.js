@@ -44,6 +44,20 @@ const GenerativeArt = () => (
 			is where it’s at! Here are some of my pieces.
 		</p>
 
+		<p>
+			<strong>A note on NFTs:</strong> My only pieces are minted on Tezos (
+			<span className="address">xtz</span>) and sold from the address{" "}
+			<span className="address">tz1ZvTGYH5EBwgmaYngELeUw1qzgQRJLKoDM</span>.
+			Look them up on{" "}
+			<Link
+				color={Palette.reading}
+				href="https://www.hicetnunc.xyz/tz/tz1ZvTGYH5EBwgmaYngELeUw1qzgQRJLKoDM"
+			>
+				Hic et Nunc
+			</Link>
+			!
+		</p>
+
 		<p className="notice">
 			If you want to stay up to date on my art, I post{" "}
 			<Link href="https://www.instagram.com/lalabadie/">here on Instagram</Link>
@@ -92,6 +106,11 @@ const GenerativeArt = () => (
 				grid-template-columns: 1fr 1fr;
 				grid-column-gap: 32px;
 				grid-row-gap: 32px;
+			}
+
+			span.address {
+				font-size: 0.8em;
+				font-family: courier, monospace, sans-serif;
 			}
 
 			.instagram-preview {
