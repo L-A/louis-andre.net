@@ -71,7 +71,7 @@ const Journal = ({ posts }) => {
 					and&nbsp;tech.
 				</p>
 				<p>You're more than welcome to join&nbsp;in!</p>
-				<a href="https://kind.substack.com">Show me!</a>
+				<a href="https://buttondown.email/Kind">Show me!</a>
 			</div>
 
 			<p>Here are a few articles I’ve written at different times:</p>
