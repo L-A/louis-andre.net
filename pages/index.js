@@ -12,7 +12,7 @@ export default () => (
 			nonetheless.
 		</p>
 		<p>
-			I do a bit of{" "}
+			I create{" "}
 			<Link color={Palette.art} href="/generative-art">
 				generative art
 			</Link>
