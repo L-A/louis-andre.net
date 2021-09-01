@@ -119,14 +119,20 @@ const ReadingList = ({ links, dateGenerated }) => {
 				}
 
 				.link-item h2 {
-					margin: 8px 0;
-					font-size: 22px;
+					margin: 8px 0 4px;
+					font-size: 18px;
 					line-height: 1.4;
 				}
 
 				.link-item .url {
 					color: ${Palette.readingLink};
-					margin: 8px 0;
+					display: block;
+					font-size: 12px;
+					margin: 4px 0;
+					max-width: 560px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 
 				.link-item .meta {
