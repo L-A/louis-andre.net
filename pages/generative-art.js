@@ -44,12 +44,6 @@ const GenerativeArt = () => (
 			is where it’s at! Here are some of my pieces.
 		</p>
 
-		<p className="notice">
-			If you want to stay up to date on my art, I post{" "}
-			<Link href="https://www.instagram.com/lalabadie/">here on Instagram</Link>
-			.
-		</p>
-
 		<p>
 			<strong>A note about NFTs:</strong> You can find my legitimate addresses
 			on Tezos and Ethereum{" "}
@@ -57,6 +51,12 @@ const GenerativeArt = () => (
 				on this page
 			</Link>
 			, as well as my simple policy on blockchain energy use.
+		</p>
+
+		<p className="notice">
+			If you want to stay up to date on my art, I post{" "}
+			<Link href="https://www.instagram.com/lalabadie/">here on Instagram</Link>
+			.
 		</p>
 
 		<div className="posts">

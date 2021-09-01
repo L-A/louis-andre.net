@@ -6,6 +6,7 @@ const NFT = () => {
 	return (
 		<Layout pageTitle="About NFTs">
 			<h1>About NFTs</h1>
+			<h2>Legitimate addresses</h2>
 			<p>
 				I mint NFTs from two addresses. The first one is{" "}
 				<Link href="https://foundation.app/@lalabadie">on Foundation</Link>,
@@ -28,6 +29,21 @@ const NFT = () => {
 			</p>
 
 			<h2>Carbon &amp; energy use</h2>
+
+			<table>
+				<tbody>
+					<tr>
+						<th>Updated</th>
+						<th>Emissions estimate</th>
+						<th>Offsets puchased</th>
+					</tr>
+					<tr>
+						<td>August 2021</td>
+						<td>3.81t</td>
+						<td>10t</td>
+					</tr>
+				</tbody>
+			</table>
 
 			<p>
 				At the time of writing this, the Ethereum blockchain is still using
@@ -59,6 +75,31 @@ const NFT = () => {
 				span.address {
 					font-size: 0.8em;
 					font-family: courier, monospace, sans-serif;
+				}
+
+				table {
+					margin-top: 2em;
+					width: 100%;
+					border-collapse: collapse;
+				}
+
+				th,
+				td {
+					color: ${Palette.work};
+					font-size: 13px;
+					font-family: courier, monospace, sans-serif;
+					text-align: left;
+					padding-right: 16px;
+					vertical-align: top;
+				}
+
+				th {
+					border-bottom: solid 1px ${Palette.workLink}44;
+					vertical-align: bottom;
+				}
+
+				td {
+					font-size: 15px;
 				}
 			`}</style>
 		</Layout>
