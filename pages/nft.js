@@ -18,7 +18,7 @@ const NFT = () => {
 					0x9E71...eA50
 				</span>
 				. The second one is{" "}
-				<Link href="https://www.hicetnunc.xyz/tz/tz1ZvTGYH5EBwgmaYngELeUw1qzgQRJLKoDM">
+				<Link href="https://hicetnunc.art/Louis-Andre%20Labadie">
 					on Hic et Nunc
 				</Link>
 				, at{" "}
