@@ -33,7 +33,7 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 			if (!down) return;
 			e.preventDefault();
 			// Slightly faster than the cursor
-			xDelta = (e.pageX - startX - parent.offsetLeft) * 1.2;
+			xDelta = (e.pageX - startX - parent.offsetLeft) * 1.5;
 			parent.scrollLeft = startScroll - xDelta;
 		};
 		const onMouseUp = (e) => {
