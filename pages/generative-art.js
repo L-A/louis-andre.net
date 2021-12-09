@@ -37,6 +37,7 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 			parent.scrollLeft = startScroll - xDelta;
 		};
 		const onMouseUp = (e) => {
+			if (!down) return;
 			down = false;
 			parent.classList.remove("active");
 			parent.scrollTo(startScroll - xDelta, 0);
