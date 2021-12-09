@@ -3,32 +3,9 @@ import { Palette } from "../config";
 import Layout from "../components/layout";
 import Link from "../components/styled-link";
 import { useEffect, useState } from "react";
+import { getPlaiceholder } from "plaiceholder";
 
-const series = [
-	{
-		name: "Convergence",
-		description: "A series of generated movements, organic and blooming.",
-		iterations: [
-			{ image: "convergence/convergence-1.png" },
-			{ image: "convergence/convergence-2.png" },
-			{ image: "convergence/convergence-3.png" },
-		],
-	},
-	{
-		name: "Boroughs",
-		description:
-			"Regions that build up and erode. The emptiest areas try to link with each other.",
-		iterations: [
-			{ image: "boroughs/boroughs-39382.png", name: "#39382" },
-			{ image: "boroughs/boroughs-245129.png", name: "#245129" },
-			{ image: "boroughs/boroughs-696874.png", name: "#696874" },
-			{ image: "boroughs/boroughs-24440.png", name: "#24440" },
-			{ image: "boroughs/boroughs-777254.png", name: "#777254" },
-			{ image: "boroughs/boroughs-809517.png", name: "#809517" },
-			{ image: "boroughs/boroughs-910161.png", name: "#910161" },
-		],
-	},
-];
+// Image ratio is width/height
 
 const seriesViewer = ({ name, description, iterations }, index) => {
 	const [down, setDown] = useState(false);
@@ -55,7 +32,7 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 		const onMouseUp = (e) => {
 			setDown(false);
 			parent.classList.remove("active");
-			parent.scrollTo(startScroll - xDelta, 0);
+			parent.scrollTo(startScroll - xDelta - 1, 0);
 		};
 
 		parent.addEventListener("mousedown", onMouseDown);
@@ -74,14 +51,16 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 			<h2>{name}</h2>
 			<p>{description}</p>
 			<ul className={`iterations iterations-${index}`}>
-				{iterations.map(({ image, name }, i) => {
+				{iterations.map(({ name, ratio, css, ...img }, i) => {
+					// css and img are provided by plaiceholder
 					return (
 						<li className="series-iteration" key={i}>
-							<div className="image-wrapper">
+							<div className="image-wrapper" style={{ ...css }}>
 								<Image
+									{...img}
 									className="image"
-									src={"/images/art/" + image}
-									layout="fill"
+									width={300 * ratio}
+									height={300}
 								/>
 							</div>
 							<small>{name || "Untitled iteration"}</small>
@@ -102,8 +81,8 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 					padding: 8px 0 32px;
 					display: flex;
 					flex-flow: row nowrap;
-					scroll-snap-type: x mandatory;
 					overflow-x: scroll;
+					overflow-scrolling: touch;
 					margin-left: calc((100vw - 820px) * -0.5 - 134px);
 					margin-right: calc((100vw - 820px) * -0.5);
 					width: 100vw;
@@ -111,6 +90,7 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 					padding-left: calc((100vw - 820px) * 0.5 + 134px);
 					padding-right: calc((100vw - 820px) * 0.5);
 					scrollbar-width: none;
+					scroll-behavior: smooth;
 				}
 
 				.iterations::-webkit-scrollbar {
@@ -119,14 +99,14 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 
 				.iterations.active {
 					cursor: grabbing;
-					scroll-snap-type: none;
+					scroll-behavior: auto;
 				}
 
 				.series-iteration {
 					transition: transform 0.2s ease-out;
-					min-width: 300px;
-					scroll-snap-align: start;
-					margin-right: 32px;
+					min-width: 332px;
+					padding-right: 32px;
+					flex: 1 0 332px;
 				}
 
 				.series-iteration::after {
@@ -147,6 +127,7 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 					transition: transform 0.2s ease-out;
 					transform-origin: center bottom;
 					display: block;
+					width: 0;
 					max-width: 100%;
 					position: relative;
 
@@ -200,7 +181,7 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 	);
 };
 
-const GenerativeArt = () => (
+const GenerativeArt = ({ series }) => (
 	<Layout pageTitle="Generative Art">
 		<h1>Generative Art</h1>
 		<p>
@@ -257,5 +238,46 @@ const GenerativeArt = () => (
 		`}</style>
 	</Layout>
 );
+
+export const getStaticProps = async () => {
+	const setupImage = async (path, ratio, name) => {
+		const { css, img } = await getPlaiceholder("/images/art/" + path, {
+			size: 8,
+		});
+		return {
+			...img,
+			css,
+			ratio,
+			name: name || null,
+		};
+	};
+
+	let series = [
+		{
+			name: "Convergence",
+			description: "A series of generated movements, organic and blooming.",
+			iterations: [
+				await setupImage("convergence/convergence-1.png", 300 / 300),
+				await setupImage("convergence/convergence-2.png", 300 / 300),
+				await setupImage("convergence/convergence-3.png", 300 / 300),
+			],
+		},
+		{
+			name: "Boroughs",
+			description:
+				"Regions that build up and erode. The emptiest areas try to link with each other.",
+			iterations: [
+				await setupImage("boroughs/boroughs-39382.png", 300 / 300, "#39382"),
+				await setupImage("boroughs/boroughs-245129.png", 300 / 300, "#245129"),
+				await setupImage("boroughs/boroughs-696874.png", 300 / 300, "#696874"),
+				await setupImage("boroughs/boroughs-24440.png", 300 / 300, "#24440"),
+				await setupImage("boroughs/boroughs-777254.png", 300 / 300, "#777254"),
+				await setupImage("boroughs/boroughs-809517.png", 300 / 300, "#809517"),
+				await setupImage("boroughs/boroughs-910161.png", 300 / 300, "#910161"),
+			],
+		},
+	];
+	return { props: { series } };
+};
 
 export default GenerativeArt;
