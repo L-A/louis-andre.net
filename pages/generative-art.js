@@ -2,17 +2,13 @@ import Image from "next/image";
 import { Palette } from "../config";
 import Layout from "../components/layout";
 import Link from "../components/styled-link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getPlaiceholder } from "plaiceholder";
+import Series from "../content/art-series.json";
 
 // Image ratio is width/height
 
 const seriesViewer = ({ name, description, iterations }, index) => {
-	const [down, setDown] = useState(false);
-	const [startX, setStartX] = useState(0);
-	const [startScroll, setStartScroll] = useState(0);
-	const [xDelta, setXDelta] = useState(0);
-
 	useEffect(() => {
 		// Using JS variables prevents flickering in the animation
 		// useState would introduce jitter
@@ -57,7 +53,7 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 	return (
 		<li className="series-preview" key={name}>
 			<h2>{name}</h2>
-			<p>{description}</p>
+			<p className="description">{description}</p>
 			<ul className={`iterations iterations-${index}`}>
 				{iterations.map(({ name, ratio, css, ...img }, i) => {
 					// css and img are provided by plaiceholder
@@ -81,6 +77,14 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 				.series-preview {
 					margin-top: 64px;
 					position: relative;
+				}
+
+				h2 {
+					margin-bottom: 8px;
+				}
+
+				p.description {
+					margin-top: 8px;
 				}
 
 				.iterations {
@@ -209,7 +213,7 @@ const GenerativeArt = ({ series }) => (
 			>
 				Generative art
 			</Link>{" "}
-			is where it’s at! Here are some of my pieces.
+			is where it’s at! Here are some selected series.
 		</p>
 
 		<p>
@@ -256,7 +260,7 @@ const GenerativeArt = ({ series }) => (
 );
 
 export const getStaticProps = async () => {
-	const setupImage = async (path, ratio, name) => {
+	const setupImage = async ([path, ratio, name]) => {
 		const { css, img } = await getPlaiceholder("/images/art/" + path, {
 			size: 8,
 		});
@@ -268,44 +272,15 @@ export const getStaticProps = async () => {
 		};
 	};
 
-	let series = [
-		{
-			name: "Convergence",
-			description: "A series of generated movements, organic and blooming.",
-			iterations: [
-				await setupImage("convergence/convergence-1.png", 300 / 300),
-				await setupImage("convergence/convergence-2.png", 300 / 300),
-				await setupImage("convergence/convergence-3.png", 300 / 300),
-			],
-		},
-		{
-			name: "Boroughs",
-			description:
-				"Regions that build up and erode. The emptiest areas try to link with each other.",
-			iterations: [
-				await setupImage("boroughs/boroughs-39382.png", 300 / 300, "#39382"),
-				await setupImage("boroughs/boroughs-245129.png", 300 / 300, "#245129"),
-				await setupImage("boroughs/boroughs-696874.png", 300 / 300, "#696874"),
-				await setupImage("boroughs/boroughs-24440.png", 300 / 300, "#24440"),
-				await setupImage("boroughs/boroughs-777254.png", 300 / 300, "#777254"),
-				await setupImage("boroughs/boroughs-809517.png", 300 / 300, "#809517"),
-				await setupImage("boroughs/boroughs-910161.png", 300 / 300, "#910161"),
-			],
-		},
-		{
-			name: "Bound",
-			description: "In triptych form: Observed particles in a closed space.",
-			iterations: [
-				await setupImage("bound/bound-1.webp", 300 / 300, "Bound 1 – Genesis"),
-				await setupImage(
-					"bound/bound-2.webp",
-					300 / 300,
-					"Bound 2 – Coherence"
-				),
-				await setupImage("bound/bound-3.webp", 300 / 300, "Bound 3 - Friction"),
-			],
-		},
-	];
+	// Resolve all images to Plaiceholder objects
+	const series = await Promise.all(
+		Series.map(async ({ iterations, ...info }) => ({
+			...info,
+			iterations: await Promise.all(
+				iterations.map(async (i) => await setupImage(i))
+			),
+		}))
+	);
 	return { props: { series } };
 };
 

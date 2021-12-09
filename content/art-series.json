@@ -1,0 +1,66 @@
+[
+	{
+		"name": "Night Market",
+		"description": "Abstract urbanism. Chaos from order.",
+		"iterations": [
+			["night-market/night-market-1.jpg", 1, "Night market #892484"],
+			["night-market/night-market-2.jpg", 1, "Night market #508003"],
+			["night-market/night-market-3.jpg", 1, "Night market #422812"],
+			["night-market/night-market-4.jpg", 1, "Night market #959642"],
+			["night-market/night-market-5.jpg", 1, "Night market #840461"],
+			["night-market/night-market-6.jpg", 1, "Night market #305936"]
+		]
+	},
+	{
+		"name": "Boroughs",
+		"description": "Regions that build up and erode. The emptiest areas try to link with each other.",
+		"iterations": [
+			["boroughs/boroughs-39382.png", 1, "#39382"],
+			["boroughs/boroughs-245129.png", 1, "#245129"],
+			["boroughs/boroughs-696874.png", 1, "#696874"],
+			["boroughs/boroughs-24440.png", 1, "#24440"],
+			["boroughs/boroughs-777254.png", 1, "#777254"],
+			["boroughs/boroughs-809517.png", 1, "#809517"],
+			["boroughs/boroughs-910161.png", 1, "#910161"]
+		]
+	},
+	{
+		"name": "Convergence",
+		"description": "A series of generated movements, organic and blooming.",
+		"iterations": [
+			["convergence/convergence-1.png", 1],
+			["convergence/convergence-2.png", 1],
+			["convergence/convergence-3.png", 1]
+		]
+	},
+	{
+		"name": "Bound",
+		"description": "In triptych form: Observed particles in a closed space.",
+		"iterations": [
+			["bound/bound-1.webp", 1, "Bound 1 – Genesis"],
+			["bound/bound-2.webp", 1, "Bound 2 – Coherence"],
+			["bound/bound-3.webp", 1, "Bound 3 - Friction"]
+		]
+	},
+	{
+		"name": "Layers",
+		"description": "Three parallel sets of lines of modulated length combine to create emergent shapes.",
+		"iterations": [
+			["layers/layers-1.png", 1],
+			["layers/layers-2.png", 1],
+			["layers/layers-3.png", 1],
+			["layers/layers-4.png", 1],
+			["layers/layers-5.png", 1]
+		]
+	},
+	{
+		"name": "Runes",
+		"description": "Explorations in structed and asemic-like drawing",
+		"iterations": [
+			["runes/runes-1.png", 1],
+			["runes/runes-2.png", 1],
+			["runes/runes-3.png", 1],
+			["runes/runes-4.png", 1]
+		]
+	}
+]
