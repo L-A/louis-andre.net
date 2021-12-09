@@ -292,6 +292,19 @@ export const getStaticProps = async () => {
 				await setupImage("boroughs/boroughs-910161.png", 300 / 300, "#910161"),
 			],
 		},
+		{
+			name: "Bound",
+			description: "In triptych form: Observed particles in a closed space.",
+			iterations: [
+				await setupImage("bound/bound-1.webp", 300 / 300, "Bound 1 – Genesis"),
+				await setupImage(
+					"bound/bound-2.webp",
+					300 / 300,
+					"Bound 2 – Coherence"
+				),
+				await setupImage("bound/bound-3.webp", 300 / 300, "Bound 3 - Friction"),
+			],
+		},
 	];
 	return { props: { series } };
 };
