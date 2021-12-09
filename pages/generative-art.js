@@ -14,25 +14,32 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 	const [xDelta, setXDelta] = useState(0);
 
 	useEffect(() => {
+		// Using JS variables prevents flickering in the animation
+		// useState would introduce jitter
+		let startX,
+			startScroll,
+			xDelta,
+			down = false;
 		const parent = document.querySelector(`.iterations-${index}`);
 		const onMouseDown = (e) => {
 			e.preventDefault();
-			setDown(true);
-			setStartScroll(parent.scrollLeft);
-			setStartX(e.pageX);
-			setXDelta(0);
+			down = true;
+			startScroll = parent.scrollLeft;
+			startX = e.pageX - parent.offsetLeft;
+			xDelta = 0;
 			parent.classList.add("active");
 		};
 		const onMouseMove = (e) => {
 			if (!down) return;
 			e.preventDefault();
-			setXDelta(e.pageX - startX);
-			parent.scrollTo(startScroll - xDelta, 0);
+			// Slightly faster than the cursor
+			xDelta = (e.pageX - startX - parent.offsetLeft) * 1.2;
+			parent.scrollLeft = startScroll - xDelta;
 		};
 		const onMouseUp = (e) => {
-			setDown(false);
+			down = false;
 			parent.classList.remove("active");
-			parent.scrollTo(startScroll - xDelta - 1, 0);
+			parent.scrollTo(startScroll - xDelta, 0);
 		};
 
 		parent.addEventListener("mousedown", onMouseDown);
@@ -130,10 +137,18 @@ const seriesViewer = ({ name, description, iterations }, index) => {
 					width: 0;
 					max-width: 100%;
 					position: relative;
+					overflow: hidden;
+					border-radius: 2px;
 
 					box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.05),
 						0px 6px 8px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.1);
-					transition: box-shadow 0.2s ease-out;
+					transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+				}
+
+				.iterations.active .image-wrapper {
+					box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.05),
+						0px 8px 16px rgba(0, 0, 0, 0.05), 0px 3px 8px rgba(0, 0, 0, 0.01);
+					transform: translateY(-1px);
 				}
 
 				small {
