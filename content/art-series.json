@@ -2,6 +2,10 @@
 	{
 		"name": "Night Market",
 		"description": "Abstract urbanism. Chaos from order.",
+		"platforms": [
+			{ "platform": "Foundation", "link": "https://foundation.app/@lalabadie" },
+			{ "platform": "Artblocks", "link": "https://foundation.app/@lalabadie" }
+		],
 		"iterations": [
 			["night-market/night-market-1.jpg", 1, "Night market #892484"],
 			["night-market/night-market-2.jpg", 1, "Night market #508003"],
@@ -36,6 +40,9 @@
 	{
 		"name": "Bound",
 		"description": "In triptych form: Observed particles in a closed space.",
+		"platforms": [
+			{ "platform": "Foundation", "link": "https://foundation.app/@lalabadie" }
+		],
 		"iterations": [
 			["bound/bound-1.webp", 1, "Bound 1 – Genesis"],
 			["bound/bound-2.webp", 1, "Bound 2 – Coherence"],
