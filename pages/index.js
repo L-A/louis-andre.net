@@ -1,7 +1,7 @@
-import { Palette } from "../config"
-import Layout from "../components/layout"
-import Link from "../components/styled-link"
-import Art from "../components/art-canvas"
+import { Palette } from "../config";
+import Layout from "../components/layout";
+import Link from "../components/styled-link";
+import Art from "../components/art-canvas";
 
 export default () => (
 	<Layout>
@@ -27,7 +27,7 @@ export default () => (
 			occasionally.
 		</p>
 		<p>
-			I work as an independent designer. My studio is called{" "}
+			I also work as an independent designer. My studio is called{" "}
 			<Link color={Palette.text} href="http://tinyrevolt.com/en">
 				Tiny Revolt
 			</Link>
@@ -55,4 +55,4 @@ export default () => (
 			}
 		`}</style>
 	</Layout>
-)
+);

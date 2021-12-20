@@ -6,6 +6,55 @@ import { useEffect } from "react";
 import { getPlaiceholder } from "plaiceholder";
 import Series from "../content/art-series.json";
 
+const PositiveCheck = ({ onClick }) => (
+	<svg
+		width="32"
+		height="32"
+		viewBox="0 0 32 32"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		alt="Yes"
+		onClick={onClick}
+	>
+		<rect width="32" height="32" rx="16" fill="#D9FAEE" />
+		<path
+			d="M8 16.0031L13.5961 21.5992L24.5992 10.5961"
+			stroke="#00B674"
+			stroke-width="4"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		/>
+	</svg>
+);
+
+const NegativeCheck = ({ onClick }) => (
+	<svg
+		width="32"
+		height="32"
+		viewBox="0 0 32 32"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		alt="No"
+		onClick={onClick}
+	>
+		<rect width="32" height="32" rx="16" fill="#F5EEFF" />
+		<path
+			d="M21.4039 10.5961L10 22"
+			stroke="#711BDE"
+			stroke-width="4"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		/>
+		<path
+			d="M10 10.5961L21.4039 22"
+			stroke="#711BDE"
+			stroke-width="4"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		/>
+	</svg>
+);
+
 // Image ratio is width/height
 
 const seriesImage = ({ name, ratio, css, ...img }, i) => {
@@ -163,6 +212,7 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 
 				h2 {
 					margin-bottom: 8px;
+					margin-top: 32px;
 				}
 
 				p.description {
@@ -211,7 +261,7 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 					vertical-align: middle;
 					margin-left: 8px;
 					opacity: 1;
-					transition: opacity 0.8s ease-out;
+					transition: opacity 0.15s ease-out;
 				}
 
 				.platform-link:hover {
@@ -258,63 +308,66 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 	);
 };
 
-const GenerativeArt = ({ series }) => (
-	<Layout pageTitle="Generative Art">
-		<h1>Generative Art</h1>
-		<p>
-			For the last few years, I've had an artistic practice based on making the
-			computer want a playful tool?{" "}
-			<Link
-				color={Palette.reading}
-				href="https://en.wikipedia.org/wiki/Generative_art"
-			>
-				Generative art
-			</Link>{" "}
-			is where it’s at! Here are some selected series.
-		</p>
+const GenerativeArt = ({ series }) => {
+	return (
+		<Layout pageTitle="Generative Art">
+			<h1>Generative Art</h1>
+			<p>
+				I've been creating{" "}
+				<Link
+					color={Palette.reading}
+					href="https://en.wikipedia.org/wiki/Generative_art"
+				>
+					generative art
+				</Link>{" "}
+				for the last few years. Here are some selected&nbsp;series.
+			</p>
 
-		<p className="notice">
-			If you want to stay up to date on my art, I post{" "}
-			<Link href="https://www.instagram.com/lalabadie/">here on Instagram</Link>
-			.
-		</p>
+			<p>
+				<strong>A note about NFTs:</strong> You can find my legitimate addresses
+				for Tezos and Ethereum{" "}
+				<Link internal href="/nft" color={Palette.art}>
+					on this page
+				</Link>
+				, as well as my policy on blockchain energy use.
+			</p>
 
-		<p>
-			<strong>A note about NFTs:</strong> You can find my legitimate addresses
-			on Tezos and Ethereum{" "}
-			<Link internal href="/nft" color={Palette.art}>
-				on this page
-			</Link>
-			, as well as my simple policy on blockchain energy use.
-		</p>
+			<p className="notice">
+				If you want to stay up to date on my art, I post{" "}
+				<Link href="https://www.instagram.com/lalabadie/">
+					here on Instagram
+				</Link>
+				.
+			</p>
 
-		<ul className="series">{series.map(seriesViewer)}</ul>
+			<ul className="series">{series.map(seriesViewer)}</ul>
 
-		<style jsx>{`
-			h1 {
-				color: ${Palette.art};
-			}
+			<style jsx>{`
+				h1 {
+					color: ${Palette.art};
+				}
 
-			.notice {
-				background-color: ${Palette.instagramBackground};
-				border-radius: 3px;
-				padding: 16px 32px;
-				margin-top: 32px;
-				max-width: 50em;
-			}
+				.notice {
+					background-color: ${Palette.instagramBackground};
+					border-radius: 3px;
+					padding: 16px 32px;
+					margin-top: 32px;
+					margin-right: 32px;
+				}
 
-			span.address {
-				font-size: 0.8em;
-				font-family: courier, monospace, sans-serif;
-			}
+				span.address {
+					font-size: 0.8em;
+					font-family: courier, monospace, sans-serif;
+				}
 
-			.series {
-				padding-left: 0;
-				list-style: none;
-			}
-		`}</style>
-	</Layout>
-);
+				.series {
+					padding-left: 0;
+					list-style: none;
+				}
+			`}</style>
+		</Layout>
+	);
+};
 
 export const getStaticProps = async () => {
 	const setupImage = async ([path, ratio, name]) => {

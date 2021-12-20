@@ -3,8 +3,7 @@
 		"name": "Night Market",
 		"description": "Abstract urbanism. Chaos from order.",
 		"platforms": [
-			{ "platform": "Foundation", "link": "https://foundation.app/@lalabadie" },
-			{ "platform": "Artblocks", "link": "https://foundation.app/@lalabadie" }
+			{ "platform": "Foundation", "link": "https://foundation.app/@lalabadie" }
 		],
 		"iterations": [
 			["night-market/night-market-1.jpg", 1, "Night market #892484"],
@@ -19,13 +18,13 @@
 		"name": "Boroughs",
 		"description": "Regions that build up and erode. The emptiest areas try to link with each other.",
 		"iterations": [
-			["boroughs/boroughs-39382.png", 1, "#39382"],
-			["boroughs/boroughs-245129.png", 1, "#245129"],
-			["boroughs/boroughs-696874.png", 1, "#696874"],
-			["boroughs/boroughs-24440.png", 1, "#24440"],
-			["boroughs/boroughs-777254.png", 1, "#777254"],
-			["boroughs/boroughs-809517.png", 1, "#809517"],
-			["boroughs/boroughs-910161.png", 1, "#910161"]
+			["boroughs/boroughs-39382.png", 1, "Boroughs #39382"],
+			["boroughs/boroughs-245129.png", 1, "Boroughs #245129"],
+			["boroughs/boroughs-696874.png", 1, "Boroughs #696874"],
+			["boroughs/boroughs-24440.png", 1, "Boroughs #24440"],
+			["boroughs/boroughs-777254.png", 1, "Boroughs #777254"],
+			["boroughs/boroughs-809517.png", 1, "Boroughs #809517"],
+			["boroughs/boroughs-910161.png", 1, "Boroughs #910161"]
 		]
 	},
 	{
@@ -62,7 +61,7 @@
 	},
 	{
 		"name": "Runes",
-		"description": "Explorations in structed and asemic-like drawing",
+		"description": "Explorations in structured and rune-like drawing",
 		"iterations": [
 			["runes/runes-1.png", 1],
 			["runes/runes-2.png", 1],

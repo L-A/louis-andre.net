@@ -1,6 +1,6 @@
-import { Palette } from "../config"
-import Layout from "../components/layout"
-import Link from "../components/styled-link"
+import { Palette } from "../config";
+import Layout from "../components/layout";
+import Link from "../components/styled-link";
 
 const NFT = () => {
 	return (
@@ -9,8 +9,8 @@ const NFT = () => {
 			<h2>Legitimate addresses</h2>
 			<p>
 				I mint NFTs from two addresses. The first one is{" "}
-				<Link href="https://foundation.app/@lalabadie">on Foundation</Link>,
-				from the address{" "}
+				<Link href="https://foundation.app/@lalabadie">on Ethereum</Link> (see
+				the part about carbon), from the address{" "}
 				<span
 					className="address"
 					title="0x9E7101C7741b919A389Fc9495D85843fEcAfeA50"
@@ -18,14 +18,12 @@ const NFT = () => {
 					0x9E71...eA50
 				</span>
 				. The second one is{" "}
-				<Link href="https://hicetnunc.art/Louis-Andre%20Labadie">
-					on Hic et Nunc
-				</Link>
+				<Link href="https://hicetnunc.art/Louis-Andre%20Labadie">on Tezos</Link>
 				, at{" "}
 				<span className="address" title="tz1ZvTGYH5EBwgmaYngELeUw1qzgQRJLKoDM">
 					tz1Zv...LKoDM
-				</span>{" "}
-				on the Tezos blockchain.
+				</span>
+				.
 			</p>
 
 			<h2>Carbon &amp; energy use</h2>
@@ -59,12 +57,17 @@ const NFT = () => {
 				<Link href="https://github.com/kylemcdonald/ethereum-nft-activity">
 					ethereum NFT estimates here
 				</Link>{" "}
-				– which place Foundation at roughly 84 kgCO<sub>2</sub> per transaction.
+				– which, for example, place Foundation at roughly 84 kgCO<sub>2</sub>{" "}
+				per transaction. At the time of writing this, most of my activity was
+				through Foundation sales.
+			</p>
+			<p>
 				The offsets are by{" "}
 				<Link href="https://terrapass.com/projects/sustainable-living-projects">
 					Terrapass
 				</Link>
-				.
+				, who contract out independent audits to confirm the efficacy of their
+				project portfolio .
 			</p>
 
 			<style jsx>{`
@@ -103,7 +106,7 @@ const NFT = () => {
 				}
 			`}</style>
 		</Layout>
-	)
-}
+	);
+};
 
-export default NFT
+export default NFT;
