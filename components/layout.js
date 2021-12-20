@@ -1,7 +1,7 @@
-import Head from "next/head"
-import Link from "next/link"
-import { useEffect } from "react"
-import { Palette } from "../config"
+import Head from "next/head";
+import Link from "next/link";
+import { useEffect } from "react";
+import { Palette } from "../config";
 
 const Layout = ({ pageTitle, children }) => {
 	// Polite & limited analytics - goatcounter.com
@@ -9,10 +9,10 @@ const Layout = ({ pageTitle, children }) => {
 		if (window.goatcounter && window.goatcounter.count) {
 			window.goatcounter.count({
 				path: location.pathname + location.search + location.hash,
-			})
+			});
 		}
-	}
-	useEffect(countVisit, [])
+	};
+	useEffect(countVisit, []);
 
 	// Layout
 	return (
@@ -40,9 +40,6 @@ const Layout = ({ pageTitle, children }) => {
 						<Link href="/reading-log">
 							<a>Reading Log</a>
 						</Link>
-					</li>
-					<li className="work-button">
-						<a href="http://tinyrevolt.com/en">Hire me</a>
 					</li>
 				</ul>
 			</nav>
@@ -118,17 +115,6 @@ const Layout = ({ pageTitle, children }) => {
 					color: ${Palette.reading};
 				}
 
-				.pages .work-button {
-					background-color: ${Palette.workBackground};
-					border-radius: 3px;
-					color: ${Palette.workLink};
-					font-size: 14px;
-					font-weight: 400;
-					padding: 0 8px;
-
-					transform-origin: center;
-				}
-
 				.pages li a {
 					color: inherit;
 					display: inline-block;
@@ -198,7 +184,7 @@ const Layout = ({ pageTitle, children }) => {
 				}
 			`}</style>
 		</div>
-	)
-}
+	);
+};
 
-export default Layout
+export default Layout;
