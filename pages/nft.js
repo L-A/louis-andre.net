@@ -36,9 +36,9 @@ const NFT = () => {
 						<th>Offsets puchased</th>
 					</tr>
 					<tr>
-						<td>August 2021</td>
-						<td>3.81t</td>
-						<td>10t</td>
+						<td>January 2021</td>
+						<td>10.31t</td>
+						<td>30t</td>
 					</tr>
 				</tbody>
 			</table>
@@ -59,7 +59,7 @@ const NFT = () => {
 				</Link>{" "}
 				– which, for example, place Foundation at roughly 84 kgCO<sub>2</sub>{" "}
 				per transaction. At the time of writing this, most of my activity was
-				through Foundation sales.
+				through Foundation sales, then a single Artblocks release.
 			</p>
 			<p>
 				The offsets are by{" "}
@@ -67,7 +67,7 @@ const NFT = () => {
 					Terrapass
 				</Link>
 				, who contract out independent audits to confirm the efficacy of their
-				project portfolio .
+				project portfolio.
 			</p>
 
 			<style jsx>{`
