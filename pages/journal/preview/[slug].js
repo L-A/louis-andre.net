@@ -6,10 +6,24 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 // Contentful-specific config
 import { INLINES, BLOCKS } from "@contentful/rich-text-types";
+import { Palette } from "../../../config";
 const CustomComponents = {
 	renderNode: {
 		[INLINES.HYPERLINK]: ({ data: { uri } }, children) => {
-			return <StyledLink href={uri}>{children}</StyledLink>;
+			return (
+				<StyledLink href={uri} color={Palette.externalLink}>
+					{children}
+				</StyledLink>
+			);
+		},
+		[INLINES.EMBEDDED_ENTRY]: ({
+			data: {
+				target: {
+					fields: { slug, title },
+				},
+			},
+		}) => {
+			return <StyledLink href={"/journal/" + slug}>{title}</StyledLink>;
 		},
 		[BLOCKS.EMBEDDED_ASSET]: (node) => {
 			const { title, file } = node.data.target.fields;
@@ -17,7 +31,7 @@ const CustomComponents = {
 			return (
 				<img
 					title={title}
-					srcset={`
+					srcSet={`
 					${file.url}?w=1448 1448w,
 					${file.url}?w=724 724w,
 				`}
