@@ -58,11 +58,12 @@ const NegativeCheck = ({ onClick }) => (
 // Image ratio is width/height
 
 const seriesImage = ({ name, ratio, css, ...img }, i) => {
+	const width = 300 * ratio;
 	// css and img are provided by plaiceholder
 	return (
 		<li className="series-iteration" key={i}>
 			<div className="image-wrapper" style={{ ...css }}>
-				<Image {...img} className="image" width={300 * ratio} height={300} />
+				<Image {...img} className="image" width={width} height={300} />
 			</div>
 			<small>{name || "Untitled iteration"}</small>
 			<style jsx>{`
@@ -73,9 +74,8 @@ const seriesImage = ({ name, ratio, css, ...img }, i) => {
 
 				.series-iteration {
 					transition: transform 0.2s ease-out;
-					min-width: 332px;
 					padding-right: 32px;
-					flex: 1 0 332px;
+					flex: 1 0 ${width}px;
 				}
 
 				.series-iteration::after {
@@ -96,7 +96,7 @@ const seriesImage = ({ name, ratio, css, ...img }, i) => {
 					transition: transform 0.2s ease-out;
 					transform-origin: center bottom;
 					display: block;
-					width: 0;
+					width: ${width}px;
 					max-width: 100%;
 					position: relative;
 					overflow: hidden;
