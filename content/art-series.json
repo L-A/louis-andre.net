@@ -1,5 +1,27 @@
 [
 	{
+		"name": "Maps for grief",
+		"description": "Togetherness without contact.",
+		"platforms": [
+			{
+				"platform": "Artblocks",
+				"link": "https://www.artblocks.io/project/235"
+			},
+			{
+				"platform": "OpenSea",
+				"link": "https://opensea.io/collection/maps-for-grief-by-louis-andre-labadie"
+			}
+		],
+		"iterations": [
+			["maps-for-grief/235000003.png", 1.4142, "Maps for grief #3"],
+			["maps-for-grief/235000007.png", 1.4142, "Maps for grief #7"],
+			["maps-for-grief/235000054.png", 1.4142, "Maps for grief #54"],
+			["maps-for-grief/235000177.png", 1.4142, "Maps for grief #177"],
+			["maps-for-grief/235000254.png", 1.4142, "Maps for grief #254"],
+			["maps-for-grief/235000361.png", 1.4142, "Maps for grief #361"]
+		]
+	},
+	{
 		"name": "Night Market",
 		"description": "Abstract urbanism. Chaos from order.",
 		"platforms": [
