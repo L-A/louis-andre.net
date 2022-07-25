@@ -174,6 +174,16 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 											/>
 										</a>
 									)}
+									{platform == "fxhash" && (
+										<a href={link} className="platform-link" key={"fx"}>
+											<Image
+												src="/images/fx-logo.svg"
+												width={20}
+												height={18}
+												alt={`${name} on fxhash`}
+											/>
+										</a>
+									)}
 									{platform == "Artblocks" && (
 										<a href={link} className="platform-link" key={"ab"}>
 											<Image
@@ -258,10 +268,12 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 				}
 
 				.platform-link {
+					display: inline-block;
 					vertical-align: middle;
 					margin-left: 8px;
 					opacity: 1;
 					transition: opacity 0.15s ease-out;
+					margin-bottom: -1px;
 				}
 
 				.platform-link:hover {

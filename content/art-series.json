@@ -22,6 +22,23 @@
 		]
 	},
 	{
+		"name": "Territory A",
+		"description": "A rhythm of order and disorder",
+		"platforms": [
+			{
+				"platform": "fxhash",
+				"link": "https://www.fxhash.xyz/generative/slug/territory-a"
+			}
+		],
+		"iterations": [
+			["territory-a/ta-1.png", 2, "Territory A #1"],
+			["territory-a/ta-8.png", 2, "Territory A #8"],
+			["territory-a/ta-9.png", 2, "Territory A #9"],
+			["territory-a/ta-29.png", 2, "Territory A #29"],
+			["territory-a/ta-39.png", 2, "Territory A #39"]
+		]
+	},
+	{
 		"name": "Night Market",
 		"description": "Abstract urbanism. Chaos from order.",
 		"platforms": [
