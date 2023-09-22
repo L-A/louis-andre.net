@@ -3,6 +3,6 @@
 	 "next/babel"
  	],
 	"plugins": [
-		["babel-root-import"]
+		["module:babel-root-import"]
 	]
 }
