@@ -10,10 +10,10 @@
     "piwik-react-router": "^0.6.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-inlinesvg": "^0.5.4"
+    "react-inlinesvg": "^0.5.4",
+    "babel-root-import": "^4.1.5"
   },
   "devDependencies": {
-    "babel-root-import": "^4.1.5"
   },
   "scripts": {
     "dev": "next",
