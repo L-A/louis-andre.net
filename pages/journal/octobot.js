@@ -1,5 +1,5 @@
 import React from 'react'
-import Blogpost from '~/layouts/blogpost'
+import Blogpost from 'layouts/blogpost'
 
 export default () => {
 	return (

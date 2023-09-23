@@ -1,13 +1,13 @@
 import React from 'react'
-import Head from '~/components/head'
-import Page from '~/layouts/page'
-import Logo from '~/components/logo'
-import Icon from '~/components/icon.js'
-import Link from 'next/prefetch'
+import Head from 'components/head'
+import Page from 'layouts/page'
+import Logo from 'components/logo'
+import Icon from 'components/icon.js'
+import Link from 'next/link'
 
-import { MediaSource, Selector, PlayerAntenna } from '~/components/page-specific/scanneur/components'
-import { CreateStore } from '~/components/page-specific/scanneur/store'
-import { readCookie, writeCookie } from '~/helpers/cookie'
+import { MediaSource, Selector, PlayerAntenna } from 'components/page-specific/scanneur/components'
+import { CreateStore } from 'components/page-specific/scanneur/store'
+import { readCookie, writeCookie } from 'helpers/cookie'
 
 let PlayerStore
 let appSources = {
@@ -172,7 +172,7 @@ class Scanneur extends React.Component {
     return (
       <div className="avenir min-vh-100 pa2">
         <div className="center mw2 pv4 pv5-ns">
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <a>
               <Logo fill="#000"/>
             </a>

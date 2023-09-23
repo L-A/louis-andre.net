@@ -4,17 +4,17 @@
   "description": "Louis-André Labadie's main website",
   "main": "./pages/index.js",
   "dependencies": {
+    "babel-root-import": "^4.1.5",
     "history": "^3.2.1",
     "markdown-to-react-components": "^0.2.1",
-    "next": "^2.0.0-beta",
+    "marksy": "^8.0.0",
+    "next": "^13.5.2",
     "piwik-react-router": "^0.6.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-inlinesvg": "^0.5.4",
-    "babel-root-import": "^4.1.5"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-inlinesvg": "^0.5.4"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "dev": "next",
     "build": "next build",

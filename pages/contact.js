@@ -1,6 +1,6 @@
 import React from 'react'
-import Page from '~/layouts/page'
-import { Translate } from '~/helpers/lang'
+import Page from 'layouts/page'
+import { Translate } from 'helpers/lang'
 
 const T = Translate({
 	en: {

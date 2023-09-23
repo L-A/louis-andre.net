@@ -1,6 +1,6 @@
 import React from 'react'
-import Page from '~/layouts/page'
-import Link from 'next/prefetch'
+import Page from 'layouts/page'
+import Link from 'next/link'
 
 var posts = [
 	{
@@ -53,7 +53,7 @@ const PostList = (props) => {
 		return (
 			<article key={poorIterator++} className="pb3">
 				<h2 className="mb1">
-					<Link href={post.url}>
+					<Link legacyBehavior href={post.url}>
 						<a className="f3 f2-ns fw3 navy no-underline dim pa0">{post.name}</a>
 					</Link>
 				</h2>

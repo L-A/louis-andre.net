@@ -1,7 +1,7 @@
 import React from 'react'
-import Link from 'next/prefetch'
-import Logo from '~/components/logo'
-import { Translate, Language, SetLanguage } from '~/helpers/lang'
+import Link from 'next/link'
+import Logo from 'components/logo'
+import { Translate, Language, SetLanguage } from 'helpers/lang'
 
 const T = Translate({
   en: {
@@ -68,7 +68,7 @@ export default class extends React.Component {
 		return (
 			<nav className="dt w-100 pb4 pt3 pt4-m pt5-l">
 				<h1 onClick={this.changeLayers} className="dtc w-25 pl3 pl5-m pl6-l">
-					<Link href="/">
+					<Link legacyBehavior href="/">
 						<a className="dib home-link">
 							<div className="logo-layer" style={yLogo}>
 								<Logo fill="#FF0"/>
@@ -84,21 +84,21 @@ export default class extends React.Component {
 				</h1>
 				<ul className="f6 f5-ns dtc v-mid list code w-75 tr pa0 pb2 pr3 pr5-m pr6-l">
 					<li className="dib ph2 ph3-l br bw1 b--light-gray">
-						<Link href="/about">
+						<Link legacyBehavior href="/about">
 							<a className="link dark-gray hover-green">
 								{T.Key("nav.about")}
 							</a>
 						</Link>
 					</li>
 					<li className="dib ph2 ph3-l br bw1 b--light-gray">
-						<Link href="/journal">
+						<Link legacyBehavior href="/journal">
 							<a className="link dark-gray hover-green">
 								{T.Key("nav.journal")}
 							</a>
 						</Link>
 					</li>
 					<li className="dib ph2 ph3-l br bw1 b--light-gray">
-						<Link href="/contact">
+						<Link legacyBehavior href="/contact">
 							<a className="link dark-gray hover-green">
 								{T.Key("nav.contact")}
 							</a>

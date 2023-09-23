@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/prefetch'
+import Link from 'next/link'
 
 export default (props) => {
 	let disabled = props.linksTo == null;
@@ -25,7 +25,7 @@ export default (props) => {
 	)
 	return (
 		props.linksTo
-		? <Link href={props.linksTo}>{innards}</Link>
+		? <Link legacyBehavior href={props.linksTo}>{innards}</Link>
 		: innards
 	)
 }

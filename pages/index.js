@@ -1,11 +1,11 @@
 import React from 'react'
-import Link from 'next/prefetch'
-import Page from '~/layouts/page'
-import Icon from '~/components/icon.js'
-import Project from '~/components/project'
-import ColorRange from '~/helpers/colorRange'
-import Shot from '~/components/dribbble-shot'
-import { Translate } from '~/helpers/lang'
+import Link from 'next/link'
+import Page from 'layouts/page'
+import Icon from 'components/icon.js'
+import Project from 'components/project'
+import ColorRange from 'helpers/colorRange'
+import Shot from 'components/dribbble-shot'
+import { Translate } from 'helpers/lang'
 
 const T = Translate({
   en: {
@@ -65,7 +65,7 @@ export default Page( () => (
 		<MovingFill />
 		<div style={headerStyle} className="lh-title mb4 mb5-ns mt3 mt5-ns ph3 ph5-m ph6-l tc b f3 f2-ns center" dangerouslySetInnerHTML={{__html: T.Key("tagline")}} />
     <div className="tc mb4 mb5-ns">
-      {/* <Link href="/contact">
+      {/* <Link legacyBehavior href="/contact">
         <a style={contactLinkStyle} className="no-underline dib pointer pv3 ph4 green br2 tc">{T.Key('availability.booked')}</a>
       </Link> */}
     </div>

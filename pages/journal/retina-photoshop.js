@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogPost from '~/layouts/blogpost'
+import BlogPost from 'layouts/blogpost'
 
 export default () => (
 	<BlogPost title="A Retina workflow for Photoshop" titleColor="#4582c0" postMarkdown={postContent}>

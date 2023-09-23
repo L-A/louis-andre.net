@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogPost from '~/layouts/blogpost'
+import BlogPost from 'layouts/blogpost'
 
 export default () => (
 	<BlogPost title="Fitsteady: Fantastic tools for formidable trainers" titleColor="#459283" postMarkdown={postContent}>

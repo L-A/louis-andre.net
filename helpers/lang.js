@@ -1,4 +1,4 @@
-import { readCookie, writeCookie } from '~/helpers/cookie'
+import { readCookie, writeCookie } from 'helpers/cookie'
 
 const Translate = (locales) => {
   const Key = (path) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import Btn from '~/components/button'
-import { Translate } from '~/helpers/lang'
+import Btn from 'components/button'
+import { Translate } from 'helpers/lang'
 
 const T = Translate({
   en: {
@@ -34,7 +34,7 @@ const titleStyle = (titleColor) => {
 
 const ClientLink = (clientProps) => {
 	if (clientProps) {
-		return <Link href={clientProps.url}>
+		return <Link legacyBehavior href={clientProps.url}>
 		<a className="link gray">{clientProps.name}</a>
 		</Link>
 	}

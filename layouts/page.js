@@ -1,9 +1,9 @@
 import React from 'react'
-import Head from '~/components/head' // I really should change this nomenclature
-import Header from '~/components/header'
-import Footer from '~/components/footer'
+import Head from 'components/head' // I really should change this nomenclature
+import Header from 'components/header'
+import Footer from 'components/footer'
 import 'isomorphic-fetch'
-import { writeCookie, readCookie } from '~/helpers/cookie'
+import { writeCookie, readCookie } from 'helpers/cookie'
 
 const defaultOpts = {
   naked: false,
