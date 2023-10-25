@@ -124,6 +124,7 @@ export default () => {
 					100% {
 						transform: rotate(${tagRotation}deg);
 					}
+				}
 			`}</style>
 			<style jsx global>{`
 				video,
