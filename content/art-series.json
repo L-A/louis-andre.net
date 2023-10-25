@@ -1,5 +1,25 @@
 [
 	{
+		"name": "Territory B",
+		"description": "Territory B leaves no space unused",
+		"platforms": [
+			{
+				"platform": "fxhash",
+				"link": "https://www.fxhash.xyz/generative/slug/territory-b"
+			}
+		],
+		"iterations": [
+			["territory-b/tb-28.png", 1, "Territory B #28"],
+			["territory-b/tb-31.png", 1, "Territory B #31"],
+			["territory-b/tb-38.png", 1, "Territory B #38"],
+			["territory-b/tb-133.png", 1, "Territory B #133"],
+			["territory-b/tb-143.png", 1, "Territory B #143"],
+			["territory-b/tb-149.png", 1, "Territory B #149"],
+			["territory-b/tb-160.png", 1, "Territory B #160"],
+			["territory-b/tb-170.png", 1, "Territory B #170"]
+		]
+	},
+	{
 		"name": "Maps for grief",
 		"description": "Togetherness without contact.",
 		"platforms": [
