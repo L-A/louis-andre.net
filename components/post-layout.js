@@ -1,6 +1,6 @@
-import Layout from "./layout"
-import Link from "./styled-link"
-import { Palette } from "../config"
+import Layout from "./layout";
+import Link from "./styled-link";
+import { Palette } from "../config";
 
 const Post = ({ title, publishedDate, children }) => (
 	<Layout pageTitle={title}>
@@ -62,6 +62,6 @@ const Post = ({ title, publishedDate, children }) => (
 			`}
 		</style>
 	</Layout>
-)
+);
 
-export default Post
+export default Post;

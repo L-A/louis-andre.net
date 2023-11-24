@@ -29,10 +29,34 @@ export default defineConfig({
 	schema: {
 		collections: [
 			{
-				name: "notes",
 				label: "Notes",
+				name: "notes",
 				path: "content/notes",
+				format: "md",
+				ui: {
+					filename: {
+						readonly: true,
+						slugify: (values) => {
+							const date = new Date(values.date);
+							return `${date.getFullYear()}/${values?.name
+								?.toLowerCase()
+								.replace(/ /g, "-")}`;
+						},
+					},
+					router: ({ document }) =>
+						`/notes/${document._sys.breadcrumbs.join("/")}`,
+				},
+				defaultItem: () => ({
+					date: new Date().toISOString(),
+				}),
 				fields: [
+					{
+						type: "string",
+						label: "Name",
+						name: "title",
+						required: true,
+						isTitle: true,
+					},
 					{
 						label: "Date",
 						name: "date",
@@ -43,7 +67,6 @@ export default defineConfig({
 							timeFormat: "HH:mm",
 						},
 					},
-
 					{
 						type: "rich-text",
 						name: "body",
@@ -51,10 +74,6 @@ export default defineConfig({
 						isBody: true,
 					},
 				],
-				ui: {
-					// This is an DEMO router. You can remove this to fit your site
-					router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-				},
 			},
 		],
 	},

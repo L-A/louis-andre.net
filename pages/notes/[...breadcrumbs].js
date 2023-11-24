@@ -1,7 +1,12 @@
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
+import Link from "next/link";
+
 import Layout from "../../components/layout";
+import { Palette } from "../../config";
+import NoteEntry from "../../components/note-entry";
+import StyledLink from "../../components/styled-link";
 
 const Note = (props) => {
 	const { data } = useTina({
@@ -10,11 +15,27 @@ const Note = (props) => {
 		data: props.data,
 	});
 
-	console.log(data);
 	return (
-		<Layout>
-			<h1>Note: {data.notes.date}</h1>
-			<TinaMarkdown content={data.notes.body} />
+		<Layout naked>
+			<nav className="back-to-notes">
+				<h1>
+					<Link href="/">
+						<a>
+							<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
+						</a>
+					</Link>
+				</h1>
+				<StyledLink href={"/notes"}>Back to notes</StyledLink>
+			</nav>
+
+			<NoteEntry {...data.notes} asList={false} />
+
+			<style jsx>{`
+				.back-to-notes {
+					margin-bottom: 64px;
+					text-align: center;
+				}
+			`}</style>
 		</Layout>
 	);
 };
@@ -22,7 +43,7 @@ const Note = (props) => {
 export const getStaticProps = async ({ params }) => {
 	let data = {};
 	let query = {};
-	let variables = { relativePath: `${params.filename}.md` };
+	let variables = { relativePath: `${params.breadcrumbs.join("/")}.md` };
 	try {
 		const res = await client.queries.notes(variables);
 		query = res.query;
@@ -42,12 +63,12 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
 	const notesListData = await client.queries.notesConnection();
-	console.log(notesListData);
+	const notesPaths = notesListData.data.notesConnection.edges.map((note) => ({
+		params: { breadcrumbs: note.node._sys.breadcrumbs },
+	}));
 
 	return {
-		paths: notesListData.data.notesConnection.edges.map((note) => ({
-			params: { filename: note.node._sys.filename },
-		})),
+		paths: notesPaths,
 		fallback: false,
 	};
 };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { Palette } from "../config";
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ pageTitle, children, naked = false }) => {
 	// Polite & limited analytics - goatcounter.com
 	const countVisit = () => {
 		if (window.goatcounter && window.goatcounter.count) {
@@ -17,34 +17,6 @@ const Layout = ({ pageTitle, children }) => {
 	// Layout
 	return (
 		<div className="layout">
-			<nav>
-				<ul className="pages">
-					<li className="home">
-						<Link href="/">
-							<a>
-								<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
-							</a>
-						</Link>
-					</li>
-					<li className="art">
-						<Link href="/generative-art">
-							<a>Art</a>
-						</Link>
-					</li>
-					<li className="journal">
-						<Link href="/journal">
-							<a>Journal</a>
-						</Link>
-					</li>
-					<li className="reading-log">
-						<Link href="/reading-log">
-							<a>Reading Log</a>
-						</Link>
-					</li>
-				</ul>
-			</nav>
-			<main>{children}</main>
-
 			<Head>
 				<meta charSet="utf-8" />
 				<link preload="true" rel="stylesheet" href="/styles/work-sans.css" />
@@ -57,11 +29,46 @@ const Layout = ({ pageTitle, children }) => {
 				<title>{pageTitle ? pageTitle + " -" : ""} Louis-André Labadie</title>
 			</Head>
 
+			{!naked && (
+				<nav>
+					<ul className="pages">
+						<li className="home">
+							<Link href="/">
+								<a>
+									<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
+								</a>
+							</Link>
+						</li>
+						<li className="art">
+							<Link href="/generative-art">
+								<a>Art</a>
+							</Link>
+						</li>
+						<li className="journal">
+							<Link href="/journal">
+								<a>Journal</a>
+							</Link>
+						</li>
+						<li className="reading-log">
+							<Link href="/reading-log">
+								<a>Reading Log</a>
+							</Link>
+						</li>
+						<li className="notes">
+							<Link href="/notes">
+								<a>Notes</a>
+							</Link>
+						</li>
+					</ul>
+				</nav>
+			)}
+			<main>{children}</main>
+
 			<style jsx>{`
 				.layout {
 					max-width: 960px;
 					margin: 64px auto;
-					display: flex;
+					display: ${naked ? "block" : "flex"};
 					flex-direction: row;
 					justify-content: stretch;
 				}
