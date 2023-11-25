@@ -75,6 +75,55 @@ export default defineConfig({
 					},
 				],
 			},
+			{
+				label: "Journal",
+				name: "journal",
+				path: "content/journal",
+				format: "mdx",
+				ui: {
+					router: ({ document }) => `/journal/${document._sys.filename}`,
+				},
+				defaultItem: () => ({
+					date: new Date().toISOString(),
+					inFrench: false,
+				}),
+				fields: [
+					{
+						type: "string",
+						label: "Title",
+						name: "title",
+						required: true,
+						isTitle: true,
+					},
+					{
+						label: "Date",
+						name: "publicationDate",
+						type: "datetime",
+						required: true,
+						ui: {
+							dateFormat: "YYYY/MM/DD",
+						},
+					},
+					{
+						type: "rich-text",
+						name: "body",
+						label: "Body",
+						isBody: true,
+					},
+					{
+						type: "string",
+						label: "Description",
+						name: "description",
+						required: true,
+					},
+					{
+						type: "boolean",
+						label: "In French",
+						name: "inFrench",
+						required: true,
+					},
+				],
+			},
 		],
 	},
 });
