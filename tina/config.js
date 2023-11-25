@@ -38,7 +38,7 @@ export default defineConfig({
 						readonly: true,
 						slugify: (values) => {
 							const date = new Date(values.date);
-							return `${date.getFullYear()}/${values?.name
+							return `${date.getFullYear()}/${values?.title
 								?.toLowerCase()
 								.replace(/ /g, "-")}`;
 						},
