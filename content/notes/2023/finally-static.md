@@ -1,5 +1,5 @@
 ---
-title: Finally static
+title: Microbe log
 date: 2023-11-23T20:31:00.000Z
 ---
 
