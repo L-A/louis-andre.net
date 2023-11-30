@@ -14,6 +14,14 @@ export default defineConfig({
 	clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
 	// Get this from tina.io
 	token: process.env.TINA_TOKEN,
+	search: {
+		tina: {
+			indexerToken: process.env.TINA_SEARCH_TOKEN,
+			stopwordLanguages: ["eng", "fra"],
+		},
+		indexBatchSize: 500,
+		maxSearchIndexFieldLength: 500,
+	},
 
 	build: {
 		outputFolder: "admin",
@@ -97,7 +105,7 @@ export default defineConfig({
 					},
 					{
 						label: "Date",
-						name: "publicationDate",
+						name: "date",
 						type: "datetime",
 						required: true,
 						ui: {

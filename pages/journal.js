@@ -1,10 +1,9 @@
-import Link from "next/link"
-import { Palette } from "../config"
-import Layout from "../components/layout"
+import Link from "next/link";
+import { Palette } from "../config";
+import Layout from "../components/layout";
+import client from "../tina/__generated__/client";
 
-import GetPosts from "../helpers/getJournalPosts"
-
-const PostLink = ({ title, slug, description, publicationDate, inFrench }) => (
+const PostLink = ({ title, description, date, inFrench, slug }) => (
 	<li className="post">
 		<Link href={`/journal/${slug}`}>
 			<a>
@@ -14,7 +13,7 @@ const PostLink = ({ title, slug, description, publicationDate, inFrench }) => (
 					{description}
 				</p>
 				<p className="date">
-					{new Date(publicationDate).toLocaleDateString("en-CA", {
+					{new Date(date).toLocaleDateString("en-CA", {
 						year: "numeric",
 						month: "long",
 					})}
@@ -56,7 +55,7 @@ const PostLink = ({ title, slug, description, publicationDate, inFrench }) => (
 			}
 		`}</style>
 	</li>
-)
+);
 
 const Journal = ({ posts }) => {
 	return (
@@ -122,16 +121,18 @@ const Journal = ({ posts }) => {
 				}
 			`}</style>
 		</Layout>
-	)
-}
+	);
+};
 
 export const getStaticProps = async () => {
-	const posts = await GetPosts()
+	const posts = await client.queries.journalConnection();
+	const notes = await client.queries.notesConnection();
 	// That's reverse chronological order (new to old)
-	const orderedPosts = posts.sort(
-		(a, b) => new Date(b.publicationDate) - new Date(a.publicationDate)
-	)
-	return { props: { posts: orderedPosts }, revalidate: 900 } // Revalidate every 15 minutes
-}
 
-export default Journal
+	const orderedPosts = posts.data.journalConnection.edges
+		.sort((a, b) => new Date(b.node.date) - new Date(a.node.date))
+		.map((n) => ({ ...n.node, slug: n.node._sys.breadcrumbs.join("/") }));
+	return { props: { posts: orderedPosts }, revalidate: 900 }; // Revalidate every 15 minutes
+};
+
+export default Journal;

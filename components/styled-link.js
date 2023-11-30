@@ -1,16 +1,17 @@
-import { Palette } from "../config"
-import Link from "next/link"
+import { Palette } from "../config";
+import Link from "next/link";
 
-const transition = "cubic-bezier(0.415, 1.400, 0.380, 0.975)"
+const transition = "cubic-bezier(0.415, 1.400, 0.380, 0.975)";
 
 const StyledLink = ({
 	children,
 	color = Palette.link,
 	href,
+	title = "",
 	internal = false,
 }) => {
 	const naturalElement = (
-		<a href={href}>
+		<a href={href} title={title}>
 			{children}
 			<span className="underline" aria-hidden="true" />
 			<style jsx>{`
@@ -53,10 +54,10 @@ const StyledLink = ({
 				}
 			`}</style>
 		</a>
-	)
+	);
 
-	if (internal) return <Link href={href}>{naturalElement}</Link>
-	return naturalElement
-}
+	if (internal) return <Link href={href}>{naturalElement}</Link>;
+	return naturalElement;
+};
 
-export default StyledLink
+export default StyledLink;
