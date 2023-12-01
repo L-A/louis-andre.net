@@ -35,7 +35,9 @@ export const getStaticProps = async () => {
 
 	return {
 		props: {
-			entries: notesList.data.notesConnection.edges.map((e) => e.node),
+			entries: notesList.data.notesConnection.edges
+				.sort((a, b) => new Date(b.node.date) - new Date(a.node.date))
+				.map((e) => e.node),
 		},
 	};
 };
