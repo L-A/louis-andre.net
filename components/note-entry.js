@@ -1,20 +1,24 @@
 import { Palette } from "../config";
 import CustomTinaMarkdown from "./custom-tina-markdown";
 
-const dateOptions = {
-	weekday: "long",
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-};
+const NoteEntry = ({ title, date, body, asList = true, _sys }) => {
+	const dateObj = new Date(date);
+	const formattedDate = Intl.DateTimeFormat(["en-GB", "en"], {
+		dateStyle: "medium",
+	}).format(dateObj);
 
-const NoteEntry = ({ title, date, body, asList = true }) => {
-	const formattedDate = new Date(date).toLocaleString("en-CA", dateOptions);
+	const formattedTime = Intl.DateTimeFormat("en-GB", {
+		timeStyle: "short",
+	}).format(dateObj);
 
 	const note = (
 		<>
 			<h2>{title}</h2>
-			<h3>{formattedDate}</h3>
+			<h3>
+				<a href={"/notes/" + _sys.breadcrumbs.join("/")}>
+					<strong>{formattedDate}</strong> at {formattedTime}
+				</a>
+			</h3>
 			<div>
 				<CustomTinaMarkdown content={body} />
 			</div>
@@ -22,7 +26,7 @@ const NoteEntry = ({ title, date, body, asList = true }) => {
 			<style jsx>
 				{`
 					h2 {
-						font-size: 16px;
+						font-size: 18px;
 						color: ${Palette.journal};
 						margin: 0;
 					}
@@ -33,8 +37,13 @@ const NoteEntry = ({ title, date, body, asList = true }) => {
 						margin: 0 0 -8px;
 					}
 
+					h3 strong,
+					h3 a {
+						color: ${Palette.readingLink};
+					}
+
 					div {
-						margin: 32px 0 64px;
+						margin: 8px 0 36px;
 						font-size: 20px;
 					}
 				`}

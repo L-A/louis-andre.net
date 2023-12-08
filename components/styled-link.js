@@ -13,44 +13,26 @@ const StyledLink = ({
 	const naturalElement = (
 		<a href={href} title={title}>
 			{children}
-			<span className="underline" aria-hidden="true" />
 			<style jsx>{`
 				a {
 					color: ${color};
-					display: inline-block;
+					text-decoration: underline;
 					position: relative;
 					vertical-align: baseline;
-				}
-
-				.underline {
-					display: block;
-					border-radius: 2px;
-					background-color: ${color};
-					opacity: 0.3;
-					position: absolute;
-					left: -2px;
-					right: -2px;
-					top: calc(100% - 3px);
-					bottom: 2px;
-
-					pointer-events: none;
-					mix-blend-mode: multiply;
-					z-index: 1;
-
-					transition: bottom 0.2s ease-out, top 0.2s ease-out,
-						opacity 0.2s ease-out;
+					text-decoration-color: ${color}55;
+					text-decoration-thickness: 0.0625em;
+					text-underline-offset: 1.5px;
+					transition: text-decoration-thickness 0.1s ease-out,
+						background-color 0.1s linear;
+					padding: 2px 4px;
+					margin: -2px -4px;
 				}
 
 				a:hover {
-				}
-
-				a:hover .underline {
-					transition: bottom 0.2s ${transition}, top 0.2s ${transition},
-						opacity 0.1s ease-out;
-
-					top: 0;
-					bottom: 0;
-					opacity: 0.05;
+					border-radius: 4px;
+					background-color: ${color}11;
+					text-decoration-thickness: 0.125em;
+					text-decoration-color: ${color};
 				}
 			`}</style>
 		</a>
