@@ -1,6 +1,5 @@
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-
 import { Palette } from "../config";
+import CustomTinaMarkdown from "./custom-tina-markdown";
 
 const dateOptions = {
 	weekday: "long",
@@ -17,7 +16,7 @@ const NoteEntry = ({ title, date, body, asList = true }) => {
 			<h2>{title}</h2>
 			<h3>{formattedDate}</h3>
 			<div>
-				<TinaMarkdown content={body} />
+				<CustomTinaMarkdown content={body} />
 			</div>
 
 			<style jsx>
