@@ -1,32 +1,32 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { Palette } from "../config"
-import Layout from "../components/layout"
-import Link from "../components/styled-link"
-import getPinboardLinks from "../helpers/getPinboardLinks"
+import { Palette } from "../config";
+import Layout from "../components/layout";
+import Link from "../components/styled-link";
+import getOmnivoreLinks from "../helpers/getOmnivoreLinks";
 
-const visibleIncrements = 18
+const visibleIncrements = 18;
 
 const dateDifference = (now, date) => {
-	const msDifference = new Date(now) - new Date(date)
-	const daysDifference = msDifference / (1000 * 60 * 60 * 24)
+	const msDifference = new Date(now) - new Date(date);
+	const daysDifference = msDifference / (1000 * 60 * 60 * 24);
 
-	if (daysDifference < 0.5) return "today"
-	if (daysDifference < 2) return "yesterday"
-	if (daysDifference < 7) return Math.floor(daysDifference) + " days ago"
-	if (daysDifference < 14) return "last week"
+	if (daysDifference < 0.5) return "today";
+	if (daysDifference < 2) return "yesterday";
+	if (daysDifference < 7) return Math.floor(daysDifference) + " days ago";
+	if (daysDifference < 14) return "last week";
 	if (daysDifference < 30.5)
-		return Math.floor(daysDifference / 7) + " weeks ago"
-	if (daysDifference < 61) return "a month ago"
+		return Math.floor(daysDifference / 7) + " weeks ago";
+	if (daysDifference < 61) return "a month ago";
 	if (daysDifference < 365)
-		return Math.floor(daysDifference / 30.5) + " months ago"
-	if (daysDifference < 365 * 2) return "a year ago"
-	return Math.floor(daysDifference / 365) + " years ago"
-}
+		return Math.floor(daysDifference / 30.5) + " months ago";
+	if (daysDifference < 365 * 2) return "a year ago";
+	return Math.floor(daysDifference / 365) + " years ago";
+};
 
 const ReadingList = ({ links, dateGenerated }) => {
-	const [visibleLinks, setVisibleLinks] = useState(visibleIncrements)
-	const unreadImage = <img src="/images/icn-unread.svg" />
+	const [visibleLinks, setVisibleLinks] = useState(visibleIncrements);
+	const unreadImage = <img src="/images/icn-unread.svg" />;
 
 	return (
 		<Layout pageTitle="Reading Log">
@@ -181,12 +181,12 @@ const ReadingList = ({ links, dateGenerated }) => {
 				}
 			`}</style>
 		</Layout>
-	)
-}
+	);
+};
 
 export const getStaticProps = async () => {
-	const links = await getPinboardLinks()
-	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 } // Revalidate once per hour
-}
+	const links = await getOmnivoreLinks();
+	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 }; // Revalidate once per hour
+};
 
-export default ReadingList
+export default ReadingList;
