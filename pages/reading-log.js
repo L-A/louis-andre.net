@@ -33,35 +33,40 @@ const ReadingList = ({ links, dateGenerated }) => {
 			<h1>Reading Log</h1>
 			<p>
 				I like to read on the web, and bookmark most of it on my{" "}
-				<Link color={Palette.journal} href="https://pinboard.in/u:lalabadie">
-					Pinboard account
-				</Link>
-				. Fellow Internet person, this list is as close as you can get to my
-				personal stream of thoughts.
+				<Link color={Palette.journal} href="https://omnivore.app">
+					Omnivore
+				</Link>{" "}
+				account . Fellow Internet person, this list is as close as you can get
+				to my personal stream of thoughts.
 			</p>
 
 			<ul className="links-list">
 				{!links
 					? ""
 					: links.slice(0, visibleLinks).map((link) => (
-							<li key={link.meta} className="link-item">
-								<a href={link.href}>
-									<h2>{link.description}</h2>
-									<small className="url">{link.href}</small>
+							<li key={link.slug} className="link-item">
+								<a href={link.url}>
+									<h2 className={link.isArchived && "read"}>{link.title}</h2>
+									<p>{link.description}</p>
+									<small className="url">{link.url}</small>
 									<ul className="meta">
 										<li className="posted-and-read">
-											{link.toread == "yes" ? (
+											{link.isArchived ? (
+												""
+											) : (
 												<>
 													{unreadImage} <strong>unread</strong> –{" "}
 												</>
-											) : (
-												""
 											)}
-											{dateDifference(dateGenerated, link.time)}
+											{dateDifference(dateGenerated, link.createdAt)}
 										</li>
-										{link.tags.split(" ").map((tag) => (
-											<li className="tag" key={tag}>
-												{tag}
+										{link.labels.map(({ name, color }) => (
+											<li
+												className="tag"
+												key={name}
+												style={{ color, backgroundColor: color + "11" }}
+											>
+												{name}
 											</li>
 										))}
 									</ul>
@@ -71,17 +76,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 
 				{visibleLinks >= links.length ? (
 					<li className="end">
-						<p>
-							That's all for this list! If you want to see the whole history, or
-							you'd like to follow me on Pinboard, click over to my{" "}
-							<Link
-								color={Palette.journal}
-								href="https://pinboard.in/u:lalabadie"
-							>
-								Pinboard account
-							</Link>
-							!
-						</p>
+						<p>That's all for these recent bookmarks!</p>
 					</li>
 				) : (
 					<button
@@ -119,9 +114,15 @@ const ReadingList = ({ links, dateGenerated }) => {
 				}
 
 				.link-item h2 {
+					color: ${Palette.readingMetaData};
 					margin: 8px 0 4px;
 					font-size: 18px;
 					line-height: 1.4;
+				}
+
+				.link-item p {
+					font-size: 14px;
+					margin: 0;
 				}
 
 				.link-item .url {
@@ -185,7 +186,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 };
 
 export const getStaticProps = async () => {
-	const links = await getOmnivoreLinks();
+	const { links } = await getOmnivoreLinks();
 	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 }; // Revalidate once per hour
 };
 

@@ -1,8 +1,8 @@
 import fetch from "isomorphic-unfetch";
 
-const gqlQuery = (cursor) => `query AllSaved{
+const gqlQuery = (cursor = 0) => `query AllSaved{
   search(
-    first: 25,
+    first: 100,
     after: "${cursor}"
   ) {
     ...on SearchSuccess {
@@ -11,9 +11,15 @@ const gqlQuery = (cursor) => `query AllSaved{
         node {
           id
           title
+          description
           slug
           url
+          createdAt
           isArchived
+          labels {
+            name
+            color
+          }
         }
       }
       pageInfo {
@@ -29,17 +35,19 @@ const gqlQuery = (cursor) => `query AllSaved{
 
 const omnivoreRequest = async (cursor = 0) => {
 	const query = await fetch("https://api-prod.omnivore.app/api/graphql", {
-		body: "query Viewer { me { id name } }",
+		body: JSON.stringify({ query: gqlQuery() }),
 		method: "POST",
 		headers: {
 			authorization: process.env.OMNIVORE_TOKEN,
 			"content-type": "application/json",
 		},
 	});
-	const result = await query.text();
-	console.log(result);
-
-	return { links: [] };
+	const result = await query.json();
+	if (result.error) return { links: [] };
+	else {
+		const links = result.data.search.edges.map((n) => n.node);
+		return { links };
+	}
 };
 
 export default async () => {
