@@ -1,67 +1,72 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { Palette } from "../config"
-import Layout from "../components/layout"
-import Link from "../components/styled-link"
-import getPinboardLinks from "../helpers/getPinboardLinks"
+import { Palette } from "../config";
+import Layout from "../components/layout";
+import Link from "../components/styled-link";
+import getOmnivoreLinks from "../helpers/getOmnivoreLinks";
 
-const visibleIncrements = 18
+const visibleIncrements = 18;
 
 const dateDifference = (now, date) => {
-	const msDifference = new Date(now) - new Date(date)
-	const daysDifference = msDifference / (1000 * 60 * 60 * 24)
+	const msDifference = new Date(now) - new Date(date);
+	const daysDifference = msDifference / (1000 * 60 * 60 * 24);
 
-	if (daysDifference < 0.5) return "today"
-	if (daysDifference < 2) return "yesterday"
-	if (daysDifference < 7) return Math.floor(daysDifference) + " days ago"
-	if (daysDifference < 14) return "last week"
+	if (daysDifference < 0.5) return "today";
+	if (daysDifference < 2) return "yesterday";
+	if (daysDifference < 7) return Math.floor(daysDifference) + " days ago";
+	if (daysDifference < 14) return "last week";
 	if (daysDifference < 30.5)
-		return Math.floor(daysDifference / 7) + " weeks ago"
-	if (daysDifference < 61) return "a month ago"
+		return Math.floor(daysDifference / 7) + " weeks ago";
+	if (daysDifference < 61) return "a month ago";
 	if (daysDifference < 365)
-		return Math.floor(daysDifference / 30.5) + " months ago"
-	if (daysDifference < 365 * 2) return "a year ago"
-	return Math.floor(daysDifference / 365) + " years ago"
-}
+		return Math.floor(daysDifference / 30.5) + " months ago";
+	if (daysDifference < 365 * 2) return "a year ago";
+	return Math.floor(daysDifference / 365) + " years ago";
+};
 
 const ReadingList = ({ links, dateGenerated }) => {
-	const [visibleLinks, setVisibleLinks] = useState(visibleIncrements)
-	const unreadImage = <img src="/images/icn-unread.svg" />
+	const [visibleLinks, setVisibleLinks] = useState(visibleIncrements);
+	const unreadImage = <img src="/images/icn-unread.svg" />;
 
 	return (
 		<Layout pageTitle="Reading Log">
 			<h1>Reading Log</h1>
 			<p>
 				I like to read on the web, and bookmark most of it on my{" "}
-				<Link color={Palette.journal} href="https://pinboard.in/u:lalabadie">
-					Pinboard account
-				</Link>
-				. Fellow Internet person, this list is as close as you can get to my
-				personal stream of thoughts.
+				<Link color={Palette.journal} href="https://omnivore.app">
+					Omnivore
+				</Link>{" "}
+				account . Fellow Internet person, this list is as close as you can get
+				to my personal stream of thoughts.
 			</p>
 
 			<ul className="links-list">
 				{!links
 					? ""
 					: links.slice(0, visibleLinks).map((link) => (
-							<li key={link.meta} className="link-item">
-								<a href={link.href}>
-									<h2>{link.description}</h2>
-									<small className="url">{link.href}</small>
+							<li key={link.slug} className="link-item">
+								<a href={link.url}>
+									<h2 className={link.isArchived && "read"}>{link.title}</h2>
+									<p>{link.description}</p>
+									<small className="url">{link.url}</small>
 									<ul className="meta">
 										<li className="posted-and-read">
-											{link.toread == "yes" ? (
+											{link.isArchived ? (
+												""
+											) : (
 												<>
 													{unreadImage} <strong>unread</strong> –{" "}
 												</>
-											) : (
-												""
 											)}
-											{dateDifference(dateGenerated, link.time)}
+											{dateDifference(dateGenerated, link.createdAt)}
 										</li>
-										{link.tags.split(" ").map((tag) => (
-											<li className="tag" key={tag}>
-												{tag}
+										{link.labels.map(({ name, color }) => (
+											<li
+												className="tag"
+												key={name}
+												style={{ color, backgroundColor: color + "11" }}
+											>
+												{name}
 											</li>
 										))}
 									</ul>
@@ -71,17 +76,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 
 				{visibleLinks >= links.length ? (
 					<li className="end">
-						<p>
-							That's all for this list! If you want to see the whole history, or
-							you'd like to follow me on Pinboard, click over to my{" "}
-							<Link
-								color={Palette.journal}
-								href="https://pinboard.in/u:lalabadie"
-							>
-								Pinboard account
-							</Link>
-							!
-						</p>
+						<p>That's all for these recent bookmarks!</p>
 					</li>
 				) : (
 					<button
@@ -119,9 +114,15 @@ const ReadingList = ({ links, dateGenerated }) => {
 				}
 
 				.link-item h2 {
+					color: ${Palette.readingMetaData};
 					margin: 8px 0 4px;
 					font-size: 18px;
 					line-height: 1.4;
+				}
+
+				.link-item p {
+					font-size: 14px;
+					margin: 0;
 				}
 
 				.link-item .url {
@@ -181,12 +182,12 @@ const ReadingList = ({ links, dateGenerated }) => {
 				}
 			`}</style>
 		</Layout>
-	)
-}
+	);
+};
 
 export const getStaticProps = async () => {
-	const links = await getPinboardLinks()
-	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 } // Revalidate once per hour
-}
+	const { links } = await getOmnivoreLinks();
+	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 * 12 }; // Revalidate once per 12 hours
+};
 
-export default ReadingList
+export default ReadingList;
