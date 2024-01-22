@@ -187,7 +187,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 
 export const getStaticProps = async () => {
 	const { links } = await getOmnivoreLinks();
-	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 }; // Revalidate once per hour
+	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 * 12 }; // Revalidate once per 12 hours
 };
 
 export default ReadingList;
