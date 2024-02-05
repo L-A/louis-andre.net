@@ -114,7 +114,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 				}
 
 				.link-item h2 {
-					color: ${Palette.readingMetaData};
+					color: ${Palette.text};
 					margin: 8px 0 4px;
 					font-size: 18px;
 					line-height: 1.4;
