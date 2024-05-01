@@ -45,7 +45,9 @@ const omnivoreRequest = async (cursor = 0) => {
 	const result = await query.json();
 	if (result.error) return { links: [] };
 	else {
-		const links = result.data.search.edges.map((n) => n.node);
+		const links = result.data.search.edges
+			.map((n) => n.node)
+			.filter((n) => n.isArchived);
 		return { links };
 	}
 };
