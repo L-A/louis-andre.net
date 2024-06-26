@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Palette } from "../config";
 import Layout from "../components/layout";
 import Link from "../components/styled-link";
-import getOmnivoreLinks from "../helpers/getOmnivoreLinks";
+import GetReadLog from "../helpers/getReadLog";
 
-const visibleIncrements = 18;
+const visibleIncrements = 20;
 
 const dateDifference = (now, date) => {
 	const msDifference = new Date(now) - new Date(date);
@@ -186,7 +186,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 };
 
 export const getStaticProps = async () => {
-	const { links } = await getOmnivoreLinks();
+	const { links } = await GetReadLog();
 	return { props: { links, dateGenerated: Date.now() }, revalidate: 3600 * 12 }; // Revalidate once per 12 hours
 };
 
