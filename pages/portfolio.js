@@ -1,9 +1,15 @@
-import { Palette } from "../config"
-import Layout from "../components/layout"
-import { useEffect, useState } from "react"
+import { Palette } from "../config";
+import Layout from "../components/layout";
+import { useEffect, useState } from "react";
 
-const secretTagItems = ["Confidential!", "Secret!", "Verboten!", "Hidden!"]
-const switchDuration = 2 // In seconds
+const secretTagItems = [
+	"Confidential!",
+	"Secret!",
+	"Streng Geheim!",
+	"Hidden!",
+	"Pour vos yeux seulement!",
+];
+const switchDuration = 2.5; // In seconds
 
 const Piece = ({ name, description, date, content }) => (
 	<li className="piece">
@@ -40,26 +46,26 @@ const Piece = ({ name, description, date, content }) => (
 			}
 		`}</style>
 	</li>
-)
+);
 
 export default () => {
-	const [tagPosition, setTagPosition] = useState(0)
-	const tagOffset = Math.random() * 130 - 30
-	const tagVerticalOffset = Math.random() * 20
-	const tagRotation = (Math.random() * 15 + 5) * (Math.random() < 0.5 ? -1 : 1)
+	const [tagPosition, setTagPosition] = useState(0);
+	const tagOffset = Math.random() * 130 - 30;
+	const tagVerticalOffset = Math.random() * 20;
+	const tagRotation = (Math.random() * 15 + 5) * (Math.random() < 0.5 ? -1 : 1);
 
 	const cycle = () => {
 		const newPosition =
-			tagPosition + 1 < secretTagItems.length ? tagPosition + 1 : 0
-		setTagPosition(newPosition)
-	}
+			tagPosition + 1 < secretTagItems.length ? tagPosition + 1 : 0;
+		setTagPosition(newPosition);
+	};
 
 	useEffect(() => {
-		const interval = setInterval(cycle, switchDuration * 1000)
-		return () => clearInterval(interval)
-	})
+		const interval = setInterval(cycle, switchDuration * 1000);
+		return () => clearInterval(interval);
+	});
 
-	const secretTagContent = secretTagItems[tagPosition]
+	const secretTagContent = secretTagItems[tagPosition];
 	return (
 		<Layout pageTitle="Portfolio">
 			<h1>
@@ -70,13 +76,14 @@ export default () => {
 					I’m lucky enough that word-of-mouth and happy clients keep me working
 					well and in good company.
 				</strong>{" "}
-				This means I don’t keep much of a portfolio, but if you're here, it
-				means you'd like to see a few pieces!
+				This means I don’t keep much of a portfolio. Still, if you're here, it
+				means we're getting along rather well, and you'd like to see some of my
+				work!
 			</p>
 			<p>
 				<small>
-					Also, note that much of my work in the past years has been done under
-					NDA or expectations of privacy, which I’ll continue to respect.
+					Much of my work in the past years has been done under NDA or similar
+					expectations of privacy, which I’ll continue to respect.
 				</small>
 			</p>
 
@@ -101,7 +108,7 @@ export default () => {
 
 					top: ${tagVerticalOffset}px;
 					left: ${tagOffset - 9}px;
-					animation: ${switchDuration}s ease-in-out forwards pulse;
+					animation: ${switchDuration}s ease-in-out forwards pulse infinite;
 				}
 
 				.pieces {
@@ -119,7 +126,7 @@ export default () => {
 						transform: rotate(${tagRotation}deg);
 					}
 					50% {
-					transform: rotate(${tagRotation}deg) translateY(2px);
+						transform: rotate(${tagRotation}deg) translateY(2px);
 					}
 					100% {
 						transform: rotate(${tagRotation}deg);
@@ -135,16 +142,36 @@ export default () => {
 				}
 			`}</style>
 		</Layout>
-	)
-}
+	);
+};
 
 const pieces = [
+	{
+		date: "2023",
+		name: "Tchat N Sign",
+		description:
+			"Ongoing work on the future interface of an automation & communication tool for financial advisors.",
+		content: <img src="/images/portfolio/tns-omnichannel.jpg" />,
+	},
+	{
+		date: "2022",
+		name: "IIM - Generative identity",
+		description:
+			"Generative branding work for a incubator focused on museum techniques and technologies",
+		content: <video muted loop autoPlay src="/images/portfolio/iim.mp4" />,
+	},
+	{
+		date: "2020",
+		name: "Stamped",
+		description: "Web design work for an AI-assisted financial audit service",
+		content: <img src="/images/portfolio/stamped.jpg" />,
+	},
 	{
 		date: "2019",
 		name: "Les Pros de la Photo - Prototype",
 		description:
 			"Prototype delivered as part of a UX project for photo printing kiosks available in pharmacies across the province. Created for Atelier Made in Québec City.",
-		content: <video loop autoPlay src="/images/portfolio/pdlp.mp4" />,
+		content: <video muted loop autoPlay src="/images/portfolio/pdlp.mp4" />,
 	},
 	{
 		date: "2019",
@@ -158,7 +185,7 @@ const pieces = [
 		name: "Waves - Web radio desktop application",
 		description:
 			"Hello you tiny app! Waves is a web radio client that's currently in development. Here is a short demo of its look and animations.",
-		content: <video loop autoPlay src="/images/portfolio/waves.mp4" />,
+		content: <video muted loop autoPlay src="/images/portfolio/waves.mp4" />,
 	},
 	{
 		date: "2018",
@@ -172,7 +199,7 @@ const pieces = [
 		name: "Robotiq - Insights app animations",
 		description:
 			"Explainer animations for Insights' promotional page. I also designed and developed the complete site.",
-		content: <video loop autoPlay src="/images/portfolio/robotiq.mp4" />,
+		content: <video muted loop autoPlay src="/images/portfolio/robotiq.mp4" />,
 	},
 	{
 		date: "2016",
@@ -200,4 +227,4 @@ const pieces = [
 			"Mobile version of Kronos' free tools for working out common personal finance scenarios",
 		content: <img src="/images/portfolio/calcs.jpg" />,
 	},
-]
+];
