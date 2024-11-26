@@ -28,8 +28,8 @@ export default () => (
 		</p>
 		<p>
 			I also work as an independent designer. My studio is called{" "}
-			<Link color={Palette.text} href="http://tinyrevolt.com/en">
-				Tiny Revolt
+			<Link color={Palette.text} href="http://petiterevolte.com">
+				Petite Révolte
 			</Link>
 			.
 		</p>

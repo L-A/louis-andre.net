@@ -33,11 +33,14 @@ const ReadingList = ({ links, dateGenerated }) => {
 			<h1>Reading Log</h1>
 			<p>
 				I like to read on the web, and bookmark most of it on my{" "}
-				<Link color={Palette.journal} href="https://omnivore.app">
-					Omnivore
+				<Link
+					color={Palette.journal}
+					href="https://raindrop.io/lalabadie/archive-30468359"
+				>
+					Raindrop
 				</Link>{" "}
-				account . Fellow Internet person, this list is as close as you can get
-				to my personal stream of thoughts.
+				account. Fellow Internet person, this list is as close as you can get to
+				my personal stream of thoughts.
 			</p>
 
 			<ul className="links-list">
