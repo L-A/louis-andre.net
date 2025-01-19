@@ -19,7 +19,8 @@ const GetReadLog = async () => {
 	const archived = (
 		await getCollection(process.env.RAINDROP_COLLECTION_ID)
 	).map((item) => ({ ...item, isArchived: true }));
-	const unread = (await getCollection(process.env.RAINDROP_UNREAD_ID)).map(
+	// Only the latest 5 unreads, to avoid filling up a log with unread things
+	const unread = (await getCollection(process.env.RAINDROP_UNREAD_ID)).slice(0,5).map(
 		(item) => ({ ...item, isArchived: false })
 	);
 
