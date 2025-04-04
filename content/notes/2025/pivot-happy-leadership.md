@@ -1,5 +1,5 @@
 ---
-title: pivot-happy-leadership
+title: Weathervane leadership
 date: 2025-04-04T01:13:43.628Z
 ---
 
