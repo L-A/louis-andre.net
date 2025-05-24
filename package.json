@@ -1,39 +1,34 @@
 {
-  "name": "louis-andre.net",
-  "version": "7.1.0",
-  "description": "Louis-André Labadie's main website",
-  "scripts": {
-    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev\"",
-    "build": "tinacms build && next build",
-    "start": "next start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/L-A/louis-andre.net.git"
-  },
-  "author": "Louis-André Labadie",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/L-A/louis-andre.net/issues"
-  },
-  "homepage": "https://github.com/L-A/louis-andre.net#readme",
-  "dependencies": {
-    "@contentful/rich-text-react-renderer": "^14.1.2",
-    "babel-plugin-preval": "^4.0.0",
-    "canvas-sketch-util": "^1.10.0",
-    "color": "^3.1.2",
-    "contentful": "^7.14.12",
-    "isomorphic-fetch": "^2.2.1",
-    "isomorphic-unfetch": "^3.0.0",
-    "jsdom": "^15.2.1",
-    "next": "12",
-    "plaiceholder": "^2.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "sharp": "^0.29.3",
-    "tinacms": "^1.5.26"
-  },
-  "devDependencies": {
-    "@tinacms/cli": "^1.5.36"
-  }
+	"name": "louis-andre.net",
+	"version": "7.2.0",
+	"description": "Louis-André Labadie's main website",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/L-A/louis-andre.net.git"
+	},
+	"author": "Louis-André Labadie",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/L-A/louis-andre.net/issues"
+	},
+	"homepage": "https://github.com/L-A/louis-andre.net#readme",
+	"dependencies": {
+		"babel-plugin-preval": "^4.0.0",
+		"canvas-sketch-util": "^1.10.0",
+		"color": "^3.1.2",
+		"contentful": "^7.14.12",
+		"isomorphic-fetch": "^2.2.1",
+		"isomorphic-unfetch": "^3.0.0",
+		"jsdom": "^15.2.1",
+		"next": "12",
+		"plaiceholder": "^2.2.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"sharp": "^0.29.3"
+	}
 }
