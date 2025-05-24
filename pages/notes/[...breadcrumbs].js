@@ -1,34 +1,26 @@
-import { useTina } from "tinacms/dist/react";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import client from "../../tina/__generated__/client";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Link from "next/link";
+import { getMarkdownFiles } from "../../helpers/getMarkdownFiles";
 
 import Layout from "../../components/layout";
-import { Palette } from "../../config";
 import NoteEntry from "../../components/note-entry";
 import StyledLink from "../../components/styled-link";
 
-const Note = (props) => {
-	const { data } = useTina({
-		query: props.query,
-		variables: props.variables,
-		data: props.data,
-	});
-
+const Note = ({ data, content }) => {
 	return (
 		<Layout naked>
 			<nav className="back-to-notes">
 				<h1>
 					<Link href="/">
-						<a>
-							<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
-						</a>
+						<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
 					</Link>
 				</h1>
 				<StyledLink href={"/notes"}>Back to notes</StyledLink>
 			</nav>
 
-			<NoteEntry {...data.notes} asList={false} />
+			<NoteEntry {...data} asList={false} body={content} />
 
 			<style jsx>{`
 				.back-to-notes {
@@ -41,34 +33,31 @@ const Note = (props) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-	let data = {};
-	let query = {};
-	let variables = { relativePath: `${params.breadcrumbs.join("/")}.md` };
-	try {
-		const res = await client.queries.notes(variables);
-		query = res.query;
-		data = res.data;
-		variables = res.variables;
-	} catch {
-		// swallow errors related to document creation
-	}
-	return {
-		props: {
-			variables: variables,
-			data: data,
-			query: query,
-		},
-	};
+	const filePath =
+		path.join(process.cwd(), "content", "notes", ...params.breadcrumbs) + ".md";
+	const fileContents = fs.readFileSync(filePath, "utf-8");
+	const { data, content } = matter(fileContents);
+
+	data.date = new Date(data.date).toISOString();
+
+	return { props: { data, content } };
 };
 
 export const getStaticPaths = async () => {
-	const notesListData = await client.queries.notesConnection();
-	const notesPaths = notesListData.data.notesConnection.edges.map((note) => ({
-		params: { breadcrumbs: note.node._sys.breadcrumbs },
+	const notesDir = path.join(process.cwd(), "content", "notes");
+	const notes = getMarkdownFiles(notesDir)
+		.sort((a, b) => new Date(b.date) - new Date(a.date))
+		.map((p) => ({
+			...p,
+			date: new Date(p.date).toISOString(), // Needs to be serializable
+		})); // Sort by date (new to old)
+
+	const paths = notes.map((n) => ({
+		params: { breadcrumbs: n.slug.split("/") },
 	}));
 
 	return {
-		paths: notesPaths,
+		paths,
 		fallback: false,
 	};
 };

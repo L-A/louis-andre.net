@@ -1,10 +1,9 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
+import path from "path";
 
 import { Palette } from "../config";
 import Layout from "../components/layout";
+import { getMarkdownFiles } from "../helpers/getMarkdownFiles";
 
 const PostLink = ({ title, description, date, inFrench, slug }) => (
 	<li className="post">
@@ -128,34 +127,14 @@ const Journal = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
-	// Read all markdown files from /content/journal
+	// Read all markdown files from /content/journal using the utility function
 	const journalDir = path.join(process.cwd(), "content", "journal");
-	const files = fs.readdirSync(journalDir);
-
-	// Parse each file and extract frontmatter
-	const posts = files
-		.filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
-		.map((file) => {
-			const filePath = path.join(journalDir, file);
-			const fileContents = fs.readFileSync(filePath, "utf-8");
-			const { data, content } = matter(fileContents);
-
-			// Skip files without date in frontmatter
-			if (!data.date) return null;
-
-			// Extract slug from filename (remove extension)
-			const slug = file.replace(/\.mdx?$/, "");
-
-			return {
-				title: data.title,
-				description: data.description,
-				date: new Date(data.date).toISOString(), // Needs to be serializable
-				inFrench: data.inFrench || false,
-				slug: slug,
-			};
-		})
-		.filter(Boolean) // Remove null values
-		.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date (new to old)
+	const posts = getMarkdownFiles(journalDir)
+		.sort((a, b) => new Date(b.date) - new Date(a.date))
+		.map((p) => ({
+			...p,
+			date: new Date(p.date).toISOString(), // Needs to be serializable
+		})); // Sort by date (new to old)
 
 	return { props: { posts }, revalidate: 900 }; // Revalidate every 15 minutes
 };

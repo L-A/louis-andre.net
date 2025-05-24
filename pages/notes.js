@@ -1,16 +1,17 @@
-import client from "../tina/__generated__/client";
+import path from "path";
+import { getMarkdownFiles } from "../helpers/getMarkdownFiles";
 
 import Layout from "../components/layout";
 import NoteEntry from "../components/note-entry";
 import { Palette } from "../config";
 
-const Notes = ({ entries }) => {
+const Notes = ({ notes }) => {
 	return (
 		<Layout pageTitle="Notes">
 			<h1>Notes</h1>
 			<ol>
-				{entries.map((e) => (
-					<NoteEntry {...e} key={e.date} />
+				{notes.map((n) => (
+					<NoteEntry {...n} key={n.date} />
 				))}
 			</ol>
 
@@ -31,13 +32,17 @@ const Notes = ({ entries }) => {
 };
 
 export const getStaticProps = async () => {
-	const notesList = await client.queries.notesConnection();
+	const notesDir = path.join(process.cwd(), "content", "notes");
+	const notes = getMarkdownFiles(notesDir)
+		.sort((a, b) => new Date(b.date) - new Date(a.date))
+		.map((p) => ({
+			...p,
+			date: new Date(p.date).toISOString(), // Needs to be serializable
+		})); // Sort by date (new to old)
 
 	return {
 		props: {
-			entries: notesList.data.notesConnection.edges
-				.sort((a, b) => new Date(b.node.date) - new Date(a.node.date))
-				.map((e) => e.node),
+			notes,
 		},
 	};
 };

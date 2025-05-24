@@ -1,7 +1,8 @@
+import Markdown from "react-markdown";
+import Link from "next/link";
 import { Palette } from "../config";
-import CustomTinaMarkdown from "./custom-tina-markdown";
 
-const NoteEntry = ({ title, date, body, asList = true, _sys }) => {
+const NoteEntry = ({ title, date, body, slug, asList = true }) => {
 	const dateObj = new Date(date);
 	const formattedDate = Intl.DateTimeFormat(["en-GB", "en"], {
 		dateStyle: "medium",
@@ -15,12 +16,14 @@ const NoteEntry = ({ title, date, body, asList = true, _sys }) => {
 		<>
 			<h2>{title}</h2>
 			<h3>
-				<a href={"/notes/" + _sys.breadcrumbs.join("/")}>
-					<strong>{formattedDate}</strong> at {formattedTime}
-				</a>
+				<Link href={"/notes/" + slug}>
+					<a>
+						<strong>{formattedDate}</strong> at {formattedTime}
+					</a>
+				</Link>
 			</h3>
 			<div>
-				<CustomTinaMarkdown content={body} />
+				<Markdown>{body}</Markdown>
 			</div>
 
 			<style jsx>

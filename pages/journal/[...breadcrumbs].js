@@ -1,6 +1,3 @@
-import { useTina } from "tinacms/dist/react";
-import client from "../../tina/__generated__/client";
-
 import PostLayout from "../../components/post-layout";
 import CustomTinaMarkdown from "../../components/custom-tina-markdown";
 

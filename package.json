@@ -18,17 +18,20 @@
 	},
 	"homepage": "https://github.com/L-A/louis-andre.net#readme",
 	"dependencies": {
+		"@types/react": "18",
 		"babel-plugin-preval": "^4.0.0",
 		"canvas-sketch-util": "^1.10.0",
 		"color": "^3.1.2",
 		"contentful": "^7.14.12",
+		"gray-matter": "^4.0.3",
 		"isomorphic-fetch": "^2.2.1",
 		"isomorphic-unfetch": "^3.0.0",
 		"jsdom": "^15.2.1",
 		"next": "12",
 		"plaiceholder": "^2.2.0",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6",
+		"react": "18",
+		"react-dom": "18",
+		"react-markdown": "^10.1.0",
 		"sharp": "^0.29.3"
 	}
 }
