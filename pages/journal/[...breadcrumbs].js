@@ -1,5 +1,9 @@
+import path from "path";
+import fs from "fs";
+import matter from "gray-matter";
+import { getMarkdownFiles } from "../../helpers/getMarkdownFiles";
 import PostLayout from "../../components/post-layout";
-import CustomTinaMarkdown from "../../components/custom-tina-markdown";
+import Markdown from "../../components/configured-markdown";
 
 const dateOptions = {
 	weekday: "long",
@@ -8,55 +12,42 @@ const dateOptions = {
 	day: "numeric",
 };
 
-const JournalEntry = (props) => {
-	const {
-		data: {
-			journal: { title, date, body },
-		},
-	} = useTina({
-		query: props.query,
-		variables: props.variables,
-		data: props.data,
-	});
-
+const JournalEntry = ({data: {date, title}, content}) => {
 	const formattedDate = new Date(date).toLocaleString("en-CA", dateOptions);
 
 	return (
 		<PostLayout title={title} publishedDate={formattedDate}>
-			<CustomTinaMarkdown content={body} />
+			<Markdown>{content}</Markdown>
 		</PostLayout>
 	);
 };
 
 export const getStaticProps = async ({ params }) => {
-	let data = {};
-	let query = {};
-	let variables = { relativePath: `${params.breadcrumbs.join("/")}.mdx` };
-	try {
-		const res = await client.queries.journal(variables);
-		query = res.query;
-		data = res.data;
-		variables = res.variables;
-	} catch {
-		// swallow errors related to document creation
-	}
-	return {
-		props: {
-			variables: variables,
-			data: data,
-			query: query,
-		},
-	};
+	const filePath =
+		path.join(process.cwd(), "content", "journal", ...params.breadcrumbs) + ".md";
+	const fileContents = fs.readFileSync(filePath, "utf-8");
+	const { data, content } = matter(fileContents);
+
+	data.date = new Date(data.date).toISOString();
+
+	return { props: { data, content } };
 };
 
 export const getStaticPaths = async () => {
-	const list = await client.queries.journalConnection();
-	const listPaths = list.data.journalConnection.edges.map((entry) => ({
-		params: { breadcrumbs: entry.node._sys.breadcrumbs },
+const notesDir = path.join(process.cwd(), "content", "journal");
+	const entries = getMarkdownFiles(notesDir)
+		.sort((a, b) => new Date(b.date) - new Date(a.date))
+		.map((p) => ({
+			...p,
+			date: new Date(p.date).toISOString(), // Needs to be serializable
+		})); // Sort by date (new to old)
+
+	const paths = entries.map((n) => ({
+		params: { breadcrumbs: n.slug.split("/") },
 	}));
 
 	return {
-		paths: listPaths,
+		paths,
 		fallback: false,
 	};
 };
