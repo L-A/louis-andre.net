@@ -61,7 +61,7 @@ const seriesImage = ({ name, ratio, css, ...img }, i) => {
 	const width = 300 * ratio;
 	// css and img are provided by plaiceholder
 	return (
-		<li className="series-iteration" key={i}>
+		<li className="series-iteration" key={`${name}-${i}`}>
 			<div className="image-wrapper" style={{ ...css }}>
 				<Image {...img} className="image" width={width} height={300} />
 			</div>
@@ -111,7 +111,7 @@ const seriesImage = ({ name, ratio, css, ...img }, i) => {
 	);
 };
 
-const seriesViewer = ({ name, description, platforms, iterations }, index) => {
+const SeriesViewer = ({ name, description, platforms, iterations, index }) => {
 	useEffect(() => {
 		// Using JS variables prevents flickering in the animation
 		// useState would introduce jitter
@@ -154,7 +154,7 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 	});
 
 	return (
-		<li className="series-preview" key={name}>
+		<li className="series-preview" key={`${name}`}>
 			<h2>{name}</h2>
 			<p className="description">{description}</p>
 			{platforms && (
@@ -165,7 +165,11 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 							return (
 								<>
 									{platform == "Foundation" && (
-										<a href={link} className="platform-link" key={"fnd"}>
+										<a
+											href={link}
+											className="platform-link"
+											key={`${name}-fnd`}
+										>
 											<Image
 												src="/images/fnd-logo.svg"
 												width={42}
@@ -175,7 +179,7 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 										</a>
 									)}
 									{platform == "fxhash" && (
-										<a href={link} className="platform-link" key={"fx"}>
+										<a href={link} className="platform-link" key={`${name}-fx`}>
 											<Image
 												src="/images/fx-logo.svg"
 												width={20}
@@ -185,7 +189,7 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 										</a>
 									)}
 									{platform == "Artblocks" && (
-										<a href={link} className="platform-link" key={"ab"}>
+										<a href={link} className="platform-link" key={`${name}-ab`}>
 											<Image
 												src="/images/ab-logo@3x.png"
 												width={23}
@@ -195,7 +199,7 @@ const seriesViewer = ({ name, description, platforms, iterations }, index) => {
 										</a>
 									)}
 									{platform == "OpenSea" && (
-										<a href={link} className="platform-link" key={"os"}>
+										<a href={link} className="platform-link" key={`${name}-os`}>
 											<Image
 												src="/images/os-logo.svg"
 												width={22}
@@ -352,7 +356,11 @@ const GenerativeArt = ({ series }) => {
 				.
 			</p>
 
-			<ul className="series">{series.map(seriesViewer)}</ul>
+			<ul className="series">
+				{series.map((s, i) => (
+					<SeriesViewer {...s} index={i} key={s.name} />
+				))}
+			</ul>
 
 			<style jsx>{`
 				h1 {

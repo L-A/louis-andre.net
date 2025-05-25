@@ -26,7 +26,9 @@ const Layout = ({ pageTitle, children, naked = false }) => {
 					async
 					src="//gc.zgo.at/count.js"
 				></script>
-				<title>{pageTitle ? pageTitle + " -" : ""} Louis-André Labadie</title>
+				<title>
+					{(pageTitle ? pageTitle + " -" : "") + "Louis-André Labadie"}
+				</title>
 			</Head>
 
 			{!naked && (
