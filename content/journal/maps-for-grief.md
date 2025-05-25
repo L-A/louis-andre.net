@@ -7,7 +7,7 @@ inFrench: false
 
 ![Maps for grief – Ropsten output #12](/journal/maps-for-grief/Ropsten-12.png)
 
-*Maps for grief* is a generative art project, published on the [Art blocks](https://www.artblocks.io) platform. It explores the notion of togetherness without contact. As
+_Maps for grief_ is a generative art project, published on the [Art blocks](https://www.artblocks.io) platform. It explores the notion of togetherness without contact. As
 with most series, I find it ties together many projects and techniques
 I've done in the last two years. Let's look at a few of the building
 blocks behind it.
@@ -18,7 +18,7 @@ It released on January 11th, 2022, and minted 500 pieces. You can see the projec
 
 ![Convergence - untitled #1](/journal/maps-for-grief/Convergence-untitled-1.png)
 
-One of the first generators I've made and deeply liked is called *Convergence*. It uses a simple flow field to create undulating clusters of lines, then peppers them with small blooms of circles.
+One of the first generators I've made and deeply liked is called _Convergence_. It uses a simple flow field to create undulating clusters of lines, then peppers them with small blooms of circles.
 
 It's
 the result of several explorations on flow fields and branching graphs.
@@ -61,9 +61,9 @@ my work. While they can be seen as competing aesthetics, I find that
 disciplines like urbanism and cartography have built a vast repertoire
 of work that reconciles the two.
 
-*Maps for grief* leans
+_Maps for grief_ leans
 heavily on a more flowing, nature-like composition, yet it inherits a
-lot (visually and technically) from explorations like *Urbanisms* or *Boroughs*.
+lot (visually and technically) from explorations like _Urbanisms_ or _Boroughs_.
 
 ![Urbanisms - Selected iteration](/journal/maps-for-grief/Urbanisms-1.png)
 
@@ -83,7 +83,7 @@ Over time, the rough line style became a recurring part of my practice,
 and it's now uncommon for me to build sketches that don't feature this
 kind of hand-drawn quality to the shapes.
 
-*Maps for grief*
+_Maps for grief_
 includes an agressively minimized version of the technique – at the data
 level, each iteration is distilled down to a list of colored circles,
 which are then traced on-screen to form the lines and shapes. The small
@@ -155,4 +155,4 @@ Here are a few iterations I shared from the Ropsten (test network) mints.
 
 ## Technical and rarity breakdown
 
-See the technical breakdown [here, in my follow-up post](https://louis-andre.net/journal/maps-for-grief-breakdown).
+See the technical breakdown [here, in my follow-up post](/journal/maps-for-grief-a-breakdown).
