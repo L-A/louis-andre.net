@@ -59,6 +59,11 @@ const Post = ({ title, publishedDate, children }) => (
 					font-size: 0.9em;
 					color: ${Palette.inlineCode};
 				}
+
+				h2#footnote-label {
+					color: ${Palette.journal};
+					font-size: 1rem;
+				}
 			`}
 		</style>
 	</Layout>
