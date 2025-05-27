@@ -56,11 +56,6 @@ const Layout = ({ pageTitle, children, naked = false }) => {
 								<a>Reading Log</a>
 							</Link>
 						</li>
-						<li className="notes">
-							<Link href="/notes">
-								<a>Notes</a>
-							</Link>
-						</li>
 					</ul>
 				</nav>
 			)}

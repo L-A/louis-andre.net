@@ -19,6 +19,7 @@ const Post = ({ title, publishedDate, children }) => (
 
 			h1 {
 				color: ${Palette.text};
+				line-height: 1;
 			}
 
 			h2 {
