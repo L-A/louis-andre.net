@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useEffect } from "react";
 import { Palette } from "../config";
+import Footer from "./footer";
 
 const Layout = ({ pageTitle, children, naked = false }) => {
 	// Polite & limited analytics - goatcounter.com
@@ -16,65 +17,72 @@ const Layout = ({ pageTitle, children, naked = false }) => {
 
 	// Layout
 	return (
-		<div className="layout">
-			<Head>
-				<meta charSet="utf-8" />
-				<link preload="true" rel="stylesheet" href="/styles/work-sans.css" />
-				<link rel="stylesheet" href="/styles/global.css" />
-				<script
-					data-goatcounter="https://lal.goatcounter.com/count"
-					async
-					src="//gc.zgo.at/count.js"
-				></script>
-				<title>
-					{(pageTitle ? pageTitle + " -" : "") + "Louis-André Labadie"}
-				</title>
-			</Head>
+	  <>
+  		<div className="layout">
+  			<Head>
+  				<meta charSet="utf-8" />
+  				<link preload="true" rel="stylesheet" href="/styles/work-sans.css" />
+  				<link rel="stylesheet" href="/styles/global.css" />
+  				<script
+  					data-goatcounter="https://lal.goatcounter.com/count"
+  					async
+  					src="//gc.zgo.at/count.js"
+  				></script>
+  				<title>
+  					{(pageTitle ? pageTitle + " -" : "") + "Louis-André Labadie"}
+  				</title>
+  			</Head>
 
-			{!naked && (
-				<nav>
-					<ul className="pages">
-						<li className="home">
-							<Link href="/">
-								<a>
-									<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
-								</a>
-							</Link>
-						</li>
-						<li className="art">
-							<Link href="/generative-art">
-								<a>Art</a>
-							</Link>
-						</li>
-						<li className="journal">
-							<Link href="/journal">
-								<a>Journal</a>
-							</Link>
-						</li>
-						<li className="reading-log">
-							<Link href="/reading-log">
-								<a>Reading Log</a>
-							</Link>
-						</li>
-					</ul>
-				</nav>
-			)}
-			<main>{children}</main>
+  			{!naked && (
+  				<nav>
+  					<ul className="pages">
+  						<li className="home">
+  							<Link href="/">
+  								<a>
+  									<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
+  								</a>
+  							</Link>
+  						</li>
+  						<li className="art">
+  							<Link href="/generative-art">
+  								<a>Art</a>
+  							</Link>
+  						</li>
+  						<li className="journal">
+  							<Link href="/journal">
+  								<a>Journal</a>
+  							</Link>
+  						</li>
+  						<li className="reading-log">
+  							<Link href="/reading-log">
+  								<a>Reading Log</a>
+  							</Link>
+  						</li>
+  					</ul>
+  				</nav>
+  			)}
+  			<main>
+  			  {children}
+  			</main>
+  		</div>
+
+		  <Footer />
 
 			<style jsx>{`
 				.layout {
 					max-width: 960px;
-					margin: 64px auto;
+					margin: 0 auto;
 					display: ${naked ? "block" : "flex"};
 					flex-direction: row;
 					justify-content: stretch;
+					min-height: calc(100vh - 64px);
 				}
 
 				nav {
 					color: ${Palette.text};
 					font-weight: 500;
 					flex: 0 0 140px;
-					margin: 0 auto 0 32px;
+					margin: 64px auto 0 32px;
 				}
 
 				.pages {
@@ -128,7 +136,7 @@ const Layout = ({ pageTitle, children, naked = false }) => {
 
 				main {
 					flex: 1 1 680px;
-					margin: 0 32px 0;
+					margin: 64px 32px 0;
 				}
 
 				@media (max-width: 800px) {
@@ -138,12 +146,14 @@ const Layout = ({ pageTitle, children, naked = false }) => {
 					}
 
 					main {
+					  margin-top: 16px;
 						margin-left: 92px;
 					}
 
 					nav {
 						flex-basis: auto;
 						margin-bottom: 32px;
+						margin-top: 16px;
 					}
 
 					.pages {
@@ -187,7 +197,7 @@ const Layout = ({ pageTitle, children, naked = false }) => {
 					}
 				}
 			`}</style>
-		</div>
+		</>
 	);
 };
 
