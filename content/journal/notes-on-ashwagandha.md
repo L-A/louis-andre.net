@@ -1,0 +1,62 @@
+---
+title: Notes on two months of Ashwagandha
+date: 2025-01-04T15:30:09.988Z
+description: Observations after taking Ashwagandha as a supplement during two winter months.
+inFrench: false
+---
+
+These are my (personal, anecdotal) notes on taking Ashwagandha as a supplement for two months. I’ve tried it because it reportedly helps lower anxiety, which has become a real issue for me in the last couple of years. I’ve updated the article after stopping at the end of the second month.
+
+## Dosage, brand and frequency
+
+From what was locally available at the time, I picked capsules containing 600mg of KSM-66, which is Ashwagandha’s most studied (and hopefully standardized) extract. I took one capsule daily in the morning, with food.
+
+In retrospect, I would have liked something I can divide or otherwise portion, as 600mg is at least twice the low/minimal daily dose I want to try out.
+
+Note that it’s the only supplement I’m taking, I have no medication I use, and I drink little to no caffeine, meaning I didn’t need to consider drugs it could interact with. For someone on existing medications, the process to consider taking Ashwagandha might be a bit more involved. 
+
+## Sidebar: What’s Aswhagandha?
+
+If you’re already familiar you can skip ahead. It’s a nightshade plant (Solanaceae), close to ginseng, from which the roots are dried and powdered. Its name means "horse smell", which is apparently an apt description of the raw product. It’s also called Indian Ginseng. It has a long history of use in Indian (Ayurvedic) medicine. It now gained a decent level of interest as a modern supplement for different effects it can have – mainly on anxiety, but also on recovery in athletes.
+
+## First days
+
+On the very first day, I had a moment of noticeably racing heart a few hours after taking my first dose. I attribute it partly to the initial dosage I couldn’t progressively introduce, and partly to the existing anxiety I had at this time.
+
+At the end of the first week, I forgot to take a capsule in the morning, then I suspect I did forgot again the next day. This coincided with two days of higher anxiety (back to never being far from a panic attack). Again, since it happened very early in the month, it’s hard to distinguish between the effects/presence of anxiety itself, and what the extract might have influenced.
+
+## Positive observations
+
+Ashwagandha did make a noticeable difference. In short, before that month, it had become extremely rare for me to come back down to an actual calm state. Anxiety tended to "stick" to me, and I had adapted to a high arousal, low energy state as my new baseline (stressed and sleepy – it sucks). All my emotions felt prefixed with " stressed and X", and it was very rare for me to simply feel present and in the moment.
+
+Between the second and third week into the month, I found I had regained access to an actual calm state. My baseline was back to an enthusiastic calm, and the spectrum of emotions that were available to me opened back up.
+
+In a practical sense, I was again able to act mindfully during the day. Anxiety is a thief of focus, and it drains me of both energy and attention when it’s as high as it was previously. I could feel (hear?) some of my usual mental loops and triggers happening throughout the day, but now they usually failed to take hold, and fizzled out instead.
+
+In my case, the most gainful change was that the physical manifestations of my anxiety shot way down. I suspect that the strongest loop I get stuck on is the concern of how anxiety itself can disable me in a moment with physical effects. Unfortunately, it’s tied to interoception (sensing one’s internal physical state). The physical manifestations of my anxiety crank up every time I notice that ... they crank up, which is a bad feedback loop in which to get stuck. Once Aswhagandha’s effect had settled, I would say the physical component dropped to maybe a tenth of what it was. I would recognize the sensations, but they didn’t raise to an intense level. This completely disarmed the physical-mental feedback loop, and afforded me the opportunity to come down to a calm state after most stressful moments during the month.
+
+The second-order effects from the above changes is that I have more energy and patience in the day, and better sleep at night. It’s nothing groundbreaking, but significant enough to notice.
+
+## Concerns
+
+Low/no anxiety is generally also a lower arousal state, and I suspect I personally exist on a scale that moves from calm and unfocused to anxious and productive. At least, that’s how I live and react to the external motivators of our capitalist structure. Ashwagandha has _some_ effect lowering my arousal and focus.
+
+Because anxiety itself robbed me of a lot of mental acuity in the last months, I don’t think the tradeoff of calm and potentially lower focus is a net negative in my case. I didn’t really have access to the calm state it compares to anymore. I think low-stress people taking Ashwagandha for other benefits might be at risk of slipping into disinterest or lose motivation as a side-effect.
+
+From reading, I have another concern I’m entirely unsure I should address. A _lot_ of people talk about cycling on and off (for example, one month on, then one week without Aswhagandha) to prevent acclimatation. However, all of the cycling talk comes from the nootropics web communities, and that’s way out of my wheelhouse, partly because it’s people who are seeking lots of bleeding-edge products and are used to drawing conclusions from very limited data. Ashwagandha, in comparison, has a long history of use (a few millennia), part of which is daily use in a herbal tea for, like, your whole life. I still want more studies done to help guide how (and if) I use it, but at this point, I don’t want to put too much stock in the cycling advice so long as a low dose seems to preserve its effect over time.
+
+Nonetheless, I’m finishing up this article on the end of a week off, as a way to notice the difference Ashwagandha was making. It’s helpful. I currently retain some of the mental flexibility that I seemed to regain while taking Ashwagandha daily.
+
+## Conclusion
+
+I keep thinking back to [a blog post Zach Holman wrote](https://zachholman.com/posts/the-depression-thing)in 2017 on depression, and specifically to the _✨ Drugs ✨_ part, where he discusses the apprehension and stigma related to drugs, but accurately points out that while some people lose themselves through the effect of a drug, we also use psychoactive substances to get access back to ourselves, as a supporter of the rest of the actions we take to heal.
+
+My limited experience in that month points in a similar direction, and the next step for me is to see if Ashwagandha can give a boost to the other efforts I make, long-term, to restore access to my calm self.
+
+### Update from a month and a half:
+
+My observations remain roughly the same. I have forgotten a dose again one time, a Saturday, and that day went without a noticeable difference. The next day, I didn’t forget, but I did have much higher anxiety than usual, which resolved during the week. In the coming month I’ll be reducing to 300mg per day to see if I get the same benefits.
+
+### Update after the second month
+
+I used the momentum from lowering the dose to stop completely shortly after. As of writing this sentence (six months later), I haven’t resumed any supplementation, though I have had short periods of heightened anxiety. They track my exhaustion levels and didn’t seem to devolve into chronic anxiety – fingers crossed.
