@@ -9,11 +9,13 @@ const StyledLink = ({
 	href,
 	title = "",
 	internal = false,
+	node,
 }) => {
+	const id = node?.properties?.id || null;
 	return (
 		<Link href={href}>
 			<>
-				<a href={href} title={title}>
+				<a href={href} title={title} id={id}>
 					{children}
 				</a>
 				<style jsx>{`
