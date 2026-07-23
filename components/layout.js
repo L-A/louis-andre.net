@@ -29,7 +29,7 @@ const Layout = ({ pageTitle, children, naked = false }) => {
   					src="//gc.zgo.at/count.js"
   				></script>
   				<title>
-  					{(pageTitle ? pageTitle + " -" : "") + "Louis-André Labadie"}
+  					{(pageTitle ? pageTitle + " — " : "") + "Louis-André Labadie"}
   				</title>
   			</Head>
 
