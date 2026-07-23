@@ -61,7 +61,7 @@ const PostLink = ({ title, description, date, inFrench, slug }) => (
 
 const Journal = ({ posts }) => {
 	return (
-		<Layout pageTitle="Journal">
+		<Layout pageTitle="Journal" description="Articles on art, technology, design, and more by Louis-André Labadie.">
 			<h1>Journal</h1>
 
 			<div className="kind-callout">

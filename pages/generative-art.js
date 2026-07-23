@@ -326,7 +326,7 @@ const SeriesViewer = ({ name, description, platforms, iterations, index }) => {
 
 const GenerativeArt = ({ series }) => {
 	return (
-		<Layout pageTitle="Generative Art">
+		<Layout pageTitle="Generative Art" description="Generative art series by Louis-André Labadie: Territory B, Maps for Grief, Territory A, Night Market, and more.">
 			<h1>Generative Art</h1>
 			<p>
 				I've been creating{" "}

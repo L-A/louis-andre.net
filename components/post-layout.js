@@ -2,8 +2,8 @@ import Layout from "./layout";
 import Link from "./styled-link";
 import { Palette } from "../config";
 
-const Post = ({ title, publishedDate, children }) => (
-	<Layout pageTitle={title}>
+const Post = ({ title, publishedDate, description, children }) => (
+	<Layout pageTitle={title} description={description}>
 		<h2>
 			<Link href="/journal" internal>
 				Journal

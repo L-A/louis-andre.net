@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Palette } from "../config";
 import Footer from "./footer";
 
-const Layout = ({ pageTitle, children, naked = false }) => {
+const Layout = ({ pageTitle, description = "", children, naked = false }) => {
 	// Polite & limited analytics - goatcounter.com
 	const countVisit = () => {
 		if (window.goatcounter && window.goatcounter.count) {
@@ -31,6 +31,7 @@ const Layout = ({ pageTitle, children, naked = false }) => {
   				<title>
   					{(pageTitle ? pageTitle + " — " : "") + "Louis-André Labadie"}
   				</title>
+  				{description && <meta name="description" content={description} />}
   			</Head>
 
   			{!naked && (

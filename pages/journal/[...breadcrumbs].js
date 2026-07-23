@@ -12,11 +12,11 @@ const dateOptions = {
 	day: "numeric",
 };
 
-const JournalEntry = ({data: {date, title}, content}) => {
+const JournalEntry = ({data: {date, title, description}, content}) => {
 	const formattedDate = new Date(date).toLocaleString("en-CA", dateOptions);
 
 	return (
-		<PostLayout title={title} publishedDate={formattedDate}>
+		<PostLayout title={title} publishedDate={formattedDate} description={description}>
 			<Markdown>{content}</Markdown>
 		</PostLayout>
 	);

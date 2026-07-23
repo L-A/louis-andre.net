@@ -4,7 +4,7 @@ import Link from "../components/styled-link";
 import Art from "../components/art-canvas";
 
 export default () => (
-	<Layout>
+	<Layout description="Louis-André Labadie — generative artist, designer, and writer. Studio: Petite Révolte.">
 		<Art />
 		<p>
 			<strong>I’m Louis-André Labadie.</strong> There's a good chance you and I
