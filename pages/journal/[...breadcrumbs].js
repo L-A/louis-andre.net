@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
+import { useRouter } from "next/router";
 import { getMarkdownFiles } from "../../helpers/getMarkdownFiles";
 import PostLayout from "../../components/post-layout";
 import Markdown from "../../components/configured-markdown";
@@ -13,12 +14,14 @@ const dateOptions = {
 };
 
 const JournalEntry = ({data: {date, title, description}, content}) => {
+	const router = useRouter();
+	const slug = router.query.breadcrumbs?.join('/') || '';
 	const formattedDate = new Date(date).toLocaleString("en-CA", dateOptions);
 
 	return (
-		<PostLayout title={title} publishedDate={formattedDate} publishedDateISO={date} description={description} ogUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}
-			canonicalUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}
-			slug={params.breadcrumbs.join('/')}>
+		<PostLayout title={title} publishedDate={formattedDate} publishedDateISO={date} description={description} ogUrl={`https://louis-andre.net/journal/${slug}`}
+			canonicalUrl={`https://louis-andre.net/journal/${slug}`}
+			slug={slug}>
 			<Markdown>{content}</Markdown>
 		</PostLayout>
 	);
