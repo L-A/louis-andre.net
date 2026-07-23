@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Palette } from "../config";
 import Footer from "./footer";
 
-const Layout = ({ pageTitle, description = "", children, naked = false }) => {
+const Layout = ({ pageTitle, description = "", ogTitle, ogDescription, ogImage, ogType = "website", ogUrl, children, naked = false }) => {
 	// Polite & limited analytics - goatcounter.com
 	const countVisit = () => {
 		if (window.goatcounter && window.goatcounter.count) {
@@ -32,6 +32,16 @@ const Layout = ({ pageTitle, description = "", children, naked = false }) => {
   					{(pageTitle ? pageTitle + " — " : "") + "Louis-André Labadie"}
   				</title>
   				{description && <meta name="description" content={description} />}
+  				<meta property="og:title" content={ogTitle || pageTitle || "Louis-André Labadie"} />
+  				{description && <meta property="og:description" content={ogDescription || description} />}
+  				<meta property="og:type" content={ogType} />
+  				<meta property="og:url" content={ogUrl || "https://louis-andre.net"} />
+  				<meta property="og:site_name" content="Louis-André Labadie" />
+  				{ogImage && <meta property="og:image" content={ogImage} />}
+  				<meta name="twitter:card" content="summary_large_image" />
+  				<meta name="twitter:title" content={ogTitle || pageTitle || "Louis-André Labadie"} />
+  				{description && <meta name="twitter:description" content={ogDescription || description} />}
+  				{ogImage && <meta name="twitter:image" content={ogImage} />}
   			</Head>
 
   			{!naked && (
