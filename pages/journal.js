@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import path from "path";
 
 import { Palette } from "../config";
@@ -62,6 +63,9 @@ const PostLink = ({ title, description, date, inFrench, slug }) => (
 const Journal = ({ posts }) => {
 	return (
 		<Layout pageTitle="Journal" description="Articles on art, technology, design, and more by Louis-André Labadie." canonicalUrl="https://louis-andre.net/journal">
+			<Head>
+				<link rel="alternate" type="application/rss+xml" title="Louis-André Labadie" href="/journal/rss.xml" />
+			</Head>
 			<h1>Journal</h1>
 
 			<div className="kind-callout">
