@@ -29,7 +29,7 @@ const ReadingList = ({ links, dateGenerated }) => {
 	const unreadImage = <img src="/images/icn-unread.svg" />;
 
 	return (
-		<Layout pageTitle="Reading Log" description="Curated reading list and bookmarks from Louis-André Labadie.">
+		<Layout pageTitle="Reading Log" description="Curated reading list and bookmarks from Louis-André Labadie." canonicalUrl="https://louis-andre.net/reading-log">
 			<h1>Reading Log</h1>
 			<p>
 				I like to read on the web, and bookmark most of it on my{" "}

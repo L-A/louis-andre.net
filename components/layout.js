@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Palette } from "../config";
 import Footer from "./footer";
 
-const Layout = ({ pageTitle, description = "", ogTitle, ogDescription, ogImage, ogType = "website", ogUrl, children, naked = false }) => {
+const Layout = ({ pageTitle, description = "", ogTitle, ogDescription, ogImage, ogType = "website", ogUrl, canonicalUrl = "", children, naked = false }) => {
 	// Polite & limited analytics - goatcounter.com
 	const countVisit = () => {
 		if (window.goatcounter && window.goatcounter.count) {
@@ -42,6 +42,7 @@ const Layout = ({ pageTitle, description = "", ogTitle, ogDescription, ogImage, 
   				<meta name="twitter:title" content={ogTitle || pageTitle || "Louis-André Labadie"} />
   				{description && <meta name="twitter:description" content={ogDescription || description} />}
   				{ogImage && <meta name="twitter:image" content={ogImage} />}
+  				{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
   			</Head>
 
   			{!naked && (

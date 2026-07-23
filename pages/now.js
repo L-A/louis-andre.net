@@ -4,7 +4,7 @@ import Link from "../components/styled-link";
 
 const NFT = () => {
 	return (
-		<Layout pageTitle="Now" description="What Louis-André Labadie is up to right now.">
+		<Layout pageTitle="Now" description="What Louis-André Labadie is up to right now." canonicalUrl="https://louis-andre.net/now">
 			<h1>Now</h1>
 			<small>
 				<p>Last updated June 28th, 2024</p>

@@ -2,8 +2,8 @@ import Layout from "./layout";
 import Link from "./styled-link";
 import { Palette } from "../config";
 
-const Post = ({ title, publishedDate, description, ogUrl, children }) => (
-	<Layout pageTitle={title} description={description} ogType="article" ogTitle={title} ogDescription={description} ogUrl={ogUrl}>
+const Post = ({ title, publishedDate, description, ogUrl, canonicalUrl, children }) => (
+	<Layout pageTitle={title} description={description} ogType="article" ogTitle={title} ogDescription={description} ogUrl={ogUrl} canonicalUrl={canonicalUrl}>
 		<h2>
 			<Link href="/journal" internal>
 				Journal

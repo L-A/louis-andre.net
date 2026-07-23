@@ -4,7 +4,7 @@ import Link from "../components/styled-link";
 
 const NFT = () => {
 	return (
-		<Layout pageTitle="About NFTs" description="Blockchain addresses and carbon offset policy for Louis-André Labadie's NFT artworks.">
+		<Layout pageTitle="About NFTs" description="Blockchain addresses and carbon offset policy for Louis-André Labadie's NFT artworks." canonicalUrl="https://louis-andre.net/nft">
 			<h1>About NFTs</h1>
 			<h2>Blockchain addresses</h2>
 			<p>

@@ -67,7 +67,7 @@ export default () => {
 
 	const secretTagContent = secretTagItems[tagPosition];
 	return (
-		<Layout pageTitle="Portfolio" description="Selected design and UX work from Louis-André Labadie.">
+		<Layout pageTitle="Portfolio" description="Selected design and UX work from Louis-André Labadie." canonicalUrl="https://louis-andre.net/portfolio">
 			<h1>
 				<span className="secret">{secretTagContent}</span>Portfolio
 			</h1>
