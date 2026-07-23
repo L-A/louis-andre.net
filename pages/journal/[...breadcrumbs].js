@@ -17,7 +17,8 @@ const JournalEntry = ({data: {date, title, description}, content}) => {
 
 	return (
 		<PostLayout title={title} publishedDate={formattedDate} publishedDateISO={date} description={description} ogUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}
-			canonicalUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}>
+			canonicalUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}
+			slug={params.breadcrumbs.join('/')}>
 			<Markdown>{content}</Markdown>
 		</PostLayout>
 	);

@@ -3,11 +3,31 @@ import Link from "./styled-link";
 import Head from "next/head";
 import { Palette } from "../config";
 
-const Post = ({ title, publishedDate, publishedDateISO, description, ogUrl, canonicalUrl, children }) => (
+const Post = ({ title, publishedDate, publishedDateISO, description, ogUrl, canonicalUrl, slug, children }) => (
 	<Layout pageTitle={title} description={description} ogType="article" ogTitle={title} ogDescription={description} ogUrl={ogUrl} canonicalUrl={canonicalUrl}>
 		<Head>
 			<link rel="alternate" type="application/rss+xml" title="Louis-André Labadie" href="/journal/rss.xml" />
 			{publishedDateISO && <meta property="article:published_time" content={publishedDateISO} />}
+			{slug && (
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "BlogPosting",
+							headline: title,
+							description: description || "",
+							datePublished: publishedDateISO,
+							author: {
+								"@type": "Person",
+								name: "Louis-André Labadie",
+								url: "https://louis-andre.net"
+							},
+							url: `https://louis-andre.net/journal/${slug}`
+						})
+					}}
+				/>
+			)}
 		</Head>
 		<h2>
 			<Link href="/journal" internal>
