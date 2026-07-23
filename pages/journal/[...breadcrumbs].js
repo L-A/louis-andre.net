@@ -16,7 +16,7 @@ const JournalEntry = ({data: {date, title, description}, content}) => {
 	const formattedDate = new Date(date).toLocaleString("en-CA", dateOptions);
 
 	return (
-		<PostLayout title={title} publishedDate={formattedDate} description={description} ogUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}
+		<PostLayout title={title} publishedDate={formattedDate} publishedDateISO={date} description={description} ogUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}
 			canonicalUrl={`https://louis-andre.net/journal/${params.breadcrumbs.join('/')}`}>
 			<Markdown>{content}</Markdown>
 		</PostLayout>

@@ -3,10 +3,11 @@ import Link from "./styled-link";
 import Head from "next/head";
 import { Palette } from "../config";
 
-const Post = ({ title, publishedDate, description, ogUrl, canonicalUrl, children }) => (
+const Post = ({ title, publishedDate, publishedDateISO, description, ogUrl, canonicalUrl, children }) => (
 	<Layout pageTitle={title} description={description} ogType="article" ogTitle={title} ogDescription={description} ogUrl={ogUrl} canonicalUrl={canonicalUrl}>
 		<Head>
 			<link rel="alternate" type="application/rss+xml" title="Louis-André Labadie" href="/journal/rss.xml" />
+			{publishedDateISO && <meta property="article:published_time" content={publishedDateISO} />}
 		</Head>
 		<h2>
 			<Link href="/journal" internal>
