@@ -1,0 +1,168 @@
+---
+import {Palette} from "../config.js";
+---
+
+<div class="layout">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="/styles/work-sans.css" />
+		<link rel="stylesheet" href="/styles/global.css" />
+		<script
+			data-goatcounter="https://lal.goatcounter.com/count"
+			async
+			src="//gc.zgo.at/count.js"></script>
+		<title>
+			Louis-André Labadie
+		</title>
+	</head>
+			<nav>
+				<ul class="pages">
+					<li class="home">
+						<a href="/">
+							<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
+						</a>
+					</li>
+					<li class="art">
+						<a href="/generative-art">Art</a>
+					</li>
+					<li class="journal">
+						<a href="/journal">Journal</a>
+					</li>
+					<li class="reading-log">
+						<a href="/reading-log">Reading Log</a>
+					</li>
+				</ul>
+			</nav>
+	<main>
+		<slot />
+	</main>
+</div>
+
+<style>
+.layout {
+	max-width: 960px;
+	margin: 0 auto;
+	flex-direction: row;
+	justify-content: stretch;
+	min-height: calc(100vh - 64px);
+}
+
+nav {
+	color: {Palette.text};
+	font-weight: 500;
+	flex: 0 0 140px;
+	margin: 64px auto 0 32px;
+}
+
+.pages {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0;
+	list-style: none;
+}
+
+.pages li {
+	margin-bottom: 8px;
+
+	transform-origin: center left;
+	transition: transform 0.3s cubic-bezier(0.44, 1.65, 0.29, 0.97),
+		opacity 0.1s linear;
+}
+
+.pages li:hover {
+	opacity: 0.7;
+	transform: scale(1.05);
+}
+
+.pages li:active {
+	opacity: 0.9;
+	transform: scale(1.01);
+}
+
+.pages .home {
+	margin-top: 20px;
+}
+
+.pages li a {
+	color: inherit;
+	display: inline-block;
+	padding: 4px 0;
+	text-decoration: none;
+}
+
+.pages .art a {
+	color: {Palette.art};
+}
+
+.pages .journal a {
+	color: {Palette.journal};
+}
+
+.pages .reading-log a {
+	color: {Palette.reading};
+}
+
+main {
+	flex: 1 1 680px;
+	margin: 64px 32px 0;
+}
+
+@media (max-width: 800px) {
+	.layout {
+		flex-direction: column;
+		margin: 16px 0;
+	}
+
+	main {
+	  margin-top: 16px;
+		margin-left: 92px;
+	}
+
+	nav {
+		flex-basis: auto;
+		margin-bottom: 32px;
+		margin-top: 16px;
+	}
+
+	.pages {
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.pages li {
+		margin-right: 32px;
+		transform-origin: center;
+	}
+
+	.pages .home {
+		margin-top: 10px;
+	}
+}
+
+@media (max-width: 700px) {
+	nav {
+		margin: 0 32px 16px;
+	}
+
+	main {
+		margin: 0 32px;
+	}
+}
+
+@media (max-width: 500px) {
+	nav {
+		font-size: 14px;
+		margin: 0 16px 16px;
+	}
+
+	.pages li {
+		margin-right: 16px;
+	}
+
+	main {
+		margin: 0 16px;
+	}
+}
+</style>
