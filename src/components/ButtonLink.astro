@@ -1,0 +1,40 @@
+---
+const { href = "", type = "" } = Astro.props;
+---
+
+<a href={href} class:list={["button-link", type]}>
+  <slot />
+</a>
+
+<style>
+  .button-link {
+    --scoped-bg: var(--fadedAccent);
+    --scoped-color: var(--fg);
+    --scoped-border: transparent;
+
+    background-color: var(--scoped-bg);
+    border: 1px solid var(--scoped-border);
+    color: var(--scoped-color);
+    display: inline-block;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 0.1rem 0.5rem;
+    font-size: 14px;
+    transition:
+      background-color 0.1s ease-out,
+      border-color 0.1s ease-out,
+      color 0.1s ease-out;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--scoped-bg), transparent 50%);
+      border-color: color-mix(in srgb, var(--scoped-border), transparent 50%);
+      color: color-mix(in srgb, var(--scoped-color), transparent 30%);
+    }
+
+    &.highlight {
+      --scoped-bg: var(--offWhite);
+      --scoped-border: var(--mainAccent);
+      --scoped-color: var(--mainAccent);
+    }
+  }
+</style>

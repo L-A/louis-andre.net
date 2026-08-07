@@ -1,7 +1,206 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import Container from "../components/Container.astro";
+import ButtonLink from "../components/ButtonLink.astro";
 ---
 
 <MainLayout>
-	<h1>Hello world</h1>
+  <div class="columns">
+    <div class="content">
+      <div class="top">
+        <h1>Hi, I’m Louis-André</h1>
+        <p>Welcome! This is my personal site.</p>
+        <p>
+          We’re probably Internet strangers. It’s a thin connection, but a warm
+          one to me nonetheless.
+        </p>
+      </div>
+      <div class="bottom">
+        <p>
+          I work as an independent designer with organizations that touch on
+          tech, games and the arts. My studio is called <a
+            href="https://petiterevolte.com">Petite Révolte</a
+          >.
+        </p>
+        <p>
+          Browse around, and <a href="mailto:monsieur@louis-andre.net"
+            >reach out</a
+          > if you’d like!
+        </p>
+        <h3>For more about <em>gestures around vaguely</em></h3>
+        <ul class="pages">
+          <li>
+            <ButtonLink href="/journal">Journal</ButtonLink>
+          </li>
+          <li>
+            <ButtonLink href="/generative-art">Art</ButtonLink>
+          </li>
+          <li>
+            <ButtonLink href="/reading-log">Reading log</ButtonLink>
+          </li>
+          <li>
+            <ButtonLink type="highlight" href="https://petiterevolte.com"
+              >Hire me</ButtonLink
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="art">
+      <canvas class="art-canvas"></canvas>
+      <div class="controls">
+        <button id="new-generation" type="button">New generation</button>
+        <input type="text" id="seed" placeholder="Seed" />
+      </div>
+    </div>
+  </div>
 </MainLayout>
+
+<style>
+  .columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 20rem;
+      justify-content: space-between;
+      align-self: stretch;
+
+      .pages {
+        list-style: none;
+        display: flex;
+        gap: 0.5rem;
+        padding: 0;
+      }
+    }
+
+    .art {
+      flex: 1;
+      aspect-ratio: 7/5;
+      position: relative;
+      overflow: hidden;
+
+      background-color: #ddd;
+      border-radius: 0.5rem;
+      box-shadow:
+        0px 2px 4px rgba(0, 0, 0, 0.1),
+        0px 4px 8px rgba(0, 0, 0, 0.1);
+
+      .art-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .controls {
+        position: absolute;
+        inset: 0.25rem;
+        top: auto;
+        background-color: var(--offWhite);
+        border-radius: 0.25rem;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 0.25rem;
+        box-shadow:
+          0px 4px 4px rgba(0, 0, 0, 0.15),
+          inset 0px 1px 0px #ffffff;
+        border-radius: 4px;
+
+        button {
+          font: inherit;
+          font-size: 0.75rem;
+          color: var(--fg);
+          background: var(--bg);
+          border: 1px solid var(--fadedGray);
+          border-radius: 0.25rem;
+          padding: 0.1rem 0.5rem;
+          cursor: pointer;
+
+          &:hover {
+            border-color: var(--mainAccent);
+            color: var(--mainAccent);
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  const mulberry32 = (a) => () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+
+  const palette = ["#48118D", "#309CFF", "#F9B249", "#89B7E1"];
+
+  const draw = ({ context, width, height, seed }) => {
+    const random = mulberry32(seed);
+
+    context.fillStyle = "#2D244F";
+    context.fillRect(0, 0, width, height);
+
+    for (let i = 0; i < 1000; i++) {
+      context.fillStyle = palette[Math.floor(random() * palette.length)];
+      context.lineWidth = 3 + random() * 12;
+      context.beginPath();
+      const x = random() * width;
+      const y = random() * height;
+      const radius = (0.01 + random() * 0.1) * Math.min(width, height);
+      context.arc(
+        x,
+        y,
+        radius,
+        Math.PI * Math.random(),
+        Math.PI * Math.random(),
+      );
+      context.fill();
+    }
+  };
+
+  const canvas = document.querySelector(".art-canvas");
+  const context = canvas.getContext("2d");
+  const seedInput = document.querySelector("#seed");
+
+  let width = 0;
+  let height = 0;
+  let seed = String(Math.floor(Math.random() * 1e6));
+  seedInput.value = seed;
+
+  const newSeed = () => String(Math.floor(Math.random() * 1e6));
+
+  document.querySelector("#seed").addEventListener("input", (e) => {
+    seed = e.target.value;
+    draw({ context, width, height, seed });
+  });
+
+  // Draw the current generation at the canvas' current size (device pixels)
+  const resize = () => {
+    const rect = canvas.getBoundingClientRect();
+    width = Math.max(1, Math.round(rect.width * window.devicePixelRatio));
+    height = Math.max(1, Math.round(rect.height * window.devicePixelRatio));
+    canvas.width = width;
+    canvas.height = height;
+    draw({ context, width, height, seed });
+  };
+
+  window.addEventListener("resize", resize);
+
+  document.querySelector("#new-generation").addEventListener("click", () => {
+    seed = newSeed();
+    document.querySelector("#seed").value = seed;
+    draw({ context, width, height, seed });
+  });
+
+  // Initial draw on load
+  resize();
+</script>

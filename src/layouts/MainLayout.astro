@@ -1,168 +1,75 @@
 ---
-import {Palette} from "../config.js";
+import Palette from "../palette.js";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Container from "../components/Container.astro";
+import { Font } from "astro:assets";
 ---
 
-<div class="layout">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="/styles/work-sans.css" />
-		<link rel="stylesheet" href="/styles/global.css" />
-		<script
-			data-goatcounter="https://lal.goatcounter.com/count"
-			async
-			src="//gc.zgo.at/count.js"></script>
-		<title>
-			Louis-André Labadie
-		</title>
-	</head>
-			<nav>
-				<ul class="pages">
-					<li class="home">
-						<a href="/">
-							<img src="/images/img-logo.svg" alt="Louis-André Labadie" />
-						</a>
-					</li>
-					<li class="art">
-						<a href="/generative-art">Art</a>
-					</li>
-					<li class="journal">
-						<a href="/journal">Journal</a>
-					</li>
-					<li class="reading-log">
-						<a href="/reading-log">Reading Log</a>
-					</li>
-				</ul>
-			</nav>
-	<main>
-		<slot />
-	</main>
-</div>
+<!doctype html>
+<head>
+  <meta charset="utf-8" />
+  <script
+    data-goatcounter="https://lal.goatcounter.com/count"
+    async
+    src="//gc.zgo.at/count.js"></script>
+  <Font cssVariable="--font-plex" />
+  <Font cssVariable="--font-mono" />
+  <title>Louis-André Labadie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <Nav />
+  <Container>
+    <slot />
+  </Container>
+  <Footer />
+</body>
 
-<style>
-.layout {
-	max-width: 960px;
-	margin: 0 auto;
-	flex-direction: row;
-	justify-content: stretch;
-	min-height: calc(100vh - 64px);
-}
+<style is:global>
+  :root {
+    --bg: #ededed;
+    --fg: #000d3a;
+    --mainAccent: #2429c1;
+    --fadedGray: #9295a1;
+    --fadedAccent: #d8d9ef;
+    --offWhite: #f1f1f1;
+  }
 
-nav {
-	color: {Palette.text};
-	font-weight: 500;
-	flex: 0 0 140px;
-	margin: 64px auto 0 32px;
-}
+  * {
+    box-sizing: border-box;
+    color: var(--fg);
+    font-family: var(--font-plex);
+    line-height: 1.5;
+  }
 
-.pages {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding: 0;
-	list-style: none;
-}
+  html {
+    padding: 0;
+  }
 
-.pages li {
-	margin-bottom: 8px;
+  body {
+    margin: 0;
+    background-color: var(--bg);
+  }
 
-	transform-origin: center left;
-	transition: transform 0.3s cubic-bezier(0.44, 1.65, 0.29, 0.97),
-		opacity 0.1s linear;
-}
+  a {
+    color: var(--mainAccent);
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--mainAccent),
+      transparent 80%
+    );
+    text-underline-offset: 0.15rem;
+    text-decoration-thickness: 0.05rem;
+    transition: text-decoration 0.15s ease-out;
 
-.pages li:hover {
-	opacity: 0.7;
-	transform: scale(1.05);
-}
-
-.pages li:active {
-	opacity: 0.9;
-	transform: scale(1.01);
-}
-
-.pages .home {
-	margin-top: 20px;
-}
-
-.pages li a {
-	color: inherit;
-	display: inline-block;
-	padding: 4px 0;
-	text-decoration: none;
-}
-
-.pages .art a {
-	color: {Palette.art};
-}
-
-.pages .journal a {
-	color: {Palette.journal};
-}
-
-.pages .reading-log a {
-	color: {Palette.reading};
-}
-
-main {
-	flex: 1 1 680px;
-	margin: 64px 32px 0;
-}
-
-@media (max-width: 800px) {
-	.layout {
-		flex-direction: column;
-		margin: 16px 0;
-	}
-
-	main {
-	  margin-top: 16px;
-		margin-left: 92px;
-	}
-
-	nav {
-		flex-basis: auto;
-		margin-bottom: 32px;
-		margin-top: 16px;
-	}
-
-	.pages {
-		flex-direction: row;
-		align-items: center;
-		flex-wrap: wrap;
-	}
-
-	.pages li {
-		margin-right: 32px;
-		transform-origin: center;
-	}
-
-	.pages .home {
-		margin-top: 10px;
-	}
-}
-
-@media (max-width: 700px) {
-	nav {
-		margin: 0 32px 16px;
-	}
-
-	main {
-		margin: 0 32px;
-	}
-}
-
-@media (max-width: 500px) {
-	nav {
-		font-size: 14px;
-		margin: 0 16px 16px;
-	}
-
-	.pages li {
-		margin-right: 16px;
-	}
-
-	main {
-		margin: 0 16px;
-	}
-}
+    &:hover {
+      text-decoration-color: color-mix(
+        in srgb,
+        var(--mainAccent),
+        transparent 60%
+      );
+      text-decoration-thickness: 0.15rem;
+    }
+  }
 </style>

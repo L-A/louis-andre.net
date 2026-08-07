@@ -31,3 +31,4 @@ _site
 .now
 .vercel
 /.astro
+/dist
