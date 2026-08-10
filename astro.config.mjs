@@ -7,18 +7,14 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: "IBM Plex Sans",
       cssVariable: "--font-plex",
-      options: {
-        variants: [
-          {
-            weight: "100 700",
-          },
-        ],
-      },
+      weights: ["100 700"],
+      styles: ["normal", "italic"],
     },
     {
       provider: fontProviders.fontsource(),
       name: "IBM Plex Mono",
       cssVariable: "--font-mono",
+      weights: ["100 700"],
     },
   ],
 });
