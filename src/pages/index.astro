@@ -27,7 +27,7 @@ import ButtonLink from "../components/ButtonLink.astro";
             >reach out</a
           > if you’d like!
         </p>
-        <h3>For more about <em>gestures around vaguely</em></h3>
+        <h3>For more about *<em>gestures around</em>*</h3>
         <ul class="pages">
           <li>
             <ButtonLink href="/journal">Journal</ButtonLink>
@@ -58,11 +58,15 @@ import ButtonLink from "../components/ButtonLink.astro";
 
 <style>
   .columns {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: top;
     gap: 2rem;
+
+    @media (max-width: 48rem) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
 
     .content {
       display: flex;
@@ -71,15 +75,33 @@ import ButtonLink from "../components/ButtonLink.astro";
       justify-content: space-between;
       align-self: stretch;
 
+      .top {
+        p {
+          font-size: 1.125rem;
+        }
+      }
+
+      h1 {
+        font-size: 1.65rem;
+        margin-top: 1rem;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        margin-top: 1.75rem;
+      }
+
       .pages {
         list-style: none;
         display: flex;
         gap: 0.5rem;
         padding: 0;
+        margin: 0;
       }
     }
 
     .art {
+      margin-top: 1rem;
       flex: 1;
       aspect-ratio: 7/5;
       position: relative;
