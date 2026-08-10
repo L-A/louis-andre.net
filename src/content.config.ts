@@ -5,7 +5,7 @@ import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 
 // 3. Import Zod
-import { z } from "astro/zod";
+import { slugify, z } from "astro/zod";
 
 const journal = defineCollection({
   loader: glob({ base: "./content/journal", pattern: "**/*.{md,mdx}" }),

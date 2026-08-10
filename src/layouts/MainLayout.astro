@@ -14,6 +14,7 @@ import { Font } from "astro:assets";
     async
     src="//gc.zgo.at/count.js"></script>
   <Font cssVariable="--font-plex" />
+  <Font cssVariable="--font-plex-condensed" />
   <Font cssVariable="--font-mono" />
   <title>Louis-André Labadie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,7 +39,6 @@ import { Font } from "astro:assets";
 
   * {
     box-sizing: border-box;
-    line-height: 1.5;
   }
 
   html {
@@ -50,6 +50,8 @@ import { Font } from "astro:assets";
   body {
     margin: 0;
     background-color: var(--bg);
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   a {

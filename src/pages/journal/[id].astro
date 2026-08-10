@@ -1,0 +1,62 @@
+---
+import { journalUrl } from "../../helpers/collections";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/Container.astro";
+import ButtonLink from "../../components/ButtonLink.astro";
+import { getCollection, render } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const entries = await getCollection("journal");
+  return entries.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+};
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<MainLayout>
+  <article class="main-content">
+    <h1>{entry.data.title}</h1>
+    <h2><span>Posted</span> {dateFormatter.format(entry.data.date)}</h2>
+    <main>
+      <Content />
+    </main>
+  </article>
+</MainLayout>
+
+<style>
+  .main-content {
+    font-size: 1.125rem;
+
+    & > * {
+      max-width: 36em;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-family: var(--font-plex-condensed);
+      margin-bottom: 0.25rem;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-family: var(--font-mono);
+      font-weight: normal;
+      font-size: 1rem;
+      margin: 0.25rem 0 2rem;
+
+      span {
+        color: var(--fadedGray);
+      }
+    }
+  }
+</style>

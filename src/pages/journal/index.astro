@@ -1,0 +1,123 @@
+---
+import { journalUrl } from "../../helpers/collections";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/Container.astro";
+import ButtonLink from "../../components/ButtonLink.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("journal");
+
+const groupedByYear = entries.reduce((acc, entry) => {
+  const year = entry.data.date.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(entry);
+  return acc;
+}, {});
+---
+
+<MainLayout>
+  <header>
+    <h2>Journal</h2>
+    <p>Here is where I write occasional articles.</p>
+    <p>
+      I also have a newsletter called <a href="/https://buttondown.com/Kind"
+        >The Kind Dispatch</a
+      >, which I regularly maintained until I became a father a few years ago. I
+      want to come back to it eventually. Its archives are available in the
+      meantime.
+    </p>
+  </header>
+
+  <ul class="entries">
+    {
+      Object.entries(groupedByYear)
+        .sort(([a], [b]) => b - a)
+        .map(([year, entries]) => (
+          <li class="year">
+            <h3>{year}</h3>
+            <ul>
+              {entries.map((entry) => (
+                <li class="entry">
+                  <a href={journalUrl(entry.id)}>
+                    <h4>{entry.data.title}</h4>
+                    <p>{entry.data.description}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+    }
+  </ul>
+</MainLayout>
+
+<style>
+  header {
+    max-width: 48rem;
+
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      max-width: 36rem;
+    }
+  }
+
+  ul.entries {
+    max-width: 48rem;
+    list-style: none;
+    padding: 0;
+
+    .year {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      h3 {
+        color: var(--mainAccent);
+        font-family: var(--font-mono);
+        background: url("/images/bg/dotted-light.svg") repeat;
+        margin: 1rem -1rem;
+        padding: 0.25rem 1rem;
+      }
+
+      .entry {
+        margin: 2rem 0;
+
+        a {
+          display: block;
+          color: var(--fg);
+          text-decoration: none;
+
+          h4 {
+            margin: 0;
+            font-size: 1.25rem;
+            max-width: 36rem;
+          }
+
+          p {
+            margin: 0;
+            max-width: 36rem;
+          }
+
+          &:hover {
+            h4 {
+              color: var(--mainAccent);
+              text-decoration: underline;
+            }
+
+            p {
+              color: color-mix(var(--fg), transparent 40%);
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
