@@ -25,8 +25,11 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
 <MainLayout>
   <article class="main-content">
-    <h1>{entry.data.title}</h1>
-    <h2><span>Posted</span> {dateFormatter.format(entry.data.date)}</h2>
+    <h1 class="title">{entry.data.title}</h1>
+    <h2 class="date">
+      <span>Posted</span>
+      {" " + dateFormatter.format(entry.data.date)}
+    </h2>
     <main>
       <Content />
     </main>
@@ -36,19 +39,60 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 <style>
   .main-content {
     font-size: 1.125rem;
+    line-height: 1.75;
+    text-rendering: optimizeLegibility;
+    position: relative;
 
-    & > * {
-      max-width: 36em;
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1.25;
+      margin-top: 2em;
     }
 
     h1 {
-      font-size: 2.5rem;
-      font-family: var(--font-plex-condensed);
-      margin-bottom: 0.25rem;
       line-height: 1.1;
+      font-size: 1.75rem;
     }
 
-    h2 {
+    p {
+      max-width: 30em;
+      margin-bottom: 1.5em;
+    }
+
+    /*
+      TODO custom markdown rendering that puts
+      the images in a full-width <figure> instead
+    */
+    img {
+      max-width: 100%;
+    }
+
+    ul,
+    ol {
+      li {
+        max-width: 38rem;
+      }
+    }
+
+    hr {
+      margin: 4rem 0;
+      border: 0;
+      height: 0.125rem;
+      background-color: var(--fadedAccent);
+      max-width: 36rem;
+    }
+
+    h1.title {
+      font-size: 2.5rem;
+      font-family: var(--font-plex-condensed);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      margin-left: -0.025rem;
+    }
+
+    h2.date {
       font-family: var(--font-mono);
       font-weight: normal;
       font-size: 1rem;
@@ -56,6 +100,31 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
       span {
         color: var(--fadedGray);
+      }
+    }
+
+    blockquote {
+      background: var(--offWhite);
+      margin: 3rem 1rem;
+      padding: 1rem 2rem;
+      position: relative;
+      max-width: 42rem;
+
+      font-style: italic;
+      font-size: 1.2rem;
+
+      &::before {
+        content: "";
+        background: url("/images/bg/dotted-light.svg") repeat;
+        inset: -1rem;
+        z-index: -1;
+        position: absolute;
+      }
+
+      @media (max-width: 40rem) {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        margin: 3rem 1rem;
       }
     }
   }
