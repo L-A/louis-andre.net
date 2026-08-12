@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/Container.astro";
 import ButtonLink from "../components/ButtonLink.astro";
+import NavPagesList from "../components/NavPagesList.astro";
 ---
 
 <MainLayout>
@@ -28,22 +29,7 @@ import ButtonLink from "../components/ButtonLink.astro";
           > if you’d like!
         </p>
         <h3>For more about *<em>gestures around</em>*</h3>
-        <ul class="pages">
-          <li>
-            <ButtonLink href="/journal">Journal</ButtonLink>
-          </li>
-          <li>
-            <ButtonLink href="/generative-art">Art</ButtonLink>
-          </li>
-          <li>
-            <ButtonLink href="/reading-log">Reading log</ButtonLink>
-          </li>
-          <li>
-            <ButtonLink type="highlight" href="https://petiterevolte.com"
-              >Hire me</ButtonLink
-            >
-          </li>
-        </ul>
+        <NavPagesList />
       </div>
     </div>
     <div class="art">
@@ -92,10 +78,6 @@ import ButtonLink from "../components/ButtonLink.astro";
       }
 
       .pages {
-        list-style: none;
-        display: flex;
-        gap: 0.5rem;
-        padding: 0;
         margin: 0;
       }
     }

@@ -1,7 +1,147 @@
 ---
+import Logo from "../assets/svg/l-logo.svg";
 import Container from "./Container.astro";
+import NavPagesList from "./NavPagesList.astro";
 ---
 
 <footer>
-  <Container> Footer allo </Container>
+  <div class="top-separator"></div>
+  <Container>
+    <div class="footer-grid">
+      <a href="/" class="home-link" aria-label="Home">
+        <Logo />
+      </a>
+      <NavPagesList />
+      <ul class="links">
+        <li>
+          <span class="lead">Here</span>
+          <a class="link" href="/">louis-andre.net</a>
+        </li>
+        <li>
+          <span class="lead">Mastodon</span>
+          <a class="link" href="https://social.lol/@lalabadie"
+            >lalabadie@social.lol</a
+          >
+        </li>
+        <li>
+          <span class="lead">Bluesky</span>
+          <a class="link" href="https://bsky.app/profile/louis-andre.net"
+            >@louis-andre.net</a
+          >
+        </li>
+        <li>
+          <span class="lead">Work</span>
+          <a class="link" href="https://petiterevolte.com">petiterevolte.com</a>
+        </li>
+        <li>
+          <span class="lead">Visits</span>
+          <a class="link visits-link" href="https://lal.goatcounter.com"
+            >lal.goatcounter.com  <span></span></a
+          >
+        </li>
+      </ul>
+    </div>
+  </Container>
 </footer>
+
+<style>
+  footer {
+    padding-top: 4rem;
+    margin-top: auto;
+
+    .top-separator {
+      background: url("/images/bg/dotted-light.svg") repeat;
+      height: 4rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-areas:
+        "home-link links"
+        "pages     links";
+      gap: 2rem;
+      padding: 2rem 0;
+
+      .home-link {
+        grid-area: home-link;
+      }
+
+      .pages {
+        grid-area: pages;
+        align-self: end;
+        align-items: flex-end;
+      }
+
+      .links {
+        grid-area: links;
+
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0.875rem;
+
+        li {
+          text-align: right;
+          margin-bottom: 0.25rem;
+
+          .lead {
+            font-weight: 350;
+          }
+
+          .link {
+            display: inline-block;
+            text-align: right;
+            width: 10rem;
+            color: var(--mainAccent);
+            font-weight: 700;
+
+            span {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+
+      @media (max-width: 40rem) {
+        grid-template-areas:
+          "home-link pages"
+          "links     links";
+
+        .pages {
+          justify-self: end;
+        }
+
+        .links {
+          li {
+            .lead {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  async function getPageVisits() {
+    const pagePath = window.location.pathname;
+    const startDateString = "2021-01-15";
+    const visitsLink = document.querySelector(".visits-link");
+    try {
+      const response = await fetch(
+        `https://lal.goatcounter.com/counter/${pagePath}.json?start=${startDateString}`,
+      );
+      const { count } = await response.json();
+      visitsLink.textContent = `${count}`;
+
+      const visitsSpan = document.createElement("span");
+      visitsSpan.textContent = " on this page";
+      visitsLink.appendChild(visitsSpan);
+    } catch (error) {
+      // Visits stat failed to load, we can leave the link as-is
+    }
+  }
+
+  getPageVisits();
+</script>

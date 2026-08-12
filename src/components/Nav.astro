@@ -2,6 +2,7 @@
 import Logo from "../assets/svg/l-logo.svg";
 import Container from "./Container.astro";
 import ButtonLink from "./ButtonLink.astro";
+import NavPagesList from "./NavPagesList.astro";
 
 const { currentPath = "/" } = Astro.props;
 ---
@@ -13,22 +14,7 @@ const { currentPath = "/" } = Astro.props;
         <Logo />
       </a>
       <p class="current-path">{currentPath}</p>
-      <ul class="pages">
-        <li>
-          <ButtonLink href="/journal">Journal</ButtonLink>
-        </li>
-        <li>
-          <ButtonLink href="/generative-art">Art</ButtonLink>
-        </li>
-        <li>
-          <ButtonLink href="/reading-log">Reading log</ButtonLink>
-        </li>
-        <li>
-          <ButtonLink type="highlight" href="https://petiterevolte.com"
-            >Hire me</ButtonLink
-          >
-        </li>
-      </ul>
+      <NavPagesList />
     </nav>
   </Container>
 </nav>
@@ -50,13 +36,6 @@ const { currentPath = "/" } = Astro.props;
     .current-path {
       color: var(--fadedGray);
       margin-right: auto;
-    }
-
-    .pages {
-      list-style: none;
-      display: flex;
-      gap: 0.5rem;
-      padding: 0;
     }
   }
 </style>
