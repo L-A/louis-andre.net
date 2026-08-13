@@ -87,9 +87,13 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
     h1.title {
       font-size: 2.5rem;
       font-family: var(--font-plex-condensed);
-      margin-bottom: 1rem;
+      margin: 1.5rem 0 1rem;
       line-height: 1.1;
       margin-left: -0.025rem;
+
+      @media (max-width: 40rem) {
+        margin-top: 1rem;
+      }
     }
 
     h2.date {
