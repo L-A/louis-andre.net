@@ -4,38 +4,100 @@ import Container from "./Container.astro";
 import ButtonLink from "./ButtonLink.astro";
 import NavPagesList from "./NavPagesList.astro";
 
-const { currentPath = "/" } = Astro.props;
+const { pathname } = Astro.url;
+
+// Split the pathname into segments as links
+let acc = "";
+const pathSegments = pathname
+  .split("/")
+  .filter(Boolean)
+  .map((p, index) => {
+    acc += "/" + p;
+
+    return { segment: p, href: acc };
+  });
 ---
 
-<nav>
-  <Container>
-    <nav>
-      <a href="/" class="home-link" aria-label="Home">
-        <Logo />
-      </a>
-      <p class="current-path">{currentPath}</p>
-      <NavPagesList />
-    </nav>
-  </Container>
-</nav>
+<Container>
+  <nav>
+    <a href="/" class="home-link" aria-label="Home">
+      <Logo />
+    </a>
+    <p class="current-path">
+      {
+        pathname == "/"
+          ? "/"
+          : pathSegments.map((p, index) => (
+              <>
+                /<a href={p.href}>{p.segment}</a>
+              </>
+            ))
+      }
+    </p>
+    <NavPagesList />
+  </nav>
+</Container>
 
 <style>
   nav {
-    display: flex;
+    display: grid;
+    grid-template-areas: "logo current-path pages";
+    grid-template-columns: auto 1fr auto;
     align-items: baseline;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    gap: 0.25rem;
 
     .home-link {
+      grid-area: logo;
+
       svg {
         margin-bottom: -0.18rem;
       }
+
       margin-right: 0.5rem;
     }
 
     .current-path {
+      font-family: var(--font-mono);
+      grid-area: current-path;
       color: var(--fadedGray);
-      margin-right: auto;
+      padding-right: 0.5rem;
+      font-size: 0.875rem;
+
+      min-width: 0;
+      overflow: hidden;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+
+      a {
+        color: var(--fadedGray);
+        text-decoration-color: color-mix(
+          in srgb,
+          var(--fadedGray),
+          transparent 85%
+        );
+
+        &:hover {
+          text-decoration-color: color-mix(
+            in srgb,
+            var(--fadedGray),
+            transparent 70%
+          );
+        }
+      }
+    }
+
+    .pages {
+      font-size: 1rem;
+      grid-area: pages;
+      justify-content: end;
+    }
+
+    @media (max-width: 28rem) {
+      .pages {
+        font-size: 0.8125rem;
+      }
     }
   }
 </style>
