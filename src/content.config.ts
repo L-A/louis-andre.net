@@ -1,11 +1,12 @@
-// 1. Import utilities from `astro:content`
+import { getSecret } from "astro:env/server";
 import { defineCollection } from "astro:content";
+import RaindropLoader from "./helpers/raindropLoader";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
-// 2. Import loader(s)
-import { glob, file } from "astro/loaders";
-
-// 3. Import Zod
-import { slugify, z } from "astro/zod";
+// Environment variables
+const raindropToken = getSecret("RAINDROP_TOKEN");
+const collectionID = getSecret("RAINDROP_COLLECTION_ID");
 
 const journal = defineCollection({
   loader: glob({ base: "./content/journal", pattern: "**/*.{md,mdx}" }),
@@ -17,6 +18,11 @@ const journal = defineCollection({
   }),
 });
 
+const readingLog = defineCollection({
+  loader: RaindropLoader({ raindropToken, collectionID }),
+});
+
 export const collections = {
   journal,
+  readingLog,
 };

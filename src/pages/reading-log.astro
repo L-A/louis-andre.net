@@ -1,0 +1,185 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+const drops = await getCollection("readingLog");
+
+const groupedByMonth: {
+  formattedDate: string;
+  sortDate: string;
+  entries: typeof drops;
+}[] = [];
+for (const drop of drops) {
+  const monthString: string = drop.data.created.toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
+  const sortDate: string =
+    drop.data.created.getFullYear() + " " + drop.data.created.getMonth();
+
+  const existingMonth = groupedByMonth.find(
+    (m) => m.formattedDate === monthString,
+  );
+
+  if (existingMonth) {
+    existingMonth.entries.push(drop);
+  } else {
+    groupedByMonth.push({
+      formattedDate: monthString,
+      sortDate,
+      entries: [drop],
+    });
+  }
+}
+---
+
+<MainLayout>
+  <header>
+    <h2>Reading Log</h2>
+    <p>
+      I like to read on the web, and I bookmark the pages I found worthy of note
+      in my{" "}
+      <a href="https://raindrop.io/lalabadie/archive-30468359">Raindrop</a>{" "}
+      account. Fellow Internet person, this list is as close as you can get to my
+      personal stream of thoughts.
+    </p>
+  </header>
+
+  <ul class="drops">
+    {
+      groupedByMonth
+        .sort((a, b) => b.sortDate.localeCompare(a.sortDate))
+        .map((month) => (
+          <li class="month">
+            <h3>{month.formattedDate}</h3>
+            <ul class="entries">
+              {month.entries
+                .sort(
+                  (a, b) => b.data.created.getTime() - a.data.created.getTime(),
+                )
+                .map((drop) => (
+                  <li class="drop">
+                    <h4>
+                      <a title={drop.data.title} href={drop.data.link}>
+                        {drop.data.title}
+                      </a>
+                    </h4>
+                    <p class="excerpt">{drop.data.excerpt}</p>
+                    <p class="url">
+                      <a title={drop.data.link} href={drop.data.link}>
+                        {drop.data.link}
+                      </a>
+                    </p>
+                    {drop.data.tags.length > 0 && (
+                      <ul class="tags">
+                        {drop.data.tags.map((tag) => (
+                          <li>{tag}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+            </ul>
+          </li>
+        ))
+    }
+  </ul>
+</MainLayout>
+
+<style>
+  header {
+    max-width: 48rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      max-width: 36rem;
+    }
+  }
+
+  ul.drops {
+    max-width: 48rem;
+    list-style: none;
+    padding: 0;
+
+    .month {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      h3 {
+        color: var(--mainAccent);
+        font-family: var(--font-mono);
+        background: url("/images/bg/dotted-light.svg") repeat;
+        margin: 1rem -1rem;
+        padding: 0.25rem 1rem;
+      }
+
+      li.drop {
+        margin: 2rem 0;
+        display: block;
+        color: var(--fg);
+        text-decoration: none;
+
+        h4 {
+          margin: 0 0 0.25em;
+          font-size: 1rem;
+          max-width: 36rem;
+          line-height: 1.2;
+
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+
+        p.excerpt {
+          margin: 0.5em 0;
+          max-width: 38em;
+          line-height: 1.4;
+        }
+
+        .url {
+          margin: 0.25rem 0;
+
+          a {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--mainAccent);
+            width: 40rem;
+            max-width: 100%;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+
+        .tags {
+          list-style: none;
+          padding: 0;
+          margin: 0.5rem 0;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 0.25rem;
+
+          li {
+            font-size: 0.75rem;
+            padding: 0.05rem 0.25rem;
+            background-color: var(--fadedAccent);
+            color: var(--mainAccent);
+            border-radius: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+</style>
