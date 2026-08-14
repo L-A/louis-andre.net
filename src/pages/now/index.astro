@@ -1,0 +1,109 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection, render } from "astro:content";
+
+const now = await getCollection("now");
+const latestNow = now.sort(
+  (a, b) => new Date(b.id).getTime() - new Date(a.id).getTime(),
+)[0];
+
+const date = new Date(latestNow.id);
+const { Content } = await render(latestNow);
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<MainLayout>
+  <header>
+    <h2>
+      Now <small
+        >(<a href="https://nownownow.com/about">what's a now page?</a>, you ask)</small
+      >
+    </h2>
+    <h3 class="date">
+      <span>Updated </span>
+      {dateFormatter.format(date)}
+    </h3>
+  </header>
+  <Content />
+
+  <div class="previously">
+    <h4>All updates:</h4>
+    <ul>
+      {
+        now.map((entry, i) => {
+          const date = new Date(entry.id);
+
+          return (
+            <li>
+              <a href={`/now/${entry.id}`}>{dateFormatter.format(date)}</a>
+              {i !== now.length - 1 && ","}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</MainLayout>
+
+<style>
+  header {
+    max-width: 48rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+
+      small {
+        font-size: 0.875rem;
+        font-style: italic;
+        font-weight: 350;
+      }
+    }
+
+    h3.date {
+      font-family: var(--font-mono);
+      font-weight: normal;
+      font-size: 1rem;
+      margin: 0.25rem 0 2rem;
+
+      span {
+        color: var(--fadedGray);
+      }
+    }
+
+    p {
+      font-size: 1.125rem;
+      max-width: 36rem;
+    }
+  }
+
+  .previously {
+    display: block;
+
+    h4 {
+      display: inline;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    ul {
+      font-size: 0.875rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: inline;
+
+      li {
+        display: inline;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+</style>
+
+<script></script>

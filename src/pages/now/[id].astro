@@ -1,0 +1,72 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const entries = await getCollection("now");
+  return entries.map((now) => ({
+    params: { id: now.id },
+    props: { now },
+  }));
+};
+
+const { now } = Astro.props;
+const date = new Date(now.id);
+const { Content } = await render(now);
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<MainLayout>
+  <header>
+    <h2>
+      Now <small
+        >(<a href="https://nownownow.com/about">what's a now page?</a>, you ask)</small
+      >
+    </h2>
+    <h3 class="date">
+      <span>From </span>
+      {dateFormatter.format(date)}
+    </h3>
+  </header>
+  <Content />
+</MainLayout>
+
+<style>
+  header {
+    max-width: 48rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+
+      small {
+        font-size: 0.875rem;
+        font-style: italic;
+        font-weight: 350;
+      }
+    }
+
+    h3.date {
+      font-family: var(--font-mono);
+      font-weight: normal;
+      font-size: 1rem;
+      margin: 0.25rem 0 2rem;
+
+      span {
+        color: var(--fadedGray);
+      }
+    }
+
+    p {
+      font-size: 1.125rem;
+      max-width: 36rem;
+    }
+  }
+</style>
+
+<script></script>

@@ -22,6 +22,11 @@ const readingLog = defineCollection({
   loader: RaindropLoader({ raindropToken, collectionID }),
 });
 
+const now = defineCollection({
+  loader: glob({ base: "./content/now", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({}),
+});
+
 const artSeries = defineCollection({
   loader: file("./content/art-series.json"),
   schema: ({ image }) =>
@@ -47,4 +52,5 @@ export const collections = {
   journal,
   readingLog,
   artSeries,
+  now,
 };
