@@ -1,0 +1,216 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import Container from "../components/Container.astro";
+import { Image } from "astro:assets";
+
+const series = await getCollection("artSeries");
+
+console.log(series);
+---
+
+<MainLayout contained={false}>
+  <Container>
+    <header>
+      <h2>Generative art</h2>
+      <p>
+        I've been creating <a
+          href="https://en.wikipedia.org/wiki/Generative_art">generative art</a
+        > since 2018. Here are a few selected series I've done over the years.
+      </p>
+    </header>
+  </Container>
+  <div class="series-viewer">
+    <ul class="collection">
+      {
+        series.map((s) =>
+          s.data.iterations.map(([image, ratio, name]) => (
+            <li>
+              <div class="info">
+                <h3>{name || "Untitled iteration"}</h3>
+                <h4>{s.data.name}</h4>
+              </div>
+              <div class="image">
+                <Image
+                  loading="lazy"
+                  class="iteration"
+                  src={image}
+                  alt={`${name || "Untitled iteration"}, from the ${s.data.name} collection`}
+                />
+                <Image
+                  loading="lazy"
+                  class="reflection"
+                  src={image}
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+            </li>
+          )),
+        )
+      }
+    </ul>
+  </div>
+</MainLayout>
+
+<style>
+  header {
+    max-width: 48rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      max-width: 36rem;
+    }
+  }
+
+  .series-viewer {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+
+    /* Follows the container padding */
+    --padding-offset: max(3rem, calc((100vw - (1200px - 6rem)) / 2));
+    padding: 0 var(--padding-offset);
+    scroll-padding: var(--padding-offset);
+
+    @media (max-width: 50rem) {
+      --padding-offset: 2rem;
+    }
+
+    @media (max-width: 40rem) {
+      --padding-offset: 1rem;
+    }
+
+    .collection {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      gap: min(8rem, 12vw);
+
+      li {
+        list-style: none;
+        position: relative;
+        scroll-snap-align: center;
+
+        .info {
+          margin-bottom: 0.5rem;
+
+          min-width: 12rem;
+          align-self: flex-start;
+          translate: 0 4px;
+          opacity: 0;
+          transition:
+            translate 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
+
+          &.visible {
+            translate: 0 0;
+            opacity: 1;
+          }
+
+          h3 {
+            font-size: 0.875rem;
+            font-weight: 350;
+            margin: 0;
+          }
+
+          h4 {
+            font-size: 0.8125rem;
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    .image {
+      --reflection-height: 8rem;
+      position: relative;
+      margin-bottom: var(--reflection-height);
+
+      img,
+      .reflection {
+        max-height: 60vh;
+        width: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        margin: 0 0 0.5rem;
+        border-radius: 2px;
+
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.025);
+
+        &.loaded {
+          opacity: 1;
+        }
+      }
+
+      .reflection {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        transform: scaleY(-1);
+        mask-image: linear-gradient(
+          to top,
+          black,
+          transparent var(--reflection-height)
+        );
+
+        &.loaded {
+          opacity: 0.1;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const iterations: NodeListOf<HTMLImageElement> =
+      document.querySelectorAll(".iteration");
+    const reflections: NodeListOf<HTMLImageElement> =
+      document.querySelectorAll(".reflection");
+    [...iterations, ...reflections].forEach((el) => {
+      if (el.complete) {
+        el.classList.add("loaded");
+      } else {
+        el.addEventListener("load", () => {
+          el.classList.add("loaded");
+        });
+      }
+    });
+
+    // IntersectionObserver for the info elements
+
+    const infoPanes: NodeListOf<HTMLDivElement> =
+      document.querySelectorAll(".info");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          } else {
+            entry.target.classList.remove("visible");
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    infoPanes.forEach((infoPane) => {
+      observer.observe(infoPane);
+    });
+  });
+</script>

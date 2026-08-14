@@ -1,131 +1,140 @@
 [
-	{
-		"name": "Territory B",
-		"description": "Territory B leaves no space unused",
-		"platforms": [
-			{
-				"platform": "fxhash",
-				"link": "https://www.fxhash.xyz/generative/slug/territory-b"
-			}
-		],
-		"iterations": [
-			["territory-b/tb-28.png", 1, "Territory B #28"],
-			["territory-b/tb-31.png", 1, "Territory B #31"],
-			["territory-b/tb-38.png", 1, "Territory B #38"],
-			["territory-b/tb-133.png", 1, "Territory B #133"],
-			["territory-b/tb-143.png", 1, "Territory B #143"],
-			["territory-b/tb-149.png", 1, "Territory B #149"],
-			["territory-b/tb-160.png", 1, "Territory B #160"],
-			["territory-b/tb-170.png", 1, "Territory B #170"]
-		]
-	},
-	{
-		"name": "Maps for grief",
-		"description": "Togetherness without contact.",
-		"platforms": [
-			{
-				"platform": "Artblocks",
-				"link": "https://www.artblocks.io/project/235"
-			},
-			{
-				"platform": "OpenSea",
-				"link": "https://opensea.io/collection/maps-for-grief-by-louis-andre-labadie"
-			}
-		],
-		"iterations": [
-			["maps-for-grief/235000003.png", 1.4142, "Maps for grief #3"],
-			["maps-for-grief/235000007.png", 1.4142, "Maps for grief #7"],
-			["maps-for-grief/235000054.png", 1.4142, "Maps for grief #54"],
-			["maps-for-grief/235000177.png", 1.4142, "Maps for grief #177"],
-			["maps-for-grief/235000254.png", 1.4142, "Maps for grief #254"],
-			["maps-for-grief/235000361.png", 1.4142, "Maps for grief #361"]
-		]
-	},
-	{
-		"name": "Territory A",
-		"description": "A rhythm of order and disorder",
-		"platforms": [
-			{
-				"platform": "fxhash",
-				"link": "https://www.fxhash.xyz/generative/slug/territory-a"
-			}
-		],
-		"iterations": [
-			["territory-a/ta-1.png", 2, "Territory A #1"],
-			["territory-a/ta-8.png", 2, "Territory A #8"],
-			["territory-a/ta-9.png", 2, "Territory A #9"],
-			["territory-a/ta-29.png", 2, "Territory A #29"],
-			["territory-a/ta-39.png", 2, "Territory A #39"]
-		]
-	},
-	{
-		"name": "Night Market",
-		"description": "Abstract urbanism. Chaos from order.",
-		"platforms": [
-			{ "platform": "Foundation", "link": "https://foundation.app/@lalabadie" }
-		],
-		"iterations": [
-			["night-market/night-market-1.jpg", 1, "Night market #892484"],
-			["night-market/night-market-2.jpg", 1, "Night market #508003"],
-			["night-market/night-market-3.jpg", 1, "Night market #422812"],
-			["night-market/night-market-4.jpg", 1, "Night market #959642"],
-			["night-market/night-market-5.jpg", 1, "Night market #840461"],
-			["night-market/night-market-6.jpg", 1, "Night market #305936"]
-		]
-	},
-	{
-		"name": "Boroughs",
-		"description": "Regions that build up and erode. The emptiest areas try to link with each other.",
-		"iterations": [
-			["boroughs/boroughs-39382.png", 1, "Boroughs #39382"],
-			["boroughs/boroughs-245129.png", 1, "Boroughs #245129"],
-			["boroughs/boroughs-696874.png", 1, "Boroughs #696874"],
-			["boroughs/boroughs-24440.png", 1, "Boroughs #24440"],
-			["boroughs/boroughs-777254.png", 1, "Boroughs #777254"],
-			["boroughs/boroughs-809517.png", 1, "Boroughs #809517"],
-			["boroughs/boroughs-910161.png", 1, "Boroughs #910161"]
-		]
-	},
-	{
-		"name": "Convergence",
-		"description": "A series of generated movements, organic and blooming.",
-		"iterations": [
-			["convergence/convergence-1.png", 1],
-			["convergence/convergence-2.png", 1],
-			["convergence/convergence-3.png", 1]
-		]
-	},
-	{
-		"name": "Bound",
-		"description": "In triptych form: Observed particles in a closed space.",
-		"platforms": [
-			{ "platform": "Foundation", "link": "https://foundation.app/@lalabadie" }
-		],
-		"iterations": [
-			["bound/bound-1.webp", 1, "Bound 1 – Genesis"],
-			["bound/bound-2.webp", 1, "Bound 2 – Coherence"],
-			["bound/bound-3.webp", 1, "Bound 3 - Friction"]
-		]
-	},
-	{
-		"name": "Layers",
-		"description": "Three parallel sets of lines of modulated length combine to create emergent shapes.",
-		"iterations": [
-			["layers/layers-1.png", 1],
-			["layers/layers-2.png", 1],
-			["layers/layers-3.png", 1],
-			["layers/layers-4.png", 1],
-			["layers/layers-5.png", 1]
-		]
-	},
-	{
-		"name": "Runes",
-		"description": "Explorations in structured and rune-like drawing",
-		"iterations": [
-			["runes/runes-1.png", 1],
-			["runes/runes-2.png", 1],
-			["runes/runes-3.png", 1],
-			["runes/runes-4.png", 1]
-		]
-	}
+  {
+    "name": "Territory B",
+    "slug": "territory-b",
+    "description": "Territory B leaves no space unused",
+    "platforms": [
+      {
+        "platform": "fxhash",
+        "link": "https://www.fxhash.xyz/generative/slug/territory-b"
+      }
+    ],
+    "iterations": [
+      ["./art/territory-b/tb-28.png", 1, "Iteration #28"],
+      ["./art/territory-b/tb-31.png", 1, "Iteration #31"],
+      ["./art/territory-b/tb-38.png", 1, "Iteration #38"],
+      ["./art/territory-b/tb-133.png", 1, "Iteration #133"],
+      ["./art/territory-b/tb-143.png", 1, "Iteration #143"],
+      ["./art/territory-b/tb-149.png", 1, "Iteration #149"],
+      ["./art/territory-b/tb-160.png", 1, "Iteration #160"],
+      ["./art/territory-b/tb-170.png", 1, "Iteration #170"]
+    ]
+  },
+  {
+    "name": "Maps for grief",
+    "slug": "maps-for-grief",
+    "description": "Togetherness without contact.",
+    "platforms": [
+      {
+        "platform": "Artblocks",
+        "link": "https://www.artblocks.io/project/235"
+      },
+      {
+        "platform": "OpenSea",
+        "link": "https://opensea.io/collection/maps-for-grief-by-louis-andre-labadie"
+      }
+    ],
+    "iterations": [
+      ["./art/maps-for-grief/235000003.png", 1.4142, "Iteration #3"],
+      ["./art/maps-for-grief/235000007.png", 1.4142, "Iteration #7"],
+      ["./art/maps-for-grief/235000054.png", 1.4142, "Iteration #54"],
+      ["./art/maps-for-grief/235000177.png", 1.4142, "Iteration #177"],
+      ["./art/maps-for-grief/235000254.png", 1.4142, "Iteration #254"],
+      ["./art/maps-for-grief/235000361.png", 1.4142, "Iteration #361"]
+    ]
+  },
+  {
+    "name": "Territory A",
+    "slug": "territory-a",
+    "description": "A rhythm of order and disorder",
+    "platforms": [
+      {
+        "platform": "fxhash",
+        "link": "https://www.fxhash.xyz/generative/slug/territory-a"
+      }
+    ],
+    "iterations": [
+      ["./art/territory-a/ta-1.png", 2, "Iteration #1"],
+      ["./art/territory-a/ta-8.png", 2, "Iteration #8"],
+      ["./art/territory-a/ta-9.png", 2, "Iteration #9"],
+      ["./art/territory-a/ta-29.png", 2, "Iteration #29"],
+      ["./art/territory-a/ta-39.png", 2, "Iteration #39"]
+    ]
+  },
+  {
+    "name": "Night Market",
+    "slug": "night-market",
+    "description": "Abstract urbanism. Chaos from order.",
+    "platforms": [
+      { "platform": "Foundation", "link": "https://foundation.app/@lalabadie" }
+    ],
+    "iterations": [
+      ["./art/night-market/night-market-1.jpg", 1, "Iteration #892484"],
+      ["./art/night-market/night-market-2.jpg", 1, "Iteration #508003"],
+      ["./art/night-market/night-market-3.jpg", 1, "Iteration #422812"],
+      ["./art/night-market/night-market-4.jpg", 1, "Iteration #959642"],
+      ["./art/night-market/night-market-5.jpg", 1, "Iteration #840461"],
+      ["./art/night-market/night-market-6.jpg", 1, "Iteration #305936"]
+    ]
+  },
+  {
+    "name": "Boroughs",
+    "slug": "boroughs",
+    "description": "Regions that build up and erode. The emptiest areas try to link with each other.",
+    "iterations": [
+      ["./art/boroughs/boroughs-39382.png", 1, "Iteration #39382"],
+      ["./art/boroughs/boroughs-245129.png", 1, "Iteration #245129"],
+      ["./art/boroughs/boroughs-696874.png", 1, "Iteration #696874"],
+      ["./art/boroughs/boroughs-24440.png", 1, "Iteration #24440"],
+      ["./art/boroughs/boroughs-777254.png", 1, "Iteration #777254"],
+      ["./art/boroughs/boroughs-809517.png", 1, "Iteration #809517"],
+      ["./art/boroughs/boroughs-910161.png", 1, "Iteration #910161"]
+    ]
+  },
+  {
+    "name": "Convergence",
+    "slug": "convergence",
+    "description": "A series of generated movements, organic and blooming.",
+    "iterations": [
+      ["./art/convergence/convergence-1.png", 1],
+      ["./art/convergence/convergence-2.png", 1],
+      ["./art/convergence/convergence-3.png", 1]
+    ]
+  },
+  {
+    "name": "Bound",
+    "slug": "bound",
+    "description": "In triptych form: Observed particles in a closed space.",
+    "platforms": [
+      { "platform": "Foundation", "link": "https://foundation.app/@lalabadie" }
+    ],
+    "iterations": [
+      ["./art/bound/bound-1.webp", 1, "Bound 1 – Genesis"],
+      ["./art/bound/bound-2.webp", 1, "Bound 2 – Coherence"],
+      ["./art/bound/bound-3.webp", 1, "Bound 3 - Friction"]
+    ]
+  },
+  {
+    "name": "Layers",
+    "slug": "layers",
+    "description": "Three parallel sets of lines of modulated length combine to create emergent shapes.",
+    "iterations": [
+      ["./art/layers/layers-1.png", 1],
+      ["./art/layers/layers-2.png", 1],
+      ["./art/layers/layers-3.png", 1],
+      ["./art/layers/layers-4.png", 1],
+      ["./art/layers/layers-5.png", 1]
+    ]
+  },
+  {
+    "name": "Runes",
+    "slug": "runes",
+    "description": "Explorations in structured and rune-like drawing",
+    "iterations": [
+      ["./art/runes/runes-1.png", 1],
+      ["./art/runes/runes-2.png", 1],
+      ["./art/runes/runes-3.png", 1],
+      ["./art/runes/runes-4.png", 1]
+    ]
+  }
 ]

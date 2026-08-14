@@ -1,7 +1,7 @@
 import { getSecret } from "astro:env/server";
 import { defineCollection } from "astro:content";
 import RaindropLoader from "./helpers/raindropLoader";
-import { glob } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
 
 // Environment variables
@@ -22,7 +22,29 @@ const readingLog = defineCollection({
   loader: RaindropLoader({ raindropToken, collectionID }),
 });
 
+const artSeries = defineCollection({
+  loader: file("./content/art-series.json"),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      slug: z.string(),
+      description: z.string(),
+      platforms: z.optional(
+        z.array(
+          z.object({
+            platform: z.string(),
+            link: z.string(),
+          }),
+        ),
+      ),
+      iterations: z.array(
+        z.tuple([image(), z.number(), z.optional(z.string())]),
+      ),
+    }),
+});
+
 export const collections = {
   journal,
   readingLog,
+  artSeries,
 };

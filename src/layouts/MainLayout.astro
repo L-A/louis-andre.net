@@ -4,6 +4,8 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Container from "../components/Container.astro";
 import { Font } from "astro:assets";
+
+const { contained = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,9 +23,15 @@ import { Font } from "astro:assets";
 </head>
 <body>
   <Nav />
-  <Container>
-    <slot />
-  </Container>
+  {
+    contained ? (
+      <Container>
+        <slot />
+      </Container>
+    ) : (
+      <slot />
+    )
+  }
   <Footer />
 </body>
 
