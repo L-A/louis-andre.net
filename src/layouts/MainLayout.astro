@@ -11,12 +11,12 @@ const { contained = true, title, description, image } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="text-scale" content="scale" />
+    <Meta title={title} description={description} image={image} />
     <Font cssVariable="--font-plex" preload />
     <Font cssVariable="--font-plex-condensed" />
     <Font cssVariable="--font-mono" />
-    <Meta title={title} description={description} image={image} />
     <script
       data-goatcounter="https://lal.goatcounter.com/count"
       async

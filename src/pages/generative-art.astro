@@ -7,7 +7,11 @@ import { Image } from "astro:assets";
 const series = await getCollection("artSeries");
 ---
 
-<MainLayout contained={false}>
+<MainLayout
+  contained={false}
+  title="Generative art"
+  description="Some generative art series I've created over the years"
+>
   <Container>
     <header>
       <h2>Generative art</h2>

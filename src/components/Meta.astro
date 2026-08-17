@@ -6,15 +6,18 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
 ---
 
 {/* Title */}
-<title>{(title ? title + " – " : "") + "Louis-André Labadie"}</title>
-{title && <meta property="og:title" content={title} />}
+<title>{titleString}</title>
+<meta property="og:title" content={titleString} />
+<meta property="twitter:title" content={titleString} />
 
 {/* Description */}
 <meta name="description" content={description} />
 <meta property="og:description" content={description} />
+<meta property="twitter:description" content={description} />
 
 {/* Canonical */}
 <link rel="canonical" href={canonicalURL} />

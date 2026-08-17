@@ -1,21 +1,23 @@
 ---
 import { journalUrl } from "../../helpers/collections";
 import MainLayout from "../../layouts/MainLayout.astro";
-import Container from "../../components/Container.astro";
-import ButtonLink from "../../components/ButtonLink.astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 const entries = await getCollection("journal");
 
-const groupedByYear = entries.reduce((acc, entry) => {
+const groupedByYear = entries.reduce<
+  Record<number, CollectionEntry<"journal">[]>
+>((acc, entry) => {
   const year = entry.data.date.getFullYear();
-  if (!acc[year]) acc[year] = [];
-  acc[year].push(entry);
+  (acc[year] ??= []).push(entry);
   return acc;
 }, {});
 ---
 
-<MainLayout title="Journal">
+<MainLayout
+  title="Journal"
+  description="A list of texts and articles I wrote over the years."
+>
   <header>
     <h2>Journal</h2>
     <p>Here is where I write occasional articles.</p>
@@ -23,8 +25,9 @@ const groupedByYear = entries.reduce((acc, entry) => {
       I also have a newsletter called <a href="/https://buttondown.com/Kind"
         >The Kind Dispatch</a
       >, which I regularly maintained until I became a father a few years ago. I
-      want to come back to it eventually. Its archives are available in the
-      meantime.
+      want to come back to it eventually. <a
+        href="https://buttondown.com/Kind/archive">The archives</a
+      > are available in the meantime.
     </p>
   </header>
 

@@ -21,7 +21,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 ---
 
-<MainLayout title={`Now \u2013 ${dateFormatter.format(date)}`}>
+<MainLayout
+  title={`Now page from ${dateFormatter.format(date)}`}
+  description={`My now page – what's happening to me currently, and what I've been thinking about. Version archived from ${dateFormatter.format(date)}`}
+>
   <header>
     <h2>
       Now <small
