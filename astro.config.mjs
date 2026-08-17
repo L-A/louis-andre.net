@@ -2,6 +2,7 @@ import { defineConfig, fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://louis-andre.net",
   prefetch: {
     defaultStrategy: "viewport",
   },

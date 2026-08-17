@@ -21,7 +21,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 ---
 
-<MainLayout>
+<MainLayout title={`Now \u2013 ${dateFormatter.format(date)}`}>
   <header>
     <h2>
       Now <small

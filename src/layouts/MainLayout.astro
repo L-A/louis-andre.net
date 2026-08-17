@@ -1,85 +1,85 @@
 ---
-import Palette from "../palette.js";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Container from "../components/Container.astro";
 import { Font } from "astro:assets";
+import Meta from "../components/Meta.astro";
 
-const { contained = true } = Astro.props;
+const { contained = true, title, description, image } = Astro.props;
 ---
 
-<!doctype html>
-<head>
-  <meta charset="utf-8" />
-  <script
-    data-goatcounter="https://lal.goatcounter.com/count"
-    async
-    src="//gc.zgo.at/count.js"></script>
-  <Font cssVariable="--font-plex" preload />
-  <Font cssVariable="--font-plex-condensed" />
-  <Font cssVariable="--font-mono" />
-  <title>Louis-André Labadie</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
-  <Nav />
-  {
-    contained ? (
-      <Container>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="text-scale" content="scale" />
+    <Font cssVariable="--font-plex" preload />
+    <Font cssVariable="--font-plex-condensed" />
+    <Font cssVariable="--font-mono" />
+    <Meta title={title} description={description} image={image} />
+    <script
+      data-goatcounter="https://lal.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"></script>
+  </head>
+  <body>
+    <Nav />
+    {
+      contained ? (
+        <Container>
+          <slot />
+        </Container>
+      ) : (
         <slot />
-      </Container>
-    ) : (
-      <slot />
-    )
-  }
-  <Footer />
-</body>
+      )
+    }
+    <Footer />
+  </body><style is:global>
+    :root {
+      --bg: #ededed;
+      --fg: #000d3a;
+      --mainAccent: #2429c1;
+      --fadedGray: #9295a1;
+      --fadedAccent: #d8d9ef;
+      --offWhite: #f1f1f1;
+    }
 
-<style is:global>
-  :root {
-    --bg: #ededed;
-    --fg: #000d3a;
-    --mainAccent: #2429c1;
-    --fadedGray: #9295a1;
-    --fadedAccent: #d8d9ef;
-    --offWhite: #f1f1f1;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  * {
-    box-sizing: border-box;
-  }
+    html {
+      color: var(--fg);
+      font-family: var(--font-plex);
+      padding: 0;
+    }
 
-  html {
-    color: var(--fg);
-    font-family: var(--font-plex);
-    padding: 0;
-  }
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      font-size: 16px;
+      line-height: 1.5;
+    }
 
-  body {
-    margin: 0;
-    background-color: var(--bg);
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  a {
-    color: var(--mainAccent);
-    text-decoration-color: color-mix(
-      in srgb,
-      var(--mainAccent),
-      transparent 80%
-    );
-    text-underline-offset: 0.15em;
-    text-decoration-thickness: 0.05em;
-    transition: text-decoration 0.15s ease-out;
-
-    &:hover {
+    a {
+      color: var(--mainAccent);
       text-decoration-color: color-mix(
         in srgb,
         var(--mainAccent),
-        transparent 60%
+        transparent 80%
       );
-      text-decoration-thickness: 0.15em;
+      text-underline-offset: 0.15em;
+      text-decoration-thickness: 0.05em;
+      transition: text-decoration 0.15s ease-out;
+
+      &:hover {
+        text-decoration-color: color-mix(
+          in srgb,
+          var(--mainAccent),
+          transparent 60%
+        );
+        text-decoration-thickness: 0.15em;
+      }
     }
-  }
-</style>
+  </style>
+</html>

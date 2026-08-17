@@ -1,0 +1,39 @@
+---
+const {
+  title,
+  description = "Louis-André's personal website",
+  image,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+{/* Title */}
+<title>{(title ? title + " – " : "") + "Louis-André Labadie"}</title>
+{title && <meta property="og:title" content={title} />}
+
+{/* Description */}
+<meta name="description" content={description} />
+<meta property="og:description" content={description} />
+
+{/* Canonical */}
+<link rel="canonical" href={canonicalURL} />
+<link rel="me" href="https://social.lol/lalabadie" />
+{
+  /* standard.site
+
+<link
+  rel="site.standard.publication"
+  href="at://[DID]/site.standard.publication/[RKEY]"
+/>
+*/
+}
+
+{/* Image */}
+{image && <meta property="og:image" content={image} />}
+
+{/* Icons */}
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
