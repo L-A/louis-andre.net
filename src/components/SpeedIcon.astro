@@ -1,0 +1,34 @@
+---
+import IcnSpeedDial from "../assets/svg/icn-speed-dial.svg";
+import IcnSpeedNeedle from "../assets/svg/icn-speed-needle.svg";
+
+const { state } = Astro.props;
+---
+
+<div class:list={["speed-icon", state]}>
+  <IcnSpeedDial class="dial" />
+  <IcnSpeedNeedle class="needle" />
+</div>
+
+<style>
+  .speed-icon {
+    width: 30px;
+    display: grid;
+    grid-template-areas: "full";
+  }
+
+  .speed-icon .dial {
+    grid-area: full;
+  }
+
+  .speed-icon .needle {
+    grid-area: full;
+    transform-origin: 50% 82.6%;
+    transition: rotate 0.3s ease-out;
+    rotate: 0deg;
+  }
+
+  .speed-icon.fast .needle {
+    rotate: 96deg;
+  }
+</style>
