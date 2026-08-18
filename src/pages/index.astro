@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import NavPagesList from "../components/NavPagesList.astro";
+import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
 ---
 
 <MainLayout
@@ -35,8 +36,19 @@ import NavPagesList from "../components/NavPagesList.astro";
     <div class="art">
       <canvas class="art-canvas"></canvas>
       <div class="controls">
-        <button id="new-generation" type="button">New generation</button>
-        <input type="text" id="seed" placeholder="Seed" />
+        <button id="speed">Slow</button>
+        <button id="grid-scale" data-trait="Grid Scale" type="button"
+          >Large</button
+        >
+        <button id="palette" data-trait="Palette" type="button">Regal</button>
+        <button id="shuffle" type="button">Shuffle</button>
+        <label class="seed" for="seed">
+          Seed #
+          <input type="text" id="seed" class="seed" placeholder="none?" />
+        </label>
+        <button id="new-generation" class="regenerate" type="button"
+          ><ArrowAgain /></button
+        >
       </div>
     </div>
   </div>
@@ -104,31 +116,73 @@ import NavPagesList from "../components/NavPagesList.astro";
       }
 
       .controls {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         position: absolute;
         inset: 0.25rem;
         top: auto;
+        overflow: hidden;
         background-color: var(--offWhite);
         border-radius: 0.25rem;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 0.25rem;
+        padding: 0;
         box-shadow:
           0px 4px 4px rgba(0, 0, 0, 0.15),
           inset 0px 1px 0px #ffffff;
         border-radius: 4px;
 
         button {
+          appearance: none;
+          border: none;
+          background: transparent;
           font: inherit;
-          font-size: 0.75rem;
-          color: var(--fg);
-          background: var(--bg);
-          border: 1px solid var(--fadedGray);
-          border-radius: 0.25rem;
-          padding: 0.1rem 0.5rem;
+          font-family: var(--font-mono);
+
+          color: var(--fadedGray);
+          text-decoration: underline;
+          text-decoration-color: color-mix(
+            in srgb,
+            var(--fadedGray),
+            transparent 40%
+          );
+
+          border-right: solid 1px
+            color-mix(in srgb, var(--fadedGray), transparent 70%);
+          border-radius: 0.125rem;
+          padding: 0.35rem 0.5rem;
           cursor: pointer;
+          display: flex;
+          vertical-align: baseline;
+          box-shadow: 1px 0px 0px #ffffff;
+          transition:
+            background-color 0.2s ease-out,
+            color 0.2s ease-out;
+
+          svg {
+            vertical-align: middle;
+          }
 
           &:hover {
-            border-color: var(--mainAccent);
             color: var(--mainAccent);
+            background-color: white;
+          }
+        }
+
+        .seed {
+          color: var(--fadedGray);
+          font: inherit;
+          font-family: var(--font-mono);
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+
+          input {
+            background: transparent;
+            border: none;
+            border-radius: 0.125rem;
+            padding: 0.1rem 0.5rem;
+            field-sizing: content;
           }
         }
       }
@@ -137,74 +191,5 @@ import NavPagesList from "../components/NavPagesList.astro";
 </style>
 
 <script>
-  const mulberry32 = (a) => () => {
-    a |= 0;
-    a = (a + 0x6d2b79f5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-
-  const palette = ["#48118D", "#309CFF", "#F9B249", "#89B7E1"];
-
-  const draw = ({ context, width, height, seed }) => {
-    const random = mulberry32(seed);
-
-    context.fillStyle = "#2D244F";
-    context.fillRect(0, 0, width, height);
-
-    for (let i = 0; i < 1000; i++) {
-      context.fillStyle = palette[Math.floor(random() * palette.length)];
-      context.lineWidth = 3 + random() * 12;
-      context.beginPath();
-      const x = random() * width;
-      const y = random() * height;
-      const radius = (0.01 + random() * 0.1) * Math.min(width, height);
-      context.arc(
-        x,
-        y,
-        radius,
-        Math.PI * Math.random(),
-        Math.PI * Math.random(),
-      );
-      context.fill();
-    }
-  };
-
-  const canvas = document.querySelector(".art-canvas");
-  const context = canvas.getContext("2d");
-  const seedInput = document.querySelector("#seed");
-
-  let width = 0;
-  let height = 0;
-  let seed = String(Math.floor(Math.random() * 1e6));
-  seedInput.value = seed;
-
-  const newSeed = () => String(Math.floor(Math.random() * 1e6));
-
-  document.querySelector("#seed").addEventListener("input", (e) => {
-    seed = e.target.value;
-    draw({ context, width, height, seed });
-  });
-
-  // Draw the current generation at the canvas' current size (device pixels)
-  const resize = () => {
-    const rect = canvas.getBoundingClientRect();
-    width = Math.max(1, Math.round(rect.width * window.devicePixelRatio));
-    height = Math.max(1, Math.round(rect.height * window.devicePixelRatio));
-    canvas.width = width;
-    canvas.height = height;
-    draw({ context, width, height, seed });
-  };
-
-  window.addEventListener("resize", resize);
-
-  document.querySelector("#new-generation").addEventListener("click", () => {
-    seed = newSeed();
-    document.querySelector("#seed").value = seed;
-    draw({ context, width, height, seed });
-  });
-
-  // Initial draw on load
-  resize();
+  import "../assets/script/canvas.js";
 </script>
