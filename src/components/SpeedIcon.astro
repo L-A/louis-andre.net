@@ -1,11 +1,9 @@
 ---
 import IcnSpeedDial from "../assets/svg/icn-speed-dial.svg";
 import IcnSpeedNeedle from "../assets/svg/icn-speed-needle.svg";
-
-const { state } = Astro.props;
 ---
 
-<div class:list={["speed-icon", state]}>
+<div class="icon speed-icon">
   <IcnSpeedDial class="dial" />
   <IcnSpeedNeedle class="needle" />
 </div>
@@ -24,11 +22,25 @@ const { state } = Astro.props;
   .speed-icon .needle {
     grid-area: full;
     transform-origin: 50% 82.6%;
-    transition: rotate 0.3s ease-out;
     rotate: 0deg;
+    transform: rotate(6deg);
+    transition: transform var(--small-spring);
   }
 
   .speed-icon.fast .needle {
-    rotate: 96deg;
+    transform: rotate(119deg);
+    animation: dial-jitter 0.2s both infinite;
+  }
+
+  @keyframes dial-jitter {
+    0% {
+      rotate: 0deg;
+    }
+    56% {
+      rotate: 10deg;
+    }
+    100% {
+      rotate: 0deg;
+    }
   }
 </style>

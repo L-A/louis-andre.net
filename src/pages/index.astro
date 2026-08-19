@@ -1,7 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import NavPagesList from "../components/NavPagesList.astro";
+
 import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
+import ShuffleIcon from "../assets/svg/icn-shuffle.svg";
+import SpeedIcon from "../components/SpeedIcon.astro";
+import GridIcon from "../components/GridIcon.astro";
+import PaletteIcon from "../components/PaletteIcon.astro";
 ---
 
 <MainLayout
@@ -36,19 +41,21 @@ import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
     <div class="art">
       <canvas class="art-canvas"></canvas>
       <div class="controls">
-        <button id="speed">Slow</button>
-        <button id="grid-scale" data-trait="Grid Scale" type="button"
-          >Large</button
-        >
-        <button id="palette" data-trait="Palette" type="button">Regal</button>
-        <button id="shuffle" type="button">Shuffle</button>
+        <button id="shuffle" type="button"><ShuffleIcon /></button>
+        <button id="grid-scale" type="button">
+          <GridIcon />
+        </button>
+        <button id="palette" data-trait="Palette" type="button">
+          <PaletteIcon />
+        </button>
         <label class="seed" for="seed">
-          Seed #
+          <span class="lg">Seed </span>#
           <input type="text" id="seed" class="seed" placeholder="none?" />
         </label>
         <button id="new-generation" class="regenerate" type="button"
           ><ArrowAgain /></button
         >
+        <button id="speed"><SpeedIcon /></button>
       </div>
     </div>
   </div>
@@ -116,12 +123,13 @@ import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
       }
 
       .controls {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
         position: absolute;
         inset: 0.25rem;
         top: auto;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         overflow: hidden;
         background-color: var(--offWhite);
         border-radius: 0.25rem;
@@ -139,6 +147,13 @@ import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
           font: inherit;
           font-family: var(--font-mono);
 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.35rem 0.5rem;
+          min-width: 3rem;
+          vertical-align: baseline;
+
           color: var(--fadedGray);
           text-decoration: underline;
           text-decoration-color: color-mix(
@@ -150,22 +165,30 @@ import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
           border-right: solid 1px
             color-mix(in srgb, var(--fadedGray), transparent 70%);
           border-radius: 0.125rem;
-          padding: 0.35rem 0.5rem;
           cursor: pointer;
-          display: flex;
-          vertical-align: baseline;
           box-shadow: 1px 0px 0px #ffffff;
           transition:
             background-color 0.2s ease-out,
             color 0.2s ease-out;
 
-          svg {
+          .icon {
             vertical-align: middle;
+            margin: 0 auto;
           }
 
           &:hover {
             color: var(--mainAccent);
             background-color: white;
+          }
+
+          &:active {
+            .icon {
+              transition:
+                scale 0.05s ease-out,
+                translate 0.2s ease-out;
+              scale: 0.95;
+              translate: 0 1px;
+            }
           }
         }
 
@@ -173,9 +196,10 @@ import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
           color: var(--fadedGray);
           font: inherit;
           font-family: var(--font-mono);
-          margin-left: auto;
           display: flex;
           align-items: center;
+          padding: 0 1rem;
+          margin-left: auto;
 
           input {
             background: transparent;
@@ -183,6 +207,57 @@ import ArrowAgain from "../assets/svg/icn-arrow-again.svg";
             border-radius: 0.125rem;
             padding: 0.1rem 0.5rem;
             field-sizing: content;
+          }
+        }
+      }
+    }
+    @media (max-width: 480px) {
+      .art {
+        display: flex;
+        flex-direction: column;
+        aspect-ratio: unset;
+        overflow: visible;
+        box-shadow: none;
+        background: none;
+
+        .art-canvas {
+          border-radius: 0.5rem;
+          position: static;
+          width: 100%;
+          aspect-ratio: 7/5;
+
+          box-shadow:
+            0px 2px 4px rgba(0, 0, 0, 0.1),
+            0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+          background: none;
+          box-shadow: none;
+          position: static;
+          inset: unset;
+          top: unset;
+          margin-top: 0.5rem;
+          padding: 0 0 1rem;
+
+          .seed {
+            padding: 0 0.25rem;
+
+            .lg {
+              display: none;
+            }
+          }
+
+          button {
+            padding: 0.1rem 0rem;
+            min-width: 2.4rem;
+            border: none;
+            box-shadow: none;
+            border-radius: 4px;
+
+            .icon {
+              scale: 0.85;
+            }
           }
         }
       }

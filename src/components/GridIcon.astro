@@ -1,0 +1,118 @@
+---
+
+---
+
+<div class="icon grid-icon" data-size="Small">
+  <div class="grid-main">
+    <div class="grid-col grid-col-1"></div>
+    <div class="grid-col grid-col-2"></div>
+    <div class="grid-col grid-col-3"></div>
+    <div class="grid-row grid-row-1"></div>
+    <div class="grid-row grid-row-2"></div>
+    <div class="grid-row grid-row-3"></div>
+  </div>
+</div>
+
+<style>
+  .grid-icon {
+    --color: currentColor;
+
+    height: 18px;
+    width: 18px;
+    padding: 0;
+    display: grid;
+    grid-template-areas: "full";
+    border: solid 2px var(--color);
+    border-radius: 4px;
+    align-self: center;
+    position: relative;
+    overflow: hidden;
+
+    .grid-row,
+    .grid-col {
+      grid-area: full;
+      position: absolute;
+      inset: 0;
+      transition:
+        left var(--small-spring),
+        top var(--small-spring);
+
+      &::after {
+        position: absolute;
+        content: "";
+        inset: 0;
+        background-color: var(--color);
+      }
+    }
+
+    .grid-row {
+      width: 100%;
+      height: 1.5px;
+      margin-top: -0.75px;
+    }
+
+    .grid-col {
+      width: 1.5px;
+      height: 100%;
+      margin-left: -0.75px;
+    }
+
+    &[data-size="Large"] {
+      .grid-row-1,
+      .grid-row-2,
+      .grid-row-3 {
+        top: 50%;
+      }
+
+      .grid-col-1,
+      .grid-col-2,
+      .grid-col-3 {
+        left: 50%;
+      }
+    }
+
+    &[data-size="Medium"] {
+      .grid-row-1,
+      .grid-row-2 {
+        top: 33.33%;
+      }
+
+      .grid-row-3 {
+        top: 66.66%;
+      }
+
+      .grid-col-1,
+      .grid-col-2 {
+        left: 33.33%;
+      }
+
+      .grid-col-3 {
+        left: 66.66%;
+      }
+    }
+
+    &[data-size="Small"] {
+      .grid-row-1 {
+        top: 25%;
+      }
+      .grid-row-2 {
+        top: 50%;
+      }
+
+      .grid-row-3 {
+        top: 75%;
+      }
+
+      .grid-col-1 {
+        left: 25%;
+      }
+      .grid-col-2 {
+        left: 50%;
+      }
+
+      .grid-col-3 {
+        left: 75%;
+      }
+    }
+  }
+</style>

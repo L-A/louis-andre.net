@@ -44,11 +44,11 @@ const Setup = (
   const c = {
     // Grid
     margin: 0,
-    columns: { Large: 20, Medium: 40, Small: 60 }[traits["Grid Scale"]],
-    rows: { Large: 20, Medium: 40, Small: 60 }[traits["Grid Scale"]],
+    columns: { Large: 40, Medium: 60, Small: 80 }[traits["Grid Scale"]],
+    rows: { Large: 30, Medium: 50, Small: 70 }[traits["Grid Scale"]],
 
     // Main drawing
-    blockSteps: { Busy: 180, Sparse: 70, Normal: 120 }[traits["Draw Count"]],
+    blockSteps: { Busy: 240, Sparse: 100, Normal: 160 }[traits["Draw Count"]],
     stdFromCenter: range(0.12, 0.18),
     fillChance: pick([3 / 4, 4 / 5, 19 / 20]),
     minWidth: range(1 / 20, 1 / 10),
@@ -216,7 +216,11 @@ const Setup = (
     const { x, y, height, width, filled, colorIndex, repeat, circle } =
       blocks[position];
 
-    context.strokeStyle = flat ? fgs[0] : grayscale ? "#ccc" : fgs[colorIndex];
+    context.strokeStyle = flat
+      ? fgs[0]
+      : grayscale
+        ? "#000d3a"
+        : fgs[colorIndex];
 
     if (filled && !outlines) {
       if (circle)

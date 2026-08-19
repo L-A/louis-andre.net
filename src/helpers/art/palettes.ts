@@ -14,6 +14,7 @@ export const Palettes: PalettesType = {
   "Parkour protagonist": [
     "#3D4ABF",
     "#556ECD",
+    "#102778",
     "#DDE5F4",
     "#F1F1F1",
     "#F9F8F6",

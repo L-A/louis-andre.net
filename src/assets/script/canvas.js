@@ -8,7 +8,8 @@ const seedInput = document.querySelector("#seed");
 const newGenerationButton = document.querySelector("#new-generation");
 const speedButton = document.querySelector("#speed");
 const shuffleButton = document.querySelector("#shuffle");
-const traitButtons = document.querySelectorAll("[data-trait]");
+const gridButton = document.querySelector("#grid-scale");
+const paletteButton = document.querySelector("#palette");
 
 const newSeed = () => String(Math.floor(Math.random() * 1e6));
 
@@ -43,12 +44,39 @@ let seed = newSeed();
 seedInput.value = seed;
 
 let traits = randomTraits(createRandom(seed));
-const applyTraits = (next) => {
-  traits = next;
-  for (const button of traitButtons)
-    button.innerText = traits[button.dataset.trait];
+
+const cycleTrait = (trait) => {
+  const options = traitOptions[trait];
+  const current = options.indexOf(traits[trait]);
+  const next = (current + 1) % options.length;
+  traits = { ...traits, [trait]: options[next] };
+  regenerate();
+  startAnimation();
+  updateButtonStates();
 };
-applyTraits(traits);
+
+const updateButtonStates = () => {
+  if (traits.slow) {
+    speedButton.querySelector(".speed-icon").classList.add("slow");
+  } else {
+    speedButton.querySelector(".speed-icon").classList.remove("slow");
+  }
+  gridButton.querySelector(".icon").dataset.size = traits["Grid Scale"];
+
+  const [color1, color2, color3, color4, color5, color6, color7] =
+    Palettes[traits["Palette"]];
+  paletteButton.querySelector(".icon").style =
+    `--color-1: ${color1}; --color-2: ${color4}; --color-3: ${color7};`;
+};
+
+const shuffleAll = () => {
+  seed = newSeed();
+  seedInput.value = seed;
+  traits = randomTraits(createRandom(seed));
+  regenerate();
+  startAnimation();
+  updateButtonStates();
+};
 
 let art;
 let frameId;
@@ -79,17 +107,6 @@ const resize = () => {
   startAnimation();
 };
 
-for (const button of traitButtons) {
-  button.addEventListener("click", () => {
-    const name = button.dataset.trait;
-    const options = traitOptions[name];
-    const next = options[(options.indexOf(traits[name]) + 1) % options.length];
-    applyTraits({ ...traits, [name]: next });
-    regenerate();
-    startAnimation();
-  });
-}
-
 seedInput.addEventListener("input", (e) => {
   seed = e.target.value;
   regenerate();
@@ -97,14 +114,26 @@ seedInput.addEventListener("input", (e) => {
 });
 
 shuffleButton.addEventListener("click", () => {
-  applyTraits(randomTraits(createRandom(newSeed())));
+  shuffleAll();
   regenerate();
   startAnimation();
 });
 
 speedButton.addEventListener("click", () => {
   drawOptions.slow = !drawOptions.slow;
-  speedButton.innerText = drawOptions.slow ? "Slow" : "Fast";
+  speedButton.querySelector(".speed-icon").classList.toggle("fast");
+  regenerate();
+  startAnimation();
+});
+
+gridButton.addEventListener("click", () => {
+  cycleTrait("Grid Scale");
+  regenerate();
+  startAnimation();
+});
+
+paletteButton.addEventListener("click", () => {
+  cycleTrait("Palette");
   regenerate();
   startAnimation();
 });
@@ -120,3 +149,4 @@ window.addEventListener("resize", resize);
 
 regenerate();
 resize();
+updateButtonStates();

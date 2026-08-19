@@ -1,0 +1,45 @@
+---
+
+---
+
+<div class="icon palette-icon">
+  <div class="color color-1"></div>
+  <div class="color color-2"></div>
+  <div class="color color-3"></div>
+</div>
+
+<style>
+  .palette-icon {
+    --size: 24px;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+
+    .color {
+      position: absolute;
+      width: calc(var(--size) * 0.7);
+      height: calc(var(--size) * 0.7);
+      border-radius: 10px;
+      background-color: #f00;
+      transition: background-color 0.3s linear;
+    }
+
+    .color-1 {
+      background-color: var(--color-1);
+      left: calc(var(--size) * 0.15);
+      top: 0;
+    }
+
+    .color-2 {
+      background-color: var(--color-2);
+      left: 0;
+      top: calc(var(--size) * 0.3);
+    }
+
+    .color-3 {
+      background-color: var(--color-3);
+      left: calc(var(--size) * 0.3);
+      top: calc(var(--size) * 0.3);
+    }
+  }
+</style>
