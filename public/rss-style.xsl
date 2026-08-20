@@ -146,18 +146,6 @@
             .container {
                 padding: 2em 1em;
             }
-
-            .feed-title {
-              font-size: 24px;
-            }
-
-            .item-title {
-              font-size: 1em;
-            }
-
-            .item-link {
-              padding: 0.25em;
-            }
           }
         </style>
       </head>
