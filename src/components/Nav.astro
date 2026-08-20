@@ -50,12 +50,17 @@ const pathSegments = pathname
 
     .home-link {
       grid-area: logo;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+      margin-right: 0.5rem;
+
+      &:hover {
+        opacity: 1;
+      }
 
       svg {
         margin-bottom: -0.18rem;
       }
-
-      margin-right: 0.5rem;
     }
 
     .current-path {

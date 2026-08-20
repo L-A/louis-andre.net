@@ -34,8 +34,12 @@ import PaletteIcon from "../components/PaletteIcon.astro";
             >reach out</a
           > if you’d like!
         </p>
-        <h3>For more about *<em>gestures around</em>*</h3>
-        <NavPagesList />
+        <p>
+          <small
+            >I tinker on this website, so things are in motion. It's cool to
+            write about something your noticed if you feel like it!</small
+          >
+        </p>
       </div>
     </div>
     <div class="art">
@@ -137,7 +141,7 @@ import PaletteIcon from "../components/PaletteIcon.astro";
         padding: 0;
         box-shadow:
           0px 4px 4px rgba(0, 0, 0, 0.15),
-          inset 0px 1px 0px #ffffff;
+          inset 0px 1px 0px var(--offWhite);
         border-radius: 4px;
 
         button {
@@ -166,7 +170,7 @@ import PaletteIcon from "../components/PaletteIcon.astro";
             color-mix(in srgb, var(--fadedGray), transparent 70%);
           border-radius: 0.125rem;
           cursor: pointer;
-          box-shadow: 1px 0px 0px #ffffff;
+          box-shadow: 1px 0px 0px var(--offWhite);
           transition:
             background-color 0.2s ease-out,
             color 0.2s ease-out;
@@ -178,7 +182,11 @@ import PaletteIcon from "../components/PaletteIcon.astro";
 
           &:hover {
             color: var(--mainAccent);
-            background-color: white;
+            background-color: color-mix(
+              in srgb,
+              var(--offWhite),
+              var(--fg) 10%
+            );
           }
 
           &:active {

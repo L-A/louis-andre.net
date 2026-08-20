@@ -50,7 +50,7 @@ import NavPagesList from "./NavPagesList.astro";
     margin-top: auto;
 
     .top-separator {
-      background: url("/images/bg/dotted-light.svg") repeat;
+      background: var(--light-dotted-bg) repeat;
       height: 4rem;
     }
 
@@ -118,6 +118,12 @@ import NavPagesList from "./NavPagesList.astro";
             }
           }
         }
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .top-separator {
+        background: var(--light-dotted-bg) repeat;
       }
     }
   }
