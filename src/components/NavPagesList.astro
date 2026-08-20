@@ -4,6 +4,9 @@ import ButtonLink from "./ButtonLink.astro";
 
 <div class="pages">
   <li>
+    <ButtonLink type="highlight" href="/now">/now</ButtonLink>
+  </li>
+  <li>
     <ButtonLink href="/journal">Journal</ButtonLink>
   </li>
   <li>
@@ -12,17 +15,13 @@ import ButtonLink from "./ButtonLink.astro";
   <li>
     <ButtonLink href="/reading-log">Reading log</ButtonLink>
   </li>
-  <li>
-    <ButtonLink type="highlight" href="https://petiterevolte.com"
-      >Hire me</ButtonLink
-    >
-  </li>
 </div>
 
 <style>
   .pages {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0;
 
