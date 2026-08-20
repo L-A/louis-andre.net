@@ -8,12 +8,11 @@
         <title><xsl:value-of select="rss/channel/title"/></title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="/styles/work-sans.css"/>
         <style>
           * {
             box-sizing: border-box;
             color: #000d3a;
-            font-family: "Work Sans", Helvetica, Arial, sans-serif;
+            font-family: Helvetica, Arial, sans-serif;
             line-height: 1.5;
           }
 
@@ -22,14 +21,13 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #E8F6FC;
+            background-color: #f0f0f0;
           }
 
           .rss-info {
-            background-color: #E8F6FC;
             border-radius: 8px;
             margin: 2em 0;
-            font-size: 0.9em;
+            font-size: 0.85em;
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
@@ -37,14 +35,14 @@
           }
 
           .rss-info p {
-            color: #668;
+            color: #667;
             flex: 1 1 120px;
             margin: 0;
           }
 
           .rss-info .feed-link {
-            background-color: #1BA3DE;
-            color: white;
+            border: 1px solid #2429c1;
+            color: #2429c1;
             display: block;
             text-decoration: none;
             text-align: center;
@@ -56,20 +54,23 @@
             flex: 0 0 160px;
           }
 
+          .feed-link:hover {
+            background-color: color-mix(in srgb, #E8F6FC 20%, #fff);
+          }
+
           .container {
             padding: 2em;
             background-color: #fff;
-            border: solid 1px #E8F6FC;
-            border-radius: .5em;
+            border-radius: .25em;
           }
 
           .header {
-            border-bottom: 2px solid #E8F6FC;
-            padding-bottom: 1em;
+            border-bottom: 1px solid #DDD;
+            padding-bottom: 0.5em;
           }
 
           .feed-title {
-            font-size: 32px;
+            font-size: 1.15em;
             font-weight: 800;
             color: #000d3a;
             margin-top: 0;
@@ -81,44 +82,38 @@
           .feed-description {
             font-size: 1em;
             color: #666;
-            margin: 0.25em 0;
-          }
-
-          .feed-link:hover {
-            background-color: color-mix(in srgb, #E8F6FC 20%, #1BA3DE);
+            margin: 0.15em 0;
           }
 
           .rss-info strong {
-            color: #1BA3DE;
+            color: #2429c1;
           }
 
           .item {
             margin: 1em 0;
-            padding-bottom: 1em;
-
+            padding-top: 1em;
           }
 
           .item-title {
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: bold;
             margin: 0;
           }
 
           .item-title a {
-            color: #1BA3DE;
-            line-height: 1.2;
+            line-height: 1.1;
             text-decoration-color: transparent;
             text-decoration-style: solid;
             transition: text-decoration-color 0.3s ease;
           }
 
           .item-title a:hover {
-            text-decoration-color: #1BA3DE;
+            text-decoration-color: #2429c1;
           }
 
           .item-description {
-            font-size: 0.9em;
-            margin: 0.25em 0;
+            font-size: 0.8125em;
+            margin: 0.5em 0;
             color: #333;
             line-height: 1.4;
           }
@@ -127,12 +122,12 @@
             font-size: 0.8em;
             color: #666;
             margin-top: 0.5em;
-            font-weight: 300;
+            font-weight: 500;
           }
 
           .item-link {
             margin-right: 1em;
-            color: #1BA3DE;
+            color: #2429c1;
             font-size: 1em;
             text-decoration-color: #E8F6FC;
             text-decoration-style: solid;
@@ -140,7 +135,7 @@
           }
 
           .item-link:hover {
-            text-decoration-color: #1BA3DE;
+            text-decoration-color: #2429c1;
           }
 
           @media (max-width: 600px) {
@@ -161,7 +156,7 @@
             }
 
             .item-link {
-              padding: 0.25em 0.5em;
+              padding: 0.25em;
             }
           }
         </style>

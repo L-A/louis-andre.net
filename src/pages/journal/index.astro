@@ -1,6 +1,8 @@
 ---
 import { journalUrl } from "../../helpers/collections";
 import MainLayout from "../../layouts/MainLayout.astro";
+import RssIcon from "../../assets/svg/icn-rss.svg";
+
 import { getCollection, type CollectionEntry } from "astro:content";
 
 const entries = await getCollection("journal");
@@ -19,7 +21,11 @@ const groupedByYear = entries.reduce<
   description="A list of texts and articles I wrote over the years."
 >
   <header>
-    <h2>Journal</h2>
+    <h2>
+      Journal <a class="feed-link" href="/journal/rss.xml"
+        ><RssIcon class="rss-icon" /></a
+      >
+    </h2>
     <p>Here is where I write occasional articles.</p>
     <p>
       I also have a newsletter called <a href="/https://buttondown.com/Kind"
@@ -62,6 +68,21 @@ const groupedByYear = entries.reduce<
 
     h2 {
       font-size: 1.5rem;
+
+      a {
+        opacity: 0.6;
+        transition: opacity 0.15s;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        .rss-icon {
+          margin-left: 0.5rem;
+          width: 1.1rem;
+          height: 1.1rem;
+        }
+      }
     }
 
     p {
