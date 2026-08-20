@@ -36,24 +36,33 @@ const { contained = true, title, description, image } = Astro.props;
     <Footer />
   </body><style is:global>
     :root {
+      --mainAccent: #2429c1;
       --bg: #ededed;
       --fg: #000d3a;
-      --mainAccent: #2429c1;
-      --fadedGray: #9295a1;
-      --fadedAccent: #d8d9ef;
-      --offWhite: #f1f1f1;
+      --fadedGray: color-mix(in srgb, var(--fg), var(--bg) 40%);
+      --fadedAccent: color-mix(in srgb, var(--mainAccent), var(--bg) 90%);
+      --offWhite: color-mix(in srgb, var(--fg), var(--bg) 95%);
       --light-dotted-bg: url("/images/bg/dotted-light.svg");
 
       --small-spring: 300ms cubic-bezier(0.14, 1.35, 0.29, 0.99);
 
       @media (prefers-color-scheme: dark) {
+        --mainAccent: #9bd0f7;
         --bg: #353744;
-        --fg: #eaecf5;
-        --mainAccent: #85ceff;
-        --fadedGray: #777c94;
-        --fadedAccent: #161a2d;
-        --offWhite: #060916;
-        --light-dotted-bg: url("/images/bg/dotted-light-dark.svg");
+        --fg: #ececf5;
+      }
+    }
+
+    .with-dotted-bg {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: color-mix(in srgb, var(--mainAccent), var(--bg) 70%);
+        mask: url("/images/bg/dotted-light.svg") repeat;
+        z-index: -1;
       }
     }
 

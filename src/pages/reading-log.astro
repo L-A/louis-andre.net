@@ -54,7 +54,7 @@ for (const drop of drops) {
         .sort((a, b) => b.sortDate.localeCompare(a.sortDate))
         .map((month) => (
           <li class="month">
-            <h3>{month.formattedDate}</h3>
+            <h3 class="with-dotted-bg">{month.formattedDate}</h3>
             <ul class="entries">
               {month.entries
                 .sort(
@@ -119,7 +119,6 @@ for (const drop of drops) {
       h3 {
         color: var(--mainAccent);
         font-family: var(--font-mono);
-        background: var(--light-dotted-bg) repeat;
         margin: 1rem -1rem;
         padding: 0.25rem 1rem;
       }

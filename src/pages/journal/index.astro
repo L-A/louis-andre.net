@@ -37,7 +37,7 @@ const groupedByYear = entries.reduce<
         .sort(([a], [b]) => b - a)
         .map(([year, entries]) => (
           <li class="year">
-            <h3>{year}</h3>
+            <h3 class="with-dotted-bg">{year}</h3>
             <ul>
               {entries.map((entry) => (
                 <li class="entry">
@@ -85,7 +85,6 @@ const groupedByYear = entries.reduce<
       h3 {
         color: var(--mainAccent);
         font-family: var(--font-mono);
-        background: var(--light-dotted-bg) repeat;
         margin: 1rem -1rem;
         padding: 0.25rem 1rem;
       }

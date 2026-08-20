@@ -5,7 +5,7 @@ import NavPagesList from "./NavPagesList.astro";
 ---
 
 <footer>
-  <div class="top-separator"></div>
+  <div class="top-separator with-dotted-bg"></div>
   <Container>
     <div class="footer-grid">
       <a href="/" class="home-link" aria-label="Home">
@@ -50,7 +50,6 @@ import NavPagesList from "./NavPagesList.astro";
     margin-top: auto;
 
     .top-separator {
-      background: var(--light-dotted-bg) repeat;
       height: 4rem;
     }
 
@@ -118,12 +117,6 @@ import NavPagesList from "./NavPagesList.astro";
             }
           }
         }
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .top-separator {
-        background: var(--light-dotted-bg) repeat;
       }
     }
   }
