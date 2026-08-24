@@ -18,6 +18,7 @@
   },
   "homepage": "https://louis-andre.net",
   "dependencies": {
+    "@astrojs/rss": "^4.0.19",
     "@fontsource-variable/ibm-plex-sans": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "astro": "^7.1.6",
