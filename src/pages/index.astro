@@ -68,11 +68,11 @@ import PaletteIcon from "../components/PaletteIcon.astro";
 <style>
   .columns {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: minmax(18rem, 2fr) 3fr;
     align-items: top;
     gap: 2rem;
 
-    @media (max-width: 48rem) {
+    @media (max-width: 50rem) {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
@@ -80,7 +80,6 @@ import PaletteIcon from "../components/PaletteIcon.astro";
     .content {
       display: flex;
       flex-direction: column;
-      flex: 0 1 20rem;
       justify-content: space-between;
       align-self: stretch;
 
