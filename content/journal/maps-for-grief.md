@@ -3,6 +3,7 @@ title: Maps for grief
 date: 2021-12-30T05:00:00.000Z
 description: Presenting my initial Art blocks series
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwywnz2c"
 ---
 
 ![Maps for grief – Ropsten output #12](/journal/maps-for-grief/Ropsten-12.png)

@@ -15,6 +15,7 @@ const journal = defineCollection({
     date: z.coerce.date(),
     description: z.string(),
     inFrench: z.boolean().optional(),
+    atUri: z.string().optional(),
   }),
 });
 

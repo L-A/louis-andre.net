@@ -3,6 +3,7 @@ title: A VESA mount for your Wacom Cintiq 13HD
 date: 2016-12-07T05:00:00.000Z
 description: How to make the 13 inch Cintiq compatible with VESA mounts
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejx7sju2t"
 ---
 
 **Here are the field notes from how my girlfriend and I modified her Cintiq 13HD to install it on an Ergotron's VESA 100mm mount.**

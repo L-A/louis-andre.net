@@ -4,6 +4,7 @@ date: 2025-06-15T16:17:00.000Z
 description: >-
   A list of activities that keep me mentally balanced.
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwak4f2t"
 ---
 
 I've been thinking lately about what actually keeps me balanced, as opposed to activities that I *think* should. I don't want to fall into prescriptive thinking about wellness - meditation is good, exercise is good, social connection is good - without paying attention to what specifically works for a given temperament.

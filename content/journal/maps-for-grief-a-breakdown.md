@@ -3,6 +3,7 @@ title: 'Maps for grief: a breakdown'
 date: 2022-03-01T05:00:00.000Z
 description: 'Breaking down the behaviours, features and rarities in the series'
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwvimq2f"
 ---
 
 A bit of context: **Maps for grief** is a generative art project, published on the [Art blocks](https://www.artblocks.io) platform. It explores the notion of togetherness without contact. If

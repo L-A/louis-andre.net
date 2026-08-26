@@ -5,6 +5,7 @@ description: >-
   Pulled from my modest digital garden: A short meditation on project and to-do
   apps featuring bottomless lists
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwdy7j2e"
 ---
 
 Digital tools that promise organization, like to-do managers and the like, tend to offer bottomless lists as the standard container.

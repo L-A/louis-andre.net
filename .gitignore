@@ -32,3 +32,5 @@ _site
 .vercel
 /.astro
 /dist
+
+.sequoia-state.json

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://tangled.org/stevedylan.dev/sequoia/raw/main/sequoia.schema.json",
+  "siteUrl": "https://louis-andre.net",
+  "contentDir": "./content/journal",
+  "outputDir": "./dist",
+  "pathPrefix": "/journal",
+  "publicationUri": "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.publication/3mtwdruiqxc2n",
+  "frontmatter": {
+    "publishDate": "date"
+  },
+  "publishContent": true
+}

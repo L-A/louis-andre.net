@@ -3,6 +3,7 @@ title: Les maudits mots de passe uniques
 date: 2020-02-12T05:00:00.000Z
 description: A quick help for switching to a password manager
 inFrench: true
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejx4flh2l"
 ---
 
 As-tu déjà pensé ça, suite à l'éternel conseil de ne pas réutiliser un mot de passe:

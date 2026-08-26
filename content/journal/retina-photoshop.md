@@ -5,6 +5,7 @@ description: >-
   Notes on how to work with Photoshop when designing for Retina screens. A bit
   obsolete now.
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejxgxzm2t"
 ---
 
 # Note: This entry dates back to 2014, and doesn't represent current practices.

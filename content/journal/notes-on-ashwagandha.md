@@ -3,6 +3,7 @@ title: Notes on two months of Ashwagandha
 date: 2025-01-04T15:30:09.988Z
 description: Observations after taking Ashwagandha as a supplement during two winter months.
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwkowa2f"
 ---
 
 These are my (personal, anecdotal) notes on taking Ashwagandha as a supplement for two months. I’ve tried it because it reportedly helps lower anxiety, which has become a real issue for me in the last couple of years. I’ve updated the article after stopping at the end of the second month.

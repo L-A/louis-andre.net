@@ -3,6 +3,7 @@ title: "Lottery economics"
 date: 2025-09-20T20:00:00.003Z
 description: The year is 2025 and I find LLMs and lotteries have a bit too much in common at this point
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejw57o52t"
 ---
 
 Where I live, the national loto company, Loto-Québec, regularly run campaigns reminding players to sign their tickets or scratch cards when they play. Ostensibly, this protects the winner – in some minimal way – but the back of every ticket is also a contract with Loto Québec. That contract states that, essentially, a winner is not entitled to receive their prize unless they [allow Loto Québec to run news and ads featuring them](https://loteries.lotoquebec.com/fr/gagnants).

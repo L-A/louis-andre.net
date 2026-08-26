@@ -3,6 +3,7 @@ title: '"Default forward": How I write to my clients to avoid getting stuck'
 date: 2024-03-19T18:14:30.003Z
 description: How I write emails to keep my (silent) clients' projects moving
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwocbz2e"
 ---
 
 As a freelancer (and previously as an employee operating with relatively high autonomy), I communicate daily with clients on various things I need for my work to progress. One of these things is the very basic approval. *Here's a deliverable, please say yes or come back with needed revisions, have a good day.*

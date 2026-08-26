@@ -4,6 +4,7 @@ date: 2025-04-04T01:13:43.628Z
 description: >-
   A short reflection on design in the absence of strong leadership.
 inFrench: false
+atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwhgsv2t"
 ---
 
 [Design is the rendering of intent](https://articles.centercentre.com/design_rendering_intent/ "Design is the rendering of intent") – Jared Spool

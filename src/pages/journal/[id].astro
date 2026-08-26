@@ -20,7 +20,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 ---
 
-<MainLayout title={entry.data.title} description={entry.data.description}>
+<MainLayout title={entry.data.title} description={entry.data.description} atUri={entry.data.atUri}>
   <article class="main-content">
     <h1 class="title">{entry.data.title}</h1>
     <h2 class="date">
