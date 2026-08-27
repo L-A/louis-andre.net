@@ -38,17 +38,19 @@ const { contained = true, title, description, image, atUri } = Astro.props;
   </body><style is:global>
     :root {
       --mainAccent: #2429c1;
+      --off: #fff;
       --bg: #ededed;
       --fg: #000d3a;
       --fadedGray: color-mix(in srgb, var(--fg), var(--bg) 40%);
       --fadedAccent: color-mix(in srgb, var(--mainAccent), var(--bg) 90%);
-      --offWhite: color-mix(in srgb, var(--fg), var(--bg) 95%);
+      --offWhite: color-mix(in srgb, var(--off), var(--bg) 75%);
       --light-dotted-bg: url("/images/bg/dotted-light.svg");
 
       --small-spring: 300ms cubic-bezier(0.14, 1.35, 0.29, 0.99);
 
       @media (prefers-color-scheme: dark) {
         --mainAccent: #9bd0f7;
+        --off: #000;
         --bg: #353744;
         --fg: #ececf5;
       }
