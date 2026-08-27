@@ -127,9 +127,10 @@ import NavPagesList from "./NavPagesList.astro";
     const pagePath = window.location.pathname;
     const startDateString = "2021-01-15";
     const visitsLink = document.querySelector(".visits-link");
+    if (!visitsLink) return;
     try {
       const response = await fetch(
-        `https://lal.goatcounter.com/counter/${pagePath}.json?start=${startDateString}`,
+        `https://stats.louis-andre.net/counter/${pagePath}.json?start=${startDateString}`,
       );
       const { count } = await response.json();
       visitsLink.textContent = `${count}`;
@@ -139,6 +140,10 @@ import NavPagesList from "./NavPagesList.astro";
       visitsLink.appendChild(visitsSpan);
     } catch (error) {
       // Visits stat failed to load, we can leave the link as-is
+      console.log(
+        "Couldn't fetch the page's visit count. It's no biggie, ad-blockers often flag that sort of request. Here's the error:",
+        error,
+      );
     }
   }
 
