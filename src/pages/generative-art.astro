@@ -178,7 +178,7 @@ const series = await getCollection("artSeries");
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const iterations: NodeListOf<HTMLImageElement> =
       document.querySelectorAll(".iteration");
     const reflections: NodeListOf<HTMLImageElement> =

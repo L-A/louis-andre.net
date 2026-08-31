@@ -48,7 +48,9 @@ const groupedByYear = entries.reduce<
               {entries.map((entry) => (
                 <li class="entry">
                   <a href={journalUrl(entry.id)}>
-                    <h4>{entry.data.title}</h4>
+                    <h4 transition:name={"post-title-" + entry.id}>
+                      {entry.data.title}
+                    </h4>
                     <p>{entry.data.description}</p>
                   </a>
                 </li>

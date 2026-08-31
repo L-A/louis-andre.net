@@ -273,5 +273,6 @@ import PaletteIcon from "../components/PaletteIcon.astro";
 </style>
 
 <script>
-  import "../assets/script/canvas.js";
+  import { initCanvas } from "../assets/script/canvas.js";
+  document.addEventListener("astro:page-load", initCanvas);
 </script>

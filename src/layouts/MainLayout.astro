@@ -1,8 +1,9 @@
 ---
+import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Container from "../components/Container.astro";
-import { Font } from "astro:assets";
 import Meta from "../components/Meta.astro";
 
 const { contained = true, title, description, image, atUri } = Astro.props;
@@ -22,8 +23,8 @@ const { contained = true, title, description, image, atUri } = Astro.props;
       async
       src="//gc.zgo.at/count.js"></script>
     {atUri && <link rel="site.standard.document" href={atUri} />}
-  </head>
-  <body>
+    <ClientRouter />
+  </head><body>
     <Nav />
     {
       contained ? (
