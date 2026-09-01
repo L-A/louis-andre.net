@@ -1,7 +1,6 @@
 ---
 import Logo from "../assets/svg/l-logo.svg";
 import Container from "./Container.astro";
-import ButtonLink from "./ButtonLink.astro";
 import NavPagesList from "./NavPagesList.astro";
 
 const { pathname } = Astro.url;
@@ -106,3 +105,15 @@ const pathSegments = pathname
     }
   }
 </style>
+
+<script>
+  import { scrambleText } from "../helpers/scramble-text";
+
+  document.addEventListener("astro:page-load", () => {
+    const currentPath = document.querySelector(
+      "nav .current-path a:last-of-type",
+    ) as HTMLLIElement;
+    if (!currentPath) return;
+    scrambleText(currentPath);
+  });
+</script>
