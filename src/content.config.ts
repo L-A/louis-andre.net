@@ -23,6 +23,15 @@ const readingLog = defineCollection({
   loader: RaindropLoader({ raindropToken, collectionID }),
 });
 
+const workExperience = defineCollection({
+  loader: glob({ base: "./content/work-experience", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    name: z.string(),
+    timePeriod: z.string(),
+    responsibilities: z.string(),
+  }),
+});
+
 const now = defineCollection({
   loader: glob({ base: "./content/now", pattern: "**/*.{md,mdx}" }),
   schema: z.object({}),
@@ -53,5 +62,6 @@ export const collections = {
   journal,
   readingLog,
   artSeries,
+  workExperience,
   now,
 };

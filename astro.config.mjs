@@ -18,7 +18,7 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: "IBM Plex Sans Condensed",
       cssVariable: "--font-plex-condensed",
-      weights: ["700"],
+      weights: ["300", "700"],
     },
     {
       provider: fontProviders.fontsource(),

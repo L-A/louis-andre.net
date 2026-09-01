@@ -1,0 +1,209 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { render, getCollection } from "astro:content";
+
+const workExperience = await getCollection("workExperience");
+---
+
+<MainLayout
+  title="Journal"
+  description="A list of texts and articles I wrote over the years."
+>
+  <header>
+    <h2>Resume</h2>
+    <p class="intro">
+      Colleagues call me <em>a designer?</em> and <em>a developer?</em> – clearly
+      pronouncing the question mark on both. I design for screens most of the time,
+      and I develop for the front-end. My best projects are done when I get to cover
+      both roles.
+    </p>
+    <p>
+      While I love a good marketing website, I usually fit best with work done
+      on products with complex user interfaces, and when I can integrate into a
+      small, competent product and development team.
+    </p>
+  </header>
+
+  <h3 class="with-dotted-bg">Clients and workplaces</h3>
+  <ul class="experience">
+    {
+      workExperience
+        .sort((a, b) => b.data.timePeriod.localeCompare(a.data.timePeriod))
+        .map(async (item) => {
+          const { Content } = await render(item);
+          return (
+            <li class="work-item">
+              <h4>{item.data.name}</h4>
+              <p class="time-period">
+                <strong>{item.data.timePeriod}</strong> /{" "}
+                {item.data.responsibilities}
+              </p>
+              <div class="content">
+                <Content />
+              </div>
+            </li>
+          );
+        })
+    }
+  </ul>
+
+  <h3 class="with-dotted-bg">Relevant skills</h3>
+  <ul class="skills">
+    <li>
+      <h4>0 → 1 product design</h4>
+      <p>
+        Working with small teams and founders, I’ve become very good at helping
+        people go from <em>I have an idea</em> to <em
+          >I know exactly what we’re going to do</em
+        >. I treat design as the (fun, difficult) act of planning how to turn an
+        idea and vision into something that’s ready to get implemented.
+      </p>
+    </li>
+    <li>
+      <h4>User experience</h4>
+      <p>
+        I’ve been structuring apps since before <em>UX</em> became the <em
+          >mot du jour</em
+        > with leadership. My work involves defining user flows, auditing existing
+        solutions. In particular, I make sure that whatever process gets moved to
+        a digital equivalent actually improves on its current analog.
+      </p>
+    </li>
+    <li>
+      <h4>Interface design</h4>
+      <p>
+        I make personality coexist with function. I build strong interfaces by
+        making them visually clear, strong in their identity and branding, and
+        by making sure they’re easy to use with the right mix of organization
+        and visual cues.
+      </p>
+    </li>
+    <li>
+      <h4>Front-of-the-front-end</h4>
+      <p>
+        I take part in developing the final interface. Usually, I’m at my best
+        when I support a front-end team or person, and contribute with code that
+        directly controls the appearance of the intercace. For small-scale web
+        projects, I sometimes take charge of complete development.
+      </p>
+    </li>
+  </ul>
+
+  <h3 class="with-dotted-bg">Can we talk?</h3>
+  <p>
+    Of course! The best way to reach me is <a
+      href="mailto:monsieur@louis-andre.net">by email</a
+    >. I'm also on <a href="https://bsky.app/profile/louis-andre.net">Bluesky</a
+    > and <a href="https://www.linkedin.com/in/louis-andre-labadie">LinkedIn</a> if
+    that's your preference.
+  </p>
+</MainLayout>
+
+<style>
+  header {
+    max-width: 52rem;
+
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2.5rem;
+      font-family: var(--font-plex-condensed);
+      margin: 1.5rem 0 1rem;
+      line-height: 1.1;
+      margin-left: -0.025rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      max-width: 40em;
+    }
+
+    p.intro {
+      font-weight: 350;
+      font-size: 1.375rem;
+      line-height: 1.45;
+    }
+  }
+
+  h3 {
+    color: var(--mainAccent);
+    font-family: var(--font-mono);
+    margin: 3rem -1rem 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  ul.experience {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      padding-top: 1rem;
+      display: grid;
+      gap: 0.5rem 1rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "a b"
+        "c c";
+
+      h4,
+      .time-period {
+        align-self: baseline;
+        padding-bottom: 0;
+        margin: 0;
+      }
+
+      h4 {
+        font-family: var(--font-plex-condensed);
+        font-weight: 300;
+        font-size: 1.45rem;
+        grid-area: a;
+      }
+
+      .time-period {
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+        color: var(--mainAccent);
+        grid-area: b;
+        align-self: baseline;
+      }
+
+      .content {
+        border-top: solid 1px var(--fadedAccent);
+        grid-area: c;
+        padding-left: calc(50% + 0.5rem);
+        font-size: 0.875rem;
+      }
+
+      @media (max-width: 600px) {
+        padding-top: 2rem;
+        grid-template-columns: 1fr;
+        grid-template-areas: "a" "b" "c";
+
+        .content {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  ul.skills {
+    list-style: none;
+    margin-top: 2rem;
+    padding: 0;
+    display: grid;
+    gap: 2rem 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+
+    h4 {
+      color: var(--mainAccent);
+      font-weight: 300;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+</style>
