@@ -12,10 +12,10 @@ const workExperience = await getCollection("workExperience");
   <header>
     <h2>Resume</h2>
     <p class="intro">
-      Colleagues call me <em>a designer?</em> and <em>a developer?</em> – clearly
-      pronouncing the question mark on both. I design for screens most of the time,
-      and I develop for the front-end. My best projects are done when I get to cover
-      both roles.
+      Colleagues call me <em>a designer?</em> and <em>a developer?</em> – pronouncing
+      the question mark on both. I design for screens most of the time, and I develop
+      for the front-end when a project calls for it. My best work is done when I get
+      to cover both the design and development roles.
     </p>
     <p>
       While I love a good marketing website, I usually fit best with work done
@@ -198,6 +198,10 @@ const workExperience = await getCollection("workExperience");
     gap: 2rem 1rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
 
     h4 {
       color: var(--mainAccent);
