@@ -1,0 +1,31 @@
+---
+
+---
+
+<input type="range" id="accent-color" min="0" max="360" value="250" />
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const accentColorInput = document.getElementById(
+      "accent-color",
+    ) as HTMLInputElement;
+
+    const setAccentColorHue = (hue: number) => {
+      document.documentElement.style.setProperty("--hue", `${hue}deg`);
+    };
+
+    if (accentColorInput) {
+      const lastAccentColor = localStorage.getItem("accent-color");
+      if (lastAccentColor) {
+        accentColorInput.setAttribute("value", lastAccentColor);
+        setAccentColorHue(parseInt(lastAccentColor));
+      }
+
+      accentColorInput.addEventListener("input", (e) => {
+        const hue = e.currentTarget.value;
+        setAccentColorHue(hue);
+        localStorage.setItem("accent-color", hue);
+      });
+    }
+  });
+</script>

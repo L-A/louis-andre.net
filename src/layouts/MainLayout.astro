@@ -5,6 +5,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Container from "../components/Container.astro";
 import Meta from "../components/Meta.astro";
+import ColorInput from "../components/ColorInput.astro";
 
 const { contained = true, title, description, image, atUri } = Astro.props;
 ---
@@ -26,6 +27,9 @@ const { contained = true, title, description, image, atUri } = Astro.props;
     <ClientRouter />
   </head><body>
     <Nav />
+    <Container>
+      <ColorInput />
+    </Container>
     {
       contained ? (
         <Container>
@@ -36,79 +40,89 @@ const { contained = true, title, description, image, atUri } = Astro.props;
       )
     }
     <Footer />
-  </body><style is:global>
-    :root {
-      --mainAccent: #2429c1;
-      --off: #fff;
-      --bg: #ededed;
-      --fg: #000d3a;
-      --fadedGray: color-mix(in srgb, var(--fg), var(--bg) 40%);
-      --fadedAccent: color-mix(in srgb, var(--mainAccent), var(--bg) 90%);
-      --offWhite: color-mix(in srgb, var(--off), var(--bg) 75%);
-      --light-dotted-bg: url("/images/bg/dotted-light.svg");
 
-      --small-spring: 300ms cubic-bezier(0.14, 1.35, 0.29, 0.99);
+    <style is:global>
+      :root {
+        --hue: 250deg;
+        --mainAccent: oklch(25% 0.45 var(--hue));
+        --off: oklch(100% 0.02 var(--hue));
+        --bg: oklch(95% 0.005 var(--hue));
+        --fg: oklch(10% 0 var(--hue));
+        --fadedGray: color-mix(in oklch, var(--fg), var(--bg) 40%);
+        --fadedAccent: oklch(
+          from color-mix(in oklch, var(--mainAccent), var(--bg) 90%) l calc(c/3)
+            h
+        );
+        --offWhite: color-mix(in oklch, var(--off), var(--bg) 75%);
+        --light-dotted-bg: url("/images/bg/dotted-light.svg");
 
-      @media (prefers-color-scheme: dark) {
-        --mainAccent: #9bd0f7;
-        --off: #000;
-        --bg: #353744;
-        --fg: #ececf5;
+        --small-spring: 300ms cubic-bezier(0.14, 1.35, 0.29, 0.99);
+
+        @media (prefers-color-scheme: dark) {
+          --mainAccent: oklch(80% 0.1 var(--hue));
+          --off: oklch(5% 0.1 var(--hue));
+          --bg: oklch(20% 0.06 var(--hue));
+          --fg: oklch(95% 0 var(--hue));
+        }
       }
-    }
 
-    .with-dotted-bg {
-      position: relative;
+      .with-dotted-bg {
+        position: relative;
 
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: color-mix(in srgb, var(--mainAccent), var(--bg) 70%);
-        mask: url("/images/bg/dotted-light.svg") repeat;
-        z-index: -1;
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-color: color-mix(
+            in oklch,
+            var(--mainAccent),
+            var(--bg) 70%
+          );
+          mask: url("/images/bg/dotted-light.svg") repeat;
+          z-index: -1;
+        }
       }
-    }
 
-    * {
-      box-sizing: border-box;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    html {
-      color: var(--fg);
-      font-family: var(--font-plex);
-      padding: 0;
-    }
+      html {
+        color: var(--fg);
+        font-family: var(--font-plex);
+        padding: 0;
+      }
 
-    body {
-      margin: 0;
-      background-color: var(--bg);
-      font-size: 16px;
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+      body {
+        margin: 0;
+        background-color: var(--bg);
+        font-size: 16px;
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-    a {
-      color: var(--mainAccent);
-      text-decoration-color: color-mix(
-        in srgb,
-        var(--mainAccent),
-        transparent 80%
-      );
-      text-underline-offset: 0.15em;
-      text-decoration-thickness: 0.05em;
-      transition: text-decoration 0.15s ease-out;
-
-      &:hover {
+      a {
+        color: var(--mainAccent);
         text-decoration-color: color-mix(
           in srgb,
           var(--mainAccent),
-          transparent 60%
+          transparent 80%
         );
-        text-decoration-thickness: 0.15em;
+        text-underline-offset: 0.15em;
+        text-decoration-thickness: 0.05em;
+        transition: text-decoration 0.15s ease-out;
+
+        &:hover {
+          text-decoration-color: color-mix(
+            in srgb,
+            var(--mainAccent),
+            transparent 60%
+          );
+          text-decoration-thickness: 0.15em;
+        }
       }
-    }
-  </style>
+    </style>
+  </body>
 </html>
