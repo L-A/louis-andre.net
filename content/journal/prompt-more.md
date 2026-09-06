@@ -1,6 +1,6 @@
 ---
 title: You're 80% there? Prompt more!
-date: 2026-09-02T05:00:00.000Z
+date: 2026-09-06T05:00:00.000Z
 description: >-
   Sounds like you could prompt 20% more and be done!
 inFrench: false
