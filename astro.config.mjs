@@ -1,11 +1,15 @@
 import { defineConfig, fontProviders } from "astro/config";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://louis-andre.net",
+
   prefetch: {
     defaultStrategy: "viewport",
   },
+
   fonts: [
     {
       provider: fontProviders.fontsource(),
@@ -27,4 +31,6 @@ export default defineConfig({
       weights: ["100 700"],
     },
   ],
+
+  integrations: [sitemap()],
 });
