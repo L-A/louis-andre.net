@@ -29,7 +29,7 @@
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "sequoia-cli": "^0.5.7",
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.4"
   },
   "type": "module"
 }
