@@ -21,4 +21,10 @@ const { class: className } = Astro.props;
       padding: 0 1rem;
     }
   }
+
+  :global(.escapes-container) {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
 </style>

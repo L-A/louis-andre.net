@@ -33,7 +33,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
       <span>Posted</span>
       {" " + dateFormatter.format(entry.data.date)}
     </h2>
-    <main>
+    <main class="from-markdown">
       <Content />
     </main>
   </article>
@@ -42,50 +42,6 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 <style>
   .main-content {
     font-size: 1.125rem;
-    line-height: 1.75;
-    text-rendering: optimizeLegibility;
-    position: relative;
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      line-height: 1.25;
-      margin-top: 2em;
-    }
-
-    h1 {
-      line-height: 1.1;
-      font-size: 1.75rem;
-    }
-
-    p {
-      max-width: 30em;
-      margin-bottom: 1.5em;
-    }
-
-    /*
-      TODO custom markdown rendering that puts
-      the images in a full-width <figure> instead
-    */
-    img {
-      max-width: 100%;
-    }
-
-    ul,
-    ol {
-      li {
-        max-width: 38rem;
-      }
-    }
-
-    hr {
-      margin: 4rem 0;
-      border: 0;
-      height: 0.125rem;
-      background-color: var(--fadedAccent);
-      max-width: 36rem;
-    }
 
     h1.title {
       font-size: 2.5rem;
@@ -107,92 +63,6 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
       span {
         color: var(--fadedGray);
-      }
-    }
-
-    blockquote {
-      background: var(--offWhite);
-      margin: 3rem 1rem;
-      padding: 1rem 2rem;
-      position: relative;
-      max-width: 42rem;
-
-      font-style: italic;
-      font-size: 1.2rem;
-
-      &::before {
-        content: "";
-        background: var(--light-dotted-bg) repeat;
-        inset: -1rem;
-        z-index: -1;
-        position: absolute;
-      }
-
-      @media (max-width: 40rem) {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        margin: 3rem 1rem;
-      }
-    }
-
-    sup a[aria-describedby="footnote-label"] {
-      line-height: 1.4;
-      position: relative;
-      display: inline-block;
-      background-color: var(--fadedAccent);
-      color: var(--fg);
-      padding: 0 0.2em;
-      border-radius: 3px;
-      text-decoration: none;
-      font-size: 0.65rem;
-      font-weight: 600;
-      transform-origin: 50% calc(100% + 0.75em);
-      rotate: 5deg;
-      rotate: random(1deg, 11deg);
-      translate: 0 -0.5em;
-      transition: background-color 0.1s 0.1s ease-out;
-
-      &::before {
-        content: "";
-        width: 0.2em;
-        height: 0.75em;
-        background-color: var(--fadedAccent);
-        position: absolute;
-        top: 100%;
-        left: calc(50% - 0.1em);
-        transition: background-color 0.1s 0.1s ease-out;
-      }
-
-      &::after {
-        content: "";
-        width: 0.4em;
-        height: 0.4em;
-        background-color: var(--fadedAccent);
-        position: absolute;
-        top: calc(100% + 0.5em);
-        left: calc(50% - 0.2em);
-        border-radius: 0.2em;
-        transition: background-color 0.2s ease-out;
-      }
-
-      &:hover {
-        background-color: var(--mainAccent);
-        color: var(--bg);
-
-        &::before,
-        &::after {
-          background-color: var(--mainAccent);
-        }
-      }
-    }
-
-    section.footnotes {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: solid 0.125rem var(--fadedAccent);
-
-      h2 {
-        font-size: 1.25rem;
       }
     }
   }

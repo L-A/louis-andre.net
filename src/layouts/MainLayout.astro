@@ -110,5 +110,138 @@ const { contained = true, title, description, image, atUri } = Astro.props;
         text-decoration-thickness: 0.15em;
       }
     }
+
+    .from-markdown {
+      line-height: 1.75;
+      text-rendering: optimizeLegibility;
+      position: relative;
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        line-height: 1.25;
+        margin-top: 2em;
+      }
+
+      h1 {
+        line-height: 1.1;
+        font-size: 1.75em;
+      }
+
+      p {
+        max-width: 34em;
+        margin-bottom: 1.5em;
+      }
+
+      /*
+        TODO custom markdown rendering that puts
+        the images in a full-width <figure> instead
+      */
+      img {
+        max-width: 100%;
+      }
+
+      ul,
+      ol {
+        li {
+          max-width: 38em;
+        }
+      }
+
+      hr {
+        margin: 4rem 0;
+        border: 0;
+        height: 0.125rem;
+        background-color: var(--fadedAccent);
+        max-width: 36em;
+      }
+
+      blockquote {
+        background: var(--offWhite);
+        margin: 3em 1em;
+        padding: 1em 2em;
+        position: relative;
+        max-width: 42em;
+
+        font-style: italic;
+        font-size: 1.2em;
+
+        &::before {
+          content: "";
+          background: var(--light-dotted-bg) repeat;
+          inset: -1em;
+          z-index: -1;
+          position: absolute;
+        }
+
+        @media (max-width: 40em) {
+          font-size: 1em;
+          padding: 0.5em 1em;
+          margin: 3em 1em;
+        }
+      }
+
+      sup a[aria-describedby="footnote-label"] {
+        line-height: 1.4;
+        position: relative;
+        display: inline-block;
+        background-color: var(--fadedAccent);
+        color: var(--fg);
+        padding: 0 0.2em;
+        border-radius: 3px;
+        text-decoration: none;
+        font-size: 0.65em;
+        font-weight: 600;
+        transform-origin: 50% calc(100% + 0.75em);
+        rotate: 5deg;
+        rotate: random(1deg, 11deg);
+        translate: 0 -0.5em;
+        transition: background-color 0.1s 0.1s ease-out;
+
+        &::before {
+          content: "";
+          width: 0.2em;
+          height: 0.75em;
+          background-color: var(--fadedAccent);
+          position: absolute;
+          top: 100%;
+          left: calc(50% - 0.1em);
+          transition: background-color 0.1s 0.1s ease-out;
+        }
+
+        &::after {
+          content: "";
+          width: 0.4em;
+          height: 0.4em;
+          background-color: var(--fadedAccent);
+          position: absolute;
+          top: calc(100% + 0.5em);
+          left: calc(50% - 0.2em);
+          border-radius: 0.2em;
+          transition: background-color 0.2s ease-out;
+        }
+
+        &:hover {
+          background-color: var(--mainAccent);
+          color: var(--bg);
+
+          &::before,
+          &::after {
+            background-color: var(--mainAccent);
+          }
+        }
+      }
+
+      section.footnotes {
+        margin-top: 4em;
+        padding-top: 2em;
+        border-top: solid 0.125em var(--fadedAccent);
+
+        h2 {
+          font-size: 1.25em;
+        }
+      }
+    }
   </style>
 </html>
