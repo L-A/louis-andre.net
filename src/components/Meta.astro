@@ -2,7 +2,7 @@
 const {
   title,
   description = "Louis-André's personal website",
-  image,
+  image = "https://louis-andre.net/og-image.jpg",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -33,7 +33,7 @@ const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
 }
 
 {/* Image */}
-{image && <meta property="og:image" content={image} />}
+<meta property="og:image" content={image} />
 
 {/* Icons */}
 <link rel="icon" href="/favicon.ico" />
