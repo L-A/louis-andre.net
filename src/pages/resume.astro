@@ -4,8 +4,6 @@ import { render, getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 const workExperience = await getCollection("workExperience");
-import Image1 from "../../public/portfolio/galleyhouse-placeholder-1@2x.png";
-import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
 ---
 
 <MainLayout
@@ -43,16 +41,6 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
           .sort((a, b) => b.data.timePeriod.localeCompare(a.data.timePeriod))
           .map(async (item) => {
             const { Content } = await render(item);
-
-            const { name, timePeriod, responsibilities } = Astro.props;
-
-            // Debug
-            let images = Math.random() > 0.5 ? [Image1] : [Image2];
-            for (let i = 0; i < 4; i++) {
-              if (Math.random() > 0.5) {
-                images.push(i % 2 == 0 ? Image2 : Image1);
-              }
-            }
             return (
               <li class="work-item">
                 <h4>{item.data.name}</h4>
@@ -60,15 +48,23 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
                   <strong>{item.data.timePeriod}</strong> /{" "}
                   {item.data.responsibilities}
                 </p>
-                {images.length > 0 && (
+                {item.data.media && item.data.media.length > 0 && (
                   <div class="material">
-                    {images.map((i) => (
-                      <Image
-                        class="portfolio-image"
-                        src={i}
-                        alt={"Screenshot"}
-                      />
-                    ))}
+                    {item.data.media.map(({ type, src, alt }) =>
+                      type == "image" ? (
+                        <Image class="portfolio-image" src={src} alt={alt} />
+                      ) : (
+                        <video
+                          class="portfolio-image"
+                          autoplay
+                          muted
+                          loop
+                          controls={false}
+                          src={src}
+                          alt={alt}
+                        />
+                      ),
+                    )}
                   </div>
                 )}
                 <div class="content">
@@ -271,7 +267,7 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
 
         grid-template-areas: "full";
 
-        img {
+        .portfolio-image {
           cursor: url("/images/cursor/next.svg"), e-resize;
           grid-area: full;
           max-width: 100%;
@@ -392,7 +388,7 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
     const stacks = document.querySelectorAll("ul.experience li .material");
     stacks.forEach((stack) => {
       const images = Array.from(
-        stack.querySelectorAll<HTMLImageElement>(".material img"),
+        stack.querySelectorAll<HTMLImageElement>(".material .portfolio-image"),
       );
       if (images.length < 2) return; // don't cycle for just one
 

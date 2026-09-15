@@ -2,6 +2,16 @@
 name: "Evil Trout Games"
 timePeriod: "2026"
 responsibilities: "Design, Development"
+media:
+  - type: video
+    src: /video/portfolio/galleyhouse-home.mp4
+    alt: "Front page of the Galley House website"
+  - type: video
+    src: /video/portfolio/roottrees-home.mp4
+    alt: "Front page of the Roottrees are Dead website"
+  - type: video
+    src: /video/portfolio/eviltrout-home.mp4
+    alt: Ribbon navigation in the Evil Trout website"
 ---
 
 With Robin Ward, of Evil Trout inc., I created websites for [The Roottrees are Dead](https://roottrees.com) and [The Incident At Galley House](https://galley.house), two thinky games which started as game jam darlings,then got re-made for a Steam release with Evil Trout as the publisher (to great success!). I also ran a round of style and structure updates to the [Evil Trout website](https://eviltrout.com) itself. I’m particularly proud of the accessible curly ribbon navigation in that one.
