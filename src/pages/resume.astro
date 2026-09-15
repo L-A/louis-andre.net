@@ -3,10 +3,9 @@ import MainLayout from "../layouts/MainLayout.astro";
 import { render, getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
+const workExperience = await getCollection("workExperience");
 import Image1 from "../../public/portfolio/galleyhouse-placeholder-1@2x.png";
 import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
-
-const workExperience = await getCollection("workExperience");
 ---
 
 <MainLayout
@@ -37,39 +36,6 @@ const workExperience = await getCollection("workExperience");
       Portfolio mode is <span class="mode-state-string">off</span>
     </label>
 
-    <h3 class="with-dotted-bg">Projects and portfolio</h3>
-    <ul class="portfolio">
-      {
-        workExperience
-          .sort((a, b) => b.data.timePeriod.localeCompare(a.data.timePeriod))
-          .map(async (item) => {
-            const { Content } = await render(item);
-            return (
-              <li class="portfolio-project escapes-container">
-                <div class="container">
-                  <div class="content">
-                    <div class="intro">
-                      <h4>{item.data.name}</h4>
-                      <p class="time-period">
-                        <strong>{item.data.timePeriod}</strong> /{" "}
-                        {item.data.responsibilities}
-                      </p>
-                    </div>
-                    <div class="description">
-                      <Content />
-                    </div>
-                    <div class="material">
-                      <Image src={Image1} alt={"Screenshot"} />
-                      <Image src={Image2} alt={"Screenshot"} />
-                    </div>
-                  </div>
-                </div>
-              </li>
-            );
-          })
-      }
-    </ul>
-
     <h3 class="with-dotted-bg">Clients and workplaces</h3>
     <ul class="experience">
       {
@@ -77,6 +43,16 @@ const workExperience = await getCollection("workExperience");
           .sort((a, b) => b.data.timePeriod.localeCompare(a.data.timePeriod))
           .map(async (item) => {
             const { Content } = await render(item);
+
+            const { name, timePeriod, responsibilities } = Astro.props;
+
+            // Debug
+            let images = Math.random() > 0.5 ? [Image1] : [Image2];
+            for (let i = 0; i < 4; i++) {
+              if (Math.random() > 0.5) {
+                images.push(i % 2 == 0 ? Image2 : Image1);
+              }
+            }
             return (
               <li class="work-item">
                 <h4>{item.data.name}</h4>
@@ -84,6 +60,17 @@ const workExperience = await getCollection("workExperience");
                   <strong>{item.data.timePeriod}</strong> /{" "}
                   {item.data.responsibilities}
                 </p>
+                {images.length > 0 && (
+                  <div class="material">
+                    {images.map((i) => (
+                      <Image
+                        class="portfolio-image"
+                        src={i}
+                        alt={"Screenshot"}
+                      />
+                    ))}
+                  </div>
+                )}
                 <div class="content">
                   <Content />
                 </div>
@@ -142,7 +129,7 @@ const workExperience = await getCollection("workExperience");
         href="mailto:monsieur@louis-andre.net">by email</a
       >. I'm also on <a href="https://bsky.app/profile/louis-andre.net"
         >Bluesky</a
-      > and
+      > and{" "}
       <a href="https://www.linkedin.com/in/louis-andre-labadie">LinkedIn</a> if that's
       your preference.
     </p>
@@ -235,82 +222,6 @@ const workExperience = await getCollection("workExperience");
     }
   }
 
-  ul.portfolio {
-    list-style: none;
-    padding: 0;
-
-    .portfolio-project {
-      .container {
-        display: flex;
-        flex-direction: row;
-
-        overflow-x: scroll;
-        overflow-y: hidden;
-        overflow-y: hidden;
-        scrollbar-width: none;
-
-        margin: 0.5rem 0.25rem;
-        background-color: #000;
-        border-radius: 0.75rem;
-        height: min(24rem, 80vh);
-
-        .content {
-          position: relative;
-          color: #ddd;
-          display: flex;
-          flex-direction: row;
-          align-items: stretch;
-          flex: 0 0 auto;
-          padding-right: 8rem;
-
-          gap: 2rem;
-
-          .intro,
-          .description,
-          .material {
-          }
-
-          .intro {
-            padding-left: 2rem;
-            flex: 0 0 min(16rem, 80vw);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-
-            h4 {
-              font-size: 3rem;
-              font-weight: 200;
-              line-height: 1;
-              margin: 0;
-            }
-
-            .time-period {
-              font-size: 0.85rem;
-              font-family: var(--font-mono);
-              color: var(--mainAccent);
-              align-self: baseline;
-            }
-          }
-
-          .description {
-            flex: 0 0 min(32rem, 80vw);
-            align-self: flex-end;
-          }
-
-          .material {
-            display: flex;
-            flex-direction: row;
-
-            img {
-              max-height: 100%;
-              width: auto;
-            }
-          }
-        }
-      }
-    }
-  }
-
   ul.experience {
     list-style: none;
     padding: 0;
@@ -325,7 +236,7 @@ const workExperience = await getCollection("workExperience");
       grid-template-rows: auto;
       grid-template-areas:
         "a b"
-        "c c";
+        "c d";
 
       h4,
       .time-period {
@@ -349,10 +260,33 @@ const workExperience = await getCollection("workExperience");
         align-self: baseline;
       }
 
+      .material {
+        padding: 0 0 1rem;
+        margin-bottom: 3rem;
+        display: none; /* Non-portfolio mode */
+
+        grid-area: c;
+        position: relative;
+
+        grid-template-areas: "full";
+
+        img {
+          cursor: url("/images/cursor/next.svg"), e-resize;
+          grid-area: full;
+          max-width: 100%;
+          height: auto;
+          border-radius: 1rem;
+          box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+
+          transition:
+            translate var(--small-spring),
+            scale var(--small-spring);
+        }
+      }
+
       .content {
         border-top: solid 1px var(--fadedAccent);
-        grid-area: c;
-        padding-left: calc(50% + 0.5rem);
+        grid-area: d;
         font-size: 0.875rem;
       }
 
@@ -390,6 +324,11 @@ const workExperience = await getCollection("workExperience");
   }
 
   .portfolio {
+    ul.experience li.work-item {
+      .material {
+        display: grid;
+      }
+    }
   }
 </style>
 
@@ -413,51 +352,59 @@ const workExperience = await getCollection("workExperience");
       }
     });
 
-    // Items animation
-    const containers = document.querySelectorAll(
-      ".portfolio-project .container",
-    );
+    const topScale = 1;
+    const bottomScale = 0.9;
+    const rotationRange = 3;
+    const stackOffset = 2.5; // rem
+    const transitionMs = 300;
 
-    containers.forEach((container) => {
-      const rate = Math.random() * 0.2 + 0.9;
-      container.setAttribute("rate", rate);
-      const original = container.querySelector(".content");
-      if (!original) return;
+    function buildSlots(count: number) {
+      const sizeDelta = (topScale - bottomScale) / count;
+      const offsetDelta = stackOffset / count;
+      return Array.from({ length: count }, (_, i) => ({
+        zIndex: count - i,
+        offset: offsetDelta * i,
+        scale: topScale - i * sizeDelta,
+      }));
+    }
 
-      const clone = original.cloneNode(true) as HTMLDivElement;
-      clone.setAttribute("aria-hidden", "true");
-      clone.inert = true;
-      container.appendChild(clone);
+    function applySlot(
+      image: HTMLImageElement,
+      slot: { zIndex: number; offset: number; scale: number },
+    ) {
+      image.style.zIndex = `${slot.zIndex}`;
+      image.style.translate = `-${slot.offset * 0.8}rem ${slot.offset}rem`;
+      image.style.scale = `${slot.scale}`;
+    }
 
-      const loopWidth = original.getBoundingClientRect().width;
-
-      // keeps native drag/wheel scrolling on the container looping too
-      container.addEventListener(
-        "scroll",
-        () => {
-          if (container.scrollLeft >= loopWidth) {
-            container.scrollLeft -= loopWidth;
-          } else if (container.scrollLeft <= 0) {
-            container.scrollLeft += loopWidth;
-          }
-        },
-        { passive: true },
+    // Set up project images
+    const stacks = document.querySelectorAll("ul.experience li .material");
+    stacks.forEach((stack) => {
+      const images = Array.from(
+        stack.querySelectorAll<HTMLImageElement>(".material img"),
       );
+      if (images.length < 2) return; // don't cycle for just one
+
+      const slots = buildSlots(images.length);
+
+      // fixed, one-time per image — not part of the cycle
+      images.forEach((image) => {
+        image.style.rotate = `${Math.random() * rotationRange - rotationRange / 2}deg`;
+        image.style.transition = `translate ${transitionMs}ms ease, scale ${transitionMs}ms ease`;
+      });
+
+      // mutable: current front-to-back order of images
+      let order = images;
+
+      function render() {
+        order.forEach((image, i) => applySlot(image, slots[i]));
+      }
+      render();
+
+      stack.addEventListener("click", () => {
+        order = [...order.slice(1), order[0]]; // front image moves to back
+        render();
+      });
     });
-
-    // push vertical page-scroll delta into each item's horizontal scroll
-    let lastY = window.scrollY;
-    window.addEventListener(
-      "scroll",
-      () => {
-        const deltaY = window.scrollY - lastY;
-        lastY = window.scrollY;
-
-        containers.forEach((container, i) => {
-          container.scrollLeft += deltaY * ((i % 3) + 1) * 0.3;
-        });
-      },
-      { passive: true },
-    );
   });
 </script>
