@@ -231,7 +231,7 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
     li {
       padding-top: 1rem;
       display: grid;
-      gap: 0.5rem 1rem;
+      gap: 0.5rem 0;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;
       grid-template-areas:
@@ -240,8 +240,10 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
 
       h4,
       .time-period {
-        align-self: baseline;
-        padding-bottom: 0;
+        border-bottom: solid 1px var(--fadedAccent);
+        align-self: end;
+        line-height: 2rem;
+        padding: 0 0 0.5rem;
         margin: 0;
       }
 
@@ -257,11 +259,10 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
         font-family: var(--font-mono);
         color: var(--mainAccent);
         grid-area: b;
-        align-self: baseline;
       }
 
       .material {
-        padding: 0 0 1rem;
+        padding: 0 0.5rem 1rem;
         margin-bottom: 3rem;
         display: none; /* Non-portfolio mode */
 
@@ -285,18 +286,28 @@ import Image2 from "../../public/portfolio/galleyhouse-placeholder-2@2x.png";
       }
 
       .content {
-        border-top: solid 1px var(--fadedAccent);
         grid-area: d;
         font-size: 0.875rem;
       }
 
       @media (max-width: 600px) {
+        gap: 0;
         padding-top: 2rem;
         grid-template-columns: 1fr;
-        grid-template-areas: "a" "b" "c";
+        grid-template-areas: "a" "b" "c" "d";
+
+        h4 {
+          padding: 0;
+          border-bottom: none;
+        }
 
         .content {
           padding: 0;
+        }
+
+        .material {
+          padding: 0;
+          margin: 0.25rem -1rem 1rem;
         }
       }
     }

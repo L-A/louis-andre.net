@@ -25,11 +25,21 @@ const readingLog = defineCollection({
 
 const workExperience = defineCollection({
   loader: glob({ base: "./content/work-experience", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    name: z.string(),
-    timePeriod: z.string(),
-    responsibilities: z.string(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      timePeriod: z.string(),
+      responsibilities: z.string(),
+      media: z.optional(
+        z.array(
+          z.object({
+            type: z.enum(["image", "video"]),
+            src: z.union([image(), z.string()]),
+            alt: z.optional(z.string()),
+          }),
+        ),
+      ),
+    }),
 });
 
 const now = defineCollection({
