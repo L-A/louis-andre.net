@@ -258,7 +258,7 @@ const workExperience = await getCollection("workExperience");
       }
 
       .material {
-        padding: 0 0.5rem 1rem;
+        padding: 0 0.5rem 1rem 0;
         margin-bottom: 3rem;
         display: none; /* Non-portfolio mode */
 
@@ -272,7 +272,7 @@ const workExperience = await getCollection("workExperience");
           grid-area: full;
           max-width: 100%;
           height: auto;
-          border-radius: 1rem;
+          border-radius: 0.25rem;
           box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 
           transition:
@@ -361,8 +361,8 @@ const workExperience = await getCollection("workExperience");
 
     const topScale = 1;
     const bottomScale = 0.9;
-    const rotationRange = 3;
-    const stackOffset = 2.5; // rem
+    const rotationRange = 2.5;
+    const stackOffset = 1.5; // rem
     const transitionMs = 300;
 
     function buildSlots(count: number) {
