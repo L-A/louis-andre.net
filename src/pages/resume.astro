@@ -4,25 +4,28 @@ import { render, getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 const workExperience = await getCollection("workExperience");
+
+// Fed from the /portfolio page when redirecting
+const portfolioMode = Astro.locals.portfolioMode ?? false;
 ---
 
 <MainLayout
-  title="Journal"
+  title="Resume"
   description="A list of texts and articles I wrote over the years."
 >
-  <div class="content-root">
+  <div class:list={["content-root", portfolioMode && "portfolio"]}>
     <header>
-      <h2>Resume</h2>
+      <h2>Resume <span class="portfolio-mode-tag">& portfolio</span></h2>
       <p class="intro">
         Colleagues call me <em>a designer?</em> and <em>a developer?</em> – pronouncing
         the question mark on both. I design for screens most of the time, and I develop
         for the front-end when a project calls for it. My best work is done when I
-        get to cover both the design and development roles.
+        get to both plan and execute on a product's design.
       </p>
       <p>
         While I love a good marketing website, I usually fit best with work done
         on products with complex user interfaces, and when I can integrate into
-        a small, competent product and development team.
+        a small competent team with responsible and autonomous teammates.
       </p>
     </header>
 
@@ -30,8 +33,15 @@ const workExperience = await getCollection("workExperience");
       <div class="toggle-slider">
         <div class="toggle-knob"></div>
       </div>
-      <input type="checkbox" id="portfolio-mode" class="hidden" />
-      Portfolio mode is <span class="mode-state-string">off</span>
+      <input
+        type="checkbox"
+        id="portfolio-mode"
+        class="hidden"
+        checked={portfolioMode}
+      />
+      Portfolio mode is <span class="mode-state-string"
+        >{portfolioMode ? "on" : "off"}</span
+      >
     </label>
 
     <h3 class="with-dotted-bg">Clients and workplaces</h3>
@@ -144,6 +154,27 @@ const workExperience = await getCollection("workExperience");
       margin: 1.5rem 0 1rem;
       line-height: 1.1;
       margin-left: -0.025rem;
+
+      .portfolio-mode-tag {
+        display: inline-block;
+        background-color: var(--offWhite);
+        padding: 0.25rem 0.5rem;
+        font-weight: 300;
+        color: var(--mainAccent);
+
+        box-shadow: 0px 3rem 2rem rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        scale: 1.1 1;
+        translate: 0.25rem -1.2rem;
+        opacity: 0;
+        pointer-events: none;
+
+        transition:
+          opacity 0.14s,
+          translate var(--small-spring),
+          scale var(--small-spring),
+          box-shadow var(--small-spring);
+      }
     }
 
     p {
@@ -268,11 +299,12 @@ const workExperience = await getCollection("workExperience");
         grid-template-areas: "full";
 
         .portfolio-image {
+          border: solid 0.35rem var(--offWhite);
           cursor: url("/images/cursor/next.svg"), e-resize;
           grid-area: full;
           max-width: 100%;
           height: auto;
-          border-radius: 0.25rem;
+          border-radius: 0.6rem;
           box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 
           transition:
@@ -304,6 +336,8 @@ const workExperience = await getCollection("workExperience");
         .material {
           padding: 0;
           margin: 0.25rem -1rem 1rem;
+          max-width: 100vw;
+          overflow: hidden;
         }
       }
     }
@@ -331,6 +365,20 @@ const workExperience = await getCollection("workExperience");
   }
 
   .portfolio {
+    header {
+      h2 .portfolio-mode-tag {
+        translate: 0;
+        scale: 1;
+        opacity: 1;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+        transition:
+          opacity 0.1s,
+          translate var(--small-spring),
+          scale var(--small-spring),
+          box-shadow var(--small-spring);
+      }
+    }
+
     ul.experience li.work-item {
       .material {
         display: grid;
@@ -346,22 +394,24 @@ const workExperience = await getCollection("workExperience");
       "#portfolio-mode",
     ) as HTMLInputElement;
     portfolioSwitch.addEventListener("change", () => {
-      const value = portfolioSwitch.checked;
+      const portfolioModeOn = portfolioSwitch.checked;
       const modeSpan = document.querySelector(".mode-state-string");
       const pageRoot = document.querySelector(".content-root");
 
-      if (value) {
+      if (portfolioModeOn) {
         if (modeSpan) modeSpan.innerHTML = "on";
         if (pageRoot) pageRoot.classList.add("portfolio");
+        history.pushState({}, "", "/portfolio");
       } else {
         if (modeSpan) modeSpan.innerHTML = "off";
         if (pageRoot) pageRoot.classList.remove("portfolio");
+        history.pushState({}, "", "/resume");
       }
     });
 
     const topScale = 1;
     const bottomScale = 0.9;
-    const rotationRange = 2.5;
+    const rotationRange = 3.5;
     const stackOffset = 1.5; // rem
     const transitionMs = 300;
 
