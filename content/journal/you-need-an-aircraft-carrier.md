@@ -24,3 +24,5 @@ A second woman walks in later.
 – Is it good... on land? It's really not that far. I could use something smaller. I don't want to travel to and from port. I have a feeling something smaller might be way more efficient, just for my purpose?
 
 – It's what we sell to everone else. You don't want to get left behind, do you?
+
+[^1]: You know, _a dealership_. A very real thing – very precise. Why not start a metaphor by making it immediately tortured?
