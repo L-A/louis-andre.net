@@ -5,6 +5,8 @@ const {
   image = "https://louis-andre.net/og-image.jpg",
 } = Astro.props;
 
+import { publicationUri } from "../../sequoia.json";
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
 ---
@@ -22,15 +24,9 @@ const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
 {/* Canonical */}
 <link rel="canonical" href={canonicalURL} />
 <link rel="me" href="https://social.lol/lalabadie" />
-{
-  /* standard.site
 
-<link
-  rel="site.standard.publication"
-  href="at://[DID]/site.standard.publication/[RKEY]"
-/>
-*/
-}
+{/* standard.site */}
+<link rel="site.standard.publication" href={publicationUri} />
 
 {/* Image */}
 <meta property="og:image" content={image} />
