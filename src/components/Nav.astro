@@ -2,31 +2,32 @@
 import Logo from "../assets/svg/l-logo.svg";
 import Container from "./Container.astro";
 import NavPagesList from "./NavPagesList.astro";
+import { stripLocalePrefix, useTranslations } from "../helpers/translations";
 
-const { pathname } = Astro.url;
+const { locale, url } = useTranslations(Astro.currentLocale);
+const bare = stripLocalePrefix(Astro.url.pathname, locale);
 
 // Split the pathname into segments as links
 let acc = "";
-const pathSegments = pathname
+const pathSegments = bare
   .split("/")
   .filter(Boolean)
-  .map((p, index) => {
-    acc += "/" + p;
-
-    return { segment: p, href: acc };
+  .map((segment) => {
+    acc += (acc ? "/" : "") + segment;
+    return { segment, href: url(acc) };
   });
 ---
 
 <Container>
   <nav>
-    <a href="/" class="home-link" aria-label="Home">
+    <a href={url("")} class="home-link" aria-label="Home">
       <Logo />
     </a>
     <p class="current-path">
       {
-        pathname == "/"
+        pathSegments.length === 0
           ? "/"
-          : pathSegments.map((p, index) => (
+          : pathSegments.map((p) => (
               <>
                 /<a href={p.href}>{p.segment}</a>
               </>

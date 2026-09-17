@@ -14,7 +14,7 @@ const journal = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     description: z.string(),
-    inFrench: z.boolean().optional(),
+    lang: z.enum(["en", "fr"]).default("en"),
     atUri: z.string().optional(),
   }),
 });

@@ -5,11 +5,14 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Container from "../components/Container.astro";
 import Meta from "../components/Meta.astro";
+import { getBarePath, getLocale } from "../helpers/translations";
 
 const { contained = true, title, description, image, atUri } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const countPath = getBarePath(Astro.url.pathname, Astro.currentLocale);
 ---
 
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,7 +22,9 @@ const { contained = true, title, description, image, atUri } = Astro.props;
     <Font cssVariable="--font-plex-condensed" />
     <Font cssVariable="--font-mono" />
     <script
+      is:inline
       data-goatcounter="https://lal.goatcounter.com/count"
+      data-goatcounter-settings={JSON.stringify({ path: countPath })}
       async
       src="//gc.zgo.at/count.js"></script>
     {atUri && <link rel="site.standard.document" href={atUri} />}

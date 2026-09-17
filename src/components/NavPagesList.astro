@@ -1,19 +1,18 @@
 ---
 import ButtonLink from "./ButtonLink.astro";
+import { useTranslations } from "../helpers/translations";
+
+const { t, url } = useTranslations(Astro.currentLocale);
 ---
 
 <div class="pages">
   <li>
-    <ButtonLink type="highlight" href="/now">/now</ButtonLink>
+    <ButtonLink type="highlight" href={url("now")}>{t("nav.now")}</ButtonLink>
   </li>
+  <li><ButtonLink href={url("journal")}>{t("nav.journal")}</ButtonLink></li>
+  <li><ButtonLink href={url("generative-art")}>{t("nav.art")}</ButtonLink></li>
   <li>
-    <ButtonLink href="/journal">Journal</ButtonLink>
-  </li>
-  <li>
-    <ButtonLink href="/generative-art">Art</ButtonLink>
-  </li>
-  <li>
-    <ButtonLink href="/reading-log">Reading log</ButtonLink>
+    <ButtonLink href={url("reading-log")}>{t("nav.readingLog")}</ButtonLink>
   </li>
 </div>
 

@@ -1,1 +1,1 @@
-export const journalUrl = (id: string) => `/journal/${id}`;
+export const journalUrl = (id: string) => `/journal/${id}/`;

@@ -10,6 +10,16 @@ export default defineConfig({
     defaultStrategy: "viewport",
   },
 
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "fr"],
+    fallback: { fr: "en" },
+    routing: {
+      prefixDefaultLocale: false,
+      fallbackType: "rewrite",
+    },
+  },
+
   fonts: [
     {
       provider: fontProviders.fontsource(),

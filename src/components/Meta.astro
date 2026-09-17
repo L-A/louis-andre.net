@@ -1,14 +1,27 @@
 ---
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { publicationUri } from "../../sequoia.json";
+
+import {
+  getLocaleAlternates,
+  stripLocalePrefix,
+  getLocale,
+} from "../helpers/translations";
+
 const {
   title,
   description = "Louis-André's personal website",
   image = "https://louis-andre.net/og-image.jpg",
 } = Astro.props;
 
-import { publicationUri } from "../../sequoia.json";
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
+
+const locale = getLocale(Astro.currentLocale);
+const bare = stripLocalePrefix(Astro.url.pathname, locale);
+const canonicalURL = getAbsoluteLocaleUrl(locale, bare);
+const ogAlternates = getLocaleAlternates(Astro.url.pathname, locale);
+const defaultAlternateHref = ogAlternates.find((a) => a.hreflang == "en")?.href;
+const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
 ---
 
 {/* Title */}
@@ -20,6 +33,15 @@ const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
 <meta name="description" content={description} />
 <meta property="og:description" content={description} />
 <meta property="twitter:description" content={description} />
+
+{/* Locale */}
+<meta property="og:locale" content={ogLocale} />
+{
+  ogAlternates.map(({ hreflang, href }) => (
+    <link rel="alternate" hreflang={hreflang} href={href} />
+  ))
+}
+<link rel="alternate" hreflang="x-default" href={defaultAlternateHref} />
 
 {/* Canonical */}
 <link rel="canonical" href={canonicalURL} />

@@ -46,7 +46,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
           return (
             <li>
-              <a href={`/now/${entry.id}`}>{dateFormatter.format(date)}</a>
+              <a href={`/now/${entry.id}/`}>{dateFormatter.format(date)}</a>
               {i !== now.length - 1 && ","}
             </li>
           );

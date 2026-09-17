@@ -1,10 +1,12 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
+
 import { journalUrl } from "../../helpers/collections";
 import MainLayout from "../../layouts/MainLayout.astro";
 import RssIcon from "../../assets/svg/icn-rss.svg";
+import { useTranslations } from "../../helpers/translations";
 
-import { getCollection, type CollectionEntry } from "astro:content";
-
+const { url } = useTranslations(Astro.currentLocale);
 const entries = await getCollection("journal");
 
 const groupedByYear = entries.reduce<
@@ -40,19 +42,21 @@ const groupedByYear = entries.reduce<
   <ul class="entries">
     {
       Object.entries(groupedByYear)
-        .sort(([a], [b]) => b - a)
+        .sort(([a], [b]) => Number(b) - Number(a))
         .map(([year, entries]) => (
           <li class="year">
             <h3 class="with-dotted-bg">{year}</h3>
             <ul>
-              {entries.map((entry) => (
-                <li class="entry">
-                  <a href={journalUrl(entry.id)}>
-                    <h4>{entry.data.title}</h4>
-                    <p>{entry.data.description}</p>
-                  </a>
-                </li>
-              ))}
+              {entries
+                .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+                .map((entry) => (
+                  <li class="entry">
+                    <a href={url(`/journal/${entry.id}/`)}>
+                      <h4>{entry.data.title}</h4>
+                      <p>{entry.data.description}</p>
+                    </a>
+                  </li>
+                ))}
             </ul>
           </li>
         ))

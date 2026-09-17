@@ -2,7 +2,7 @@
 title: Les maudits mots de passe uniques
 date: 2020-02-12T05:00:00.000Z
 description: A quick help for switching to a password manager
-inFrench: true
+lang: fr
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejx4flh2l"
 ---
 
@@ -16,15 +16,15 @@ La solution par contre, ce n'est pas de réutiliser le même mot de passe à plu
 
 **Ne réutilise jamais de mot de passe entre tes comptes.**
 
-*Si ça t'intéresse, j'explique pourquoi c'est dangereux à la fin de cet article ↓*
+_Si ça t'intéresse, j'explique pourquoi c'est dangereux à la fin de cet article ↓_
 
 # Okay le smatt, comment je me protège sans que ça soit fatiguant?
 
 **Avec un gestionnaire de mots de passe**! Grosso modo, c'est un outil qui mémorise tes informations de connexion pour tous les services que tu utilises.
 
-On choisit un gestionnaire de mots de passe parce que son stockage, lui, est *très* sécurisé. Pas mal plus qu'un post-it sur ton écran ou un fichier texte sur ton ordi dans le dossier *Bureau/Dissertations/Aristophane, la bibliographie complète*
+On choisit un gestionnaire de mots de passe parce que son stockage, lui, est _très_ sécurisé. Pas mal plus qu'un post-it sur ton écran ou un fichier texte sur ton ordi dans le dossier _Bureau/Dissertations/Aristophane, la bibliographie complète_
 
-L'ensemble de tes mots de passe va être contenu dans le stockage du gestionnaire qui, lui, est encrypté par un mot de passe principal (*master password*).
+L'ensemble de tes mots de passe va être contenu dans le stockage du gestionnaire qui, lui, est encrypté par un mot de passe principal (_master password_).
 
 **Tu te connectes à ton compte de banque?** Clique sur ton gestionnaire, entre ton mot de passe principal, et le gestionnaire fait le reste.
 
@@ -36,7 +36,7 @@ L'ensemble de tes mots de passe va être contenu dans le stockage du gestionnair
 
 Tu comprends le principe.
 
-Bref, le mot de passe maître, ça devient le *seul* mot de passe que tu dois mémoriser. C'est pas mal plus pratique.
+Bref, le mot de passe maître, ça devient le _seul_ mot de passe que tu dois mémoriser. C'est pas mal plus pratique.
 
 En plus, pas besoin que ton mot de passe principal soit difficile à mémoriser. Quelque chose comme `Un bourdon marche seul au plafond` c'est beaucoup plus sécuritaire que `Y&gT81zl~ke#s@`, en vertu de sa longueur tout simplement. En plus, tu t'en souviens déjà.
 
@@ -44,9 +44,9 @@ En plus, pas besoin que ton mot de passe principal soit difficile à mémoriser.
 
 Voici trois bons choix de gestionnaires de mots de passe. Les deux premiers sont disponibles gratuitement pour les particuliers. Il n'y a pas de choix risqué dans cette liste:
 
-* [BitWarden](https://bitwarden.com/)
-* [Lastpass](https://www.lastpass.com/fr/how-lastpass-works)
-* [1Password](https://1password.com/fr/) (36 $/année)
+- [BitWarden](https://bitwarden.com/)
+- [Lastpass](https://www.lastpass.com/fr/how-lastpass-works)
+- [1Password](https://1password.com/fr/) (36 $/année)
 
 Personnellement, j'ai utilisé 1Password pendant des années et c'est un excellent outil. J'utilise maintenant Bitwarden.
 
@@ -64,23 +64,23 @@ Souvent, un gestionnaire de mots de passe va aussi **te signaler si un service q
 
 ## En résumé:
 
-* Tu choisis un gestionnaire de mots de passe (c'est gratuit!)
-* Tu te choisis un mot de passe principal, qui est long mais facile à retenir
-* Tu installes le gestionnaire sur tes appareils préférés
-* Tu t'assure d'avoir tout de suite des mots de passe uniques là où ça
+- Tu choisis un gestionnaire de mots de passe (c'est gratuit!)
+- Tu te choisis un mot de passe principal, qui est long mais facile à retenir
+- Tu installes le gestionnaire sur tes appareils préférés
+- Tu t'assure d'avoir tout de suite des mots de passe uniques là où ça
   compte le plus (banque, courriel, Paypal, Skype, gouvernement,
   employeur, ce genre de places)
-* Tu dors bien.
+- Tu dors bien.
 
 # Et si mon gestionnaire de mots de passe a une fuite, lui? Ou si je me fais voler mon ordinateur?
 
 Bonne nouvelle! Ça va se passer comme quand une compagnie qui prend sa sécurité au sérieux est malgré tout victime d'un vol de données:
 
-Les hackers prennent possession du genre de coffre-fort (ou se sauvent avec un ordi dans les mains, on sait jamais). Mais ses données sont *encryptées*, donc illisibles, parce que personne d'entre eux ne fournir le mot de passe qui est la *seule* façon de les déchiffrer.
+Les hackers prennent possession du genre de coffre-fort (ou se sauvent avec un ordi dans les mains, on sait jamais). Mais ses données sont _encryptées_, donc illisibles, parce que personne d'entre eux ne fournir le mot de passe qui est la _seule_ façon de les déchiffrer.
 
 Sans ce mot de passe, les hackers ont en main un grand fichier rempli de charabia inutile. Et toi, tu demeure en sécurité. ✨
 
-***
+---
 
 # Pour les curieux: Pourquoi c'est pas sécuritaire de réutiliser un mot de passe?
 
@@ -91,7 +91,7 @@ Pourquoi est-ce que ton compte Facebook serait à risque quand une fuite a eu li
 Ces hackers ont des outils automatisés qui **attaquent tout le monde en même temps**. La liste contient des informations personnelles d'une tonne de gens – par exemple, ton courriel et un mot de passe que tu réutilises ailleurs. Ils ont des outils qui vont essayer, pour chaque personne dans la fuite, de se connecter avec les mêmes informations volées sur les services populaires – Netflix, Gmail, Paypal, Facebook, Amazon, Desjardins, etc.
 
 Avec ça, ils vont voir qui réutilise son courriel et mot de passe ailleurs, et prendre contrôle des comptes où c'est le cas. Ça s'appelle une attaque de
-bourrage (*[credential stuffing](https://owasp.org/www-community/attacks/Credential_stuffing)* en anglais).
+bourrage (_[credential stuffing](https://owasp.org/www-community/attacks/Credential_stuffing)_ en anglais).
 
 Fais le test: Entre ton courriel sur l'outil [Have I Been Pwned](https://haveibeenpwned.com/) et regardes dans combien de fuites publiques il a été retrouvé à date. De mon côté, je suis prudent, mais mon email personnel a malgré tout
 fini dans 23 fuites majeures (Adobe, bit.ly, Last.fm, Trillian, MySpace,
