@@ -2,7 +2,6 @@
 title: "How market giants lose to challengers"
 date: 2026-07-18T16:30:00.003Z
 description: Some thoughts on how big businesses get into markets wishing nothing ever changed
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejvzoyo2f"
 ---
 

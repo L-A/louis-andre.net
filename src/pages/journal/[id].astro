@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import { getCollection, render } from "astro:content";
+import { useTranslations } from "../../helpers/translations";
 
 export const getStaticPaths = async () => {
   const entries = await getCollection("journal");
@@ -10,10 +11,11 @@ export const getStaticPaths = async () => {
   }));
 };
 
+const { locale, l } = useTranslations(Astro.currentLocale);
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
+const dateFormatter = new Intl.DateTimeFormat(locale, {
   year: "numeric",
   month: "long",
   day: "numeric",
@@ -30,7 +32,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
       {entry.data.title}
     </h1>
     <h2 class="date">
-      <span>Posted</span>
+      <span>{l({ en: "Posted", fr: "Publié le" })}</span>
       {" " + dateFormatter.format(entry.data.date)}
     </h2>
     <main class="from-markdown">

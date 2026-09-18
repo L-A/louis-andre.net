@@ -2,6 +2,7 @@
 import Logo from "../assets/svg/l-logo.svg";
 import Container from "./Container.astro";
 import NavPagesList from "./NavPagesList.astro";
+import LanguageButton from "./LanguageButton.astro";
 import { stripLocalePrefix, useTranslations } from "../helpers/translations";
 
 const { locale, url } = useTranslations(Astro.currentLocale);
@@ -35,6 +36,7 @@ const pathSegments = bare
       }
     </p>
     <NavPagesList />
+    <LanguageButton />
   </nav>
 </Container>
 
@@ -42,7 +44,7 @@ const pathSegments = bare
   nav {
     display: grid;
     grid-template-areas: "logo current-path pages";
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     align-items: baseline;
     justify-content: space-between;
     margin-top: 1.5rem;

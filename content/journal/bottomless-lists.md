@@ -4,7 +4,6 @@ date: 2025-05-01T23:42:59.337Z
 description: >-
   Pulled from my modest digital garden: A short meditation on project and to-do
   apps featuring bottomless lists
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwdy7j2e"
 ---
 
@@ -24,4 +23,5 @@ The way I address this, personally, is that my short- and mid-term planning happ
 This particular choice of tool is clearly an answer to my own strengths and shortcomings. I prefer tidy andfocused action lists, I don't mind the paper journal tedium, I'm great at holding a vision/direction but very poor at specific long-term planning.[^2]
 
 [^1]: To be clear, many of these tools recognize the issue and adjust the format to guard against it. Kanban is the easy example, since it encourages a limited number of items in specific columns. However, here I'm speaking more of the fact that the _To-do_ column remains bottomless.
+
 [^2]: This short text – nerding out on a very specific combination of tools, behaviors and self-awareness – is hard to do in person, and it's great that one can throw such a thing on the web and receive a few emails from other people who are able to relate.

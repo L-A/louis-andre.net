@@ -1,8 +1,7 @@
 ---
-title: 'Maps for grief: a breakdown'
+title: "Maps for grief: a breakdown"
 date: 2022-03-01T05:00:00.000Z
-description: 'Breaking down the behaviours, features and rarities in the series'
-inFrench: false
+description: "Breaking down the behaviours, features and rarities in the series"
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwvimq2f"
 ---
 
@@ -60,9 +59,9 @@ results like these:
 
 ![Demonstration: Lines and dots](</journal/maps-for-grief-breakdown/Secondary field.png>)![Demonstration: Lines and dots](</journal/maps-for-grief-breakdown/Secondary field 2.png>)
 
-The last part is inserting symbols. The most on-the-nose part of *Maps for grief* is the drawing of these symbols, which appear in areas where lines
+The last part is inserting symbols. The most on-the-nose part of _Maps for grief_ is the drawing of these symbols, which appear in areas where lines
 can't flow. These are the regions where the secondary field is the
-strongest. Each iteration has a single type of *coping*, deciding
+strongest. Each iteration has a single type of _coping_, deciding
 what type of symbol is drawn. There can be different drawing rules for
 different symbols, which helps give each of the coping types a specific
 personality.
@@ -86,10 +85,10 @@ field's value.
 
 #### Rarities (coded / actual):
 
-* Mystical 24.8% / **25.2%**
-* Nature 24.8% / **22%**
-* Raw 24.8% / **24.2%**
-* Spiritual 24.8% / **26,4%**
+- Mystical 24.8% / **25.2%**
+- Nature 24.8% / **22%**
+- Raw 24.8% / **24.2%**
+- Spiritual 24.8% / **26,4%**
 
 ### Palette
 
@@ -105,12 +104,12 @@ separate region.
 
 #### Rarities (coded / actual):
 
-* Terminal 16.6% / **15.4%**
-* Nebula 16.6% / **15.6%**
-* Winter forest 16.6% / **17%**
-* Witching hour 16.6% / **18%**
-* IKEA Showroom 16.6% / **16.8%**
-* Parched 16.6% / **17.2%**
+- Terminal 16.6% / **15.4%**
+- Nebula 16.6% / **15.6%**
+- Winter forest 16.6% / **17%**
+- Witching hour 16.6% / **18%**
+- IKEA Showroom 16.6% / **16.8%**
+- Parched 16.6% / **17.2%**
 
 ### Stroke length
 
@@ -126,9 +125,9 @@ are between the two.
 
 #### Rarities (coded / actual):
 
-* Short 32 % / **31.2%**
-* Average 27.8% / **25.6%**
-* Long 40% / **43.2%**
+- Short 32 % / **31.2%**
+- Average 27.8% / **25.6%**
+- Long 40% / **43.2%**
 
 ### Tip size
 
@@ -142,10 +141,10 @@ great even as thumbnails, but can lack in detail if they're too big.
 
 #### Rarities (coded / actual):
 
-* Fine 25 % / **25.8%**
-* Average 37.5% / **38%**
-* Thick 25% / **25.4%**
-* Fat marker 12.5% / **10.8%**
+- Fine 25 % / **25.8%**
+- Average 37.5% / **38%**
+- Thick 25% / **25.4%**
+- Fat marker 12.5% / **10.8%**
 
 ### Region count
 
@@ -160,10 +159,10 @@ between each region.
 
 #### Rarities (coded / actual):
 
-* Single region 50 % / **52.8%**
-* Two 25% / **24%**
-* Three 20% / **18%**
-* Four 5% / **5.2%**
+- Single region 50 % / **52.8%**
+- Two 25% / **24%**
+- Three 20% / **18%**
+- Four 5% / **5.2%**
 
 ## Special features
 
@@ -171,7 +170,7 @@ There are a few features that recognizably alter how a piece is drawn. These are
 
 ### No dots
 
-Usually, in a *Maps for grief* composition, some line insertions that should be symbols will draw a simple dot instead. Pieces with this attribute forego the dots, leading to sparser symbol areas.
+Usually, in a _Maps for grief_ composition, some line insertions that should be symbols will draw a simple dot instead. Pieces with this attribute forego the dots, leading to sparser symbol areas.
 
 Rarity: 2.5% / **2.8%**
 
@@ -224,11 +223,11 @@ backgrounds, however each iteration picks only one of the accent and
 background colours, along with a certain amount of intermediary colours.
 
 **Drawing jitter** determines how "shaky" the line drawing is. This is set in relation to
-tip size as well, so the outputs with the most jitter are ones with *Fat marker* tip size. You can get a feel for it by pressing a on the keyboard to animate an iteration in its live view.
+tip size as well, so the outputs with the most jitter are ones with _Fat marker_ tip size. You can get a feel for it by pressing a on the keyboard to animate an iteration in its live view.
 
 **Line spacing** can vary a bit, and decides how much distance lines must have between each other.
 
-**Radial field strength** affects compositions with the *Radial* feature. When very strong, it forces lines to point almost directly to
+**Radial field strength** affects compositions with the _Radial_ feature. When very strong, it forces lines to point almost directly to
 the center, while a low value will draw a soft spiraling composition.
 
 **Force field scale** decides how much variance can be packed within the surface of an
@@ -247,7 +246,7 @@ Some variables are not exactly set by the seed, as they are adjusted by the gene
 
 ![](</journal/maps-for-grief-breakdown/Palette variants.jpg>)
 
-**Anomaly threshold** (or *symbol threshold*)
+**Anomaly threshold** (or _symbol threshold_)
 is the value past which the secondary field forces lines to turn to
 symbols. Because the output of the field always varies, the generation
 process "scans" the field before committing to it. If it finds too
@@ -273,7 +272,7 @@ If you want to try your
 hand at picking out the expressed features of a given iteration, feel
 free to browse the collection. It's possible to do so [on Artblocks](https://www.artblocks.io/project/235) where it was minted, on places like [Artacle](https://artacle.io/project/maps-for-grief), which will let you filter a collection like this using its different features, and on [Opensea](https://opensea.io/collection/maps-for-grief-by-louis-andre-labadie), which is more of a marketplace.
 
-***
+---
 
 Oh,
 still here? Okay – if you're interested, I've done three of my own

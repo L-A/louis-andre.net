@@ -2,7 +2,6 @@
 title: The hands of others
 date: 2014-05-13T04:00:00.000Z
 description: A bit of a love letter to wonkiness and the human touch
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejxddew2p"
 ---
 

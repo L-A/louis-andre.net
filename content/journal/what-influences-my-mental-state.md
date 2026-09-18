@@ -3,11 +3,10 @@ title: Things that influence my mental state
 date: 2025-06-15T16:17:00.000Z
 description: >-
   A list of activities that keep me mentally balanced.
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwak4f2t"
 ---
 
-I've been thinking lately about what actually keeps me balanced, as opposed to activities that I *think* should. I don't want to fall into prescriptive thinking about wellness - meditation is good, exercise is good, social connection is good - without paying attention to what specifically works for a given temperament.
+I've been thinking lately about what actually keeps me balanced, as opposed to activities that I _think_ should. I don't want to fall into prescriptive thinking about wellness - meditation is good, exercise is good, social connection is good - without paying attention to what specifically works for a given temperament.
 
 This is my attempt at a personal audit. The activities below aren't aspirational. They're what most consistently move the needle on my mood and general mental state. Some are obvious, others I eventually realized over long periods of time. The list is unordered, and non-exhaustive.
 
@@ -29,7 +28,7 @@ I have an on-and-off relationship with meditation, though it definitely has a po
 
 ## Working out
 
-To no one's surprise, exercise is good for you! I lean towards individual *action sports*, with my personal love being street trials. Think an almost-BMX, with lots of braking, balancing in place and climbing over stuff. I live in a northern country, so bicycle sports are out of the equation for almost half the year, during which I ideally do strength training 2-3x a week. Since I became a father, and personal time got very restricted, the gym outings are on hold and I go out for a run or bike ride when I can.
+To no one's surprise, exercise is good for you! I lean towards individual _action sports_, with my personal love being street trials. Think an almost-BMX, with lots of braking, balancing in place and climbing over stuff. I live in a northern country, so bicycle sports are out of the equation for almost half the year, during which I ideally do strength training 2-3x a week. Since I became a father, and personal time got very restricted, the gym outings are on hold and I go out for a run or bike ride when I can.
 
 ## Art and writing
 
@@ -46,6 +45,7 @@ I never tried Fortnite, WoW or LoL, but video games have nonetheless been a reli
 ### Solo games
 
 Games that ask some level of planning/organisation and methodical thinking are relaxing to me, especially if they're also open in some ways. I didn't dive into Factorio yet – early fatherhood and whatnot – but there's a broad category that includes Zachtronics games, multiplayer Minecraft (Tekkit!), some Civ-style games, city builders, etc. that fulfill my need for open exploration and tinkering. Some personal highlights, off the top of my mind:
+
 - [Opus Magnum](https://www.zachtronics.com/opus-magnum/)
 - [Mindustry](https://mindustrygame.github.io)
 - [Dyson Sphere Program](https://en.wikipedia.org/wiki/Dyson_Sphere_Program)

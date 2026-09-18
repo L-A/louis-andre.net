@@ -9,11 +9,16 @@ export const GET = async (context) => {
     description: "Posts on art, technology, and design",
     site: context.site,
     stylesheet: "/rss-style.xsl",
-    items: posts.map((post) => ({
-      title: post.data.title,
-      description: post.data.description,
-      pubDate: post.data.date,
-      link: `/journal/${post.slug}/`,
-    })),
+    items: posts
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+      .map((post) => ({
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.date,
+        link:
+          post.data.lang === "fr"
+            ? `/fr/journal/${post.id}/`
+            : `/journal/${post.id}/`,
+      })),
   });
 };

@@ -1,8 +1,7 @@
 ---
 title: Territory B leaves no space unused
 date: 2023-02-01T05:00:00.000Z
-description: 'On Territory B, a long-form generative art series released on fxhash'
-inFrench: false
+description: "On Territory B, a long-form generative art series released on fxhash"
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwrt7n24"
 ---
 
@@ -31,7 +30,7 @@ filled out.
 The
 underlying noise source, however, is unified and continuous. Just like
 land division, the separations created in Territory B are ultimately
-artificial. Its compositions usually let the viewer see *through*
+artificial. Its compositions usually let the viewer see _through_
 the large blocks and feel the underlying field. Some elements describe
 it through angles and alignment, others by crowding certain areas.
 

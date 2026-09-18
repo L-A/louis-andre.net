@@ -1,12 +1,11 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 
-import { journalUrl } from "../../helpers/collections";
 import MainLayout from "../../layouts/MainLayout.astro";
 import RssIcon from "../../assets/svg/icn-rss.svg";
 import { useTranslations } from "../../helpers/translations";
 
-const { url } = useTranslations(Astro.currentLocale);
+const { url, l, locale } = useTranslations(Astro.currentLocale);
 const entries = await getCollection("journal");
 
 const groupedByYear = entries.reduce<
@@ -20,23 +19,48 @@ const groupedByYear = entries.reduce<
 
 <MainLayout
   title="Journal"
-  description="A list of texts and articles I wrote over the years."
+  description={l({
+    en: "A list of texts and articles I wrote over the years.",
+    fr: "Les articles que j'ai écrits au fil des ans.",
+  })}
 >
   <header>
     <h2>
-      Journal <a class="feed-link" href="/journal/rss.xml"
-        ><RssIcon class="rss-icon" /></a
-      >
+      Journal{" "}
+      <a class="feed-link" href="/journal/rss.xml">
+        <RssIcon class="rss-icon" />
+      </a>
     </h2>
-    <p>Here is where I write occasional articles.</p>
-    <p>
-      I also have a newsletter called <a href="https://buttondown.com/Kind"
-        >The Kind Dispatch</a
-      >, which I regularly maintained until I became a father a few years ago. I
-      want to come back to it eventually. <a
-        href="https://buttondown.com/Kind/archive">The archives</a
-      > are available in the meantime.
-    </p>
+    {
+      l({
+        en: (
+          <>
+            <p>Here is where I write occasional articles.</p>
+            <p>
+              I also have a newsletter called{" "}
+              <a href="https://buttondown.com/Kind">The Kind Dispatch</a>, which
+              I regularly maintained until I became a father a few years ago. I
+              want to come back to it eventually.{" "}
+              <a href="https://buttondown.com/Kind/archive">The archives</a> are
+              available in the meantime.
+            </p>
+          </>
+        ),
+        fr: (
+          <>
+            <p>C'est ici que j'écris occasionnellement des articles.</p>
+            <p>
+              J'ai aussi une infolettre nommée{" "}
+              <a href="https://buttondown.com/Kind">The Kind Dispatch</a>. Je
+              l'ai maintenue régulièrement jusqu'à ce que je devienne papa il y
+              a quelques années. Je veux y revenir éventuellement, et{" "}
+              <a href="https://buttondown.com/Kind/archive">ses archives</a>{" "}
+              sont disponibles d'ici à ce que ça arrive.
+            </p>
+          </>
+        ),
+      })
+    }
   </header>
 
   <ul class="entries">
@@ -51,8 +75,16 @@ const groupedByYear = entries.reduce<
                 .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
                 .map((entry) => (
                   <li class="entry">
-                    <a href={url(`/journal/${entry.id}/`)}>
-                      <h4>{entry.data.title}</h4>
+                    <a href={url(`journal/${entry.id}`)}>
+                      <h4>
+                        {entry.data.title}
+                        {entry.data.lang !== locale && (
+                          <>
+                            {" "}
+                            <span class="language-tag">{entry.data.lang}</span>
+                          </>
+                        )}
+                      </h4>
                       <p>{entry.data.description}</p>
                     </a>
                   </li>
@@ -126,6 +158,16 @@ const groupedByYear = entries.reduce<
             margin: 0;
             font-size: 1.25rem;
             max-width: 36rem;
+
+            .language-tag {
+              display: inline-block;
+              text-transform: uppercase;
+              font-size: 0.7rem;
+              padding: 0 0.1rem;
+              color: var(--mainAccent);
+              background-color: var(--offWhite);
+              vertical-align: middle;
+            }
           }
 
           p {
@@ -137,6 +179,10 @@ const groupedByYear = entries.reduce<
             h4 {
               color: var(--mainAccent);
               text-decoration: underline;
+
+              .language-tag {
+                text-decoration: none;
+              }
             }
 
             p {

@@ -2,11 +2,10 @@
 title: '"Default forward": How I write to my clients to avoid getting stuck'
 date: 2024-03-19T18:14:30.003Z
 description: How I write emails to keep my (silent) clients' projects moving
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwocbz2e"
 ---
 
-As a freelancer (and previously as an employee operating with relatively high autonomy), I communicate daily with clients on various things I need for my work to progress. One of these things is the very basic approval. *Here's a deliverable, please say yes or come back with needed revisions, have a good day.*
+As a freelancer (and previously as an employee operating with relatively high autonomy), I communicate daily with clients on various things I need for my work to progress. One of these things is the very basic approval. _Here's a deliverable, please say yes or come back with needed revisions, have a good day._
 
 Almost every time, I make these approval emails a "default forward" situation. If the client doesn't do anything, I keep the project going. It's usually a simple matter:
 
@@ -19,10 +18,10 @@ Almost every time, I make these approval emails a "default forward" situation. I
 > Have a good day,\
 > Louis-André
 
-This has two effects: First, I don't get caught in approval limbo. Second, my client doesn't get caught (further?) in an email catchup race. 
+This has two effects: First, I don't get caught in approval limbo. Second, my client doesn't get caught (further?) in an email catchup race.
 
-I favor async communication and relaxed timelines. This fits async communication very well, and having reasonable delays with a default forward at the end helps *preserve the available slack* in said relaxed timeline.
+I favor async communication and relaxed timelines. This fits async communication very well, and having reasonable delays with a default forward at the end helps _preserve the available slack_ in said relaxed timeline.
 
 Depending on the type of client you work with (specialists vs generalists vs out-of-industry) it also gives an out to people who prefer to give full autonomy to their providers. Some clients want/need to be very involved in the design process, but others will politely nod along each milestone review then tell you to please continue thank you. Default forward serves them as well.
 
-I'll add one precision, which is that I draw the line at "forward as previously agreed". I won't send an email that defaults to an unexpected expense or a dramatic change to the project's direction. There are plenty of synchronous or interruptive ways to have *this* conversation.
+I'll add one precision, which is that I draw the line at "forward as previously agreed". I won't send an email that defaults to an unexpected expense or a dramatic change to the project's direction. There are plenty of synchronous or interruptive ways to have _this_ conversation.

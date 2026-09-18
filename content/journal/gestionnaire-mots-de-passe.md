@@ -1,7 +1,7 @@
 ---
 title: Les maudits mots de passe uniques
 date: 2020-02-12T05:00:00.000Z
-description: A quick help for switching to a password manager
+description: Un plaidoyer pour adopter un gestionnaire de mots de passe
 lang: fr
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejx4flh2l"
 ---

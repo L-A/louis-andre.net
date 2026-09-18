@@ -2,7 +2,6 @@
 title: Notes on two months of Ashwagandha
 date: 2025-01-04T15:30:09.988Z
 description: Observations after taking Ashwagandha as a supplement during two winter months.
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejwkowa2f"
 ---
 

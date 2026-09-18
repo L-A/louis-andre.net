@@ -4,7 +4,6 @@ date: 2014-01-16T05:00:00.000Z
 description: >-
   Notes on how to work with Photoshop when designing for Retina screens. A bit
   obsolete now.
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejxgxzm2t"
 ---
 
@@ -16,14 +15,14 @@ Several design apps support half/dual resolution out of the box, but a lot of us
 
 ## Open your preferences!
 
-* `Cmd + K` on OS X
-* `Ctrl + K` on Windows
+- `Cmd + K` on OS X
+- `Ctrl + K` on Windows
 
-Go to *Units & Rulers*. This is where most of the magic happens.
+Go to _Units & Rulers_. This is where most of the magic happens.
 
 ### 1. Under Units :
 
-Set both rulers and type to *points*.
+Set both rulers and type to _points_.
 
 ### 2. Under New document Preset Resolutions :
 
@@ -37,29 +36,29 @@ Now we can start working with points as our coordinate system. That makes things
 
 ![](/journal/retina-photoshop/New-document-resolution.png)
 
-If you're familiar with the developer side of these things, you're 
-probably aware that dimensions and positioning in these environments 
+If you're familiar with the developer side of these things, you're
+probably aware that dimensions and positioning in these environments
 don't work in pixels. They use points.
 
-Here's the basic 
-difference: iPhone screens, whether they're Retina or not, share the 
-same coordinates system. They both "measure" 320 x 640 points, and that 
-is how things are placed on screen. A full-screen image measures twice 
+Here's the basic
+difference: iPhone screens, whether they're Retina or not, share the
+same coordinates system. They both "measure" 320 x 640 points, and that
+is how things are placed on screen. A full-screen image measures twice
 the amount in pixels, but remains 320 x 640 in points. These are the conditions we're reproducing.
 
 ## Changing your current PSD to Retina/HiDPI
 
-This method 
-shoud be a big help if you want to keep working in your existing PSDs, 
-and simply bump their resolution 2x. I'm assuming you're designing 
-mostly with text layers, smart objects and vectors. If you're not, 
-you'll have a lot of extra work to restore 
+This method
+shoud be a big help if you want to keep working in your existing PSDs,
+and simply bump their resolution 2x. I'm assuming you're designing
+mostly with text layers, smart objects and vectors. If you're not,
+you'll have a lot of extra work to restore
 everything that becomes blurry.
 
 Open your document as usual. Once there, open Image → Image size... or hit the appropriate shortcut:
 
-* Cmd + alt + i on OS X
-* Ctrl + alt + i on Windows
+- Cmd + alt + i on OS X
+- Ctrl + alt + i on Windows
 
 Then, change your dimensions' units (they're probably on pixels) into points too. Make sure resampling is activated. Then (and only then!) bump the PSD's resolution to 144 pixels/inch.
 
@@ -70,8 +69,8 @@ Once this is done, hit "OK". Review your document. You should be all set!
 :)
 
 Note! While this setup means there is a pixel for every half-point, you'll want to use whole numbers
- for position and dimension in your designs. This is because screens 
-that do not have double resolution still use one pixel per point, so 
+for position and dimension in your designs. This is because screens
+that do not have double resolution still use one pixel per point, so
 half-points will really land on half-pixels: this means blurry results.
 
 ## Working with points
@@ -81,22 +80,22 @@ So what are the main differences?
 ### Type is actually in points.
 
 If
- you've ever worked in print design, this change will make a lot of 
-sense to you. For screen design, what it means is that you can use 
-"real" sizes for your text, instead of Retina requiring double the 
+you've ever worked in print design, this change will make a lot of
+sense to you. For screen design, what it means is that you can use
+"real" sizes for your text, instead of Retina requiring double the
 actual size. 14pt text in your PSD will look like 14pt.
 
 ![](/journal/retina-photoshop/Actual-text-size-1.png)
 
 ### Rulers are in points.
 
-In the picture above, you can 
-also see the rulers don't match document pixels one to one. The ratio 
-becomes 1:2, because this PSD has a 144 DPI resolution! The coordinates 
-on the rulers are what will be used in development, and they reflect 
+In the picture above, you can
+also see the rulers don't match document pixels one to one. The ratio
+becomes 1:2, because this PSD has a 144 DPI resolution! The coordinates
+on the rulers are what will be used in development, and they reflect
 their "real life" perception. You can use points in your info palette, too! If you don't use this palette, take this occasion to try it out. Set up your preferred units in the palette's option dialog.
 
-It'll give you color readouts, the dimensions of what you have 
+It'll give you color readouts, the dimensions of what you have
 selected, and the coordinates (in points, if you want!) of your cursor.
 
 ![](/journal/retina-photoshop/Info-palette.png)
@@ -104,11 +103,11 @@ selected, and the coordinates (in points, if you want!) of your cursor.
 ## That's it!
 
 It's
- far from being the only (or the most complete) guide out there, but 
-these are the basics that make it easy to uncouple pixels and actual 
+far from being the only (or the most complete) guide out there, but
+these are the basics that make it easy to uncouple pixels and actual
 dimensions in Photoshop.
 
-From there, for example, you can easily 
+From there, for example, you can easily
 create a 300DPI document for print, or a 18DPI document for this awesome
- pixel-art game you're working on – all without losing your head around 
+pixel-art game you're working on – all without losing your head around
 typography and unit conversion.

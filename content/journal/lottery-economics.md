@@ -2,7 +2,6 @@
 title: "Lottery economics"
 date: 2025-09-20T20:00:00.003Z
 description: The year is 2025 and I find LLMs and lotteries have a bit too much in common at this point
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejw57o52t"
 ---
 
@@ -38,4 +37,5 @@ I’m of the opinion that while there is great utility to be found for LLMs, the
 Of course, the fantasies will eventually stop working, but so long as they have lottery winners to show from time to time, they should continue their fragile climb, and funnel substantial chunks of the working economy into a few private wallets.
 
 [^1]: I guess the difference between a Ponzi scheme and a lottery is whether you're honest about how many people are getting the returns.
+
 [^2]: In case that feels to you like an actual innovation they brought to the modern world of investment, I would like to offer the perspective that subsidies are a strategy that's existed for centuries at the government level.

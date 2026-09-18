@@ -3,7 +3,6 @@ title: What you need, madam, is an aircraft carrier
 date: 2026-09-16T00:00:00.000Z
 description: >-
   The dumb metaphor I use when I advocate for more than just LLMs
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mvnho7ziy32v"
 ---
 

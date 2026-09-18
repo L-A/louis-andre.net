@@ -2,7 +2,6 @@
 title: A VESA mount for your Wacom Cintiq 13HD
 date: 2016-12-07T05:00:00.000Z
 description: How to make the 13 inch Cintiq compatible with VESA mounts
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejx7sju2t"
 ---
 
@@ -10,21 +9,21 @@ atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mtwejx7sju
 
 [Here's a short video of the result](https://imgur.com/uxG19u0)
 
-Our method leaves the tablet itself untouched, and the stand remains functional *but only on its highest flap*.
+Our method leaves the tablet itself untouched, and the stand remains functional _but only on its highest flap_.
 
 There's a short video of the result at the end 👇
 
 ### Summary:
 
-* Procure M4 nuts
-* Sacrifice the two lower flaps of the mount
-* Mark your VESA holes from the inside
-* Punch/drill while resting on a solid, flat surface
-* Check for screw clearance and mount
+- Procure M4 nuts
+- Sacrifice the two lower flaps of the mount
+- Mark your VESA holes from the inside
+- Punch/drill while resting on a solid, flat surface
+- Check for screw clearance and mount
 
 ## 1. Find or buy M4 nuts
 
-M4 is metric, but it should be easy to find. You'll probably need 8 (two per bolt). If you're in North America, look in your hardware store's *hard to find* section, or look for it in the fixtures/electrical department. Cabinet handles use metric, and you'll often find cutaway screws for different door depths. Other options include asking a mechanic (metric cars & motorcycles). M4 bolts are relatively thin, which is what's needed here.
+M4 is metric, but it should be easy to find. You'll probably need 8 (two per bolt). If you're in North America, look in your hardware store's _hard to find_ section, or look for it in the fixtures/electrical department. Cabinet handles use metric, and you'll often find cutaway screws for different door depths. Other options include asking a mechanic (metric cars & motorcycles). M4 bolts are relatively thin, which is what's needed here.
 
 ## 2. Sacrifice the lower flaps of the mount
 
@@ -48,7 +47,7 @@ We kept the mounting bracket within reach, since it proved easier to mount the C
 
 I recommend first punching your holes right in the center, which will allow a drill bit to stay centered. The stand's backplate is metal and slippery.
 
-*Rest the stand on a flat, solid surface*. A piece of wood is perfect. The metal will bend around your punch if it isn't solidly backed (it did for me).
+_Rest the stand on a flat, solid surface_. A piece of wood is perfect. The metal will bend around your punch if it isn't solidly backed (it did for me).
 
 You can use a small Philips screwdriver, or a point tip if you have one. Center your punch as best as you can, then give it one sharp hit for each position.
 
@@ -68,7 +67,7 @@ Check for your screws' clearance past the stand. In our case, we added one nut t
 
 ![Clearance is much easier to get than FBI movies make it out to be](/journal/cintiq-vesa-mount/place-stand-2.jpg)
 
-Put the stand on, so that its "hook" tab (the one around which the Cintiq rotates) faces *up*. The remaining flap will also point up.
+Put the stand on, so that its "hook" tab (the one around which the Cintiq rotates) faces _up_. The remaining flap will also point up.
 
 In a diagonal pattern, mount the backplate to the VESA bracket. Make sure it's tight!
 
@@ -80,11 +79,11 @@ Boom!
 
 ### Pros
 
-* The stand remains usable.
-* More sightly than the easel trick
-* Your 13HD is on a legit VESA mount!
+- The stand remains usable.
+- More sightly than the easel trick
+- Your 13HD is on a legit VESA mount!
 
 ### Cons
 
-* The Cintiq 13HD is actually too light for many monitor arms (they'll continuously push the tablet up instead of keeping it in place). Be careful when you pick your arm!
-* The stand is metal, but certain arms will resist hard enough for it to flex if you try to tilt the tablet up and down. This is very noticeable on the Ergotron here, which is made to hold hard enough for a 20lbs monitor to stay in place. We tilt it by holding close to the VESA bracket.
+- The Cintiq 13HD is actually too light for many monitor arms (they'll continuously push the tablet up instead of keeping it in place). Be careful when you pick your arm!
+- The stand is metal, but certain arms will resist hard enough for it to flex if you try to tilt the tablet up and down. This is very noticeable on the Ergotron here, which is made to hold hard enough for a 20lbs monitor to stay in place. We tilt it by holding close to the VESA bracket.

@@ -3,7 +3,6 @@ title: You're 80% there? Prompt more!
 date: 2026-09-06T05:00:00.000Z
 description: >-
   Sounds like you could prompt 20% more and be done!
-inFrench: false
 atUri: "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/site.standard.document/3mvnhoa7f522t"
 ---
 

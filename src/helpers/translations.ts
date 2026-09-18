@@ -5,7 +5,7 @@ type Lang = keyof typeof ui;
 type TranslationKey = keyof (typeof ui)[typeof defaultLang];
 type Translations = Record<string, string>;
 
-const locales = Object.keys(ui);
+const locales = Object.keys(ui) as Lang[];
 
 const getLocale = (currentLocale?: string): Lang =>
   (currentLocale && currentLocale in ui ? currentLocale : defaultLang) as Lang;
@@ -34,13 +34,17 @@ const useTranslations = (currentLocale?: string) => {
   const fallback = ui[defaultLang] as Translations;
 
   const t = (key: TranslationKey): string => localized[key] ?? fallback[key];
+  const l = <T>(sources: Record<Lang, T>): T => sources[locale];
   const url = (path = "") =>
     getRelativeLocaleUrl(locale, path.replace(/^\//, ""));
+  const urlFor = (target: Lang, path = "") =>
+    getRelativeLocaleUrl(target, path.replace(/^\//, ""));
 
-  return { locale, t, url };
+  return { locale, t, l, url, urlFor };
 };
 
 export {
+  locales,
   getLocale,
   getBarePath,
   getLocaleAlternates,
