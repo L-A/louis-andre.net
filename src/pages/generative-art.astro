@@ -1,25 +1,54 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
-import Container from "../components/Container.astro";
 import { Image } from "astro:assets";
+import { useTranslations } from "../helpers/translations";
+import MainLayout from "../layouts/MainLayout.astro";
+import Container from "../components/Container.astro";
 
 const series = await getCollection("artSeries");
+const { l } = useTranslations(Astro.currentLocale);
 ---
 
 <MainLayout
   contained={false}
-  title="Generative art"
-  description="Some generative art series I've created over the years"
+  title={l({ en: "Generative art", fr: "Art génératif" })}
+  description={l({
+    en: "Some generative art series I've created over the years",
+    fr: "Mon art génératif: Des séries et collections que j'ai créées au fil des années",
+  })}
 >
   <Container>
     <header>
-      <h2>Generative art</h2>
-      <p>
-        I've been creating <a
-          href="https://en.wikipedia.org/wiki/Generative_art">generative art</a
-        > since 2018. Here are a few selected series I've done over the years.
-      </p>
+      {
+        l({
+          en: (
+            <>
+              <h2>Generative art</h2>
+              <p>
+                I've been creating{" "}
+                <a href="https://en.wikipedia.org/wiki/Generative_art">
+                  generative art
+                </a>{" "}
+                since 2018. Here are a few selected series I've done over the
+                years.
+              </p>
+            </>
+          ),
+          fr: (
+            <>
+              <h2>Art génératif</h2>
+              <p>
+                Je crée de{" "}
+                <a href="https://fr.wikipedia.org/wiki/Art_génératif">
+                  l'art génératif
+                </a>{" "}
+                depuis 2018. Voici différentes séries d'oeuvres que j'ai
+                produites au fil des années.
+              </p>
+            </>
+          ),
+        })
+      }
     </header>
   </Container>
   <div class="series-viewer">
@@ -29,7 +58,10 @@ const series = await getCollection("artSeries");
           s.data.iterations.map(([image, ratio, name]) => (
             <li>
               <div class="info">
-                <h3>{name || "Untitled iteration"}</h3>
+                <h3>
+                  {name ||
+                    l({ en: "Untitled iteration", fr: "Itération sans titre" })}
+                </h3>
                 <h4>{s.data.name}</h4>
               </div>
               <div class="image">
@@ -37,7 +69,10 @@ const series = await getCollection("artSeries");
                   loading="lazy"
                   class="iteration"
                   src={image}
-                  alt={`${name || "Untitled iteration"}, from the ${s.data.name} collection`}
+                  alt={l({
+                    en: `${name || "Untitled iteration"}, from the ${s.data.name} collection`,
+                    fr: `${name ?? "Sans titre"}, de la collection ${s.data.name}`,
+                  })}
                 />
                 <Image
                   loading="lazy"
