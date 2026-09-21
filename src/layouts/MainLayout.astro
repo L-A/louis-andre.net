@@ -6,8 +6,25 @@ import Footer from "../components/Footer.astro";
 import Container from "../components/Container.astro";
 import Meta from "../components/Meta.astro";
 import { getBarePath, getLocale } from "../helpers/translations";
+import type { Lang } from "../helpers/translations";
 
-const { contained = true, title, description, image, atUri } = Astro.props;
+interface Props {
+  contained?: boolean;
+  title: string;
+  description: string;
+  image?: string;
+  atUri?: string;
+  singleLang?: Lang;
+}
+
+const {
+  contained = true,
+  title,
+  description,
+  image,
+  atUri,
+  singleLang,
+} = Astro.props;
 const locale = getLocale(Astro.currentLocale);
 const countPath = getBarePath(Astro.url.pathname, Astro.currentLocale);
 ---
@@ -17,7 +34,12 @@ const countPath = getBarePath(Astro.url.pathname, Astro.currentLocale);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="text-scale" content="scale" />
-    <Meta title={title} description={description} image={image} />
+    <Meta
+      title={title}
+      description={description}
+      image={image}
+      singleLang={singleLang}
+    />
     <Font cssVariable="--font-plex" preload />
     <Font cssVariable="--font-plex-condensed" />
     <Font cssVariable="--font-mono" />

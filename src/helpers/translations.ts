@@ -44,6 +44,7 @@ const useTranslations = (currentLocale?: string) => {
 };
 
 export {
+  Lang,
   locales,
   getLocale,
   getBarePath,

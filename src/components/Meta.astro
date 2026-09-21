@@ -1,4 +1,6 @@
 ---
+import type { Lang } from "../helpers/translations";
+
 import { getAbsoluteLocaleUrl } from "astro:i18n";
 import { publicationUri } from "../../sequoia.json";
 
@@ -8,18 +10,28 @@ import {
   getLocale,
 } from "../helpers/translations";
 
+interface Props {
+  singleLang?: Lang;
+  title: string;
+  description: string;
+  image: string;
+}
+
 const {
   title,
   description = "Louis-André's personal website",
   image = "https://louis-andre.net/og-image.jpg",
+  singleLang,
 } = Astro.props;
 
 const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
 
 const locale = getLocale(Astro.currentLocale);
 const bare = stripLocalePrefix(Astro.url.pathname, locale);
-const canonicalURL = getAbsoluteLocaleUrl(locale, bare);
-const ogAlternates = getLocaleAlternates(Astro.url.pathname, locale);
+const canonicalURL = getAbsoluteLocaleUrl(singleLang ?? locale, bare);
+const ogAlternates = singleLang
+  ? []
+  : getLocaleAlternates(Astro.url.pathname, locale);
 const defaultAlternateHref = ogAlternates.find((a) => a.hreflang == "en")?.href;
 const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
 ---
@@ -41,7 +53,11 @@ const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
     <link rel="alternate" hreflang={hreflang} href={href} />
   ))
 }
-<link rel="alternate" hreflang="x-default" href={defaultAlternateHref} />
+{
+  defaultAlternateHref && (
+    <link rel="alternate" hreflang="x-default" href={defaultAlternateHref} />
+  )
+}
 
 {/* Canonical */}
 <link rel="canonical" href={canonicalURL} />

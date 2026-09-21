@@ -1,4 +1,8 @@
 import { defineConfig, fontProviders } from "astro/config";
+import {
+  frenchJournalIds,
+  urlHasContentLang,
+} from "./src/helpers/filterFrenchIDs";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -51,6 +55,10 @@ export default defineConfig({
           fr: "fr-CA",
         },
       },
+      filter: urlHasContentLang,
+      customPages: [...frenchJournalIds].map(
+        (p) => `https://louis-andre.net/fr/journal/${p}/`,
+      ),
     }),
   ],
 });
