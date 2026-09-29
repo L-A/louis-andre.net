@@ -6,7 +6,7 @@ import {
 } from "../helpers/translations";
 
 const { locale, urlFor, t } = useTranslations(Astro.currentLocale);
-const bare = stripLocalePrefix(Astro.url.pathname, locale);
+const bare = stripLocalePrefix(Astro.originPathname, locale);
 const altLang = locales.find((l) => l !== locale) || "en";
 const altHref = urlFor(altLang, bare);
 ---

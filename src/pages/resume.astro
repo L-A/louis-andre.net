@@ -1,9 +1,19 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
 import { render, getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
+import MainLayout from "../layouts/MainLayout.astro";
+import { useTranslations } from "../helpers/translations";
+
+const { l, locale } = useTranslations(Astro.currentLocale);
+
 const workExperience = await getCollection("workExperience");
+const fullExperience = workExperience.map((e) => ({
+  ...e,
+  lang: e.id.startsWith("fr/") ? "fr" : "en",
+  id: e.id.replace(/^fr\//, ""),
+}));
+const langFilteredExperience = fullExperience.filter((e) => e.lang == locale);
 
 // Fed from the /portfolio page when redirecting
 const portfolioMode = Astro.locals.portfolioMode ?? false;
@@ -14,20 +24,51 @@ const portfolioMode = Astro.locals.portfolioMode ?? false;
   description="If you're looking for my work history or portfolio, this is the place!"
 >
   <div class:list={["content-root", portfolioMode && "portfolio"]}>
-    <header>
-      <h2>Resume <span class="portfolio-mode-tag">& portfolio</span></h2>
-      <p class="intro">
-        Colleagues call me <em>a designer?</em> and <em>a developer?</em> – pronouncing
-        the question mark on both. I design for screens most of the time, and I develop
-        for the front-end when a project calls for it. My best work is done when I
-        get to both plan and execute on a product's design.
-      </p>
-      <p>
-        While I love a good marketing website, I usually fit best with work done
-        on products with complex user interfaces, and when I can integrate into
-        a small competent team with responsible and autonomous teammates.
-      </p>
-    </header>
+    {
+      l({
+        fr: (
+          <header>
+            <h2>
+              Curriculum <span class="portfolio-mode-tag">et portfolio</span>
+            </h2>
+            <p class="intro">
+              Mes collègues me désigne comme <em>designer?</em> et <em>dev?</em>{" "}
+              – avec le point d'interrogation bien intoné. Je conçois pour les
+              écrans la plupart du temps, et j'implémente le côté{" "}
+              <em>front-end</em> quand ça sied au projet. Mon travail est à son
+              meilleur quand je peux planifier <em>puis</em> exécuter le design
+              d'un produit.
+            </p>
+            <p>
+              Je m'intègre très bien dans les équipes agiles et autonomes, et
+              dans les projets de produits numériques où la complexité de
+              l'interface est un défi. J'aime quand même bien un bon vieux
+              projet de site web marketing de temps à autre.
+            </p>
+          </header>
+        ),
+        en: (
+          <header>
+            <h2>
+              Resume <span class="portfolio-mode-tag">& portfolio</span>
+            </h2>
+            <p class="intro">
+              Colleagues call me <em>a designer?</em> and <em>a developer?</em>{" "}
+              – pronouncing the question mark on both. I design for screens most
+              of the time, and I develop for the front-end when a project calls
+              for it. My best work is done when I get to both plan and execute
+              on a product's design.
+            </p>
+            <p>
+              While I love a good marketing website, I usually fit best with
+              work done on products with complex user interfaces, and when I can
+              integrate into a small competent team with responsible and
+              autonomous teammates.
+            </p>
+          </header>
+        ),
+      })
+    }
 
     <label class="portfolio-mode" for="portfolio-mode">
       <div class="toggle-slider">
@@ -39,15 +80,27 @@ const portfolioMode = Astro.locals.portfolioMode ?? false;
         class="hidden"
         checked={portfolioMode}
       />
-      Portfolio mode is <span class="mode-state-string"
-        >{portfolioMode ? "on" : "off"}</span
+      {l({ en: "Portfolio mode is", fr: "Mode portfolio" })}
+      <span
+        class="mode-state-string"
+        data-on-string={l({ en: "on", fr: "activé" })}
+        data-off-string={l({ en: "off", fr: "désactivé" })}
+        >{
+          l(
+            portfolioMode
+              ? { en: "on", fr: "activé" }
+              : { en: "off", fr: "désactivé" },
+          )
+        }</span
       >
     </label>
 
-    <h3 class="with-dotted-bg">Clients and workplaces</h3>
+    <h3 class="with-dotted-bg">
+      {l({ en: "Clients and workplaces", fr: "Clients et postes" })}
+    </h3>
     <ul class="experience">
       {
-        workExperience
+        langFilteredExperience
           .sort((a, b) => b.data.timePeriod.localeCompare(a.data.timePeriod))
           .map(async (item) => {
             const { Content } = await render(item);
@@ -87,59 +140,145 @@ const portfolioMode = Astro.locals.portfolioMode ?? false;
       }
     </ul>
 
-    <h3 class="with-dotted-bg">Relevant skills</h3>
-    <ul class="skills">
-      <li>
-        <h4>0 → 1 product design</h4>
-        <p>
-          Working with small teams and founders, I’ve become very good at
-          helping people go from <em>I have an idea</em> to <em
-            >I know exactly what we’re going to do</em
-          >. I treat design as the (fun, difficult) act of planning how to turn
-          an idea and vision into something that’s ready to get implemented.
-        </p>
-      </li>
-      <li>
-        <h4>User experience</h4>
-        <p>
-          I’ve been structuring apps since before <em>UX</em> became the <em
-            >mot du jour</em
-          > with leadership. My work involves defining user flows, auditing existing
-          solutions. In particular, I make sure that whatever process gets moved to
-          a digital equivalent actually improves on its current analog.
-        </p>
-      </li>
-      <li>
-        <h4>Interface design</h4>
-        <p>
-          I make personality coexist with function. I build strong interfaces by
-          making them visually clear, strong in their identity and branding, and
-          by making sure they’re easy to use with the right mix of organization
-          and visual cues.
-        </p>
-      </li>
-      <li>
-        <h4>Front-of-the-front-end</h4>
-        <p>
-          I take part in developing the final interface. Usually, I’m at my best
-          when I support a front-end team or person, and contribute with code
-          that directly controls the appearance of the interface. For
-          small-scale web projects, I sometimes take charge of complete
-          development.
-        </p>
-      </li>
-    </ul>
+    {
+      l({
+        en: (
+          <>
+            <h3 class="with-dotted-bg">Relevant skills</h3>
+            <ul class="skills">
+              <li>
+                <h4>0 → 1 product design</h4>
+                <p>
+                  Working with small teams and founders, I’ve become very good
+                  at helping people go from <em>I have an idea</em> to{" "}
+                  <em>I know exactly what we’re going to do</em>. I treat design
+                  as the (fun, difficult) act of planning how to turn an idea
+                  and vision into something that’s ready to get implemented.
+                </p>
+              </li>
+              <li>
+                <h4>User experience</h4>
+                <p>
+                  I’ve been structuring apps since before <em>UX</em> became the{" "}
+                  <em>mot du jour</em> with leadership. My work involves
+                  defining user flows, auditing existing solutions. In
+                  particular, I make sure that whatever process gets moved to a
+                  digital equivalent actually improves on its current analog.
+                </p>
+              </li>
+              <li>
+                <h4>Interface design</h4>
+                <p>
+                  I make personality coexist with function. I build strong
+                  interfaces by making them visually clear, strong in their
+                  identity and branding, and by making sure they’re easy to use
+                  with the right mix of organization and visual cues.
+                </p>
+              </li>
+              <li>
+                <h4>Front-of-the-front-end</h4>
+                <p>
+                  I take part in developing the final interface. Usually, I’m at
+                  my best when I support a front-end team or person, and
+                  contribute with code that directly controls the appearance of
+                  the interface. For small-scale web projects, I sometimes take
+                  charge of complete development.
+                </p>
+              </li>
+            </ul>
+          </>
+        ),
+        fr: (
+          <>
+            <h3 class="with-dotted-bg">Compétences</h3>
+            <ul class="skills">
+              <li>
+                <h4>Design de produit 0 → 1</h4>
+                <p>
+                  À force de travailler avec des petites équipes et des
+                  fondateurs.trices, je suis maître dans l'art de transformer{" "}
+                  <em>«&nbsp;J'ai une idée&nbsp;» </em> en{" "}
+                  <em>«&nbsp;Je sais exactement comment la réaliser&nbsp;»</em>.
+                  Le design, pour moi, c'est le boulot (passionnant, difficile)
+                  de transformer une intention et une vision en quelque chose
+                  qui est prêt à voir le jour.
+                </p>
+              </li>
+              <li>
+                <h4>Expérience utilisateur</h4>
+                <p>
+                  Je structurais des <em>apps</em> mobiles et web avant même que{" "}
+                  <em>UX</em> devienne le mot du jour. Mon travail inclut la
+                  définition de parcours utilisateurs, l'audit des solutions
+                  existantes, etc. Je porte une attention particulière aux
+                  processus en place – je m'assure que les actions qu'on
+                  transfère au numérique améliorent réellement la situation par
+                  rapport à leurs analogues en place.
+                </p>
+              </li>
+              <li>
+                <h4>Design d'interface</h4>
+                <p>
+                  Je fais coexister la fonction et l'identité. Je construis des
+                  interfaces fortes en les rendant visuellement claires, solides
+                  dans leur esthétique et leur identité. Je leur donne la
+                  structure et les éléments visuels qui les rendent faciles
+                  d'approche.
+                </p>
+              </li>
+              <li>
+                <h4>
+                  <em>Front-end</em> utilisateur
+                </h4>
+                <p>
+                  Je participe au développement de l'interface finale. Je suis à
+                  mon meilleur lorsque je supporte une personne ou une petite
+                  équipe <em>front-end</em>, pour laquelle je contribue le code
+                  qui contrôle directement la présentation de l'interface. Pour
+                  les projets web de petite échelle, je suis parfois en charge
+                  du développement du début à la fin.
+                </p>
+              </li>
+            </ul>
+          </>
+        ),
+      })
+    }
 
-    <h3 class="with-dotted-bg">Can we talk?</h3>
-    <p>
-      Of course! The best way to reach me is <a
-        href="mailto:monsieur@louis-andre.net">by email</a
-      >. I'm also on <a href="https://bsky.app/profile/louis-andre.net"
-        >Bluesky</a
-      > and{" "}
-      <a href="https://www.linkedin.com/in/louis-andre-labadie">LinkedIn</a> if that's
-      your preference.
-    </p>
+    {
+      l({
+        en: (
+          <>
+            <h3 class="with-dotted-bg">Can we talk?</h3>
+            <p>
+              Of course! The best way to reach me is{" "}
+              <a href="mailto:monsieur@louis-andre.net">by email</a>. I'm also
+              on <a href="https://bsky.app/profile/louis-andre.net">Bluesky</a>{" "}
+              and{" "}
+              <a href="https://www.linkedin.com/in/louis-andre-labadie">
+                LinkedIn
+              </a>{" "}
+              if that's your preference.
+            </p>
+          </>
+        ),
+        fr: (
+          <>
+            <h3 class="with-dotted-bg">On peut se parler?</h3>
+            <p>
+              Bien sûr! La meilleure façon de me rejoindre, c'est{" "}
+              <a href="mailto:monsieur@louis-andre.net">par courriel</a>. Je
+              suis aussi sur{" "}
+              <a href="https://bsky.app/profile/louis-andre.net">Bluesky</a> et{" "}
+              <a href="https://www.linkedin.com/in/louis-andre-labadie">
+                LinkedIn
+              </a>{" "}
+              si ça vous convient mieux.
+            </p>
+          </>
+        ),
+      })
+    }
   </div>
 </MainLayout>
 
@@ -166,6 +305,7 @@ const portfolioMode = Astro.locals.portfolioMode ?? false;
         box-shadow: 0px 3rem 2rem rgba(0, 0, 0, 0.2);
         border-radius: 4px;
         scale: 1.1 1;
+        rotate: -2deg;
         translate: 0.25rem -1.2rem;
         opacity: 0;
         pointer-events: none;
@@ -390,25 +530,57 @@ const portfolioMode = Astro.locals.portfolioMode ?? false;
 
 <script>
   document.addEventListener("astro:page-load", () => {
+    // Handle changing alt language hrefs
+    function syncLanguageButton() {
+      const button = document.querySelector(".language-button");
+      if (!button) return;
+      const inPortfolio = /\/portfolio\/?$/.test(window.location.pathname);
+      const href = button.getAttribute("href") ?? "";
+      button.setAttribute(
+        "href",
+        inPortfolio
+          ? href.replace("/resume", "/portfolio")
+          : href.replace("/portfolio", "/resume"),
+      );
+    }
+
     // Portfolio switch
     const portfolioSwitch = document.querySelector(
       "#portfolio-mode",
     ) as HTMLInputElement;
     portfolioSwitch.addEventListener("change", () => {
       const portfolioModeOn = portfolioSwitch.checked;
-      const modeSpan = document.querySelector(".mode-state-string");
-      const pageRoot = document.querySelector(".content-root");
+      const modeSpan = document.querySelector(
+        ".mode-state-string",
+      ) as HTMLSpanElement;
+      const pageRoot = document.querySelector(
+        ".content-root",
+      ) as HTMLDivElement;
+
+      const { onString, offString } = modeSpan.dataset;
 
       if (portfolioModeOn) {
-        if (modeSpan) modeSpan.innerHTML = "on";
+        if (modeSpan) modeSpan.innerHTML = onString ?? "";
         if (pageRoot) pageRoot.classList.add("portfolio");
-        history.pushState({}, "", "/portfolio");
+        history.pushState(
+          {},
+          "",
+          document.location.pathname.replace(/\/resume/, "/portfolio"),
+        );
+        syncLanguageButton();
       } else {
-        if (modeSpan) modeSpan.innerHTML = "off";
+        if (modeSpan) modeSpan.innerHTML = offString ?? "";
         if (pageRoot) pageRoot.classList.remove("portfolio");
-        history.pushState({}, "", "/resume");
+        history.pushState(
+          {},
+          "",
+          document.location.pathname.replace(/\/portfolio/, "/resume"),
+        );
+        syncLanguageButton();
       }
     });
+
+    window.addEventListener("popstate", syncLanguageButton);
 
     const topScale = 1;
     const bottomScale = 0.9;

@@ -4,19 +4,19 @@ timePeriod: "2022-2025"
 responsibilities: "Design, Development"
 media:
   - type: image
-    src: ./portfolio/tns-1.jpg
+    src: ../portfolio/tns-1.jpg
     alt: "Tchat N Sign advisor interface, showing the Signatures pane"
   - type: image
-    src: ./portfolio/tns-2.jpg
+    src: ../portfolio/tns-2.jpg
     alt: "Tchat N Sign email template for an advisor receiving notifications"
   - type: image
-    src: ./portfolio/tns-3.jpg
+    src: ../portfolio/tns-3.jpg
     alt: "Tchat N Sign client interface for stand-alone secured chat"
   - type: image
-    src: ./portfolio/tns-4.jpg
+    src: ../portfolio/tns-4.jpg
     alt: "Tchat N Sign advisor interface, showing the main Conversations panel and a contact's details pane"
   - type: image
-    src: ./portfolio/tns-5.jpg
+    src: ../portfolio/tns-5.jpg
     alt: "Tchat N Sign advisor interface, showing the large Signatures view and the open pane for one particular document"
 ---
 

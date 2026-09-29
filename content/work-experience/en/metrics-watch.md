@@ -4,16 +4,16 @@ timePeriod: "2017-2024"
 responsibilities: "Design, Development"
 media:
   - type: image
-    src: ./portfolio/mw-1.jpg
+    src: ../portfolio/mw-1.jpg
     alt: "Metrics Watch OG image"
   - type: image
-    src: ./portfolio/mw-2.jpg
+    src: ../portfolio/mw-2.jpg
     alt: "Metrics Watch illustration that shows off multiple templates using different colour palettes"
   - type: image
-    src: ./portfolio/mw-3.jpg
+    src: ../portfolio/mw-3.jpg
     alt: "Screenshot of the Metrics Watch report editor – we see a grid-based layout onto which the user drags data and chart blocks"
   - type: image
-    src: ./portfolio/mw-4.jpg
+    src: ../portfolio/mw-4.jpg
     alt: "Metrics Watch illustration that shows a computer and a mobile phone both receiving an alert ping"
 ---
 
