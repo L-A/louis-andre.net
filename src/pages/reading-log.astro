@@ -1,16 +1,20 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 
+import MainLayout from "../layouts/MainLayout.astro";
+import { useTranslations } from "../helpers/translations";
+
 const drops = await getCollection("readingLog");
+const { l, locale } = useTranslations(Astro.currentLocale);
 
 const groupedByMonth: {
   formattedDate: string;
   sortDate: string;
   entries: typeof drops;
+  title: string;
 }[] = [];
 for (const drop of drops) {
-  const monthString: string = drop.data.created.toLocaleDateString("en-US", {
+  const monthString: string = drop.data.created.toLocaleDateString(locale, {
     month: "long",
     year: "numeric",
   });
@@ -27,6 +31,7 @@ for (const drop of drops) {
     groupedByMonth.push({
       formattedDate: monthString,
       sortDate,
+      title: monthString.charAt(0).toUpperCase() + monthString.slice(1),
       entries: [drop],
     });
   }
@@ -37,16 +42,40 @@ for (const drop of drops) {
   title="Reading log"
   description="Bookmarks pulled from my 'archived' list on Raindrop. They're articles I read, and websites I think about."
 >
-  <header>
-    <h2>Reading Log</h2>
-    <p>
-      I like to read on the web, and I bookmark the pages I found worthy of note
-      in my{" "}
-      <a href="https://raindrop.io/lalabadie/archive-30468359">Raindrop</a>{" "}
-      account. Fellow Internet person, this list is as close as you can get to my
-      personal stream of thoughts.
-    </p>
-  </header>
+  {
+    l({
+      fr: (
+        <header>
+          <h2>Lectures</h2>
+          <p>
+            J'aime lire sur le web, et j'organise la plupart de ces lectures sur
+            mon{" "}
+            <a href="https://raindrop.io/lalabadie/archive-30468359">
+              compte Raindrop
+            </a>{" "}
+            . Cette liste, chèr.e internaute, est pas mal le plus proche qu'on
+            peut être de mon train de pensées du moment. Ça et ma page{" "}
+            <a href="/fr/now">/now</a>.
+          </p>
+        </header>
+      ),
+      en: (
+        <header>
+          <h2>Reading Log</h2>
+          <p>
+            I like to read on the web, and I bookmark the pages I found worthy
+            of note in my{" "}
+            <a href="https://raindrop.io/lalabadie/archive-30468359">
+              Raindrop
+            </a>{" "}
+            account. Fellow Internet person, this list (along with my{" "}
+            <a href="/now">/now page</a>) is as close as you can get to my
+            personal stream of thoughts.
+          </p>
+        </header>
+      ),
+    })
+  }
 
   <ul class="drops">
     {
@@ -54,7 +83,7 @@ for (const drop of drops) {
         .sort((a, b) => b.sortDate.localeCompare(a.sortDate))
         .map((month) => (
           <li class="month">
-            <h3 class="with-dotted-bg">{month.formattedDate}</h3>
+            <h3 class="with-dotted-bg">{month.title}</h3>
             <ul class="entries">
               {month.entries
                 .sort(

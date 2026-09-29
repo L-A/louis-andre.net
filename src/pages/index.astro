@@ -7,6 +7,9 @@ import ShuffleIcon from "../assets/svg/icn-shuffle.svg";
 import SpeedIcon from "../components/SpeedIcon.astro";
 import GridIcon from "../components/GridIcon.astro";
 import PaletteIcon from "../components/PaletteIcon.astro";
+import { useTranslations } from "../helpers/translations";
+
+const { l } = useTranslations(Astro.currentLocale);
 ---
 
 <MainLayout
@@ -14,33 +17,71 @@ import PaletteIcon from "../components/PaletteIcon.astro";
 >
   <div class="columns">
     <div class="content">
-      <div class="top">
-        <h1>Hi, I’m Louis-André</h1>
-        <p>Welcome! This is my personal site.</p>
-        <p>
-          We’re probably Internet strangers. It’s a thin connection, but a warm
-          one to me nonetheless.
-        </p>
-      </div>
-      <div class="bottom">
-        <p>
-          I work as an independent designer with organizations that touch on
-          tech, games and the arts. My studio is called <a
-            href="https://petiterevolte.com">Petite Révolte</a
-          >.
-        </p>
-        <p>
-          Browse around, and <a href="mailto:monsieur@louis-andre.net"
-            >reach out</a
-          > if you’d like!
-        </p>
-        <p>
-          <small
-            >I tinker on this website, so things are in motion. It's cool to
-            write about something you noticed if you feel like it!</small
-          >
-        </p>
-      </div>
+      {
+        l({
+          fr: (
+            <>
+              <div class="top">
+                <h1>Bonjour, je suis Louis-André</h1>
+                <p>Bienvenue sur mon site personnel!</p>
+                <p>
+                  On est probablement des étrangers sur Internet. C'est un lien
+                  bien mince, mais il me tient quand même à coeur.
+                </p>
+              </div>
+              <div class="bottom">
+                <p>
+                  Je suis designer indépendant. Je travaille avec des
+                  organisations qui touchent à la technologie, les jeux et la
+                  culture. Mon studio s'appelle{" "}
+                  <a href="https://petiterevolte.com">Petite Révolte</a>.
+                </p>
+                <p>
+                  Promenez-vous sur le site, et n'hésitez pas à{" "}
+                  <a href="mailto:monsieur@louis-andre.net">m'écrire</a> si le
+                  coeur vous en dit!
+                </p>
+                <p>
+                  <small>
+                    Je change et je <em>gosse</em> sur ce site web
+                    régulièrement.
+                  </small>
+                </p>
+              </div>
+            </>
+          ),
+          en: (
+            <>
+              <div class="top">
+                <h1>Hi, I’m Louis-André</h1>
+                <p>Welcome! This is my personal site.</p>
+                <p>
+                  We’re probably Internet strangers. It’s a thin connection, but
+                  a warm one to me nonetheless.
+                </p>
+              </div>
+              <div class="bottom">
+                <p>
+                  I work as an independent designer with organizations that
+                  touch on tech, games and the arts. My studio is called{" "}
+                  <a href="https://petiterevolte.com">Petite Révolte</a>.
+                </p>
+                <p>
+                  Browse around, and{" "}
+                  <a href="mailto:monsieur@louis-andre.net">reach out</a> if
+                  you’d like!
+                </p>
+                <p>
+                  <small>
+                    I tinker on this website, so things are in motion. It's cool
+                    to write about something you noticed if you feel like it!
+                  </small>
+                </p>
+              </div>
+            </>
+          ),
+        })
+      }
     </div>
     <div class="art">
       <canvas class="art-canvas"></canvas>
