@@ -5,6 +5,7 @@ const ui = {
     "nav.now": "/now",
     "nav.journal": "Journal",
     "nav.art": "Art",
+    "nav.cv": "CV",
     "nav.readingLog": "Reading log",
     "nav.toOtherLanguage": "Passer en français",
     "footer.here": "Here",
@@ -17,6 +18,7 @@ const ui = {
   fr: {
     "nav.now": "/now",
     "nav.journal": "Journal",
+    "nav.cv": "CV",
     "nav.art": "Art",
     "nav.readingLog": "Lectures",
     "nav.toOtherLanguage": "Switch to English",
