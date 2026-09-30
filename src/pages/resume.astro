@@ -567,7 +567,6 @@ const portfolioMode = Astro.locals.portfolioMode ?? false;
           "",
           document.location.pathname.replace(/\/resume/, "/portfolio"),
         );
-        syncLanguageButton();
       } else {
         if (modeSpan) modeSpan.innerHTML = offString ?? "";
         if (pageRoot) pageRoot.classList.remove("portfolio");
@@ -576,8 +575,9 @@ const portfolioMode = Astro.locals.portfolioMode ?? false;
           "",
           document.location.pathname.replace(/\/portfolio/, "/resume"),
         );
-        syncLanguageButton();
       }
+      syncLanguageButton();
+      window.dispatchEvent(new Event("urlchange"));
     });
 
     window.addEventListener("popstate", syncLanguageButton);

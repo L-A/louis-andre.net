@@ -27,11 +27,11 @@ const {
 const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
 
 const locale = getLocale(Astro.currentLocale);
-const bare = stripLocalePrefix(Astro.url.pathname, locale);
+const bare = stripLocalePrefix(Astro.originPathname, locale);
 const canonicalURL = getAbsoluteLocaleUrl(singleLang ?? locale, bare);
 const ogAlternates = singleLang
   ? []
-  : getLocaleAlternates(Astro.url.pathname, locale);
+  : getLocaleAlternates(Astro.originPathname, locale);
 const defaultAlternateHref = ogAlternates.find((a) => a.hreflang == "en")?.href;
 const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
 ---

@@ -6,7 +6,7 @@ import LanguageButton from "./LanguageButton.astro";
 import { stripLocalePrefix, useTranslations } from "../helpers/translations";
 
 const { locale, url } = useTranslations(Astro.currentLocale);
-const bare = stripLocalePrefix(Astro.url.pathname, locale);
+const bare = stripLocalePrefix(Astro.originPathname, locale);
 
 // Split the pathname into segments as links
 let acc = "";
@@ -112,11 +112,26 @@ const pathSegments = bare
 <script>
   import { scrambleText } from "../helpers/scramble-text";
 
-  document.addEventListener("astro:page-load", () => {
+  const scramble = () => {
     const currentPath = document.querySelector(
       "nav .current-path a:last-of-type",
     ) as HTMLLIElement;
     if (!currentPath) return;
     scrambleText(currentPath);
+  };
+
+  function syncCurrentPath() {
+    const last = document.querySelector("nav .current-path a:last-of-type");
+    if (!last) return;
+    const pathname = window.location.pathname.replace(/\/?$/, "/");
+    last.textContent = pathname.split("/").filter(Boolean).pop() ?? "";
+    last.setAttribute("href", pathname);
+    scramble();
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    scramble();
   });
+
+  window.addEventListener("urlchange", syncCurrentPath);
 </script>
