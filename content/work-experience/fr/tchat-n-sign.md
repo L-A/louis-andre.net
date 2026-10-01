@@ -1,5 +1,5 @@
 ---
-name: "FR Tchat N Sign"
+name: "Tchat N Sign"
 timePeriod: "2022-2025"
 responsibilities: "Design, Development"
 media:
