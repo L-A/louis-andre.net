@@ -17,4 +17,4 @@ media:
     alt: "Illustration Metrics Watch qui montre un ordinateur et un cellulaire qui reçoivent tous deux un ping d'alerte"
 ---
 
-J'ai un peu tout fait avec Metrics Watch: Nouvelle image de marque, site web et blog marketing, design de l'application. J'ai participé au développement du _front-end_ de l'app (particulièrement les portions en React). JP Boily, fondateur, m'a fait confiance comme collaborateur design pendant les sept ans entre notre premier projet, et la vente éventuelle de la compagnie à de nouveaux propriétaires.
+J'ai un peu tout fait avec Metrics Watch: Nouvelle image de marque, design de l'application, site web et blogue marketing. J'ai participé au développement du _front-end_ de l'app (particulièrement les portions en React). JP Boily, fondateur, m'a fait confiance comme collaborateur design pendant les sept ans entre notre premier projet, et la vente éventuelle de la compagnie à de nouveaux propriétaires.
