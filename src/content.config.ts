@@ -19,6 +19,17 @@ const journal = defineCollection({
   }),
 });
 
+const notes = defineCollection({
+  loader: glob({ base: "./content/notes", pattern: "**/*.md" }),
+  schema: z.object({
+    date: z.coerce.date(),
+    lang: z.enum(["en", "fr"]).default("en"),
+    draft: z.boolean().default(false),
+    syndicated: z.boolean().default(true),
+    replyTo: z.string().optional(),
+  }),
+});
+
 const readingLog = defineCollection({
   loader: RaindropLoader({ raindropToken, collectionID }),
 });
@@ -69,6 +80,7 @@ const artSeries = defineCollection({
 });
 
 export const collections = {
+  notes,
   journal,
   readingLog,
   artSeries,
