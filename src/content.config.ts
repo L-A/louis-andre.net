@@ -25,7 +25,7 @@ const notes = defineCollection({
     date: z.coerce.date(),
     lang: z.enum(["en", "fr"]).default("en"),
     draft: z.boolean().default(false),
-    syndicated: z.boolean().default(true),
+    syndicate: z.boolean().default(true),
     replyTo: z.string().optional(),
   }),
 });

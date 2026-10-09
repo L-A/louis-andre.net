@@ -1,0 +1,97 @@
+---
+import { getCollection } from "astro:content";
+
+import MainLayout from "../../layouts/MainLayout.astro";
+import Note from "../../components/Note.astro";
+import RssIcon from "../../assets/svg/icn-rss.svg";
+import { useTranslations } from "../../helpers/translations";
+
+const { l } = useTranslations(Astro.currentLocale);
+const entries = await getCollection("notes");
+---
+
+<MainLayout
+  title="Notes"
+  description={l({
+    en: "Shareable thoughts",
+    fr: "Des pensées partageables",
+  })}
+>
+  <header>
+    <h2>
+      Notes
+      <a class="feed-link" href="/notes/rss.xml">
+        <RssIcon class="rss-icon" />
+      </a>
+    </h2>
+    {
+      l({
+        en: (
+          <p>
+            Shareable thoughts. I syndicate them to social platforms elsewhere.
+          </p>
+        ),
+        fr: (
+          <p>
+            Des pensées partageables. Ce feed style <em>microblogue</em> est
+            ensuite{" "}
+            <a href="https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8352015/syndication-de-contenu">
+              syndiqué
+            </a>{" "}
+            vers d'autres plateformes.
+          </p>
+        ),
+      })
+    }
+  </header>
+
+  <ol class="notes">
+    {
+      entries
+        .filter((e) => import.meta.env.DEV || !e.data.draft)
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map(async (entry) => (
+          <li>
+            <Note entry={entry} />
+          </li>
+        ))
+    }
+  </ol>
+</MainLayout>
+
+<style>
+  header {
+    h2 {
+      font-size: 1.5rem;
+
+      a {
+        opacity: 0.6;
+        transition: opacity 0.15s;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        .rss-icon {
+          margin-left: 0.5rem;
+          width: 1.1rem;
+          height: 1.1rem;
+        }
+      }
+    }
+
+    p {
+      font-size: 1.125rem;
+      max-width: 36rem;
+    }
+  }
+
+  ol.notes {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    max-width: 36rem;
+    gap: 1rem;
+  }
+</style>

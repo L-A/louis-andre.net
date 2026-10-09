@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import { useTranslations } from "../../helpers/translations";
+
+import MainLayout from "../../layouts/MainLayout.astro";
+import Note from "../../components/Note.astro";
+
+export const getStaticPaths = async () => {
+  const entries = await getCollection("notes");
+  const visible = entries.filter((e) => import.meta.env.DEV || !e.data.draft);
+  return visible.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+};
+
+const { locale, l, t, urlFor } = useTranslations(Astro.currentLocale);
+const { entry } = Astro.props;
+---
+
+<MainLayout
+  title="Notes"
+  description={l({
+    en: "Shareable thoughts",
+    fr: "Des pensées partageables",
+  })}
+>
+  <div class="solo-note">
+    <Note entry={entry} locale={locale} highlight={true} />
+    <a href={urlFor(locale, "/notes")} class="back-link">
+      {t("notes.backToNotes")}
+    </a>
+  </div>
+</MainLayout>
+
+<style>
+  .solo-note {
+    margin: 2rem 0;
+  }
+
+  .back-link {
+    font-size: 0.825rem;
+  }
+</style>
