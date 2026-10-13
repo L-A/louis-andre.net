@@ -1,12 +1,14 @@
 ---
 import { render } from "astro:content";
+import { getSyndication } from "../helpers/syndication";
+import { useTranslations } from "../helpers/translations";
 
 const { entry, highlight = false } = Astro.props;
 const { date, lang } = entry.data;
 const { Content } = await render(entry);
 
-import { useTranslations } from "../helpers/translations";
 const { urlFor, locale } = useTranslations(Astro.currentLocale);
+const s = getSyndication(entry.id);
 
 const dateFormatter = new Intl.DateTimeFormat(locale, {
   year: "numeric",
@@ -34,13 +36,24 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
     </a>
 
     <ul class="links">
-      <li>
-        <a href="/" class="syndicated">BSKY</a>
-      </li>
-      /
-      <li><a href="/" class="syndicated">MAST</a></li>
-      /
-      <li><a href="/" class="syndicated">IN</a></li>
+      {
+        s.bluesky && (
+          <li>
+            <a href={s.bluesky.url} class="syndicated">
+              BSKY
+            </a>
+          </li>
+        )
+      }
+      {
+        s.mastodon && (
+          <li>
+            <a href={s.mastodon.url} class="syndicated">
+              MAST
+            </a>
+          </li>
+        )
+      }
     </ul>
   </footer>
 </article>
@@ -105,7 +118,13 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
         list-style: none;
         display: flex;
         flex-direction: row;
-        gap: 0.25em;
+
+        li + li {
+          &:before {
+            content: "/";
+            margin: 0 0.25rem;
+          }
+        }
       }
     }
   }

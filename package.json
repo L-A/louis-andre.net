@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "atsync-build": "sequoia publish && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "syndicate": "node --env-file=.env scripts/syndicate.mjs",
+    "syndicate:post": "node --env-file=.env scripts/syndicate.mjs --post"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
     "canvas-sketch-util": "^1.10.0"
   },
   "devDependencies": {
+    "@atproto/api": "^0.25.0",
+    "gray-matter": "^4.0.3",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "sequoia-cli": "^0.5.7",
