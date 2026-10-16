@@ -10,5 +10,17 @@
       "url": "https://social.lol/@lalabadie/117435158837456717",
       "postedAt": "2026-10-13T19:05:17.370Z"
     }
+  },
+  "2026-10-16-send-portfolio": {
+    "bluesky": {
+      "uri": "at://did:plc:yunmnzcm2sc3wru2w5xyx5hl/app.bsky.feed.post/3mxz7dt6dy32x",
+      "url": "https://bsky.app/profile/louis-andre.net/post/3mxz7dt6dy32x",
+      "postedAt": "2026-10-16T18:28:10.651Z"
+    },
+    "mastodon": {
+      "id": "117451999857618719",
+      "url": "https://social.lol/@lalabadie/117451999857618719",
+      "postedAt": "2026-10-16T18:28:10.888Z"
+    }
   }
 }
