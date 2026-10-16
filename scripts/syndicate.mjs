@@ -67,6 +67,7 @@ const postToBsky = async (text) => {
     facets: rt.facets,
     createdAt: new Date().toISOString(),
   }); // {uri} in response
+  console.log("Bluesky ✓");
   return response;
 };
 
@@ -102,6 +103,7 @@ const postToMastodon = async (text, lang) => {
   );
   if (response.ok) {
     const data = await response.json(); // {id, url} in response
+    console.log("Mastodon ✓");
     return data;
   } else {
     throw new Error(`Mastodon ${response.status}: ${await response.text()}`);
