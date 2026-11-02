@@ -16,10 +16,13 @@ export const getStaticPaths = async () => {
 
 const { locale, l, t, urlFor } = useTranslations(Astro.currentLocale);
 const { entry } = Astro.props;
+
+const titleString =
+  entry.body?.replace(/\s+/g, " ").trim().slice(0, 60) || "Note";
 ---
 
 <MainLayout
-  title="Notes"
+  title={titleString}
   description={l({
     en: "Shareable thoughts",
     fr: "Des pensées partageables",
