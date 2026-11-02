@@ -30,9 +30,13 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
           item.type === "video" ? (
             <video
               src={item.src}
+              poster={item.poster}
+              width={item.width}
+              height={item.height}
               controls
+              playsinline
               preload="metadata"
-              aria-label={item.alt}
+              aria-label={item.alt || undefined}
             />
           ) : (
             <a

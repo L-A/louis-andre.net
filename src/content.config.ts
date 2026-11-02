@@ -20,10 +20,21 @@ const journal = defineCollection({
 });
 
 const notes = defineCollection({
-  loader: glob({ base: "./content/notes", pattern: "**/*.md" }),
+  loader: glob({
+    base: "./content/notes",
+    pattern: "**/*.md",
+    // Notes are grouped into year folders on disk, but keep flat IDs so
+    // existing permalinks and .syndication.json keys stay stable.
+    generateId: ({ entry }) =>
+      entry
+        .split("/")
+        .pop()!
+        .replace(/\.[^.]+$/, ""),
+  }),
   schema: z.object({
     date: z.coerce.date(),
     lang: z.enum(["en", "fr"]).default("en"),
+    source: z.enum(["twitter", "bluesky", "website"]).default("website"),
     draft: z.boolean().default(false),
     syndicate: z.boolean().default(true),
     replyTo: z.string().optional(),
@@ -35,6 +46,7 @@ const notes = defineCollection({
           type: z.enum(["image", "video"]).default("image"),
           src: z.string(),
           full: z.string().optional(),
+          poster: z.string().optional(),
           alt: z.string().default(""),
           width: z.number().optional(),
           height: z.number().optional(),
