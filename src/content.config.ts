@@ -27,6 +27,20 @@ const notes = defineCollection({
     draft: z.boolean().default(false),
     syndicate: z.boolean().default(true),
     replyTo: z.string().optional(),
+    // Imported posts keep their text verbatim instead of being parsed as Markdown.
+    plain: z.boolean().default(false),
+    media: z
+      .array(
+        z.object({
+          type: z.enum(["image", "video"]).default("image"),
+          src: z.string(),
+          full: z.string().optional(),
+          alt: z.string().default(""),
+          width: z.number().optional(),
+          height: z.number().optional(),
+        }),
+      )
+      .default([]),
   }),
 });
 

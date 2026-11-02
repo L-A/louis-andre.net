@@ -4,7 +4,7 @@ import { getSyndication } from "../helpers/syndication";
 import { useTranslations } from "../helpers/translations";
 
 const { entry, highlight = false } = Astro.props;
-const { date, lang } = entry.data;
+const { date, lang, media = [], plain = false } = entry.data;
 const { Content } = await render(entry);
 
 const { urlFor, locale } = useTranslations(Astro.currentLocale);
@@ -21,8 +21,39 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
 
 <article class:list={["feed-item", { highlighted: highlight }]}>
   <main>
-    <Content />
+    {plain ? <div class="plain-text">{entry.body}</div> : <Content />}
   </main>
+  {
+    media.length > 0 && (
+      <div class:list={["media", { multiple: media.length > 1 }]}>
+        {media.map((item) =>
+          item.type === "video" ? (
+            <video
+              src={item.src}
+              controls
+              preload="metadata"
+              aria-label={item.alt}
+            />
+          ) : (
+            <a
+              href={item.full ?? item.src}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                width={item.width}
+                height={item.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          ),
+        )}
+      </div>
+    )
+  }
   <footer>
     <a href={urlFor(locale, `/notes/${entry.id}`)} class="permalink">
       {
@@ -77,6 +108,35 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
 
       & > :global(p) {
         margin-top: 0;
+      }
+
+      .plain-text {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    .media {
+      display: grid;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+
+      &.multiple {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      a {
+        display: block;
+        line-height: 0;
+      }
+
+      img,
+      video {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: solid 1px var(--fadedAccent);
+        border-radius: 0.25rem;
       }
     }
 
