@@ -1,5 +1,9 @@
 ---
-const { href = "", type = "" } = Astro.props;
+interface Props {
+  href: string;
+  type?: "highlight" | "mini";
+}
+const { href = "", type } = Astro.props;
 ---
 
 <a href={href} class:list={["button-link", type]}>
@@ -35,6 +39,11 @@ const { href = "", type = "" } = Astro.props;
       --scoped-bg: var(--offWhite);
       --scoped-border: var(--mainAccent);
       --scoped-color: var(--mainAccent);
+    }
+
+    &.mini {
+      font-size: 0.8rem;
+      padding: 0 0.25rem;
     }
   }
 </style>

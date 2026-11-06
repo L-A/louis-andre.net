@@ -1,13 +1,23 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 
 import MainLayout from "../../layouts/MainLayout.astro";
 import Note from "../../components/Note.astro";
 import RssIcon from "../../assets/svg/icn-rss.svg";
+import ButtonLink from "../../components/ButtonLink.astro";
 import { useTranslations } from "../../helpers/translations";
 
-const { l } = useTranslations(Astro.currentLocale);
-const entries = await getCollection("notes");
+export const getStaticPaths = (async ({ paginate }) => {
+  const pageSize = 50; // Must be in scope here, not up in the page
+  const entries = (await getCollection("notes"))
+    .filter((e) => import.meta.env.DEV || !e.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return paginate(entries, { pageSize });
+}) satisfies GetStaticPaths;
+
+const { locale, l, t, urlFor } = useTranslations(Astro.currentLocale);
+const { page } = Astro.props;
 ---
 
 <MainLayout
@@ -16,6 +26,7 @@ const entries = await getCollection("notes");
     en: "Shareable thoughts",
     fr: "Des pensées partageables",
   })}
+  noindex={page.currentPage > 1}
 >
   <header>
     <h2>
@@ -45,18 +56,47 @@ const entries = await getCollection("notes");
     }
   </header>
 
+  <nav class="pagination">
+    {
+      page.url.next && (
+        <ButtonLink href={urlFor(locale, page.url.next)} type="mini">
+          {t("notes.older")}
+        </ButtonLink>
+      )
+    }
+    {
+      page.url.prev && (
+        <ButtonLink href={urlFor(locale, page.url.prev)} type="mini">
+          {t("notes.newer")}
+        </ButtonLink>
+      )
+    }
+  </nav>
   <ol class="notes">
     {
-      entries
-        .filter((e) => import.meta.env.DEV || !e.data.draft)
-        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-        .map(async (entry) => (
-          <li>
-            <Note entry={entry} />
-          </li>
-        ))
+      page.data.map(async (entry) => (
+        <li>
+          <Note entry={entry} />
+        </li>
+      ))
     }
   </ol>
+  <nav class="pagination">
+    {
+      page.url.next && (
+        <ButtonLink href={urlFor(locale, page.url.next)} type="mini">
+          {t("notes.older")}
+        </ButtonLink>
+      )
+    }
+    {
+      page.url.prev && (
+        <ButtonLink href={urlFor(locale, page.url.prev)} type="mini">
+          {t("notes.newer")}
+        </ButtonLink>
+      )
+    }
+  </nav>
 </MainLayout>
 
 <style>
@@ -86,12 +126,19 @@ const entries = await getCollection("notes");
     }
   }
 
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
   ol.notes {
     display: flex;
     flex-direction: column;
     list-style: none;
     padding: 0;
     max-width: 36rem;
-    gap: 1rem;
+    gap: 2rem;
   }
 </style>

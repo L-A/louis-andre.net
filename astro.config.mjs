@@ -6,6 +6,9 @@ import {
 
 import sitemap from "@astrojs/sitemap";
 
+const isPaginatedNoteList = (url) =>
+  /^\/(?:fr\/)?notes\/\d+\/?$/.test(new URL(url).pathname);
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://louis-andre.net",
@@ -55,7 +58,7 @@ export default defineConfig({
           fr: "fr-CA",
         },
       },
-      filter: urlHasContentLang,
+      filter: (page) => urlHasContentLang(page) && !isPaginatedNoteList(page),
       customPages: [...frenchJournalIds].map(
         (p) => `https://louis-andre.net/fr/journal/${p}/`,
       ),

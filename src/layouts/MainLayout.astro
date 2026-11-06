@@ -15,6 +15,7 @@ interface Props {
   image?: string;
   atUri?: string;
   singleLang?: Lang;
+  noindex?: boolean;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   image,
   atUri,
   singleLang,
+  noindex = false,
 } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
 const countPath = getBarePath(Astro.originPathname, Astro.currentLocale);
@@ -38,6 +40,7 @@ const countPath = getBarePath(Astro.originPathname, Astro.currentLocale);
       title={title}
       description={description}
       image={image}
+      noindex={noindex}
       singleLang={singleLang}
     />
     <Font cssVariable="--font-plex" preload />

@@ -3,7 +3,7 @@ import { render } from "astro:content";
 import { getSyndication } from "../helpers/syndication";
 import { useTranslations } from "../helpers/translations";
 
-const { entry, highlight = false } = Astro.props;
+const { entry } = Astro.props;
 const { date, lang, media = [], plain = false } = entry.data;
 const { Content } = await render(entry);
 
@@ -19,7 +19,7 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
 });
 ---
 
-<article class:list={["feed-item", { highlighted: highlight }]}>
+<article class:list={["feed-item"]}>
   <main>
     {plain ? <div class="plain-text">{entry.body}</div> : <Content />}
   </main>
@@ -95,19 +95,15 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
 
 <style>
   .feed-item {
-    border-bottom: solid 1px var(--fadedAccent);
-    padding: 1rem 0;
+    background-color: var(--offWhite);
+    border: solid 1px var(--fadedAccent);
+    border-radius: 0.5rem;
+    padding: 1rem;
     max-width: 36rem;
-
-    &.highlighted {
-      background-color: var(--offWhite);
-      border: solid 1px var(--fadedAccent);
-      border-radius: 0.25rem;
-      padding: 1rem;
-    }
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.025);
 
     main {
-      font-size: 1rem;
+      font-size: 1.2rem;
       line-height: 1.3;
 
       & > :global(p) {
@@ -123,7 +119,7 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
     .media {
       display: grid;
       gap: 0.5rem;
-      margin-top: 0.75rem;
+      margin: 0.5rem 0;
 
       &.multiple {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -149,7 +145,7 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin: 0;
+      margin: 0.5rem 0 0;
       font-size: 0.825rem;
 
       .permalink {

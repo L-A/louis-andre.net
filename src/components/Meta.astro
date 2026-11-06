@@ -14,7 +14,8 @@ interface Props {
   singleLang?: Lang;
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   description = "Louis-André's personal website",
   image = "https://louis-andre.net/og-image.jpg",
   singleLang,
+  noindex = false,
 } = Astro.props;
 
 const titleString = (title ? title + " – " : "") + "Louis-André Labadie";
@@ -74,3 +76,6 @@ const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
+
+{/* Optional noindex */}
+{noindex && <meta name="robots" content="noindex, follow" />}
