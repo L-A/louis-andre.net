@@ -6,7 +6,7 @@ syndicate: false
 plain: true
 media:
   - type: video
-    src: "/notes-media/bafkreib6an4oip5xecloynh6pcc6kvqgjj5h3ntkb62iy5gy2mkdin25i4.mp4"
+    src: "/notes-media/bafkreiharegrbmxc3blu6eykbx4ea37h4lw3yqah5wjewsbktlsseeerji.mp4"
     poster: "/notes-media/bafkreib6an4oip5xecloynh6pcc6kvqgjj5h3ntkb62iy5gy2mkdin25i4.jpg"
     alt: ""
     width: 244
